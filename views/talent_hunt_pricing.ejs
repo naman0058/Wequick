@@ -1,0 +1,1096 @@
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+    <jsp:include page="head.jsp"/>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                background: #ffffff;
+            }
+
+            h1.demo-title {
+                text-align: center;
+                font-size: 30px;
+                font-weight: 600;
+                color: #2a293e;
+                letter-spacing: 2px;
+            }
+
+            h1.demo-title a {
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            .pricing-table {
+                display: flex;
+                flex-flow: row wrap;
+                width: 100%;
+                max-width: 1100px;
+                margin: 0 auto;
+                background: #ffffff;
+            }
+
+            .pricing-table .ptable-item {
+                width: 33.33%;
+                padding: 0 15px;
+                margin-bottom: 30px;
+            }
+
+            @media (max-width: 992px) {
+                .pricing-table .ptable-item {
+                    width: 33.33%;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .pricing-table .ptable-item {
+                    width: 50%;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .pricing-table .ptable-item {
+                    width: 100%;
+                }
+            }
+
+            .pricing-table .ptable-single {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .pricing-table .ptable-header,
+            .pricing-table .ptable-body,
+            .pricing-table .ptable-footer {
+                position: relative;
+                width: 100%;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .pricing-table .ptable-status,
+            .pricing-table .ptable-title,
+            .pricing-table .ptable-price,
+            .pricing-table .ptable-description,
+            .pricing-table .ptable-action {
+                position: relative;
+                width: 100%;
+                text-align: center;
+            }
+
+            .pricing-table .ptable-single {
+                background: #f6f8fa;
+            }
+
+            .pricing-table .ptable-single:hover {
+                box-shadow: 0 0 10px #999999;
+            }
+
+            .pricing-table .ptable-header {
+                margin: 0 30px;
+                padding: 30px 0 45px 0;
+                width: auto;
+                background: #33BBFF;
+            }
+
+            .pricing-table .ptable-header::before,
+            .pricing-table .ptable-header::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                width: 0;
+                height: 0;
+                border-bottom: 100px solid #f6f8fa;
+            }
+
+            .pricing-table .ptable-header::before {
+                right: 50%;
+                border-right: 250px solid transparent;
+            }
+
+            .pricing-table .ptable-header::after {
+                left: 50%;
+                border-left: 250px solid transparent;
+            }
+
+            .pricing-table .ptable-item.featured-item .ptable-header {
+                background: #ff6f61;
+            }
+
+            .pricing-table .ptable-status {
+                margin-top: -30px;
+            }
+
+            .pricing-table .ptable-status span {
+                position: relative;
+                display: inline-block;
+                width: 50px;
+                height: 30px;
+                padding: 5px 0;
+                text-align: center;
+                color: #ff6f61;
+                font-size: 14px;
+                font-weight: 300;
+                letter-spacing: 1px;
+                background: #2a293e;
+            }
+
+            .pricing-table .ptable-status span::before,
+            .pricing-table .ptable-status span::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                width: 0;
+                height: 0;
+                border-bottom: 10px solid #ff6f61;
+            }
+
+            .pricing-table .ptable-status span::before {
+                right: 50%;
+                border-right: 25px solid transparent;
+            }
+
+            .pricing-table .ptable-status span::after {
+                left: 50%;
+                border-left: 25px solid transparent;
+            }
+
+            .pricing-table .ptable-title h2 {
+                color: #ffffff;
+                font-size: 24px;
+                font-weight: 300;
+                letter-spacing: 2px;
+            }
+
+            .pricing-table .ptable-price h2 {
+                margin: 0;
+                color: #ffffff;
+                font-size: 45px;
+                font-weight: 700;
+                margin-left: 15px;
+            }
+
+            .pricing-table .ptable-price h2 small {
+                position: absolute;
+                font-size: 18px;
+                font-weight: 300;
+                margin-top: 16px;
+                margin-left: -15px;
+            }
+
+            .pricing-table .ptable-price h2 span {
+                margin-left: 3px;
+                font-size: 16px;
+                font-weight: 300;
+            }
+
+            .pricing-table .ptable-body {
+                padding: 20px 0;
+            }
+
+            .pricing-table .ptable-description ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+            .pricing-table .ptable-description ul li {
+                color: #2a293e;
+                font-size: 14px;
+                font-weight: 300;
+                letter-spacing: 1px;
+                padding: 7px;
+                border-bottom: 1px solid #dedede;
+            }
+
+            .pricing-table .ptable-description ul li:last-child {
+                border: none;
+            }
+
+            .pricing-table .ptable-footer {
+                padding-bottom: 30px;
+            }
+
+            .pricing-table .ptable-action a {
+                display: inline-block;
+                padding: 10px 20px;
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 2px;
+                text-decoration: none;
+                background: #2a293e;
+            }
+
+            .pricing-table .ptable-action a:hover {
+                color: #ffffff;
+                background: #33BBFF;
+            }
+
+            .pricing-table .ptable-item.featured-item .ptable-action a {
+                color: #2a293e;
+                background: #ff6f61;
+            }
+
+            .pricing-table .ptable-item.featured-item .ptable-action a:hover {
+                background: #33BBFF;
+            }
+
+
+
+
+
+            /*            share whtapp*/
+
+
+
+
+
+            @import "compass/css3";
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #overlay {
+                /* we set all of the properties for our overlay */
+                height: 40%;
+                width: 60%;
+                margin: 0 auto;
+                background: white;
+                color: black;
+                padding: 10px;
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                z-index: 1000;
+                display: none;
+                /* CSS 3 */
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                -o-border-radius: 10px;
+                border-radius: 10px;
+            }
+
+            #mask {
+                /* create are mask */
+                position: fixed;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.6);
+                z-index: 500;
+                width: 100%;
+                height: 100%;
+                display: none;
+            }
+            /* use :target to look for a link to the overlay then we find our mask */
+            #overlay:target,
+            #overlay:target + #mask {
+                display: block;
+                opacity: 1;
+            }
+            .close {
+                /* to make a nice looking pure CSS3 close button */
+                display: block;
+                position: absolute;
+                top: -20px;
+                right: -20px;
+                background: red;
+                color: white;
+                height: 40px;
+                width: 40px;
+                line-height: 40px;
+                font-size: 35px;
+                text-decoration: none;
+                text-align: center;
+                font-weight: bold;
+                -webkit-border-radius: 40px;
+                -moz-border-radius: 40px;
+                -o-border-radius: 40px;
+                border-radius: 40px;
+            }
+            #open-overlay {
+                /* open the overlay */
+                padding: 10px 5px;
+                background: #ffffff;
+                color: white;
+                text-decoration: none;
+                display: inline-block;
+                margin: 10px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                -o-border-radius: 10px;
+                border-radius: 10px;
+            }
+
+
+        </style>
+
+
+<style>
+    /* by Jamal Hassouni*/
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300");
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif !important;
+    }
+    section {
+        width: 100%;
+        height: 100vh;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 140px 0;
+    }
+    .card {
+        position: relative;
+        max-width: 300px;
+        height: auto;
+        background: linear-gradient(-45deg, #fe0847, #feae3f);
+        border-radius: 15px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        -webkit-box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
+    }
+    .card:hover {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    .col-sm-4:nth-child(1) .card,
+    .col-sm-4:nth-child(1) .card .title .fa {
+        background: linear-gradient(-45deg, #f403d1, #64b5f6);
+    }
+    .col-sm-4:nth-child(2) .card,
+    .col-sm-4:nth-child(2) .card .title .fa {
+        background: linear-gradient(-45deg, #ffec61, #f321d7);
+    }
+    .col-sm-4:nth-child(3) .card,
+    .col-sm-4:nth-child(3) .card .title .fa {
+        background: linear-gradient(-45deg, #24ff72, #9a4eff);
+    }
+    .card::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: 1;
+        -webkit-transform: skewY(-5deg) scale(1.5);
+        transform: skewY(-5deg) scale(1.5);
+    }
+    .title .fa {
+        color: #fff;
+        font-size: 60px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 100px;
+        -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    }
+    .title h2 {
+        position: relative;
+        margin: 20px 0 0;
+        padding: 0;
+        color: #fff;
+        font-size: 28px;
+        z-index: 2;
+    }
+    .price,
+    .option {
+        position: relative;
+        z-index: 2;
+    }
+    .price h4 {
+        margin: 0;
+        padding: 20px 0;
+        color: #fff;
+        font-size: 60px;
+    }
+    .option ul {
+        margin: 0;
+        padding: 0;
+    }
+    .option ul li {
+        margin: 0 0 10px;
+        padding: 0;
+        list-style: none;
+        color: #fff;
+        font-size: 16px;
+    }
+    .card a {
+        position: relative;
+        z-index: 2;
+        background: #fff;
+        color: black;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 40px;
+        display: block;
+        text-align: center;
+        margin: 20px auto 0;
+        font-size: 16px;
+        cursor: pointer;
+        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    .card a:hover {
+        text-decoration: none;
+    }
+
+</style>
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <!-- Start of Header -->
+            <%- include ('./header.ejs') %>
+
+            <!-- End of Header -->
+
+
+            <!-- Start of Main -->
+            <main class="main">
+                <!-- Start of Page Header -->
+                <div class="page-header">
+                    <div class="container">
+                        <h1 class="page-title mb-0">Telent Hunt</h1>
+                    </div>
+                </div>
+                <!-- End of Page Header -->
+
+                <!-- Start of Breadcrumb -->
+                <nav class="breadcrumb-nav mb-6">
+                    <div class="container">
+                        <ul class="breadcrumb">
+                            <li><a href="demo1.jsp">Home</a></li>
+                            <li><a href="blog.jsp">Blog</a></li>
+                            <li>Telent Hunt</li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- End of Breadcrumb -->
+
+                <!-- Start of Page Content -->
+
+                <div class="page-content">
+                    <div class="container">
+                        <div class="row gutter-lg mb-10">
+                            <div class="main-content">
+
+                                <section>
+                                    <div class="container-fluid">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="card text-center">
+                                                        <div class="title">
+                                                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                                            <h2> DD</h2>
+                                                        </div>
+                                                        <div class="price">
+                                                            <h4><sup>Rs</sup>101</h4>
+                                                        </div>
+                                                        <div class="option">
+                                                            <ul>
+                                                                <li> <i class="fa fa-check" aria-hidden="true"></i> 4800/- BV  </li>
+                                                                <li> <i class="fa fa-check" aria-hidden="true"></i> 24000/- DP </li>
+                                                                <li> <i class="fa fa-check" aria-hidden="true"></i> 90000 Capping </li>
+                                                              
+                                                            </ul>
+                                                        </div>
+                                                        <button type="button" class="btn btn-primary razorpay" price = '101'>Order Now </a>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                                <!-- END Col one -->
+                                                <div class="col-sm-6">
+                                                    <div class="card text-center">
+                                                        <div class="title">
+                                                            <i class="fa fa-plane" aria-hidden="true"></i>
+                                                            <h2>DD</h2>
+                                                        </div>
+                                                        <div class="price">
+                                                            <h4><sup>Rs</sup>500</h4>
+                                                        </div>
+                                                        <div class="option">
+                                                            <ul>
+                                                                <li> <i class="fa fa-check" aria-hidden="true"></i> 2400/- BV  </li>
+                                                                <li> <i class="fa fa-check" aria-hidden="true"></i> 12000/- DP </li>
+                                                                <li> <i class="fa fa-check" aria-hidden="true"></i> 30000 Capping </li>
+                                                            </ul>
+                                                        </div>
+                                                        <button type="button" class="btn btn-primary razorpay" id="razorpay" price = '500'>Order Now 500</a>
+
+                                                    </div>
+                                                    
+                                                </div>
+                                                <button type="button" class="btn btn-primary razorpay" id="razorpay" price = '500'>Order Now 500</a>
+                                                    <button type="button" class="btn btn-primary razorpay" id="razorpay" price = '101'>Order Now 101</a>
+
+                                                <!-- END Col two -->
+                                              
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </section>
+                             
+                            </div>
+                            <aside class="sidebar right-sidebar blog-sidebar sidebar-fixed sticky-sidebar-wrapper">
+                                <div class="sidebar-overlay">
+                                    <a href="#" class="sidebar-close">
+                                        <i class="close-icon"></i>
+                                    </a>
+                                </div>
+                                <a href="#" class="sidebar-toggle">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+                
+              
+                <!-- End of Page Content -->
+            </main>
+            <script>
+                function file1s()
+                {
+                    var file1 = document.getElementById("file1").value;
+
+                    if (file1 == "")
+                    {
+
+                        document.getElementById("file1").focus();
+                    } else {
+
+                    }
+                }
+              
+                document.getElementById("social_media2").style.display = 'none';
+                document.getElementById("social_media3").style.display = 'none';
+                document.getElementById("social_media4").style.display = 'none';
+                document.getElementById("social_media5").style.display = 'none';
+               
+                function social_media2() {
+                    
+                    document.getElementById("social_media2").style.display = 'block';
+                    document.getElementById("social_media3").style.display = 'none';
+                    document.getElementById("social_media4").style.display = 'none';
+                    document.getElementById("social_media5").style.display = 'none';
+                }
+                function social_media3() {
+                  
+                    document.getElementById("social_media2").style.display = 'none';
+                    document.getElementById("social_media3").style.display = 'block';
+                    document.getElementById("social_media4").style.display = 'none';
+                    document.getElementById("social_media5").style.display = 'none';
+                }
+                function social_media4() {
+                
+                    document.getElementById("social_media2").style.display = 'none';
+                    document.getElementById("social_media3").style.display = 'none';
+                    document.getElementById("social_media4").style.display = 'block';
+                    document.getElementById("social_media5").style.display = 'none';
+                }
+                function social_media5() {
+                   
+                    document.getElementById("social_media2").style.display = 'none';
+                    document.getElementById("social_media3").style.display = 'none';
+                    document.getElementById("social_media4").style.display = 'none';
+                    document.getElementById("social_media5").style.display = 'block';
+                }
+
+
+            </script>
+            <!-- End of Main -->
+
+            <%- include ('./footer.ejs') %>
+
+        </div>
+
+        <!-- Plugin JS File -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/wolmart/assets/vendor/jquery/jquery.min.js"></script>
+        <script src="/wolmart/assets/vendor/owl-carousel/owl.carousel.min.js"></script>
+        <script src="/wolmart/assets/vendor/sticky/sticky.min.js"></script>
+        <script src="/wolmart/assets/js/main.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </body>
+
+
+
+<script>
+    $(function() {
+   
+ $.getJSON('/talent-hunt/all-talent',data=>{
+     console.log(data)
+     makeTalent(data)
+ })
+
+
+});
+
+
+
+function makeTalent(data){
+
+    let table = `
+    
+    <div>`
+$.each(data,(i,item)=>{
+    
+   table+=`<article class="post post-classic overlay-zoom mb-4">
+                     
+                                    <figure class="post-media br-sm mt-10">
+
+                                        <a href="/talent-hunt/post/single?id=${item.id}">
+                                            <img src="/wolmart/assets/images/blog/classic/1.jpg" width="930"
+                                                 height="500" alt="blog">
+                                        </a>
+                                        <div class="post-details" style="border: 2px solid #D6DED7;border-top: none">
+                                            <div class="post-cats text-primary">
+                                                <a href="#"></a>
+                                            </div>
+                                            <h4 class="post-title">`
+
+if(item.isUserLike) {
+table+= ` <i class="ml-5 w-icon-heart like_karo" id="${item.id}" style="font-size: 29px;color:red"></i>`
+}
+else{
+    table+= ` <i class="ml-5 w-icon-heart like_karo" id="${item.id}" style="font-size: 29px;"></i>`
+
+}
+
+                                               
+                                                
+                                               table+=` <a href = '/talent-hunt/post/single?id=${item.id}'><i class="ml-5  w-icon-comment" style="font-size: 30px;"></i></a>
+                                                <button onclick="social_media1()" style="border: none;background-color: white" > <span id="share_social">
+                                                        <i class="ml-5 id  fa fa-paper-plane text-dark"  data-toggle="modal" data-target="#" style="font-size: 30px;"> </i>
+                                                    </span></button>
+
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="" id="social_media1">
+
+                                                            <div class="social-icons ml-5 mt-2">
+                                                                <a  class="social-icon social-facebook w-icon-facebook social-share facebook" url = '/talent-hunt/post/single?id=${item.id}'></a>
+                                                                <a href="#" class="social-icon social-twitter w-icon-twitter social-share twitter" url = '/talent-hunt/post/single?id=${item.id}'></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4"></div>
+                                                    <div class="col-md-4"></div>
+                                                </div>
+
+                                            </h4>
+                                            <h6 class="" style="margin-left: 15px;">
+                                                ${item.likes} Likes
+                                            </h6>
+                                           
+                                          
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="myModal61" role="dialog">
+                                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                                <div class="pricing-table">
+                                                    <div class="ptable-item">
+                                                        <div class="ptable-single">
+                                                            <div class="ptable-header">
+                                                                <div class="ptable-title">
+                                                                    <h2>Silver</h2>
+                                                                </div>
+                                                                <div class="ptable-price">
+                                                                    <h2><small>$</small>99<span>/ M</span></h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ptable-body">
+                                                                <div class="ptable-description">
+                                                                    <ul>
+                                                                        <li>Pure HTML & CSS</li>
+                                                                        <li>Responsive Design</li>
+                                                                        <li>Well-commented Code</li>
+                                                                        <li>Easy to Use</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ptable-footer">
+                                                                <div class="ptable-action">
+                                                                    <a href="https://www.google.com/" style="border-radius: 5px;">Buy Now</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="ptable-item featured-item">
+                                                        <div class="ptable-single">
+                                                            <div class="ptable-header">
+                                                                <div class="ptable-status">
+                                                                    <span>Hot</span>
+                                                                </div>
+                                                                <div class="ptable-title">
+                                                                    <h2>Gold</h2>
+                                                                </div>
+                                                                <div class="ptable-price">
+                                                                    <h2><small>$</small>199<span>/ M</span></h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ptable-body">
+                                                                <div class="ptable-description">
+                                                                    <ul>
+                                                                        <li>Pure HTML & CSS</li>
+                                                                        <li>Responsive Design</li>
+                                                                        <li>Well-commented Code</li>
+                                                                        <li>Easy to Use</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ptable-footer">
+                                                                <div class="ptable-action">
+                                                                    <a href="https://www.google.com/"style="border-radius: 5px;">Buy Now</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="ptable-item">
+                                                        <div class="ptable-single">
+                                                            <div class="ptable-header">
+                                                                <div class="ptable-title">
+                                                                    <h2>Platinum</h2>
+                                                                </div>
+                                                                <div class="ptable-price">
+                                                                    <h2><small>$</small>299<span>/ M</span></h2>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ptable-body">
+                                                                <div class="ptable-description">
+                                                                    <ul>
+                                                                        <li>Pure HTML & CSS</li>
+                                                                        <li>Responsive Design</li>
+                                                                        <li>Well-commented Code</li>
+                                                                        <li>Easy to Use</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ptable-footer">
+                                                                <div class="ptable-action">
+                                                                    <a href="https://www.google.com/"style="border-radius: 5px;">Buy Now</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </article><br><br>`
+
+                            })
+                              table+=` </div>`
+                                
+                                
+    $('#talent-post').html(table)
+}
+
+</script>
+
+
+    <script>
+
+        $('#talent-post').on('click', '.like_karo', function() {
+          let id = $(this).attr('id')
+            $.post('/talent-hunt/like',{id},data=>{
+                refresh()
+            })
+        })
+
+
+
+        $('#talent-post').on('click', '.comment_karo', function() {
+          let id = $(this).attr('id')
+            $.post('/talent-hunt/comment',{id},data=>{
+                refresh()
+            })
+        })
+
+
+function refresh(){
+    $.getJSON('/talent-hunt/all-talent',data=>{
+     console.log(data)
+     makeTalent(data)
+ })
+}
+
+
+
+
+
+
+
+
+
+
+
+setShareLinks();
+
+function socialWindow(url) {
+  var left = (screen.width - 570) / 2;
+  var top = (screen.height - 570) / 2;
+  var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
+  // Setting 'params' to an empty string will launch
+  // content in a new tab or window rather than a pop-up.
+  // params = "";
+  window.open(url,"NewWindow",params);
+}
+
+function setShareLinks() {
+  var tweet = encodeURIComponent($("meta[property='og:description']").attr("content"));
+
+  $('#talent-post').on('click', '.social-share.facebook', function() {
+    let pageUrl = $(this).attr('url')
+    url = "https://www.facebook.com/sharer.php?u=" + pageUrl;
+    socialWindow(url);
+  });
+
+  $('#talent-post').on('click', '.social-share.twitter', function() {
+    let pageUrl = $(this).attr('url')
+
+    url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text=" + tweet;
+    socialWindow(url);
+  });
+
+  $('#talent-post').on('click', '.social-share.linkedin', function() {
+    let pageUrl = $(this).attr('url')
+
+    url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
+    socialWindow(url);
+  })
+}
+
+
+    </script>
+
+
+
+<script>
+
+    $('.like_karo').click(function(){
+
+  
+      let id = $(this).attr('id')
+     $.post('/talent-hunt/like',{id},data=>{
+         if(data.msg=='success'){
+         window.location.reload()
+         }
+         else{
+          window.location.href = '/login'
+         }
+         console.log(data)
+        //   window.location.reload()
+        })
+    })
+
+
+    $('.comment_karo').click(function(){
+
+
+if($('#message').val() == '' || $('#message').val() == null) alert('Enter Comment')
+else{
+    let comment = $('#message').val()
+    let id = $(this).attr('id')
+    //   alert(id)
+        $.post('/talent-hunt/comment',{id,comment},data=>{
+            if(data.msg=='success'){
+         window.location.reload()
+         }
+         else{
+          window.location.href = '/login'
+         }
+        })
+}
+
+     
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+setShareLinks();
+
+function socialWindow(url) {
+var left = (screen.width - 570) / 2;
+var top = (screen.height - 570) / 2;
+var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
+// Setting 'params' to an empty string will launch
+// content in a new tab or window rather than a pop-up.
+// params = "";
+window.open(url,"NewWindow",params);
+}
+
+function setShareLinks() {
+var tweet = encodeURIComponent($("meta[property='og:description']").attr("content"));
+
+$('#talent-post').on('click', '.social-share.facebook', function() {
+let pageUrl = $(this).attr('url')
+url = "https://www.facebook.com/sharer.php?u=" + pageUrl;
+socialWindow(url);
+});
+
+$('#talent-post').on('click', '.social-share.twitter', function() {
+let pageUrl = $(this).attr('url')
+
+url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text=" + tweet;
+socialWindow(url);
+});
+
+$('#talent-post').on('click', '.social-share.linkedin', function() {
+let pageUrl = $(this).attr('url')
+
+url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
+socialWindow(url);
+})
+}
+
+
+</script>
+
+
+
+
+
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+
+
+
+
+
+$(document).ready(function(){
+	$('a[href="#search"]').on('click', function(event) {                    
+		$('#search').addClass('open');
+		$('#search > form > input[type="search"]').focus();
+	});            
+	$('#search, #search button.close').on('click keyup', function(event) {
+		if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+			$(this).removeClass('open');
+		}
+	});            
+});
+
+
+
+
+
+
+
+
+
+$('.razorpay').click(function(e){
+
+
+
+
+const price = $(this).attr('price');
+
+
+
+  const amount = price
+
+  $.post('/talent-hunt/razorpay',{amount},data=>{
+
+  console.log('data recieved',data)
+
+    var options1 = {
+    "key": "rzp_live_2AYlv8GRAaT63p", // Enter the Key ID generated from the Dashboard
+    "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+    "currency": "INR",
+    "name": "FileMakr",
+    "description": 'talenthnt',
+    "image": "https://www.filemakr.com/images/filemakr-project-file-creator-logo.png",
+    "order_id": data.id,//This is a sample Order ID. Create an Order using Orders API. (https://razorpay.com/docs/payment-gateway/orders/integration/#step-1-create-an-order). Refer the Checkout form table given below
+    "handler": function (response){
+
+      console.log('response aaya hai',response)
+
+      $.post('/talent-hunt/razorpay_response',response,data=>{
+if(data == 'success'){
+     window.location.href = '/final-year-projects-source-code/download-successfull' 
+}
+else{
+  window.location.href = '/' 
+}
+      })
+    
+      
+    },
+   
+   
+    "theme": {
+        "color": "#507ec0"
+    }
+};
+
+
+var rzp1 = new Razorpay(options1);
+
+    rzp1.open();
+ 
+    e.preventDefault();
+
+
+
+
+
+  })
+
+
+
+ 
+
+
+})
+
+
+
+
+</script>
+
+
+
+</html>

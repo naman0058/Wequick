@@ -38,13 +38,40 @@ router.get('/get-banner-image',(req,res)=>{
 
 
 router.get('/get-category',(req,res)=>{
-    pool.query(`select * from category order by id desc limit 10`,(err,result)=>{
+    pool.query(`select * from category order by id desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })
    
    })
    
+
+
+router.get('/get-all-shops',(req,res)=>{
+  pool.query(`select * from vendor order by id desc`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.get('/get-all-shops-by-category',(req,res)=>{
+  pool.query(`select * from vendor where categoryid = '${req.query.categoryid}' order by id desc`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.get('/get-all-products',(req,res)=>{
+  pool.query(`select * from products where vendorid = '${req.query.vendorid}' order by id desc`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
 
 
 

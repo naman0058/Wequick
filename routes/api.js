@@ -4,6 +4,46 @@ var pool =  require('./pool');
 var upload = require('./multer');
 
 
+const request = require('request');
+const auth = 'bearer 8170b1fc-302d-4f5d-b6a8-72fb6dbdb804'
+
+var mapsdk = require('mapmyindia-sdk-nodejs');
+
+
+
+router.post('/reverse-geocoding',(req,res)=>{
+  let body = req.body;
+  // res.send(body)
+    mapsdk.reverseGeoCodeGivenLatiLongi('l9fksssn2m6snu4dif9d55z7fpwed1kx',req.body.latitude,req.body.longitude).then(function(data)
+    {
+        res.json(data.results[0].formatted_address) 
+  
+   
+  
+    }).catch(function(ex){
+        console.log(ex);
+        res.json(ex)
+    });
+  })
+
+
+
+
+
+  router.post('/reverse-geocoding1',(req,res)=>{
+    let body = req.body;
+    // res.send(body)
+      mapsdk.reverseGeoCodeGivenLatiLongi('l9fksssn2m6snu4dif9d55z7fpwed1kx',req.body.latitude,req.body.longitude).then(function(data)
+      {
+          res.json(data.results) 
+    
+     
+    
+      }).catch(function(ex){
+          console.log(ex);
+          res.json(ex)
+      });
+    })
 
 
 

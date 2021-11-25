@@ -35,8 +35,8 @@
                                 <div class="nav-header position-relative  text-center w-100">
                                     <div class="brand-logo">
                                         <a href="index.html">
-                                            <b class="logo-abbr">D</b>
-                                            <span class="brand-title"><b>Drora</b></span>
+                                            <b class="logo-abbr">W</b>
+                                            <span class="brand-title"><b>WeQuick</b></span>
                                         </a>
                                     </div>
                                 </div>
@@ -56,6 +56,15 @@
                                     </div>
                                     <div class="form-group mb-4">
                                         <input type="text" name="number" class="form-control rounded-0 bg-transparent" placeholder="Mobile Number" required>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <input type="text" name="address" id="address" readonly class="form-control rounded-0 bg-transparent" placeholder="Address" required>
+                                    </div>
+
+                                    <button type="button" class="btn btn-dark" onclick="getLocation()" style="margin-bottom: 20px;" >Fetch Current Location</button>
+
+                                    <div class="form-group mb-4">
+                                        <textarea type="text" name="description" class="form-control rounded-0 bg-transparent" placeholder="Shop Description" required></textarea>
                                     </div>
                                     <div class="form-group ml-3 mb-5">
                                         <input id="checkbox1" type="checkbox" checked readonly>
@@ -84,5 +93,40 @@
     <script src="/Admin/main/./js/quixnav.js"></script>
     <script src="/javascripts/subcategory.js"></script>
 </body>
+
+
+<script>
+
+    getLocation()
+      var x = document.getElementById("demo");
+      
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+              
+    
+        } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+      
+      function showPosition(position) {
+        // alert(position.coords.latitude)
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude
+     
+    
+        $.post('/api/reverse-geocoding',{latitude,longitude},data=>{
+          console.log(data)
+          let table = `<p>
+            <span>${data}</span>
+            </p>`
+            $('#locationtype').html(table)
+            $('#address').val(data)
+        })
+    
+    
+      }
+      </script>
 
 </html>

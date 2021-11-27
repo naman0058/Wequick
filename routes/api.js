@@ -180,7 +180,7 @@ router.get('/product-description',(req,res)=>{
 
 
       var query = `select p.* , 
-    (select c.quantity from cart c where c.booking_id = '${req.body.id}' and c.usernumber = '${req.body.number}' ) as userquantity
+    (select c.quantity from cart c where c.booking_id = '${req.query.id}' and c.usernumber = '${req.query.number}' ) as userquantity
       
       from products p  where p.id = '${req.query.id}';`
       var query1 = `select * from images where productid = '${req.query.id}';`

@@ -175,6 +175,7 @@ router.get('/product-description',(req,res)=>{
   pool.query(`select * from products where id  = '${req.query.id}'`,(err,result)=>{
     if(err) throw err;
     else {
+      console.log(result)
       let subcategory = result[0].subcategoryid
 
 

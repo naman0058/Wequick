@@ -179,9 +179,13 @@ router.get('/product-description',(req,res)=>{
       let subcategory = result[0].subcategoryid
 
 
-      var query = `select * from products where id = '${req.query.id}';`
+      var query = `select p.* , 
+    (select c.quantity from cart c where c.booking_id = '${req.body.id}' and c.usernumber = '${req.body.number}' ) as userquantity
+      
+      from products p  where p.id = '${req.query.id}';`
       var query1 = `select * from images where productid = '${req.query.id}';`
       var query2 = `select  * from products where subcategoryid = '${subcategory}';`
+
       
       pool.query(query+query1+query2,(err,result)=>{
           if(err) throw err;

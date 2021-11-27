@@ -227,7 +227,7 @@ router.post("/cart-handler", (req, res) => {
     let body = req.body
     console.log(req.body)
     if (req.body.quantity == "0" || req.body.quantity == 0) {
-    pool.query(`delete from cart where booking_id = '${req.body.booking_id}' and  number = '${req.body.number}'`,(err,result)=>{
+    pool.query(`delete from cart where booking_id = '${req.body.booking_id}' and  usernumber = '${req.body.usernumber}'`,(err,result)=>{
         if (err) throw err;
         else {
           res.json({
@@ -237,11 +237,11 @@ router.post("/cart-handler", (req, res) => {
     })
     }
     else {
-        pool.query(`select oneprice from cart where booking_id = '${req.body.booking_id}' and  categoryid = '${req.body.categoryid}' and number = '${req.body.number}' `,(err,result)=>{
+        pool.query(`select oneprice from cart where booking_id = '${req.body.booking_id}' and  categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}' `,(err,result)=>{
             if (err) throw err;
             else if (result[0]) {
                // res.json(result[0])
-                pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity}  where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and number = '${req.body.number}'`,(err,result)=>{
+                pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity}  where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}'`,(err,result)=>{
                     if (err) throw err;
                     else {
                         res.json({

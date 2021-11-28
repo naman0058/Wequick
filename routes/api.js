@@ -984,7 +984,7 @@ router.post('/check',(req,res)=>{
 
 
 router.post('/all-orders',(req,res)=>{
-  pool.query(`select * from booking where vendorid = '${req.body.vendorid}' and status = 'pending' order by id desc;`,(err,result)=>{
+  pool.query(`select * from booking where vendorid = '${req.body. }' and status = 'pending' order by id desc;`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })

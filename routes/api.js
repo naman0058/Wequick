@@ -957,4 +957,71 @@ router.post("/payment-initiate", (req, res) => {
   })
 
 
+
+
+
+  
+router.post('/check',(req,res)=>{
+  pool.query(`select * from vendors where number = '${req.body.number}'`,(err,result)=>{
+    if(err) throw err;
+    else if(result[0]){
+         res.json({
+           msg : 'success',
+           result:result
+         })
+    }
+    else {
+      res.json({
+        msg : 'user not found'
+      })
+    }
+  })
+})
+
+
+
+
+
+
+router.post('/all-orders',(req,res)=>{
+  pool.query(`select * from booking where vendorid = '${req.body.vendorid}' and status = 'pending' order by id desc;`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.post('/ongoing-orders',(req,res)=>{
+  pool.query(`select * from booking where vendorid = '${req.body.vendorid}' and status != 'completed'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.post('/completed-orders',(req,res)=>{
+  pool.query(`select * from booking where vendorid = '${req.body.vendorid}' and status = 'completed'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.post('/update-status',(req,res)=>{
+  pool.query(`update booking set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+    if(err) throw err;
+    else {
+      res.json({
+        status:200,
+        msg : 'success',
+        description:'successfully added'
+    })
+    }
+  })
+})
+
+
+
 module.exports = router;

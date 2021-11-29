@@ -286,7 +286,7 @@ router.post('/product/update-status',(req,res)=>{
 
 router.post('/listing/update-status',(req,res)=>{
     
-    pool.query(`update listing set status = '${req.body.status}' where id = '${req.body.id}'`,(err,result)=>{
+    pool.query(`update driver set status = '${req.body.status}' where id = '${req.body.id}'`,(err,result)=>{
         if(err) throw err;
         else {
             console.log('result',result)

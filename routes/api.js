@@ -1036,13 +1036,16 @@ router.post('/overview',(req,res)=>{
     if(err) throw err;
     else res.json(result)
   })
-
-
-
-
-  
-
 })
+
+
+router.post('/show-vendor-orders',(req,res)=>{
+  pool.query(`select * from booking where vendorid = '${req.body.vendorid}' and status = '${req.body.status}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
 
 
 module.exports = router;

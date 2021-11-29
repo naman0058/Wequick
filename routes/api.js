@@ -1048,4 +1048,47 @@ router.post('/show-vendor-orders',(req,res)=>{
 
 
 
+router.get('/profile',(req,res)=>{
+  pool.query(`select * from vendor where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
+
+
+
+router.post('/update-profile', (req, res) => {
+  let body = req.body
+  pool.query(`update vendor set ? where id = ?`, [req.body, req.body.vendorid], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+          
+      }
+  })
+})
+
+
+router.get('/my-earning',(req,res)=>{
+  var query = `select count(id) as counter from booking where vendorid = '${req.query.vendorid}';`
+  var query1 = `select sum(price) as total_amount from booking where vendorid = '${req.query.vendorid}';`
+  pool.query(query+query1,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+
+})
+
+
 module.exports = router;

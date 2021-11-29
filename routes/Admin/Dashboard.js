@@ -239,7 +239,7 @@ router.get('/vendor/details/:id',(req,res)=>{
 
 
 router.get('/listing/list/:type',(req,res)=>{
-    pool.query(`select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from listing v where v.status = '${req.params.type}' order by id desc`,(err,result)=>{
+    pool.query(`select v.*  from driver v where v.status = '${req.params.type}' order by id desc`,(err,result)=>{
         err ? console.log(err) : res.render('Admin/listing-list',{result})
     })
 })

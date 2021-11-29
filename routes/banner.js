@@ -111,6 +111,7 @@ router.post('/insert',upload.single('image'),(req,res)=>{
     body['image'] = req.file.filename;
 	pool.query(`insert into ${table} set ?`,body,(err,result)=>{
 		if(err) {
+            console.log(err)
             res.json({
                 status:500,
                 type : 'error',

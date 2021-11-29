@@ -1097,6 +1097,19 @@ router.get('/my-earning',(req,res)=>{
 // driver api
 
 
+
+router.post('/driver/insert',upload.single('image'),(req,res)=>{
+  let body = req.body
+  body['image'] = req.file.filename;
+  pool.query(`insert into driver set ?`,body,(err,result)=>{
+      if(err) throw err;
+      else res.json(result)
+  })
+})
+
+
+
+
 router.post('/driver/check',(req,res)=>{
   pool.query(`select * from driver where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;

@@ -1091,4 +1091,140 @@ router.get('/my-earning',(req,res)=>{
 })
 
 
+
+
+
+// driver api
+
+
+router.post('/driver/check',(req,res)=>{
+  pool.query(`select * from driver where number = '${req.body.number}'`,(err,result)=>{
+    if(err) throw err;
+    else if(result[0]){
+         res.json({
+           msg : 'success',
+           result:result
+         })
+    }
+    else {
+      res.json({
+        msg : 'user not found'
+      })
+    }
+  })
+})
+
+
+
+
+
+
+router.post('/driver/all-orders',(req,res)=>{
+  pool.query(`select * from booking where driverid = '${req.body.vendorid}' and status = 'pending' order by id desc;`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.post('/driver/ongoing-orders',(req,res)=>{
+  pool.query(`select * from booking where driverid = '${req.body.vendorid}' and status != 'completed'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.post('/driver/completed-orders',(req,res)=>{
+  pool.query(`select * from booking where driverid = '${req.body.vendorid}' and status = 'completed'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.post('/driver/update-status',(req,res)=>{
+  pool.query(`update booking set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+    if(err) throw err;
+    else {
+      res.json({
+        status:200,
+        msg : 'success',
+        description:'successfully added'
+    })
+    }
+  })
+})
+
+
+
+router.post('/driver/overview',(req,res)=>{
+  var query = `select count(id) as counter from booking where status = 'pending' and driverid = '${req.body.vendorid}';`
+  var query1 = `select count(id) as counter from booking where status = 'Order Accepted' and driverid = '${req.body.vendorid}';`
+  var query2 = `select count(id) as counter from booking where status = 'Processing' and driverid = '${req.body.vendorid}';`
+  var query3 = `select count(id) as counter from booking where status = 'Ready For Delivery' and driverid = '${req.body.vendorid}';`
+  var query4 = `select count(id) as counter from booking where status = 'On The Way' and driverid = '${req.body.vendorid}';`
+  var query5 = `select count(id) as counter from booking where status = 'Delivered' and driverid = '${req.body.vendorid}';`
+  var query6 = `select count(id) as counter from booking where status = 'Cancel' and driverid = '${req.body.vendorid}';`
+  pool.query(query+query1+query2+query3+query4+query5+query6,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.post('/driver/show-vendor-orders',(req,res)=>{
+  pool.query(`select * from booking where driverid = '${req.body.vendorid}' and status = '${req.body.status}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.get('/driver/profile',(req,res)=>{
+  pool.query(`select * from driver where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
+
+
+
+router.post('/driver/update-profile', (req, res) => {
+  let body = req.body
+  pool.query(`update driver set ? where id = ?`, [req.body, req.body.vendorid], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+          
+      }
+  })
+})
+
+
+router.get('/driver/my-earning',(req,res)=>{
+  var query = `select count(id) as counter from booking where driverid = '${req.query.vendorid}';`
+  var query1 = `select sum(price) as total_amount from booking where driverid = '${req.query.vendorid}';`
+  pool.query(query+query1,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+
+})
+
+
 module.exports = router;

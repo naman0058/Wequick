@@ -248,7 +248,7 @@ router.get('/listing/list/:type',(req,res)=>{
 
 
 router.get('/listing/details/:id',(req,res)=>{
-    var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from listing v where v.id = '${req.params.id}';`
+    var query = `select v.* from driver v where v.id = '${req.params.id}';`
     var query1 = `select * from portfolio where listingid = '${req.params.id}';`
     
     pool.query(query+query1,(err,result)=>{

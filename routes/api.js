@@ -1114,12 +1114,18 @@ router.post('/driver/insert',upload.single('image'),(req,res)=>{
 router.post('/driver/check',(req,res)=>{
   pool.query(`select * from driver where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
-    else if(result[0]){
+    else if(result[0].status == 'approved'){
          res.json({
            msg : 'success',
            result:result
          })
     }
+    else if(result[0].status != 'approved'){
+      res.json({
+        msg : 'pending',
+        
+      })
+ }
     else {
       res.json({
         msg : 'user not found'

@@ -964,17 +964,23 @@ router.post("/payment-initiate", (req, res) => {
 router.post('/check',(req,res)=>{
   pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
-    else if(result[0]){
-         res.json({
-           msg : 'success',
-           result:result
-         })
-    }
-    else {
+    else if(result[0].status == 'approved'){
       res.json({
-        msg : 'user not found'
+        msg : 'success',
+        result:result
       })
-    }
+ }
+ else if(result[0].status != 'approved'){
+   res.json({
+     msg : 'pending',
+     
+   })
+}
+ else {
+   res.json({
+     msg : 'user not found'
+   })
+ }
   })
 })
 

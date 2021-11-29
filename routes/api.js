@@ -1025,13 +1025,13 @@ router.post('/update-status',(req,res)=>{
 
 
 router.post('/overview',(req,res)=>{
-  var query = `select count(id) from booking where status = 'pending' and vendorid = '${req.body.vendorid}';`
-  var query1 = `select count(id) from booking where status = 'Order Accepted' and vendorid = '${req.body.vendorid}';`
-  var query2 = `select count(id) from booking where status = 'Processing' and vendorid = '${req.body.vendorid}';`
-  var query3 = `select count(id) from booking where status = 'Ready For Delivery' and vendorid = '${req.body.vendorid}';`
-  var query4 = `select count(id) from booking where status = 'On The Way' and vendorid = '${req.body.vendorid}';`
-  var query5 = `select count(id) from booking where status = 'Delivered' and vendorid = '${req.body.vendorid}';`
-  var query6 = `select count(id) from booking where status = 'Cancel' and vendorid = '${req.body.vendorid}';`
+  var query = `select count(id) as counter from booking where status = 'pending' and vendorid = '${req.body.vendorid}';`
+  var query1 = `select count(id) as counter from booking where status = 'Order Accepted' and vendorid = '${req.body.vendorid}';`
+  var query2 = `select count(id) as counter from booking where status = 'Processing' and vendorid = '${req.body.vendorid}';`
+  var query3 = `select count(id) as counter from booking where status = 'Ready For Delivery' and vendorid = '${req.body.vendorid}';`
+  var query4 = `select count(id) as counter from booking where status = 'On The Way' and vendorid = '${req.body.vendorid}';`
+  var query5 = `select count(id) as counter from booking where status = 'Delivered' and vendorid = '${req.body.vendorid}';`
+  var query6 = `select count(id) as counter from booking where status = 'Cancel' and vendorid = '${req.body.vendorid}';`
   pool.query(query+query1+query2+query3+query4+query5+query6,(err,result)=>{
     if(err) throw err;
     else res.json(result)

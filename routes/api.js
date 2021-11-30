@@ -86,11 +86,27 @@ router.get('/get-category',(req,res)=>{
    
 
 
+// router.get('/get-all-shops',(req,res)=>{
+//   pool.query(`select * from vendor order by id desc`,(err,result)=>{
+//     if(err) throw err;
+//     else res.json(result)
+//   })
+// })
+
+
+
 router.get('/get-all-shops',(req,res)=>{
-  pool.query(`select * from vendor order by id desc`,(err,result)=>{
-    if(err) throw err;
-    else res.json(result)
-  })
+  // console.log(req.body)
+  var query = `SELECT *, SQRT(
+      POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+      POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+  FROM vendor having distance <= 60 ORDER BY distance;`
+
+
+pool.query(query,(err,result)=>{
+  if(err) throw err;
+      else res.json(result)
+})
 })
 
 

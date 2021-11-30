@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="/vendor-registeration/verification" method="post">
+                                <form action="/vendor-registeration/verification" method="post" enctype="multipart/form-data">
             <h5 style="color: red;"><%=msg%></h5>
 
                                     <div class="form-group mb-4">
@@ -61,7 +61,27 @@
                                         <input type="text" name="address" id="address" readonly class="form-control rounded-0 bg-transparent" placeholder="Address" required>
                                     </div>
 
+
+
+
+                                    <div class="form-group mb-4">
+                                        <input type="hidden" name="latitude" id="latitude" readonly class="form-control rounded-0 bg-transparent" placeholder="Address" required>
+                                    </div>
+                                    
+                                    <div class="form-group mb-4">
+                                        <input type="hidden" name="longitude" id="longitude" readonly class="form-control rounded-0 bg-transparent" placeholder="Address" required>
+                                    </div>
+                                    
+
                                     <button type="button" class="btn btn-dark" onclick="getLocation()" style="margin-bottom: 20px;" >Fetch Current Location</button>
+
+
+
+
+                                    <div class="form-group mb-4">
+                                        <label>Shop Photo</label>
+                                        <input type="file" name="image" id="image" readonly class="form-control rounded-0 bg-transparent" placeholder="Address" required>
+                                    </div>
 
                                     <div class="form-group mb-4">
                                         <textarea type="text" name="description" class="form-control rounded-0 bg-transparent" placeholder="Shop Description" required></textarea>
@@ -121,6 +141,9 @@
           let table = `<p>
             <span>${data}</span>
             </p>`
+            $('#latitude').val(latitude)
+            $('#longitude').val(longitude)
+
             $('#locationtype').html(table)
             $('#address').val(data)
         })

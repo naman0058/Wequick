@@ -12,6 +12,8 @@ router.get('/',(req,res)=>{
     console.log(req.session.vendornumber)
     // req.session.vendorid = 4
     // req.session.vendornumber = '918319339945'
+    // req.session.vendornumber = '917410852963'
+
     if(req.session.vendornumber){
        pool.query(`select * from vendor where number = '${req.session.vendornumber}'`,(err,result)=>{
            req.session.categoryid = result[0].categoryid;

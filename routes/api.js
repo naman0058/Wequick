@@ -573,6 +573,7 @@ for(i=0;i<data.length;i++) {
    pool.query(`insert into booking set ?`,data[i],(err,result)=>{
            if(err) throw err;
            else {
+             console.log('updating quantity',data[i])
   pool.query(`update products set quantity = quantity - ${data[i].quantity} where id = '${data[i].booking_id}'`,(err,result)=>{
    if(err) throw err;
    else {
@@ -593,12 +594,8 @@ pool.query(`delete from cart where number = '${req.body.usernumber}'`,(err,resul
     if(err) throw err;
     else {
 
-pool.query(`select sum(dp_price) as totaldp from booking where orderid = '${orderid}'`,(err,result)=>{
-  if(err) throw err;
-  else {
-    check_repurchse(req.body.number,result[0].totaldp)
-
-  }
+res.json({
+  msg : 'success'
 })
 
 

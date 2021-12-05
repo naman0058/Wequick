@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var pool =  require('./pool');
 var upload = require('./multer');
+const fetch = require("node-fetch");
+
 
 
 const request = require('request');
@@ -892,26 +894,32 @@ router.get('/view-all-product',(req,res)=>{
   
   
 router.post("/payment-initiate", (req, res) => {
-    const url = `https://rzp_live_wdTkjI7Ba4b5qN:rxR0Prlwb9Gz7HctbrpukFOe@api.razorpay.com/v1/orders/`;
-    const data = {
-      amount: req.body.amount * 100, // amount in the smallest currency unit
-      //amount:100,
-      currency: "INR",
-      payment_capture: true,
-    };
-    console.log("data", data);
-    const options = {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((resu) => res.send(resu));
-  });
-  
+  const url = `https://rzp_live_2AYlv8GRAaT63p:iIzpixX7YsDSUVPtAtbO5SMn@api.razorpay.com/v1/orders/`;
+
+  const data = {
+    // amount: req.body.amount* 100, // amount in the smallest currency unit
+    amount:100,
+    currency: "INR",
+    payment_capture: true,
+  };
+  console.log("data", data);
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  fetch(url, options)
+    .then((res) => res.json())
+    .then((resu) => {
+        //  res.render('open',{resu : resu.id})
+        res.json(resu)
+    })
+})
+
+
+
   router.get("/demo", (req, res) => {
     res.render("dem");
   });

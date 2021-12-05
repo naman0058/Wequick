@@ -589,18 +589,8 @@ for(i=0;i<data.length;i++) {
 
     
 
+res.json('success')
 
-pool.query(`delete from cart where number = '${req.body.usernumber}'`,(err,result)=>{
-    if(err) throw err;
-    else {
-
-res.json({
-  msg : 'success'
-})
-
-
-    }
-})
 
 
        }

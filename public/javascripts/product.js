@@ -191,7 +191,16 @@ $('#update').click(function(){  //data insert in database
 
 function refresh() 
 {
-    $.getJSON(`/vendor-dashboard/show-product`, data => makeTable(data))
+    $.getJSON(`/vendor-dashboard/show-product`, data => {
+        console.log(data)
+        services = data
+        makeTable(data)
+    
+    
+        
+      
+    })
+    
 }
 function update()
 {

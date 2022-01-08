@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pool =  require('../pool');
 var upload = require('../multer');
+const { route } = require('./login');
 
 
 
@@ -415,5 +416,12 @@ router.post('/update/vendor/details', (req, res) => {
 })
 
     })
+
+    
+
+    router.get('/logout',(req,res)=>{
+        req.session.vendornumber = null;
+        res.redirect('/vendor-login')
+    });
 
 module.exports = router;

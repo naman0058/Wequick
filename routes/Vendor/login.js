@@ -17,15 +17,17 @@ router.get('/',(req,res)=>{
 
 
 
+
+
 router.post('/verification',(req,res)=>{
     let body = req.body
-    body['number'] = req.body.number
-    //   console.log(req.body)
+    body['number'] = 91+req.body.number
+      console.log(req.body)
 
 pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
   if(err) throw err;
   else if(result[0]) {
-    req.session.unverifyvendornumber = 91+req.body.number
+    req.session.unverifyvendornumber = req.body.number
     var otp =   Math.floor(100000 + Math.random() * 9000);
     req.session.reqotp = otp;
     res.render('Vendor/otp1',{msg : otp , anothermsg:''})

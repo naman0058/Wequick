@@ -1271,4 +1271,20 @@ router.get('/driver/my-earning',(req,res)=>{
 })
 
 
+
+router.get('/get-coupon',(req,res)=>{
+  pool.query(`select * from coupon where vendorid = '${req.query.vendorid}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.get('/get-all-vendor',(req,res)=>{
+  pool.query(`select * from vendor where status = 'approved' order by name`,(err,result)=>{
+    err ? console.log(err) : res.json(result)
+  })
+})
+
+
 module.exports = router;

@@ -7,7 +7,7 @@ let table = '/vendor-dashboard'
 
 $('#show').click(function(){
   
-$.getJSON(`/vendor-dashboard/show-product`, data => {
+$.getJSON(`/vendor-dashboard/coupon-show`, data => {
     console.log(data)
     services = data
     makeTable(data)
@@ -63,14 +63,13 @@ function makeTable(categories){
 <thead>
 <tr>
 <th>Image</th>
-<th>Category Name</th>
-<th>Subcategory Name</th>
-<th>Name</th>
-<th>Price</th>
+
+<th>Code</th>
+<th>Type</th>
+<th>Minimum Order Price</th>
+<th>Maximum Cashback Price</th>
 <th>Discount</th>
-<th>Net Amount</th>
-<th>Quantity</th>
-<th>Keywords</th>
+<th>Expiry</th>
 
 
 <th>Options</th>
@@ -85,22 +84,20 @@ table+=`<tr>
 <img src="/images/${item.image}" class="img-fluid img-radius wid-40" alt="" style="width:50px;height:50px">
 </td>
 
-<td>${item.subcategoryname}</td>
-<td>${item.brandname}</td>
+
 
     
 <td>${item.name}</td>
-<td>${item.price}</td>
+<td>${item.type}</td>
+<td>${item.mimimum_price}</td>
+<td>${item.maximum_cashback_price}</td>
 <td>${item.discount}</td>
-<td>${item.net_amount}</td>
-<td>${item.keyword}</td>
-<td>${item.quantity}</td>
+<td>${item.expiry}</td>
 
 
 
 <td>
-<a href="#!" class="btn btn-info btn-sm edits" id="${item.id}"><i class="feather icon-edit"></i>&nbsp;Edit </a>
-<a href="#!" class="btn btn-info btn-sm updateimage"  id="${item.id}"><i class="feather icon-edit"></i>&nbsp;Edit Image </a>
+
 <a href="#!" class="btn btn-danger btn-sm deleted" id="${item.id}"><i class="feather icon-trash-2"></i>&nbsp;Delete </a>
 </td>
 </tr>`
@@ -119,43 +116,36 @@ table+=`</tbody>
 
 $('#result').on('click', '.deleted', function() {
     const id = $(this).attr('id')
-     $.get(`${table}/delete`,  { id }, data => {
+     $.get(`${table}/coupon/delete`,  { id }, data => {
         refresh()
     })
 })
 
 
 
-$('#psubcategoryid').change(() => {
-    const filteredData = subcategories.filter(item => item.subcategoryid == $('#psubcategoryid').val())
-    fillDropDown('pbrandid', filteredData, 'Choose Brand', 0)
+$('#pcategoryid').change(() => {
+    const filteredData = subcategories.filter(item => item.categoryid == $('#pcategoryid').val())
+    fillDropDown('psubcategoryid', filteredData, 'Choose Sub-Category', 0)
 })
+
 
 
 $('#result').on('click', '.edits', function() {
     const id = $(this).attr('id')
     const result = services.find(item => item.id == id);
-    fillDropDown('psubcategoryid', categories, 'Choose Category', result.subcategoryid)
-    // $('#psubcategoryid').append($('<option>').val(result.subcategoryid).text(result.subcategoryname))
-    $('#pbrandid').append($('<option>').val(result.brandid).text(result.brandname))
-
+    fillDropDown('pcategoryid', categories, 'Choose Category', result.categoryid)
+    $('#psubcategoryid').append($('<option>').val(result.subcategoryid).text(result.subcategoryname))
  
     $('#editdiv').show()
     $('#result').hide()
     $('#insertdiv').hide() 
     $('#pid').val(result.id)
      $('#pname').val(result.name)
-     $('#pbrandid').val(result.brandid)
+     $('#pcategoryid').val(result.categoryid)
      $('#psubcategoryid').val(result.subcategoryid)
      $('#pprice').val(result.price)
-     $('#pquantity').val(result.quantity)
-     $('#psmall_description').val(result.small_description)
-     $('#pkeyword').val(result.keyword)
-    
      $('#pdiscount').val(result.discount)
-     let table = `<p>${result.description}</p>
-     `
-     $('.peditor').html(table) 
+     $('#pweight').val(result.weight)
    
  })
 
@@ -176,15 +166,12 @@ $('#update').click(function(){  //data insert in database
     let updateobj = {
         id: $('#pid').val(),
         name: $('#pname').val(),
-        subcategoryid:$('#psubcategoryid').val(),
-        brandid:$('#pbrandid').val(),
+        categoryid:$('#pcategoryid').val(),
+       // subcategoryid:$('#psubcategoryid').val(),
         name:$('#pname').val(),
         price:$('#pprice').val(),
-       quantity : $('#pquantity').val(),
-       small_description : $('#psmall_description').val(),
-       keyword : $('#pkeyword').val(),
-       discount : $('#pdiscount').val(),
-
+        status:$('#pstatus').val(),
+        weight:$('#pweight').val(),
 
        
         }
@@ -201,7 +188,7 @@ $('#update').click(function(){  //data insert in database
 
 function refresh() 
 {
-    $.getJSON(`/vendor-dashboard/show-product`, data => {
+    $.getJSON(`/vendor-dashboard/coupon-show`, data => {
         console.log(data)
         services = data
         makeTable(data)

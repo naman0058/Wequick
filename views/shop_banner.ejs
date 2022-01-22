@@ -21,31 +21,23 @@
                         <div class="card">
                             <div class="card-body">    
                                     <div class="basic-form">
-                                        <form action="/banner/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
+                                        <form action="/shop_banner/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
                                             <div class="card-body">
                                             
                                                 <div class="row">
-                                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                                    <div class="col-lg-6 col-md-6 col-sm-12">
                                                       <div class="form-group">
-                                                          <label>Banner Type</label>
-                          <select class="form-control" name='type' class="form-control">
-                              <option value="Front Banner">Front Banner</option>
-                              <option value="Bottom Banner">Bottom Banner</option>
-                              
+                                                          <label>Vendor Name</label>
+                          <select class="form-control" name='vendorid' id="vendorid" class="form-control">
+                            
                           </select>
                                                         </div>
                                                         
                                                     </div>
-                                                    <div class="col-lg-4 col-md-4 col-sm-12">
-                                                      <div class="form-group">
-                                                          <label>Banner Name</label>
-                                                          <input type="text" class="form-control" name="name" required>
-                                                        </div>
-                                                        
-                                                    </div>
+                                                
                           
                           
-                                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                                    <div class="col-lg-6 col-md-6 col-sm-12">
                                                       <div class="form-group">
                                                           <label>Banner Image</label>
                                                           <input type="file" class="form-control" name="image" required>
@@ -516,7 +508,7 @@
     <!-- Pickdate -->
     <script src="/Admin/main/./js/plugins-init/pickadate-init.js"></script>
 
-    <script src="/javascripts/banner.js"></script>
+    <script src="/javascripts/shop_banner.js"></script>
 
 
 
@@ -554,7 +546,7 @@
 
 
 
-<script src="/javascripts/category.js"></script>
+<script src="/javascripts/shop_banner.js"></script>
 
 
 

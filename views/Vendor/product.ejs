@@ -120,8 +120,8 @@
                                                     <input type="number" class="form-control" name="price" placeholder="Product Price">
                                                 </div>
                                                 <div class="col-6">
-                                                    <label>DP Price</label>
-                                                    <input type="number" class="form-control" name="dp_price" placeholder="Distributer Price">
+                                                    <label>Discount</label>
+                                                    <input type="number" class="form-control" name="discount" placeholder="Discount">
                                                 </div>
 
                                                
@@ -133,22 +133,10 @@
 
 
                                             <div class="row" style="margin-top: 20px;">
-                                                <div class="col-6">
-                                                    <label>Product Size </label>
-                                                  <select class="form-control" name="size">
-                                                    <option value="null">Choose Product Size</option>
-                                                    <option value="XS">XS</option>
-                                                      <option value="S">S</option>
-                                                      <option value="M">M</option>
-                                                      <option value="XL">XL</option>
-                                                      <option value="XXL">XXL</option>
-
-                                                  </select>
-                                                </div>
+                                              
 
 
-
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <label>Quantity</label>
                                                     <input type="number" class="form-control" name="quantity" placeholder="Product Quantity">
                                                 </div>
@@ -275,10 +263,220 @@
                     <!-- <div class="col-12">
                         <h3 class="content-heading">Latest Subcategory</h3>
                     </div> -->
+
+                    
                     
                     <div class="col-xl-12 col-xxl-12">
                         <div class="card">
                             <div class="card-body">
+
+
+                              <div class="row" id='editdiv'>
+                                <div class="col-12">
+                <h6 class="card-header"><span><button type="button" class="btn btn-primary show" id="back1" style="margin:10px">Back</button></span>Edit Data</h6>
+            
+            
+                                </div>
+                               
+                                <div class="col-xl-12 col-xxl-12">
+                                  <div class="card">
+                                      <div class="card-body">    
+                                              <div class="basic-form">
+                                                         <div class="row">
+                                                           <input type="hidden" id="pid">
+                                                          <div class="col-4">
+                                                              <label>Category Name</label>
+                                                             <select class="form-control" id="psubcategoryid" name="subcategoryid"></select>
+                                                          </div>
+                                                          <div class="col-4">
+                                                              <label>Brand Name</label>
+                                                             <select class="form-control" id="pbrandid" name="brandid"></select>
+                                                          </div>
+                                                          <div class="col-4">
+                                                              <label>Product Name</label>
+                                                              <input type="text" class="form-control" id="pname" placeholder="Product Name">
+                                                          </div>
+                                                          
+                                                        
+                                                      </div>
+          
+          
+                                                      <div class="row" style="margin-top: 20px;">
+                                                          <div class="col-6">
+                                                              <label>MRP Price</label>
+                                                              <input type="number" class="form-control" id="pprice" placeholder="Product Price">
+                                                          </div>
+                                                          <div class="col-6">
+                                                              <label>Discount</label>
+                                                              <input type="number" class="form-control" id="pdiscount" placeholder="Discount">
+                                                          </div>
+          
+                                                         
+                                                          
+                                                        
+                                                      </div>
+          
+          
+          
+          
+                                                      <div class="row" style="margin-top: 20px;">
+                                                        
+          
+          
+          
+                                                          <div class="col-12">
+                                                              <label>Quantity</label>
+                                                              <input type="number" class="form-control" id="pquantity" placeholder="Product Quantity">
+                                                          </div>
+          
+                                                        
+                                                          
+                                                        
+                                                      </div>
+          
+          
+          
+          
+                                                      <div class="row" style="margin-top: 20px;">
+                                                          <div class="col-6">
+                                                              <label>Small Description</label>
+                                                             <textarea class="form-control" id="psmall_description" placeholder="Prdocut Description (Small Description)"></textarea>
+                                                          </div>
+          
+          
+                                                          <div class="col-6">
+                                                              <label>Keyword</label>
+                                                             <textarea class="form-control" id="pkeyword" placeholder="Keywords"></textarea>
+                                                          </div>
+          
+                                                        
+                                                          
+                                                        
+                                                      </div>
+          
+          
+          
+                                                     
+                                              
+          
+          
+          
+          
+          
+                                                
+          
+          
+          
+                                                      
+                                                      <div class="row" style="margin-top: 20px;">
+                                                          <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <!-- <div class="form-group">
+                                                                <label>Product Description</label>
+                                                               <textarea class="form-control" name="description" required></textarea>
+                                                              </div> -->
+                                                              <div class="form-group">
+                                                                <label>Product Description</label>
+                                                               
+                                                                <div class="editor-toolbar">
+                                                                  <div class="dropdown">
+                                                                    <button class="btn btn-default dropdown-toggle" type="button" id="headingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                      Heading
+                                                                      <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu" aria-labelledby="headingMenu">
+                                                                      <li><a href="javascript:void(0)" onclick="runCommand(this, 'formatBlock', 'h1')" class="h1">Heading 1</a></li>
+                                                                      <li><a href="javascript:void(0)" onclick="runCommand(this, 'formatBlock', 'h2')" class="h2">Heading 2</a></li>
+                                                                      <li><a href="javascript:void(0)" onclick="runCommand(this, 'formatBlock', 'h3')" class="h3">Heading 3</a></li>          
+                                                                      <li><a href="javascript:void(0)" onclick="runCommand(this, 'formatBlock', 'h4')" class="h4">Heading 4</a></li>
+                                                                    </ul>
+                                                                  </div>
+                                                                  
+                                                                  
+                                                                  <a href="javascript:void(0)" role="button" class="toolbar-btn unselectable" onclick="runCommand(this, 'bold', null)" unselectable="on"><i class="fa fa-bold"></i></a>
+                                                                  <a href="javascript:void(0)" role="button" class="toolbar-btn" onclick="runCommand(this, 'italic', null)"><i class="fa fa-italic"></i></a>
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'underline', null)"><i class="fa fa-underline"></i></a> 
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'indent', null)"><i class="fa fa-indent"></i></a> 
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'insertUnorderedList', null)"><i class="fa fa-list-ul"></i></a> 
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'insertOrderedList', null)"><i class="fa fa-list-ol"></i></a>
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'createLink', null)"><i class="fa fa-link"></i></a>
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'unlink', null)"><i class="fa fa-unlink"></i></a>
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'redo', null)"><i class="fa fa-repeat"></i></a>
+                                                                  <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'undo', null)"><i class="fa fa-undo"></i></a>         
+                                                                </div>
+                                                                
+                                                                <div id="editor" class="peditor"   contenteditable="true"></div>
+                                                                <!-- <textarea  id="messageText" type="hidden" name = 'description' ></textarea> -->
+                                                                
+                                                                <!-- <div class="row">
+                                                                  <div class="col-sm-2">
+                                                                    <button id="submit" class="btn btn-default btn-block" type="submit">Submit</button>
+                                                                  </div>
+                                                                </div> -->
+                                                              </div>
+                                                              
+                                                              
+                                                          </div>
+                                  
+                                                      </div>
+          
+                                                      
+                                                      <button class="btn btn-primary" type="button" id="update" style="margin-top:20px;float:right">Update</button>
+
+                                              </div>
+                                              
+                                            
+                                              
+                                             
+                                              
+                                       
+                                              
+                                          
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+
+
+
+                            <div class="card mb-4" id="updateimagediv">
+                              <h6 class="card-header"><span><button type="button" class="btn btn-primary show" id="back2" style="margin:10px">Back</button></span> Upload Image</h6>
+                              <div class="card-body">
+                              
+                                  <form action="/vendor-dashboard/update-image" method="POST" enctype="multipart/form-data">
+                                      <div class="form-row">
+                                 
+                                          <div class="form-group col-md-4 col-lg-4">
+                                              <label class="form-label">ID</label>
+                                              <input type="text" class="form-control" placeholder="Email" id="peid" name="id" readonly>
+                                              <div class="clearfix"></div>
+                                              </div>
+                              
+
+                                              <div class="form-group col-md-4 col-lg-4">
+                                                <label class="form-label">Thumbnail</label>
+                                                <input type="file" class="form-control" name='thumbnail' placeholder="Password">
+                                                <div class="clearfix"></div>
+                                                </div>
+                                               
+                                      <div class="form-group col-md-4 col-lg-4">
+                                      <label class="form-label">Image</label>
+                                      <input type="file" class="form-control" name='image' placeholder="Password">
+                                      <div class="clearfix"></div>
+                                      </div>
+                                    
+          
+                                    </div>
+                              
+          
+                                   
+                                      
+                                      
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                      </form>
+                              </div>
+                              </div>
+
+
                                 <!-- <h4 class="card-title">Table Bordered</h4> -->
                                 <div class="table-responsive">
                                    <div id="result"></div>
@@ -288,6 +486,8 @@
                     </div>
                 </div>
                
+
+                
             </div>
         </div>
         <!--**********************************

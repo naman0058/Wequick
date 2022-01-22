@@ -22,6 +22,7 @@ var talentHunt = require('./routes/talentHunt');
 
 var repurchasingapi = require('./routes/repurchasing_api')
 var mlm = require('./routes/mlm');
+var shop_banner = require('./routes/shop_banner');
 
 
 var app = express();
@@ -73,6 +74,7 @@ app.use('/talent-hunt',talentHunt)
 
 app.use('/repurchasing-api',repurchasingapi);
 app.use('/mlm',mlm);
+app.use('/shop_banner',shop_banner);
 
 
 // catch 404 and forward to error handler

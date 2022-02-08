@@ -1309,4 +1309,41 @@ router.get('/get-all-vendor',(req,res)=>{
 })
 
 
+router.post('/save-merchant',(req,res)=>{
+  let body = req.body;
+  body['userid'] = 'TT'
+  pool.query(`insert into vendor set ?`,body,(err,result)=>{
+    if(err) throw err;
+    else res.json({msg:'success'})
+  })
+})
+
+
+
+
+router.post('/update-merchant', (req, res) => {
+  let body = req.body
+  pool.query(`update vendor set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+          
+      }
+  })
+})
+
+
+
+
 module.exports = router;

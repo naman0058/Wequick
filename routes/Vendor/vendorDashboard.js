@@ -133,6 +133,14 @@ router.post('/insert-image',upload.single('image'),(req,res)=>{
 })
 
 
+router.get('/get-product',(req,res)=>{
+    pool.query(`select * from products where vendorid = '${req.session.vendorid}' order by name desc `,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
+
 
 
 

@@ -216,4 +216,72 @@ router.get('/deals/delete',(req,res)=>{
 
 // Deals End
 
+
+// live earning starts
+
+router.get('/live-earning',(req,res)=>{
+    pool.query(`select b.*,
+    (select p.name from products p where p.id = b.booking_id) as productname
+    from booking b where b.payout is null and b.vendorid = '${req.query.vendorid}' order by date desc;`,(err,result)=>{
+        if(err) throw err;
+        else res.render('Merchant_Webview/single-payout-history',{result})
+    })
+})
+
+
+// live earning ends
+
+
+
+// add images start
+
+
+
+
+router.get('/add-image',(req,res)=>{
+   res.render('Merchant_Webview/image',{vendorid:req.query.vendorid})
+})
+
+
+
+
+
+router.post('/insert-image',upload.single('image'),(req,res)=>{
+    let body = req.body
+ 
+    // console.log(req.files)
+
+  
+    body['image'] = req.file.filename;
+   
+ console.log(req.body)
+   pool.query(`insert into images set ?`,body,(err,result)=>{
+       err ? console.log(err) : res.json({msg : 'success'})
+   })
+
+   
+})
+
+
+router.get('/get-product',(req,res)=>{
+    pool.query(`select * from products where vendorid = '${req.query.vendorid}' order by name desc `,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
+
+
+   
+router.get('/show-images',(req,res)=>{
+    pool.query(`select i.* , 
+    (select p.name from products p where p.id = i.productid) as productname
+     from images i where i.vendorid = ${req.query.vendorid}`,(err,result)=>{
+        err ? console.log(err) : res.json(result)
+    })
+})
+
+
+// add images end
+
 module.exports = router;

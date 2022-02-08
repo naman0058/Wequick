@@ -1001,10 +1001,6 @@ router.post("/payment-initiate", (req, res) => {
   })
 
 
-
-
-
-  
 router.post('/check',(req,res)=>{
   pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;

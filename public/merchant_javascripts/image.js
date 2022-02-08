@@ -2,11 +2,13 @@ let categories = []
 let subcategories = []
 
 
-let table = '/admin/dashboard/store-listing/subcategory'
+let table = '/merchant-api'
+let vendorid = $('#vendorid').val()
+
 
 $('#show').click(function(){
   
-$.getJSON(`/vendor-dashboard/show-images`, data => {
+$.getJSON(`/merchant-api/show-images?vendorid='${vendorid}'`, data => {
     subcategories = data
     makeTable(data)
     
@@ -19,7 +21,7 @@ $.getJSON(`/vendor-dashboard/show-images`, data => {
 
 
 
-$.getJSON(`/vendor-dashboard/get-product`, data => {
+$.getJSON(`/merchant-api/get-product?vendorid=${vendorid}`, data => {
     categories = data
     fillDropDown('productid', data, 'Choose Product', 0)
   

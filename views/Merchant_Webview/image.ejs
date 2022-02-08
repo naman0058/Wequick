@@ -4,7 +4,6 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
 
             
             <!-- row -->
@@ -13,7 +12,7 @@
               
                 <div class="row" id='insertdiv'>
                     <div class="col-12">
-                        <h3 class="content-heading mt-3">New Image    <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
+                        <h3 class="content-heading mt-3">   <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
 
                     </div>
                    
@@ -21,13 +20,15 @@
                         <div class="card">
                             <div class="card-body">    
                                     <div class="basic-form">
-                                        <form action="/vendor-dashboard/insert-image" method="POST" enctype="multipart/form-data" class="uploadImage">
+                                        <form action="/merchant-api/insert-image" method="POST" enctype="multipart/form-data" class="uploadImage">
                                                <div class="row">
-                                                <div class="col-6">
+<input type="hidden" name="vendorid" id="vendorid" value="<%=vendorid%>">
+
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Product Name</label>
                                                    <select class="form-control" id="productid" name="productid"></select>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Product Image</label>
                                                     <input type="file" class="form-control" name="image" placeholder="Subcategory Name">
                                                 </div>
@@ -83,10 +84,8 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p><a href="templatespoint.net">Templates Point</a></p>
-            </div>
+        <div class="footer" style="margin-top: 200px;">
+          
         </div>
         <!--**********************************
             Footer end
@@ -429,7 +428,7 @@
 
 
 
-<script src="/javascripts/image.js"></script>
+<script src="/merchant_javascripts/image.js"></script>
 
 
 

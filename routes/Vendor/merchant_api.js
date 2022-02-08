@@ -140,6 +140,9 @@ router.get('/delete',(req,res)=>{
 
 // Coupon Start
 
+
+
+
 router.get('/add-coupon',(req,res)=>{
     res.render('Merchant_Webview/coupon',{vendorid:req.query.vendorid});
 })
@@ -165,5 +168,52 @@ router.get('/coupon/delete',(req,res)=>{
         err ? console.log(err) : res.json(result)
     })
 })
+
+
+// Coupon Ended
+
+
+
+
+
+// Deals Start
+
+
+
+router.get('/add-deals',(req,res)=>{
+   res.render('Merchant_Webview/offers',{vendorid:req.query.vendorid})
+ 
+})
+
+
+
+router.post('/deals/insert',upload.single('image'),(req,res)=>{
+    let body = req.body
+   body['image'] = req.file.filename;
+  console.log('mydata',req.body);
+   pool.query(`insert into deals set ?`,body,(err,result)=>{
+       err ? console.log(err) : res.json({msg : 'success'})
+   })
+})
+
+
+
+
+router.get('/deals-show',(req,res)=>{
+    pool.query(`select p.* from deals p where p.vendorid = ${req.query.vendorid}`,(err,result)=>{
+        err ? console.log(err) : res.json(result)
+    })
+})
+
+
+
+router.get('/deals/delete',(req,res)=>{
+    pool.query(`delete from deals where id = '${req.query.id}'`,(err,result)=>{
+        err ? console.log(err) : res.json(result)
+    })
+})
+
+
+// Deals End
 
 module.exports = router;

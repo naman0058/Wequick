@@ -89,6 +89,17 @@ router.get('/add-coupon',(req,res)=>{
 })
 
 
+router.get('/add-deals',(req,res)=>{
+    if(req.session.vendornumber){
+    res.render('Vendor/offers')
+    }
+    else {
+        res.render('Vendor/login',{msg : '* Invalid Credentials'})
+
+    }
+})
+
+
 
 router.get('/add-image',(req,res)=>{
     if(req.session.vendornumber){
@@ -473,6 +484,46 @@ router.post('/update/vendor/details', (req, res) => {
     })
 
 
+
+
+
+
+
+
+
+
+    router.post('/deals/insert',upload.single('image'),(req,res)=>{
+        let body = req.body
+        body['vendorid'] = req.session.vendorid;
+       body['image'] = req.file.filename;
+      console.log('mydata',req.body);
+       pool.query(`insert into deals set ?`,body,(err,result)=>{
+           err ? console.log(err) : res.json({msg : 'success'})
+       })
+    })
+    
+    
+    
+    
+    router.get('/deals-show',(req,res)=>{
+        pool.query(`select p.* from deals p where p.vendorid = '${req.session.vendorid}'`,(err,result)=>{
+            err ? console.log(err) : res.json(result)
+        })
+    })
+    
+    
+
+    router.get('/deals/delete',(req,res)=>{
+        pool.query(`delete from deals where id = '${req.query.id}'`,(err,result)=>{
+            err ? console.log(err) : res.json(result)
+        })
+    })
+
+
+
+
+
+
     router.post('/update', (req, res) => {
         let body = req.body
         if(req.body.discount==0 || req.body.discount == null){
@@ -510,7 +561,8 @@ router.post('/update/vendor/details', (req, res) => {
 router.post('/update-image',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'thumbnail', maxCount: 8 }]), (req, res) => {
     let body = req.body;
     body['image'] = req.files.image[0].filename;
-    body['thumbnail'] = req.files.icon[0].thumbnail;
+    body['thumbnail'] = req.files.thumbnail[0].filename;
+
 
     // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
     //     if(err) throw err;

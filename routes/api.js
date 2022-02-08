@@ -85,6 +85,15 @@ router.get('/get-category',(req,res)=>{
     })
    
    })
+
+
+   router.get('/get-city',(req,res)=>{
+    pool.query(`select * from city order by id desc`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
    
 
 
@@ -169,6 +178,23 @@ router.get('/get-all-products',(req,res)=>{
        }) 
    })
    
+
+   router.get('/get-channel_partner',(req,res)=>{
+    pool.query(`select s.* , (select c.name from city c where c.id = s.categoryid) as categoryname from channel_partner s`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    }) 
+})
+
+
+router.get('/get-agent',(req,res)=>{
+  pool.query(`select s.* from agent s where s.channel_partner_id = '${req.session.channel_partner_id}'`,(err,result)=>{
+      if(err) throw err;
+      else res.json(result)
+  }) 
+})
+
+
 
 
    router.get('/get-subcategory1',(req,res)=>{

@@ -220,6 +220,31 @@ router.get('/vendor/list/:type',(req,res)=>{
 
 
 
+router.get('/agent/full/details/:id',(req,res)=>{
+    pool.query(`select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.agentid = '${req.params.id}' order by id desc`,(err,result)=>{
+        err ? console.log(err) : res.render('Admin/vendor-list',{result})
+    })
+})
+
+
+router.get('/channel_partner/list',(req,res)=>{
+    pool.query(`select v.* , (select c.name from city c where c.id = v.categoryid) as categoryname from channel_partner v  order by id desc`,(err,result)=>{
+        err ? console.log(err) : res.render('Admin/channel-partner-list',{result})
+    })
+})
+
+
+router.get('/agent/list',(req,res)=>{
+    pool.query(`select v.* ,
+    (select c.name from channel_partner c where c.id = v.channel_partner_id) as channel_partner_name,
+    (select c.name from city c where c.id = (select cp.categoryid from channel_partner cp where cp.id = v.channel_partner_id)) as city_name
+      from agent v  order by id desc`,(err,result)=>{
+        err ? console.log(err) : res.render('Admin/agent-list',{result})
+    })
+})
+
+
+
 router.get('/vendor/details/:id',(req,res)=>{
     var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.params.id}';`
     var query1 = `select sum(price) as total_price from booking where vendorid = '${req.params.id}';`
@@ -231,6 +256,22 @@ router.get('/vendor/details/:id',(req,res)=>{
     pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
         if(err) throw err;
         else res.render('Admin/vendor-details',{result,vendorid:req.params.id})
+    })
+})
+
+
+
+router.get('/channel_partner/details/:id',(req,res)=>{
+    var query = `select v.* , (select c.name from city c where c.id = v.categoryid) as categoryname from channel_partner v where v.id = '${req.params.id}';`
+    var query1 = `select sum(price) as total_price from booking where vendorid = '${req.params.id}';`
+    var query2 = `select count(id) as total_orders from booking where vendorid = '${req.params.id}';`
+    var query3 = `select count(id) as running_orders from booking where status != 'delivered' and vendorid = '${req.params.id}';`
+    var query4 = `select count(id) as completed_orders from booking where status = 'delivered' and vendorid = '${req.params.id}';`
+    var query5 = `select b.*  from agent b where channel_partner_id = '${req.params.id}' order by id;`
+
+    pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
+        if(err) throw err;
+        else res.render('Admin/channel_partner_details',{result,vendorid:req.params.id})
     })
 })
 

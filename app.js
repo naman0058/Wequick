@@ -15,6 +15,9 @@ var adminDashboard = require('./routes/Admin/Dashboard')
 var vendor_registeration = require('./routes/Vendor/registeration')
 var vendor_dashboard = require('./routes/Vendor/vendorDashboard');
 var vendorLogin = require('./routes/Vendor/login');
+var agentLogin = require('./routes/Agent/login');
+var agent_dashboard = require('./routes/Agent/agentDashboard');
+var channel_partner_login = require('./routes/Channel_Partner/login');
 
 var banner = require('./routes/banner');
 var repurchasingapi = require('./routes/repurchasing_api');
@@ -23,6 +26,9 @@ var talentHunt = require('./routes/talentHunt');
 var repurchasingapi = require('./routes/repurchasing_api')
 var mlm = require('./routes/mlm');
 var shop_banner = require('./routes/shop_banner');
+var channel_partner_dashboard = require('./routes/Channel_Partner/channelPartnerDashboard');
+
+var merchant_api = require('./routes/Vendor/merchant_api');
 
 
 var app = express();
@@ -67,6 +73,10 @@ app.use('/api',api);
 app.use('/vendor-registeration',vendor_registeration);
 app.use('/vendor-dashboard',vendor_dashboard);
 app.use('/vendor-login',vendorLogin);
+app.use('/agent-login',agentLogin);
+app.use('/channel-partner-login',channel_partner_login);
+app.use('/agent-dashboard',agent_dashboard);
+app.use('/channel-partner-dashboard',channel_partner_dashboard);
 
 app.use('/banner',banner);
 app.use('/repurchasing-api',repurchasingapi);
@@ -75,6 +85,7 @@ app.use('/talent-hunt',talentHunt)
 app.use('/repurchasing-api',repurchasingapi);
 app.use('/mlm',mlm);
 app.use('/shop_banner',shop_banner);
+app.use('/merchant-api',merchant_api);
 
 
 // catch 404 and forward to error handler

@@ -1309,8 +1309,13 @@ router.get('/get-all-vendor',(req,res)=>{
 })
 
 
-router.post('/save-merchant',(req,res)=>{
+router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 } ]),(req,res)=>{
   let body = req.body;
+  body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
+  body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
+  body['image'] = req.files.image[0].filename;
+  body['shop_img2'] = req.files.shop_img2[0].filename;
+  
   console.log(req.body);
   body['userid'] = 'TT'
   pool.query(`insert into vendor set ?`,body,(err,result)=>{

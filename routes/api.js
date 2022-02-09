@@ -1358,6 +1358,7 @@ router.post('/update-merchant', (req, res) => {
   let body = req.body
   pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {
+        console.log('err',err);
           res.json({
               status:500,
               type : 'error',
@@ -1365,6 +1366,7 @@ router.post('/update-merchant', (req, res) => {
           })
       }
       else {
+        console.log('result',result)
           res.json({
               status:200,
               type : 'success',

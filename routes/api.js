@@ -1006,18 +1006,22 @@ router.post('/check',(req,res)=>{
   pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
     else if(result[0].status == 'approved'){
+      console.log('result approved',result)
       res.json({
         msg : 'success',
         result:result
       })
  }
  else if(result[0].status != 'approved'){
+  console.log('result pending',result)
+
    res.json({
      msg : 'pending',
      
    })
 }
  else {
+
    res.json({
      msg : 'user not found'
    })

@@ -1311,6 +1311,7 @@ router.get('/get-all-vendor',(req,res)=>{
 
 router.post('/save-merchant',(req,res)=>{
   let body = req.body;
+  console.log(req.body);
   body['userid'] = 'TT'
   pool.query(`insert into vendor set ?`,body,(err,result)=>{
     if(err) throw err;

@@ -1002,6 +1002,7 @@ router.post("/payment-initiate", (req, res) => {
 
 
 router.post('/check',(req,res)=>{
+  console.log('number',req.body.number)
   pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
     else if(result[0].status == 'approved'){

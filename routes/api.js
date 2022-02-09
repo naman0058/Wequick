@@ -1351,7 +1351,7 @@ body['date'] = today
 
 router.post('/update-merchant', (req, res) => {
   let body = req.body
-  pool.query(`update vendor set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+  pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {
           res.json({
               status:500,

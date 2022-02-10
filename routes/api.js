@@ -1005,7 +1005,10 @@ router.post('/check',(req,res)=>{
   console.log('number',req.body.number)
   pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
-    else if(result[0].status == 'approved'){
+    else if(result[0]){
+
+    
+     if(result[0].status == 'approved'){
       console.log('result approved',result)
       res.json({
         msg : 'success',
@@ -1020,6 +1023,7 @@ router.post('/check',(req,res)=>{
      
    })
 }
+    }
  else {
 
    res.json({

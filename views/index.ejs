@@ -2,1075 +2,523 @@
 <%- include ('./header.ejs') %>
 
 
-        <main class="main">
-            <div class="intro-section">
-                <div class="owl-carousel owl-theme owl-nav-inner owl-dot-inner row gutter-no cols-1 animation-slider"
-                    data-owl-options="{
-                    'nav': false,
-                    'dots': true,
-                    'items': 1,
-                    'autoplay': false,
-                    'responsive': {
-                        '1630': {
-                            'nav': true,
-                            'dots': false
-                        }
-                    }
-                }">
-                   
-				
-				<% for(i=0;i<result[1].length;i++) { %>
-					<a href='/banner-product?id=<%=result[1][i].id%>'>
-				<div class="banner banner-fixed intro-slide intro-slide1+<%=result[1][i].id%>"
-                        style="background-image: url(/images/<%=result[1][i].image%>); background-color: #f1f0f0;">
-                        <div class="container">
-                            <figure class="slide-image floating-item slide-animate" data-animation-options="{
-                                'name': 'fadeInDownShorter', 'duration': '1s'
-                            }" data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
-                                data-child-depth="0.2">
-                                <img src="/wolmart/assets/images/demos/demo2/slides/sk.png" alt="Ski" width="729"
-                                    height="570" />
-                            </figure>
-                           
-                            <!-- End of .banner-content -->
-                        </div>
-                        <!-- End of .container -->
-                    </div>
-                    <!-- End of .intro-slide1 -->
-</a>
-					<% } %>
-
-                   
-
-                 
-                    <!-- End of .intro-slide3 -->
-                </div>
-            </div>
-            <!-- End of .intro-section -->
-
-            <div class="container">
-                <div class="owl-carousel owl-theme row cols-md-4 cols-sm-3 cols-1 icon-box-wrapper appear-animate br-sm mt-6 mb-10 appear-animate"
-                    data-owl-options="{
-                    'nav': false,
-                    'dots': false,
-                    'loop': true,
-                    'autoplay': true,
-                    'autoplayTimeout': 4000,
-                    'responsive': {
-                        '0': {
-                            'items': 1
-                        },
-                        '576': {
-                            'items': 2
-                        },
-                        '768': {
-                            'items': 3
-                        },
-                        '992': {
-                            'items': 3
-                        },
-                        '1200': {
-                            'items': 4
-                        }
-                    }
-                }">
-                    <div class="icon-box icon-box-side text-dark">
-                        <span class="icon-box-icon icon-shipping">
-                            <i class="w-icon-truck"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h4 class="icon-box-title">Free Shipping & Returns</h4>
-                            <p class="text-default">For all orders over $99</p>
-                        </div>
-                    </div>
-                    <div class="icon-box icon-box-side text-dark">
-                        <span class="icon-box-icon icon-payment">
-                            <i class="w-icon-bag"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h4 class="icon-box-title">Secure Payment</h4>
-                            <p class="text-default">We ensure secure payment</p>
-                        </div>
-                    </div>
-                    <div class="icon-box icon-box-side text-dark icon-box-money">
-                        <span class="icon-box-icon icon-money">
-                            <i class="w-icon-money"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h4 class="icon-box-title">Money Back Guarantee</h4>
-                            <p class="text-default">Any back within 30 days</p>
-                        </div>
-                    </div>
-                    <div class="icon-box icon-box-side text-dark icon-box-chat">
-                        <span class="icon-box-icon icon-chat">
-                            <i class="w-icon-chat"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h4 class="icon-box-title">Customer Support</h4>
-                            <p class="text-default">Call or email us 24/7</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Iocn Box Wrapper -->
-
-				<% let j=0;
-				let k = 4%>
-			
-				<% for(i=0;i<result[3].length;i++) { %>
-
-                <div class="title-link-wrapper mb-3 appear-animate">
-                    <h2 class="title title-deals mb-1"><%=result[3][i].name%></h2>
-                  
-                    <a href="/view-all-product?id=<%=result[3][i].id%>" class="font-weight-bold ls-25">View More<i
-                            class="w-icon-long-arrow-right"></i></a>
-                </div>
-                <!-- End of .title-link-wrapper -->
-
-			
-
-                <div class="owl-carousel owl-theme row cols-lg-5 cols-md-4 cols-2 product-deals-wrapper appear-animate mb-7"
-                    data-owl-options="{
-                    'nav': false,
-                    'dots': true,
-                    'items': 5,
-                    'autoplay': false,
-                    'margin': 20,
-                    'responsive': {
-                        '0': {
-                            'items': 2,
-                            'nav': false
-                        },
-                        '576': {
-                            'items': 3
-                        },
-                        '768': {
-                            'items': 4
-                        },
-                        '992': {
-                            'items': 5
-                        }
-                    }
-                }">
-
-
-				<% for(j=j;j<k;j++) { %>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="/product?id=<%=result[2][j].productid%>">
-                                    <img src="/images/<%=result[2][j].productimage%>" alt="Product" width="300"
-                                        height="338">
-                                    <img src="/images/<%=result[2][j].productimage%>" alt="Product" width="300"
-                                        height="338">
-                                </a>
-                                <div class="product-action-vertical">
-
-									<% if(result[2][j].productquantity == 0 || result[2][j].productquantity < 0) { %>
-
-
-										<% } else { %>
-
-											<a href="#" categoryname='<%=result[2][j].productname%>' subcategoryid="<%=result[2][j].productsubcategoryid%>"  booking_id="<%=result[2][j].productid%>" price="<%=result[2][j].productnetamount%>" categoryid = '<%=result[2][j].productcategoryid%>'	 class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-											<% } %>
-
-                                   
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <!-- <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a> -->
-                                </div>
-                               
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="/product?id=<%=result[2][j].productid%>"><%=result[2][j].productname%></a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="#" class="rating-reviews">(3 Reviews)</a>
-                                </div>
-                                <div class="product-price">
-
-									<% if(result[2][j].productdiscount == 0) { %>
-										<ins class="new-price">Rs. <%=result[2][j].productnetamount%></ins>
-									
-
-										<% } else { %>
-											<ins class="new-price">Rs. <%=result[2][j].productnetamount%></ins><del class="old-price">Rs. <%=result[2][j].productprice%></del>
-
-
-										
-
-											<% } %>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   <% } %>
-
-				   <% k = k+4%>
-                </div>
-				<% } %>
-                <!-- End of Product Deals Warpper -->
-
-                <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-                    <div class="col-md-6 mb-4">
-                        <div class="banner banner-fixed br-sm">
-                            <figure>
-                                <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
-                                    width="640" height="200" style="background-color: #25282D;" />
-                            </figure>
-                            <div class="banner-content y-50">
-                                <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
-                                <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
-                                    At
-                                    <strong class="text-secondary">$125.00</strong>
-                                </div>
-                                <hr class="banner-divider bg-white" />
-                                <a href="shop-banner-sidebar.html"
-                                    class="btn btn-white btn-link btn-underline btn-icon-right">
-                                    Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="banner banner-fixed br-sm">
-                            <figure>
-                                <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                                    width="640" height="200" style="background-color: #eeedec;" />
-                            </figure>
-                            <div class="banner-content y-50">
-                                <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                                <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                                    <strong class="text-secondary">30% Off</strong>
-                                </div>
-                                <hr class="banner-divider bg-dark" />
-                                <a href="shop-banner-sidebar.html"
-                                    class="btn btn-dark btn-link btn-underline btn-icon-right">
-                                    Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Category Wrapper -->
-
-               
-                <!-- End of Vendor Wrapper -->
+<main class="main">
+    <div class="intro-section">
+        <div class="owl-carousel owl-theme owl-nav-inner owl-dot-inner row gutter-no cols-1 animation-slider"
+            data-owl-options="{
+            'nav': false,
+            'dots': true,
+            'items': 1,
+            'autoplay': false,
+            'responsive': {
+                '1630': {
+                    'nav': true,
+                    'dots': false
+                }
+            }
+        }">
            
-                <!-- End of Tab Title-->
         
-                <!-- End of Tab Content -->
-
-                <div class="sale-banner banner br-sm appear-animate">
-                    <div class="banner-content">
-                        <h4
-                            class="content-left banner-subtitle text-uppercase mb-8 mb-md-0 mr-0 mr-md-4 text-secondary ls-25">
-                            <span class="text-dark font-weight-bold lh-1 ls-normal">Up
-                                <br>To</span>70% Sale!</h4>
-                        <div class="content-right">
-                            <h3 class="banner-title text-uppercase font-weight-normal mb-4 mb-md-0 ls-25 text-white">
-                                <span>Pay Only For
-                                    <strong class="mr-10 pr-lg-10">Your Lovling Electronics</strong>
-                                    Pay Only For
-                                    <strong class="mr-10 pr-lg-10">Your Lovling Electronics</strong>
-                                    Pay Only For
-                                    <strong class="mr-10 pr-lg-10">Your Lovling Electronics</strong>
-                                </span>
-                            </h3>
-                            <a href="#" class="btn btn-white btn-rounded">Shop Now
-                                <i class="w-icon-long-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Sale Banner -->
-
-                <div class="banner-product-wrapper appear-animate row mb-8">
-                    <div class="col-xl-5col col-md-4 mb-4">
-                        <div class="categories h-100">
-                            <h2 class="title text-left">Clothes &amp; Fashion Apparel</h2>
-                            <ul class="list-style-none mb-4">
-                                <li><a href="shop-banner-sidebar.html">Accessories</a></li>
-                                <li><a href="shop-banner-sidebar.html">Bodyclothes</a></li>
-                                <li><a href="shop-banner-sidebar.html">Dress &amp; Skirts</a></li>
-                                <li><a href="shop-banner-sidebar.html">Jeans</a></li>
-                                <li><a href="shop-banner-sidebar.html">Jumpers</a></li>
-                                <li><a href="shop-banner-sidebar.html">Knitwears</a></li>
-                                <li><a href="shop-banner-sidebar.html">Lounge &amp; Underwear</a></li>
-                                <li><a href="shop-banner-sidebar.html">Shoes</a></li>
-                                <li><a href="shop-banner-sidebar.html">T-shirts</a></li>
-                            </ul>
-                            <a href="shop-boxed-banner.html"
-                                class="btn btn-dark btn-link btn-underline btn-icon-right font-weight-bolder text-capitalize ls-50">
-                                Browse All<i class="w-icon-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-5col4 col-md-8 mb-4">
-                        <div class="banner br-sm mb-4" style="background-image: url(/wolmart/assets/images/demos/demo2/banners/1.jpg);
-                            background-color: #EEF0EF;">
-                            <div class="banner-content d-block d-lg-flex align-items-center">
-                                <div class="content-left mr-auto">
-                                    <h5
-                                        class="banner-subtitle font-weight-normal text-capitalize texyt-dark ls-25 mb-0">
-                                        Flash Sale <strong class="text-uppercase text-secondary">50% Off</strong>
-                                    </h5>
-                                    <h3 class="banner-title text-capitalize ls-25">Fashion Figure Skate Sale</h3>
-                                    <p class="text-dark">Only until the end of this week.</p>
-                                </div>
-                                <a href="shop-banner-sidebar.html" class="content-left btn btn-dark btn btn-outline 
-                                    btn-rounded btn-icon-right mt-4 mt-lg-0">Shop Now<i
-                                        class="w-icon-long-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End of Banner -->
-                        <div class="owl-carousel owl-theme row cols-xl-4 cols-lg-3" data-owl-options="{
-                            'nav': false,
-                            'dots': true,
-                            'margin': 20,
-                            'responsive': {
-                                '0': {
-                                    'items': 2
-                                },
-                                '576': {
-                                    'items': 3
-                                },
-                                '768': {
-                                    'items': 2
-                                },
-                                '992': {
-                                    'items': 3
-                                },
-                                '1200': {
-                                    'items': 4
-                                }
-                            }
-                        }">
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/4-1-1.jpg" alt="Product"
-                                                width="300" height="338">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/4-1-2.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">White Schoolbag</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$56.48</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/4-2-1.jpg" alt="Product"
-                                                width="300" height="338">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/4-2-2.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Women's Comforter</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 80%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(8 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$35.99</ins><del class="old-price">$37.89</del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/4-3.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-label-group">
-                                            <label class="product-label label-new">New</label>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Blue Traingin Shoes</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 60%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(6 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$58.99</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/4-4.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Beyond OTP Shirt</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(3 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$26.00</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End fo Carousel -->
-                    </div>
-                </div>
-                <!-- End of Banner Product Wrapper -->
-
-                <div class="row category-wrapper sports-fashion mb-8 appear-animate">
-                    <div class="col-md-6 mb-4">
-                        <div class="banner banner-fixed br-sm">
-                            <figure>
-                                <img src="/wolmart/assets/images/demos/demo2/categories/2-1.jpg" alt="Category Banner"
-                                    width="640" height="200" style="background-color: #EAEAEA;" />
-                            </figure>
-                            <div class="banner-content y-50 text-right">
-                                <h5 class="banner-subtitle text-uppercase font-weight-bold">New Arrivals</h5>
-                                <h3 class="banner-title text-capitalize ls-25">Sport Outfits</h3>
-                                <hr class="banner-divider bg-dark ml-auto mb-3">
-                                <div class="banner-price-info text-dark">
-                                    From <span class="text-secondary font-weight-bolder ls-25">$150.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="banner banner-fixed br-sm">
-                            <figure>
-                                <img src="/wolmart/assets/images/demos/demo2/categories/2-2.jpg" alt="Category Banner"
-                                    width="640" height="200" style="background-color: #181411;" />
-                            </figure>
-                            <div class="banner-content y-50">
-                                <h5 class="banner-subtitle text-uppercase font-weight-normal text-white">SmartWatches
-                                </h5>
-                                <h3 class="banner-title text-white ls-25">Sale up to 20% Off</h3>
-                                <hr class="banner-divider bg-white">
-                                <div class="banner-price-info text-white">
-                                    Starting at <span class="text-secondary font-weight-bolder ls-25">$270.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Category Wrapper -->
-
-                <div class="banner-product-wrapper appear-animate row mb-8">
-                    <div class="col-xl-5col col-md-4 mb-4">
-                        <div class="categories h-100">
-                            <h2 class="title text-left">Computers &amp; Technologies</h2>
-                            <ul class="list-style-none mb-4">
-                                <li><a href="shop-banner-sidebar.html">Desktop PC</a></li>
-                                <li><a href="shop-banner-sidebar.html">Headphones</a></li>
-                                <li><a href="shop-banner-sidebar.html">Laptops</a></li>
-                                <li><a href="shop-banner-sidebar.html">Monitors</a></li>
-                                <li><a href="shop-banner-sidebar.html">Smartphones</a></li>
-                                <li><a href="shop-banner-sidebar.html">Speakers</a></li>
-                                <li><a href="shop-banner-sidebar.html">Storage &amp; Memory</a></li>
-                                <li><a href="shop-banner-sidebar.html">Tablets</a></li>
-                                <li><a href="shop-banner-sidebar.html">Watches</a></li>
-                            </ul>
-                            <a href="shop-boxed-banner.html"
-                                class="btn btn-dark btn-link btn-underline btn-icon-right font-weight-bolder text-capitalize ls-50">
-                                Browse All<i class="w-icon-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-5col4 col-md-8 mb-4">
-                        <div class="banner br-sm mb-4 pt-9" style="background-image: url(/wolmart/assets/images/demos/demo2/banners/2.jpg);
-                            background-color: #E0E1E5;">
-                            <div class="banner-content">
-                                <h5 class="banner-subtitle font-weight-normal text-capitalize texyt-dark ls-25 mb-0">
-                                    From Onlin Store
-                                </h5>
-                                <h3 class="banner-title text-capitalize ls-25 mb-4">
-                                    Xbox One's <span class="text-primary">Limited</span> Edition
-                                </h3>
-                                <a href="shop-boxed-banner.html"
-                                    class="btn btn-dark btn-link btn-underline btn-icon-right">
-                                    View Detail<i class="w-icon-long-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End of Banner -->
-                        <div class="owl-carousel owl-theme row cols-xl-4 cols-lg-3" data-owl-options="{
-                            'nav': false,
-                            'dots': true,
-                            'margin': 20,
-                            'responsive': {
-                                '0': {
-                                    'items': 2
-                                },
-                                '576': {
-                                    'items': 3
-                                },
-                                '768': {
-                                    'items': 2
-                                },
-                                '992': {
-                                    'items': 3
-                                },
-                                '1200': {
-                                    'items': 4
-                                }
-                            }
-                        }">
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/5-1-1.jpg" alt="Product"
-                                                width="300" height="338">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/5-1-2.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Bluetooth Music
-                                                Recorder</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(8 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$28.00</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/5-2.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Magenetic Charge Box</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 80%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(8 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$79.00</ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/5-3-1.jpg" alt="Product"
-                                                width="300" height="338">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/5-3-2.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                        <div class="product-label-group">
-                                            <label class="product-label label-new">New</label>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Soft Sound Marker</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(5 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$27.00</ins><del class="old-price">$35.00</del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-wrap">
-                                <div class="product text-center">
-                                    <figure class="product-media">
-                                        <a href="product-default.html">
-                                            <img src="/wolmart/assets/images/demos/demo2/products/5-4.jpg" alt="Product"
-                                                width="300" height="338">
-                                        </a>
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-cart w-icon-cart"
-                                                title="Add to cart"></a>
-                                            <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                                title="Add to wishlist"></a>
-                                            <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                                title="Quickview"></a>
-                                            <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                                title="Add to Compare"></a>
-                                        </div>
-                                    </figure>
-                                    <div class="product-details">
-                                        <h4 class="product-name"><a href="product-default.html">Men's Black Watch</a>
-                                        </h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings-full">
-                                                <span class="ratings" style="width: 100%;"></span>
-                                                <span class="tooltiptext tooltip-top"></span>
-                                            </div>
-                                            <a href="product-default.html" class="rating-reviews">(9 Reviews)</a>
-                                        </div>
-                                        <div class="product-price">
-                                            <ins class="new-price">$50.00</ins><del class="old-price">$65.00</del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End fo Carousel -->
-                    </div>
-                </div>
-                <!-- End of Banner Product Wrapper -->
-
-                <div class="banner br-sm banner-electronics appear-animate" style="background-image: url(/wolmart/assets/images/demos/demo2/banners/3.jpg);
-                    background-color: #333;">
-                    <div class="banner-content mr-10 pr-1">
-                        <div class="banner-price-info text-white font-weight-normal ls-25">
-                            Save Big on <span class="font-weight-bolder text-secondary text-uppercase">50% Off</span>
-                        </div>
-                        <h3 class="banner-title text-white mb-0 ls-25">Cameras and Leans Sale</h3>
-                    </div>
-                    <a href="shop-banner-sidebar.html" class="btn btn-white btn-rounded btn-icon-right mt-1">Shop Now<i
-                            class="w-icon-long-arrow-right"></i></a>
-                </div>
-                <!-- End of Banner -->
-
-                <div class="title-link-wrapper mb-2 appear-animate">
-                    <h2 class="title">Top Rated Products</h2>
-                    <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">More Products<i
-                            class="w-icon-long-arrow-right"></i></a>
-                </div>
-
-                <div class="owl-carousel owl-theme top-products row cols-lg-5 cols-md-4 cols-sm-3 cols-2 mb-6 appear-animate"
-                    data-owl-options="{
-                    'nav': false,
-                    'dots': true,
-                    'margin': 20,
-                    'responsive': {
-                        '0': {
-                            'items': 2
-                        },
-                        '576': {
-                            'items': 3
-                        },
-                        '768': {
-                            'items': 4
-                        },
-                        '992': {
-                            'items': 5
-                        }
-                    }
-                }">
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/4-1-1.jpg" alt="Product" width="300"
-                                        height="338">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/4-1-2.jpg" alt="Product" width="300"
-                                        height="338">
-                                </a>
-                                <div class="product-label-group">
-                                    <label class="product-label label-discount">-15%</label>
-                                </div>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                                <div class="product-countdown-container">
-                                    <div class="product-countdown countdown-compact" data-until="2021, 9, 9"
-                                        data-format="DHMS" data-compact="false"
-                                        data-labels-short="Days, Hours, Mins, Secs">
-                                        00:00:00:00</div>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">White Schoolbag</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(3 Reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$56.48</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/1-1-1.jpg" alt="Product" width="300"
-                                        height="338">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/1-1-2.jpg" alt="Product" width="300"
-                                        height="338">
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                                <div class="product-label-group">
-                                    <label class="product-label label-new">New</label>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Women's Comforter</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(3 Reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$45.62 - $58.28</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/3-2-1.jpg" alt="Product" width="300"
-                                        height="338">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/3-2-2.jpg" alt="Product" width="300"
-                                        height="338">
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Gold Watch</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 80%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(3 Reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$164.47</ins><del class="old-price">$183.47</del>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/1-4.jpg" alt="Product" width="300"
-                                        height="338">
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                                <div class="product-label-group">
-                                    <label class="product-label label-new">New</label>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Portable Flashlight</a></h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(8 Reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$10.00</ins><del class="old-price">$11.00</del>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-wrap">
-                        <div class="product text-center">
-                            <figure class="product-media">
-                                <a href="product-default.html">
-                                    <img src="/wolmart/assets/images/demos/demo2/products/6-1.jpg" alt="Product" width="300"
-                                        height="338">
-                                </a>
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-cart w-icon-cart" title="Add to cart"></a>
-                                    <a href="#" class="btn-product-icon btn-wishlist w-icon-heart"
-                                        title="Add to wishlist"></a>
-                                    <a href="#" class="btn-product-icon btn-quickview w-icon-search"
-                                        title="Quickview"></a>
-                                    <a href="#" class="btn-product-icon btn-compare w-icon-compare"
-                                        title="Add to Compare"></a>
-                                </div>
-                            </figure>
-                            <div class="product-details">
-                                <h4 class="product-name"><a href="product-default.html">Fashionable Original Coat</a>
-                                </h4>
-                                <div class="ratings-container">
-                                    <div class="ratings-full">
-                                        <span class="ratings" style="width: 100%;"></span>
-                                        <span class="tooltiptext tooltip-top"></span>
-                                    </div>
-                                    <a href="product-default.html" class="rating-reviews">(8 Reviews)</a>
-                                </div>
-                                <div class="product-price">
-                                    <ins class="new-price">$54.00 - $59.88</ins>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End of Owl Carousel -->
-
-                <h2 class="title text-left text-capitalize mb-5 appear-animate">Your Recent Views</h2>
-                <div class="owl-carousel owl-theme appear-animate viewed-products row cols-xl-8 cols-lg-6 cols-md-4 cols-2 mb-7"
-                    data-owl-options="{
-                    'nav': false,
-                    'dots': true,
-                    'margin': 20,
-                    'responsive': {
-                        '0': {
-                            'items': 2
-                        },
-                        '576': {
-                            'items': 3
-                        },
-                        '768': {
-                            'items': 5
-                        },
-                        '992': {
-                            'items': 6
-                        },
-                        '1200': {
-                            'items': 8,
-                            'dots': true
-                        }
-                    }
-                }">
-				<% for(i=0;i<result[0].length;i++) { %>
-                    <div class="product-wrap">
-                        <div class="product text-center product-absolute">
-                            <figure class="product-media">
-                                <a href="/shop?categoryid=<%=result[0][i].id%>">
-                                    <img src="/images/<%=result[0][i].image%>" alt="Category image"
-                                        width="300" height="338" style="background-color: #fff" />
-                                </a>
-                            </figure>
-                            <h4 class="product-name">
-                                <a href="/shop?categoryid=<%=result[0][i].id%>"><%=result[0][i].name%></a>
-                            </h4>
-                        </div>
-                    </div>
-                  
-<% } %>
-
-                </div>
-                <!-- End of Owl Carousel -->
-
-                <h2 class="title text-left mb-5 appear-animate">Our Clients</h2>
-                <div class="owl-carousel owl-theme row cols-xl-8 cols-lg-6 cols-md-4 cols-sm-3 cols-2 brands-wrapper br-sm mb-10 appear-animate"
-                    data-owl-options="{
-                    'nav': false,
-                    'dots': false,
-                    'autoplay': true,
-                    'autoplayTimeout': 4000,
-                    'loop': true,
-                    'margin': 20,
-                    'responsive': {
-                        '0': {
-                            'items': 2
-                        },
-                        '576': {
-                            'items': 3
-                        },
-                        '768': {
-                            'items': 4
-                        },
-                        '992': {
-                            'items': 6
-                        },
-                        '1200': {
-                            'items': 8
-                        }
-                    }
-                }">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/1.png" alt="Brand" width="290" height="100" />
+        <% for(i=0;i<result[2].length;i++) { %>
+            <a href='#'>
+        <div class="banner banner-fixed intro-slide intro-slide1+<%=result[2][i].id%>"
+                style="background-image: url(/images/<%=result[2][i].image%>); background-color: #f1f0f0;">
+                <div class="container">
+                    <figure class="slide-image floating-item slide-animate" data-animation-options="{
+                        'name': 'fadeInDownShorter', 'duration': '1s'
+                    }" data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
+                        data-child-depth="0.2">
+                        <img src="/images/<%=result[2][i].image%>" alt="Ski" width="729"
+                            height="570" />
                     </figure>
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/2.png" alt="Brand" width="290" height="100" />
-                    </figure>
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/3.png" alt="Brand" width="290" height="100" />
-                    </figure>
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/4.png" alt="Brand" width="290" height="100" />
-                    </figure>
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/5.png" alt="Brand" width="290" height="100" />
-                    </figure>
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/6.png" alt="Brand" width="290" height="100" />
-                    </figure>
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/7.png" alt="Brand" width="290" height="100" />
-                    </figure>
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/brands/8.png" alt="Brand" width="290" height="100" />
-                    </figure>
+                   
+                    <!-- End of .banner-content -->
                 </div>
-                <!-- End of Brands Wrapper -->
-
-             
+                <!-- End of .container -->
             </div>
-            <!-- End of Container -->
-        </main>
-        <!-- End of Main -->
+            <!-- End of .intro-slide1 -->
+</a>
+            <% } %>
+
+           
+
+         
+            <!-- End of .intro-slide3 -->
+        </div>
+    </div>
+    <!-- End of .intro-section -->
+
+    <div class="container">
+        <div class="owl-carousel owl-theme row cols-md-4 cols-sm-3 cols-1 icon-box-wrapper appear-animate br-sm mt-6 mb-10 appear-animate"
+            data-owl-options="{
+            'nav': false,
+            'dots': false,
+            'loop': true,
+            'autoplay': true,
+            'autoplayTimeout': 4000,
+            'responsive': {
+                '0': {
+                    'items': 1
+                },
+                '576': {
+                    'items': 2
+                },
+                '768': {
+                    'items': 3
+                },
+                '992': {
+                    'items': 3
+                },
+                '1200': {
+                    'items': 4
+                }
+            }
+        }">
+            <div class="icon-box icon-box-side text-dark">
+                <span class="icon-box-icon icon-shipping">
+                    <i class="w-icon-truck"></i>
+                </span>
+                <div class="icon-box-content">
+                    <h4 class="icon-box-title">Free Shipping & Returns</h4>
+                    <p class="text-default">For all orders over $99</p>
+                </div>
+            </div>
+            <div class="icon-box icon-box-side text-dark">
+                <span class="icon-box-icon icon-payment">
+                    <i class="w-icon-bag"></i>
+                </span>
+                <div class="icon-box-content">
+                    <h4 class="icon-box-title">Secure Payment</h4>
+                    <p class="text-default">We ensure secure payment</p>
+                </div>
+            </div>
+            <div class="icon-box icon-box-side text-dark icon-box-money">
+                <span class="icon-box-icon icon-money">
+                    <i class="w-icon-money"></i>
+                </span>
+                <div class="icon-box-content">
+                    <h4 class="icon-box-title">Money Back Guarantee</h4>
+                    <p class="text-default">Any back within 30 days</p>
+                </div>
+            </div>
+            <div class="icon-box icon-box-side text-dark icon-box-chat">
+                <span class="icon-box-icon icon-chat">
+                    <i class="w-icon-chat"></i>
+                </span>
+                <div class="icon-box-content">
+                    <h4 class="icon-box-title">Customer Support</h4>
+                    <p class="text-default">Call or email us 24/7</p>
+                </div>
+            </div>
+        </div>
+        <!-- End of Iocn Box Wrapper -->
+
+      
+        <!-- End of Product Deals Warpper -->
+
+        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
+            <div class="col-md-6 mb-4">
+                <div class="banner banner-fixed br-sm">
+                    <figure>
+                        <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
+                            width="640" height="200" style="background-color: #25282D;" />
+                    </figure>
+                    <div class="banner-content y-50">
+                        <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
+                        <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
+                            At
+                            <strong class="text-secondary">$125.00</strong>
+                        </div>
+                        <hr class="banner-divider bg-white" />
+                        <a href="shop-banner-sidebar.html"
+                            class="btn btn-white btn-link btn-underline btn-icon-right">
+                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="banner banner-fixed br-sm">
+                    <figure>
+                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
+                            width="640" height="200" style="background-color: #eeedec;" />
+                    </figure>
+                    <div class="banner-content y-50">
+                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
+                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
+                            <strong class="text-secondary">30% Off</strong>
+                        </div>
+                        <hr class="banner-divider bg-dark" />
+                        <a href="shop-banner-sidebar.html"
+                            class="btn btn-dark btn-link btn-underline btn-icon-right">
+                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Category Wrapper -->
+
+       
+        <!-- End of Vendor Wrapper -->
+   
+        <!-- End of Tab Title-->
+
+        <!-- End of Tab Content -->
+
+       
+        <!-- End of Sale Banner -->
+
+        
+        <!-- End of Banner Product Wrapper -->
+
+        <div class="row category-wrapper sports-fashion mb-8 appear-animate">
+            <div class="col-md-6 mb-4">
+                <div class="banner banner-fixed br-sm">
+                    <figure>
+                        <img src="/wolmart/assets/images/demos/demo2/categories/2-1.jpg" alt="Category Banner"
+                            width="640" height="200" style="background-color: #EAEAEA;" />
+                    </figure>
+                    <div class="banner-content y-50 text-right">
+                        <h5 class="banner-subtitle text-uppercase font-weight-bold">New Arrivals</h5>
+                        <h3 class="banner-title text-capitalize ls-25">Sport Outfits</h3>
+                        <hr class="banner-divider bg-dark ml-auto mb-3">
+                        <div class="banner-price-info text-dark">
+                            From <span class="text-secondary font-weight-bolder ls-25">$150.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="banner banner-fixed br-sm">
+                    <figure>
+                        <img src="/wolmart/assets/images/demos/demo2/categories/2-2.jpg" alt="Category Banner"
+                            width="640" height="200" style="background-color: #181411;" />
+                    </figure>
+                    <div class="banner-content y-50">
+                        <h5 class="banner-subtitle text-uppercase font-weight-normal text-white">SmartWatches
+                        </h5>
+                        <h3 class="banner-title text-white ls-25">Sale up to 20% Off</h3>
+                        <hr class="banner-divider bg-white">
+                        <div class="banner-price-info text-white">
+                            Starting at <span class="text-secondary font-weight-bolder ls-25">$270.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Category Wrapper -->
+
+
+        <div class="page-content mb-8" style="margin-top: 20px;">
+            <div class="container">
+                <!-- Start of Vendor Map -->
+              
+                <!-- End of Vendor Map -->
+
+                <!-- Start of Vendor Filter -->
+                
+                <!-- End of Vendor Filter -->
+
+                <!-- Start of Vendor Store -->
+                <div class="row cols-lg-3 cols-sm-2">
+                    <div class="store-wrap mb-4">
+                        <div class="store store-wcmp br-sm">
+                            <figure class="store-banner">
+                                <img src="/wolmart/assets/images/vendor/wcmp/1.jpg" alt="Vendor" 
+                                    width="400" height="318" style="background-color: #454b63;" />
+                            </figure>
+                            <div class="store-content">
+                                <figure class="seller-brand">
+                                    <img src="/wolmart/assets/images/vendor/brand/1.jpg" alt="Brand" width="80" height="80" />
+                                </figure>
+                                <div class="seller-date">
+                                    <h4 class="store-title">
+                                        <a href="/single-vendor-details">Vendor 1</a>
+                                    </h4>
+                                    <ul class="seller-info-list list-style-none">
+                                        <li class="store-address">
+                                            <i class="w-icon-map-marker"></i>
+                                            <p>287 cherry Hill Ave. South El 
+                                            Monte, CA 91733, Aland lslands</p>
+                                        </li>
+                                        <li class="store-rating">
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Store -->
+                    </div>
+                    <div class="store-wrap mb-4">
+                        <div class="store store-wcmp br-sm">
+                            <figure class="store-banner">
+                                <img src="/wolmart/assets/images/vendor/wcmp/2.jpg" alt="Vendor" 
+                                    width="400" height="318" style="background-color: #6a6867;" />
+                            </figure>
+                            <div class="store-content">
+                                <figure class="seller-brand">
+                                    <img src="/wolmart/assets/images/vendor/brand/2.jpg" alt="Brand" width="80" height="80" />
+                                </figure>
+                                <div class="seller-date">
+                                    <h4 class="store-title">
+                                        <a href="/single-vendor-details">Vendor 2</a>
+                                    </h4>
+                                    <ul class="seller-info-list list-style-none">
+                                        <li class="store-address">
+                                            <i class="w-icon-map-marker"></i>
+                                            <p>Fuchu, Hiroshima, Thai Nguyen,
+                                            Hiroshima, Japan,27000</p>
+                                        </li>
+                                        <li class="store-rating">
+                                            <i class="w-icon-star-full"></i>
+                                            <p>No Rating Yet</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Store -->
+                    </div>
+                    <div class="store-wrap mb-4">
+                        <div class="store store-wcmp br-sm">
+                            <figure class="store-banner">
+                                <img src="/wolmart/assets/images/vendor/wcmp/3.jpg" alt="Vendor" 
+                                    width="400" height="318" style="background-color: #5a5958;" />
+                            </figure>
+                            <div class="store-content">
+                                <figure class="seller-brand">
+                                    <img src="/wolmart/assets/images/vendor/brand/3.jpg" alt="Brand" width="80" height="80" />
+                                </figure>
+                                <div class="seller-date">
+                                    <h4 class="store-title">
+                                        <a href="/single-vendor-details">Vendor 3</a>
+                                    </h4>
+                                    <ul class="seller-info-list list-style-none">
+                                        <li class="store-address">
+                                            <i class="w-icon-map-marker"></i>
+                                            <p>848 Baker Rd, Huntsville, AL 35803,
+                                            Minato, Tokyo, Japan, 12000</p>
+                                        </li>
+                                        <li class="store-rating">
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Store -->
+                    </div>
+                    <div class="store-wrap mb-4">
+                        <div class="store store-wcmp br-sm">
+                            <figure class="store-banner">
+                                <img src="/wolmart/assets/images/vendor/wcmp/4.jpg" alt="Vendor" 
+                                    width="400" height="318" style="background-color: #585e65;" />
+                            </figure>
+                            <div class="store-content">
+                                <figure class="seller-brand">
+                                    <img src="/wolmart/assets/images/vendor/brand/4.jpg" alt="Brand" width="80" height="80" />
+                                </figure>
+                                <div class="seller-date">
+                                    <h4 class="store-title">
+                                        <a href="/single-vendor-details">Vendor 4</a>
+                                    </h4>
+                                    <ul class="seller-info-list list-style-none">
+                                        <li class="store-address">
+                                            <i class="w-icon-map-marker"></i>
+                                            <p>908 New Hampshire Avenue #100,
+                                            Washington, United States</p>
+                                        </li>
+                                        <li class="store-rating">
+                                            <div class="ratings-container">
+                                                <div class="ratings-full">
+                                                    <span class="ratings" style="width: 100%;"></span>
+                                                    <span class="tooltiptext tooltip-top"></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Store -->
+                    </div>
+                    <div class="store-wrap mb-4">
+                        <div class="store store-wcmp br-sm">
+                            <figure class="store-banner">
+                                <img src="/wolmart/assets/images/vendor/wcmp/5.jpg" alt="Vendor" 
+                                    width="400" height="318" style="background-color: #27282c;" />
+                            </figure>
+                            <div class="store-content">
+                                <figure class="seller-brand">
+                                    <img src="/wolmart/assets/images/vendor/brand/5.jpg" alt="Brand" width="80" height="80" />
+                                </figure>
+                                <div class="seller-date">
+                                    <h4 class="store-title">
+                                        <a href="/single-vendor-details">Vendor 5</a>
+                                    </h4>
+                                    <ul class="seller-info-list list-style-none">
+                                        <li class="store-address">
+                                            <i class="w-icon-map-marker"></i>
+                                            <p>Fuchu, Hiroshima, Thai Nguyen,
+                                            Hiroshima, Japan,27000</p>
+                                        </li>
+                                        <li class="store-rating">
+                                            <i class="w-icon-star-full"></i>
+                                            <p>No Rating Yet</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Store -->
+                    </div>
+                    <div class="store-wrap mb-4">
+                        <div class="store store-wcmp br-sm">
+                            <figure class="store-banner">
+                                <img src="/wolmart/assets/images/vendor/wcmp/6.jpg" alt="Vendor" 
+                                    width="400" height="318" style="background-color: #a387b8;" />
+                            </figure>
+                            <div class="store-content">
+                                <figure class="seller-brand">
+                                    <img src="/wolmart/assets/images/vendor/brand/6.jpg" alt="Brand" width="80" height="80" />
+                                </figure>
+                                <div class="seller-date">
+                                    <h4 class="store-title">
+                                        <a href="/single-vendor-details">Vendor 6</a>
+                                    </h4>
+                                    <ul class="seller-info-list list-style-none">
+                                        <li class="store-address">
+                                            <i class="w-icon-map-marker"></i>
+                                            <p>848 Baker Rd, Huntsville, AL 35803,
+                                            Minato, Tokyo, Japan, 12000</p>
+                                        </li>
+                                        <li class="store-rating">
+                                            <i class="w-icon-star-full"></i>
+                                            <p>No Rating Yet</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Store -->
+                    </div>
+                </div>
+                <!-- End of Vendor Store -->
+            </div>
+        </div>
+
+       
+        <!-- End of Banner Product Wrapper -->
+
+        <div class="banner br-sm banner-electronics appear-animate" style="background-image: url(/wolmart/assets/images/demos/demo2/banners/3.jpg);
+            background-color: #333;">
+            <div class="banner-content mr-10 pr-1">
+                <div class="banner-price-info text-white font-weight-normal ls-25">
+                    Save Big on <span class="font-weight-bolder text-secondary text-uppercase">50% Off</span>
+                </div>
+                <h3 class="banner-title text-white mb-0 ls-25">Cameras and Leans Sale</h3>
+            </div>
+            <a href="shop-banner-sidebar.html" class="btn btn-white btn-rounded btn-icon-right mt-1">Shop Now<i
+                    class="w-icon-long-arrow-right"></i></a>
+        </div>
+        <!-- End of Banner -->
+
+
+
+
+        
+
+
+
+			 <% for(i=0;i<result[4].length;i++){%>
+
+
+        <div class="title-link-wrapper mb-2 appear-animate">
+            <h2 class="title"><%=result[4][i].name%></h2>
+            <!-- <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">More Products<i
+                    class="w-icon-long-arrow-right"></i></a> -->
+        </div>
+
+    <% const filteredData = result[3].filter(item => item.textname == result[4][i].name) %>
+
+
+
+        <div class="owl-carousel owl-theme top-products row cols-lg-5 cols-md-4 cols-sm-3 cols-2 mb-6 appear-animate"
+            data-owl-options="{
+            'nav': false,
+            'dots': true,
+            'margin': 20,
+            'responsive': {
+                '0': {
+                    'items': 2
+                },
+                '576': {
+                    'items': 3
+                },
+                '768': {
+                    'items': 4
+                },
+                '992': {
+                    'items': 5
+                }
+            }
+        }">
+          
+        <% for(j=0;j<filteredData.length;j++){ %>
+        
+        <div class="product-wrap">
+                <div class="product text-center">
+                    <figure class="product-media">
+                        <a href="/product?id=<%=filteredData[j].productid%>">
+                            <img src="/images/<%=filteredData[j].productimage%>" alt="Product" width="300"
+                                height="338">
+                          
+                        </a>
+                       
+                       
+                       
+                    </figure>
+                    <div class="product-details">
+                        <h4 class="product-name"><a href="/product?id=<%=filteredData[j].productid%>"><%=filteredData[j].productname%></a></h4>
+                        <div class="ratings-container">
+                            
+                        </div>
+                        <div class="product-price">
+                            <ins class="new-price">Rs.<%=filteredData[j].productnetamount%></ins>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <% } %>
+        </div>
+
+       
+
+<% } %>
+        
+        <!-- End of Owl Carousel -->
+
+       
+        <!-- End of Owl Carousel -->
+
+        
+        <!-- End of Brands Wrapper -->
+
+     
+    </div>
+    <!-- End of Container -->
+</main>
+<!-- End of Main -->
 
 <%- include ('./footer.ejs') %>
-  
+

@@ -20,17 +20,13 @@ router.get('/', function(req, res, next) {
    (select p.categoryid from products p where p.id = productid) as productcategoryid,
    (select p.subcategoryid from products p where p.id = productid) as productsubcategoryid,
    (select p.net_amount from products p where p.id = productid) as productnetamount
-   
-     FROM
-      (SELECT *,
-                    ROW_NUMBER() OVER (PARTITION BY bannerid ORDER BY id DESC) as country_rank
-        FROM promotional_text_management p) ranked
-     WHERE country_rank <= 5 order by bannerid desc , productquantity desc;`
+        FROM promotional_text_management p;`
    var query3 = `select * from promotional_text order by id desc;`
    var query4 = `select * from cart where usernumber = '${req.session.number}';`
    var query5 = `select * from banner where type = 'Bottom Banner' order by id desc;`
+   var query6 = `select * from subcategory order by name ;`
  
-   pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
+   pool.query(query+query6+query1+query2+query3+query4+query5,(err,result)=>{
      if(err) throw err;
      else  res.render('index', { title: 'Express',result,login:true });
    })
@@ -47,18 +43,16 @@ router.get('/', function(req, res, next) {
    (select p.categoryid from products p where p.id = productid) as productcategoryid,
    (select p.subcategoryid from products p where p.id = productid) as productsubcategoryid,
    (select p.net_amount from products p where p.id = productid) as productnetamount
-   
-     FROM
-      (SELECT *,
-                    ROW_NUMBER() OVER (PARTITION BY bannerid ORDER BY id DESC) as country_rank
-        FROM promotional_text_management p) ranked
-     WHERE country_rank <= 5 order by bannerid desc , productquantity desc;`
+        FROM promotional_text_management p;`
    var query3 = `select * from promotional_text order by id desc;`
    var query4 = `select * from cart where usernumber = '${req.session.number}';`
    var query5 = `select * from banner where type = 'Bottom Banner' order by id desc;`
-   pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
+   var query6 = `select * from subcategory order by name ;`
+
+   pool.query(query+query6+query1+query2+query3+query4+query5,(err,result)=>{
      if(err) throw err;
      else  res.render('index', { title: 'Express',result,login:false });
+    // else res.json(result[3])
    })
   }
  
@@ -861,25 +855,28 @@ router.get('/shop',(req,res)=>{
   var query1 = `select * from products where categoryid = '${req.query.categoryid}';`
   pool.query(query+query1,(err,result)=>{
     if(err) throw err;
-    else  res.render('shop',{result:result})
+    else  res.render('shop',{result:result.log})
   })
  
 })
 
 
 
-router.get('/search',(req,res)=>{
-  var query = `select * from category order by id desc;`
-  var query1 = `select * from products where keyword Like '%${req.query.search}%';`
-  pool.query(query+query1,(err,result)=>{
-    if(err) throw err;
-    else if(result[1][0]){
-      res.render('shop',{result:result})
-    }
-    else res.send('no')
-  })
+// router.get('/search',(req,res)=>{
+//   var query = `select * from category order by id desc;`
+//   var query1 = `select * from products where keyword Like '%${req.query.search}%';`
+//   pool.query(query+query1,(err,result)=>{
+//     if(err) throw err;
+//     else if(result[1][0]){
+//       res.render('shop',{result:result})
+//     }
+//     else res.send('no')
+//   })
  
-})
+// })
+
+
+
 
 
 
@@ -1028,7 +1025,7 @@ router.get('/wishlist',(req,res)=>{
     from wishlist t where usernumber = '${req.session.usernumber}';`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('wishlist',{result})
+      else res.render('wishlist',{result ,login:true})
     })
   }
  
@@ -1148,5 +1145,46 @@ else{
 
 //         $this->addDownline($newID, $userId);
 //     }
+
+
+
+
+
+
+router.get('/shop-by-category',(req,res)=>{
+  if(req.session.usernumber){
+res.render('allshop',{login:true})
+  }
+  else{
+    res.render('allshop',{login:false})
+
+  }
+})
+
+
+router.get('/search',(req,res)=>{
+  if(req.session.usernumber){
+res.render('allshop',{login:true})
+  }
+  else{
+    res.render('allshop',{login:false})
+
+  }
+})
+
+
+
+router.get('/single-vendor-details',(req,res)=>{
+  if(req.session.usernumber){
+res.render('single-vendor-details',{login:true})
+  }
+  else{
+    res.render('single-vendor-details',{login:false})
+
+  }
+})
+
+
+
 
 module.exports = router;

@@ -1,34 +1,8 @@
 <!DOCTYPE html>
-
-<style>
-    #customers {
-      font-family: Arial, Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    #customers td, #customers th {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    
-    #customers tr:nth-child(even){background-color: #f2f2f2;}
-    
-    #customers tr:hover {background-color: #ddd;}
-    
-    #customers th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #04AA6D;
-      color: white;
-    }
-    </style>
-
 <html lang="en">
 
 
-<!-- Mirrored from portotheme.com/html/wolmart/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:20:01 GMT -->
+<!-- Mirrored from portotheme.com/html/wolmart/vendor-wcmp-store-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:19:37 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -59,21 +33,27 @@
         crossorigin="anonymous">
     <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2"
         crossorigin="anonymous">
-    <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2"
-            crossorigin="anonymous">
-    <link rel="preload" href="/wolmart/assets/fonts/wolmart87d5.ttf?png09e" as="font" type="font/ttf" crossorigin="anonymous">
 
     <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../www.portotheme.com/html/wolmart//wolmart/assets/vendor/line-awesome/css/line-awesome.min.html">
     <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/animate/animate.min.css">
 
-    <!-- Plugin CSS -->
+    <!-- preloading link
+    <link rel="preload" href="/wolmart/assets/fonts/venedor.woff" as="font" type="font/woff" crossorigin="anonymous"> -->
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/animate/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/magnific-popup/magnific-popup.min.css">
 
     <!-- Default CSS -->
     <link rel="stylesheet" type="text/css" href="/wolmart/assets/css/style.min.css">
+
 </head>
 
 <body>
+    <!-- Start of Page Wrapper -->
     <div class="page-wrapper">
         <!-- Start of Header -->
         <header class="header header-border">
@@ -148,233 +128,234 @@
         </header>
         <!-- End of Header -->
 
+
         <!-- Start of Main -->
-        <main class="main checkout">
+        <main class="main">
             <!-- Start of Breadcrumb -->
             <nav class="breadcrumb-nav">
                 <div class="container">
-                    <ul class="breadcrumb shop-breadcrumb bb-no">
-                        <li class="passed"><a href="cart.html">Shopping Cart</a></li>
-                        <li class="active"><a href="checkout.html">Checkout</a></li>
-                        <li><a href="order.html">Order Complete</a></li>
-                    </ul>
+                   
                 </div>
             </nav>
             <!-- End of Breadcrumb -->
 
-
-            <!-- Start of PageContent -->
-            <div class="page-content">
+            <!-- Start of Pgae Contetn -->
+            <div class="page-content mb-8" style="margin-top: 20px;">
                 <div class="container">
-                
-                    <h4>Saved Address</h4>
+                    <!-- Start of Vendor Map -->
                   
-<div class="row">
-    <div class="col-lg-8 col-md-12">
-						
-        <div class="table-responsive mb-3">
-            <table id="customers" class="table table-bordered table-sm table-hover mb-0" style="border: #9F9888;">
-              
-                <tbody>
+                    <!-- End of Vendor Map -->
 
-          <% for(i=0;i<result[3].length;i++) { %>
+                    <!-- Start of Vendor Filter -->
+                    
+                    <!-- End of Vendor Filter -->
 
-                    <tr>
-                        
-                        <td>
-                            <div class="radio">
-                                <input   class="custom-control-input saved_address" 
-                                username = '<%=result[3][i].name%>'
-                                state = '<%=result[3][i].state%>'
-                                city = '<%=result[3][i].city%>'
-                                pincode = '<%=result[3][i].pincode%>'
-                                landmark = '<%=result[3][i].landmark%>'
-                                area = '<%=result[3][i].area%>'
-                                email = '<%=result[3][i].email%>'
-                                 id="<%=result[3][i].id%>" type="radio"
-                                 name="oldaddress"
-                                 >
-                                <label class="custom-control-label text-body text-nowrap" for="<%=result[3][i].id%>"><%=result[3][i].name%></label>
+                    <!-- Start of Vendor Store -->
+                    <div class="row cols-lg-3 cols-sm-2">
+                        <div class="store-wrap mb-4">
+                            <div class="store store-wcmp br-sm">
+                                <figure class="store-banner">
+                                    <img src="/wolmart/assets/images/vendor/wcmp/1.jpg" alt="Vendor" 
+                                        width="400" height="318" style="background-color: #454b63;" />
+                                </figure>
+                                <div class="store-content">
+                                    <figure class="seller-brand">
+                                        <img src="/wolmart/assets/images/vendor/brand/1.jpg" alt="Brand" width="80" height="80" />
+                                    </figure>
+                                    <div class="seller-date">
+                                        <h4 class="store-title">
+                                            <a href="/single-vendor-details">Vendor 1</a>
+                                        </h4>
+                                        <ul class="seller-info-list list-style-none">
+                                            <li class="store-address">
+                                                <i class="w-icon-map-marker"></i>
+                                                <p>287 cherry Hill Ave. South El 
+                                                Monte, CA 91733, Aland lslands</p>
+                                            </li>
+                                            <li class="store-rating">
+                                                <div class="ratings-container">
+                                                    <div class="ratings-full">
+                                                        <span class="ratings" style="width: 100%;"></span>
+                                                        <span class="tooltiptext tooltip-top"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </td>
-                        <td><%=result[3][i].area%> , <%=result[3][i].landmark%>  , <%=result[3][i].state%> ,  <%=result[3][i].pincode%></td>
-                    
-                    </tr>
-                
-                    <% } %>
-                
-                </tbody>
-            </table>
-        </div>
-</div>
-
-                    
-                    <div class="coupon-toggle">
-                        Have a coupon? <a href="#"
-                            class="show-coupon font-weight-bold text-uppercase text-dark">Enter your
-                            code</a>
-                    </div>
-                    <div class="coupon-content mb-4">
-                        <p>If you have a coupon code, please apply it below.</p>
-                        <div class="input-wrapper-inline">
-                            <input type="text" name="coupon_code" class="form-control form-control-md mr-1 mb-2" placeholder="Coupon code" id="coupon_code">
-                            <button type="submit" class="btn button btn-rounded btn-coupon mb-2" name="apply_coupon" value="Apply coupon">Apply Coupon</button>
+                            <!-- End of Store -->
+                        </div>
+                        <div class="store-wrap mb-4">
+                            <div class="store store-wcmp br-sm">
+                                <figure class="store-banner">
+                                    <img src="/wolmart/assets/images/vendor/wcmp/2.jpg" alt="Vendor" 
+                                        width="400" height="318" style="background-color: #6a6867;" />
+                                </figure>
+                                <div class="store-content">
+                                    <figure class="seller-brand">
+                                        <img src="/wolmart/assets/images/vendor/brand/2.jpg" alt="Brand" width="80" height="80" />
+                                    </figure>
+                                    <div class="seller-date">
+                                        <h4 class="store-title">
+                                            <a href="/single-vendor-details">Vendor 2</a>
+                                        </h4>
+                                        <ul class="seller-info-list list-style-none">
+                                            <li class="store-address">
+                                                <i class="w-icon-map-marker"></i>
+                                                <p>Fuchu, Hiroshima, Thai Nguyen,
+                                                Hiroshima, Japan,27000</p>
+                                            </li>
+                                            <li class="store-rating">
+                                                <i class="w-icon-star-full"></i>
+                                                <p>No Rating Yet</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of Store -->
+                        </div>
+                        <div class="store-wrap mb-4">
+                            <div class="store store-wcmp br-sm">
+                                <figure class="store-banner">
+                                    <img src="/wolmart/assets/images/vendor/wcmp/3.jpg" alt="Vendor" 
+                                        width="400" height="318" style="background-color: #5a5958;" />
+                                </figure>
+                                <div class="store-content">
+                                    <figure class="seller-brand">
+                                        <img src="/wolmart/assets/images/vendor/brand/3.jpg" alt="Brand" width="80" height="80" />
+                                    </figure>
+                                    <div class="seller-date">
+                                        <h4 class="store-title">
+                                            <a href="/single-vendor-details">Vendor 3</a>
+                                        </h4>
+                                        <ul class="seller-info-list list-style-none">
+                                            <li class="store-address">
+                                                <i class="w-icon-map-marker"></i>
+                                                <p>848 Baker Rd, Huntsville, AL 35803,
+                                                Minato, Tokyo, Japan, 12000</p>
+                                            </li>
+                                            <li class="store-rating">
+                                                <div class="ratings-container">
+                                                    <div class="ratings-full">
+                                                        <span class="ratings" style="width: 100%;"></span>
+                                                        <span class="tooltiptext tooltip-top"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of Store -->
+                        </div>
+                        <div class="store-wrap mb-4">
+                            <div class="store store-wcmp br-sm">
+                                <figure class="store-banner">
+                                    <img src="/wolmart/assets/images/vendor/wcmp/4.jpg" alt="Vendor" 
+                                        width="400" height="318" style="background-color: #585e65;" />
+                                </figure>
+                                <div class="store-content">
+                                    <figure class="seller-brand">
+                                        <img src="/wolmart/assets/images/vendor/brand/4.jpg" alt="Brand" width="80" height="80" />
+                                    </figure>
+                                    <div class="seller-date">
+                                        <h4 class="store-title">
+                                            <a href="/single-vendor-details">Vendor 4</a>
+                                        </h4>
+                                        <ul class="seller-info-list list-style-none">
+                                            <li class="store-address">
+                                                <i class="w-icon-map-marker"></i>
+                                                <p>908 New Hampshire Avenue #100,
+                                                Washington, United States</p>
+                                            </li>
+                                            <li class="store-rating">
+                                                <div class="ratings-container">
+                                                    <div class="ratings-full">
+                                                        <span class="ratings" style="width: 100%;"></span>
+                                                        <span class="tooltiptext tooltip-top"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of Store -->
+                        </div>
+                        <div class="store-wrap mb-4">
+                            <div class="store store-wcmp br-sm">
+                                <figure class="store-banner">
+                                    <img src="/wolmart/assets/images/vendor/wcmp/5.jpg" alt="Vendor" 
+                                        width="400" height="318" style="background-color: #27282c;" />
+                                </figure>
+                                <div class="store-content">
+                                    <figure class="seller-brand">
+                                        <img src="/wolmart/assets/images/vendor/brand/5.jpg" alt="Brand" width="80" height="80" />
+                                    </figure>
+                                    <div class="seller-date">
+                                        <h4 class="store-title">
+                                            <a href="/single-vendor-details">Vendor 5</a>
+                                        </h4>
+                                        <ul class="seller-info-list list-style-none">
+                                            <li class="store-address">
+                                                <i class="w-icon-map-marker"></i>
+                                                <p>Fuchu, Hiroshima, Thai Nguyen,
+                                                Hiroshima, Japan,27000</p>
+                                            </li>
+                                            <li class="store-rating">
+                                                <i class="w-icon-star-full"></i>
+                                                <p>No Rating Yet</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of Store -->
+                        </div>
+                        <div class="store-wrap mb-4">
+                            <div class="store store-wcmp br-sm">
+                                <figure class="store-banner">
+                                    <img src="/wolmart/assets/images/vendor/wcmp/6.jpg" alt="Vendor" 
+                                        width="400" height="318" style="background-color: #a387b8;" />
+                                </figure>
+                                <div class="store-content">
+                                    <figure class="seller-brand">
+                                        <img src="/wolmart/assets/images/vendor/brand/6.jpg" alt="Brand" width="80" height="80" />
+                                    </figure>
+                                    <div class="seller-date">
+                                        <h4 class="store-title">
+                                            <a href="/single-vendor-details">Vendor 6</a>
+                                        </h4>
+                                        <ul class="seller-info-list list-style-none">
+                                            <li class="store-address">
+                                                <i class="w-icon-map-marker"></i>
+                                                <p>848 Baker Rd, Huntsville, AL 35803,
+                                                Minato, Tokyo, Japan, 12000</p>
+                                            </li>
+                                            <li class="store-rating">
+                                                <i class="w-icon-star-full"></i>
+                                                <p>No Rating Yet</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of Store -->
                         </div>
                     </div>
-                    <!-- <form action='/order-now' method='post'> -->
-                    <form class="form checkout-form"action='/order-now' method="post">
-                        <div class="row mb-9">
-                            <div class="col-lg-7 pr-lg-4 mb-4">
-                                <h3 class="title billing-title text-uppercase ls-10 pt-1 pb-3 mb-0">
-                                    Billing Details
-                                </h3>
-                                <div class="row gutter-sm">
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label>Full name *</label>
-                                            <input  class="form-control form-control-md" id="checkoutBillingFirstName" name="first_name" type="text" value="<%=result[4][0].name%>" placeholder="First Name" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="form-group">
-                                            <label>Email Address *</label>
-                                            <input class="form-control form-control-md" id="checkoutBillingEmail" name="email" type="email" placeholder="Email" value="<%=result[4][0].email%>" required="">
-                                        </div>
-                                    </div>
-                                </div>
-                              
-                                <div class="form-group">
-                                    <label>Street address *</label>
-                                    <input  placeholder="House number and street name"
-                                        class="form-control form-control-md mb-2" id="checkoutBillingAddress" name="address1" type="text"required>  
-
-
-                                    <input placeholder="Apartment, suite, unit, etc. (optional)"
-                                        class="form-control form-control-md" id="checkoutBillingAddressTwo" name="address2" type="text"   required>
-                                </div>
-                                <div class="row gutter-sm">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Town / City *</label>
-                                            <input class="form-control form-control-md" id="checkoutBillingTown" name="city" type="text" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>ZIP *</label>
-                                            <input type="text" class="form-control form-control-md" name='pincode' id="pincode" required>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>State *</label>
-                                              <input class="form-control form-control-sm" id="checkoutBillingState" name="state" type="text" placeholder="State" required="">
-   </div>
-   <div class="form-group">
-    <label>Alternate Mobile Number (Optional)</label>
-      <input class="form-control form-control-sm" id="alternate_number" name="alternate_number" type="text"  >
-</div>
-                                      
-                                    </div>
-                                </div>
-                              
-                               
-
-                                
-                            </div>
-                            <div class="col-lg-5 mb-4 sticky-sidebar-wrapper">
-                                <div class="order-summary-wrapper sticky-sidebar">
-                                    <h3 class="title text-uppercase ls-10">Your Order</h3>
-                                    <div class="order-summary">
-                                        <table class="order-table">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="2">
-                                                        <b>Product</b>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                               
-                                                <tr class="cart-subtotal bb-no">
-                                                    <td>
-                                                        <b>Subtotal</b>
-                                                    </td>
-                                                    <td>
-                                                        <b>Rs. <%=result[2][0].totalprice%></b>
-                                                    </td>
-                                                </tr>
-                                                <tr class="cart-subtotal bb-no">
-                                                    <td>
-                                                        <b>Shipping Charges</b>
-                                                    </td>
-                                                    <td>
-                                                        <b>Rs. <%=shipping_charges%></b>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                              
-                                                <tr class="order-total">
-                                                    <th>
-                                                        <b>Total</b>
-                                                    </th>
-                                                    <td>
-                                                        <b>Rs. <%=result[2][0].totalprice + shipping_charges%></b>
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-
-                                        <h4 class="mb-3">Payment</h4>
-
-                                        <!-- List group -->
-                                        <div class="list-group list-group-sm mb-5">
-                                            <div class="list-group-item">
-                                                <!-- Radio -->
-                                                <div class="custom-control custom-radio">
-                                                    <!-- Input -->
-                                                    <input class="custom-control-input" id="checkoutPaymentCard" name="payment_mode" value="online" type="radio" >
-                                                    <!-- Label -->
-                                                    <label class="custom-control-label font-size-sm text-body text-nowrap" for="checkoutPaymentCard">Pay Online <img class="ml-2" src="assets/img/card.png" alt="..."></label>
-                                                </div>
-                                            </div>
-        
-        
-        
-        
-                                          
-        
-                                            
-                                            <div class="list-group-item">
-                                                <!-- Radio -->
-                                                <div class="custom-control custom-radio">
-                                                    <!-- Input -->
-                                                    <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment_mode" value="cash" type="radio" required data-toggle="collapse" data-action="hide" data-target="#checkoutPaymentCardCollapse">
-                                                    <!-- Label -->
-                                                    <label class="custom-control-label font-size-sm text-body text-nowrap" for="checkoutPaymentPaypal">Cash On Delivery</label>
-                                                </div>
-                                            </div>
-                                            
-                                        
-                                            
-                                        </div>
-
-                                        <div class="form-group place-order pt-6">
-                                            <button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <!-- End of Vendor Store -->
                 </div>
             </div>
-            <!-- End of PageContent -->
+            <!-- End of Page Content -->
         </main>
         <!-- End of Main -->
 
         <!-- Start of Footer -->
-        <footer class="footer">
+        <footer class="footer appear-animate" data-animation-options="{
+            'name': 'fadeIn'
+        }">
             <div class="footer-newsletter bg-primary pt-6 pb-6">
                 <div class="container">
                     <div class="row justify-content-center align-items-center">
@@ -393,7 +374,7 @@
                             <form action="#" method="get" class="input-wrapper input-wrapper-inline input-wrapper-rounded">
                                 <input type="email" class="form-control mr-2 bg-white" name="email" id="email"
                                     placeholder="Your E-mail Address" />
-                            <button class="btn btn-dark btn-rounded" type="submit">Subscribe<i
+                                <button class="btn btn-dark btn-rounded" type="submit">Subscribe<i
                                     class="w-icon-long-arrow-right"></i></button>
                             </form>
                         </div>
@@ -654,7 +635,7 @@
         </div>
     </div>
     <!-- End of Sticky Footer -->
-    
+
     <!-- Start of Scroll Top -->
     <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="fas fa-chevron-up"></i></a>
     <!-- End of Scroll Top -->
@@ -1121,81 +1102,66 @@
 
     <!-- Plugin JS File -->
     <script src="/wolmart/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/wolmart/assets/vendor/sticky/sticky.min.js"></script>
+    <script src="/wolmart/assets/vendor/jquery.plugin/jquery.plugin.min.js"></script>
+    <script src="/wolmart/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="/wolmart/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/wolmart/assets/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+
+    <!-- Main JS -->
     <script src="/wolmart/assets/js/main.min.js"></script>
-</body>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+    <script>
 
+        /*
+        Map Settings
 
-<script>
-    
+            Find the Latitude and Longitude of your address:
+                - https://www.latlong.net/
+                - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
 
-    $.getJSON(`/api/time`, data => {
-        categories1 = data
-        fillDropDown('time', data, 'Choose Time Slot', 0)
-      
-    })
-    
-    
-    $.getJSON(`/api/pincode`, data => {
-        pincode = data
-        fillDropDown1('pincode', data, 'Choose Time Slot', 0)
-      
-    })
-    
-    
-    function fillDropDown(id, data, label, selectedid = 0) {
-        $(`#${id}`).empty()
-        // $(`#${id}`).append($('<option>').val("null").text(label))
-    
-        $.each(data, (i, item) => {
-            if (item.id == selectedid) {
-                $(`#${id}`).append($('<option selected>').val(`${item.date} at ${item.time}`).text(`${item.date} at ${item.time}`))
-            } else {
-                $(`#${id}`).append($('<option>').val(`${item.date} at ${item.time}`).text(`${item.date} at ${item.time}`))
-            }
-        })
-    }
-    
-    
-    
-    
-    function fillDropDown1(id, data, label, selectedid = 0) {
-        $(`#${id}`).empty()
-        // $(`#${id}`).append($('<option>').val("null").text(label))
-    
-        $.each(data, (i, item) => {
-            if (item.id == selectedid) {
-                $(`#${id}`).append($('<option selected>').val(`${item.area} - ${item.name}`).text(`${item.area} - ${item.name}`))
-            } else {
-                $(`#${id}`).append($('<option>').val(`${item.area} - ${item.name}`).text(`${item.area} - ${item.name}`))
-            }
-        })
-    }
-    
-    
-    $('.saved_address').click(function(){
-        let username = $(this).attr('username')
-        let state = $(this).attr('state')
-        let city = $(this).attr('city')
-        let pincode = $(this).attr('pincode')
-        let area = $(this).attr('area')
-        let landmark = $(this).attr('landmark')
-        let email = $(this).attr('email')
-    
-    
-        $('#checkoutBillingFirstName').val(username)
-        $('#checkoutBillingAddress').val(area)
-        $('#checkoutBillingAddressTwo').val(landmark)
-        $('#checkoutBillingTown').val(city)
-        $('#checkoutBillingState').val(state)
-        $('#pincode').val(pincode)
-        $('#checkoutBillingEmail').val(email)
-    
-    })
-    
+        */
+
+        // Map Markers
+        var mapMarkers = [ {
+            address: "New York, NY 10017",
+            html: "<strong>New York Office<\/strong><br>New York, NY 10017",
+            popup: true
+        } ];
+
+        // Map Initial Location
+        var initLatitude = 40.75198;
+        var initLongitude = -73.96978;
+
+        // Map Extended Settings
+        var mapSettings = {
+            controls: {
+                draggable: !window.Wolmart.isMobile,
+                panControl: true,
+                zoomControl: true,
+                mapTypeControl: true,
+                scaleControl: true,
+                streetViewControl: true,
+                overviewMapControl: true
+            },
+            scrollwheel: false,
+            markers: mapMarkers,
+            latitude: initLatitude,
+            longitude: initLongitude,
+            zoom: 11
+        };
+
+        var map = $( '#googlemaps' ).gMap( mapSettings );
+
+        // Map text-center At
+        var mapCenterAt = function ( options, e ) {
+            e.preventDefault();
+            $( '#googlemaps' ).gMap( "centerAt", options );
+        }
+
     </script>
 
-<!-- Mirrored from portotheme.com/html/wolmart/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:20:01 GMT -->
+</body>
+
+<!-- Mirrored from portotheme.com/html/wolmart/vendor-wcmp-store-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:19:42 GMT -->
 </html>

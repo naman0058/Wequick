@@ -1385,5 +1385,18 @@ router.post('/update-merchant', (req, res) => {
 
 
 
+router.post('/check-bde-code',(req,res)=>{
+  pool.query(`select * from agent where userid = '${req.body.agent_id}'`,(err,result)=>{
+    if(err) throw err;
+    else if(result[0]){
+      res.json({msg:'success'})
+    }
+    else{
+      res.json({msg:'invalid'})
+    }
+  })
+})
+
+
 
 module.exports = router;

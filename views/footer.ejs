@@ -176,14 +176,13 @@
                     <li>
                         <a href="/shop-by-category?categoryid=13"><%=result[0][i].name%></a>
                         <ul>
-
-                            <li>
+                    <li>
                                
-                                <ul>
+                        <ul>
                                     <% const filteredData = result[1].filter(item => item.categoryid == result[0][i].id) %>
                                     <% for(j=0;j<filteredData.length;j++){ %>
                                 
-                                        <li><a href="/shop-by-category?categoryid=<%=result[0][i].id%>"><%=filteredData[j].name%></a></li>
+                            <li><a href="/shop-by-category?categoryid=<%=result[0][i].id%>"><%=filteredData[j].name%></a></li>
 
                                     <% } %>
                                 </ul>

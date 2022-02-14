@@ -1401,7 +1401,7 @@ router.post('/check-bde-code',(req,res)=>{
 
 
 router.get('/get-details-dynamic',(req,res)=>{
-  pool.query(`select * from details order by id desc'`,(err,result)=>{
+  pool.query(`select * from details order by id desc`,(err,result)=>{
     if(err) throw err;
     else res.json(result);
   })

@@ -100,12 +100,12 @@
                                                
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Deals Code</label>
-                                                    <input type="text" class="form-control" name="name" placeholder="Deals Code">
+                                                    <input type="text" class="form-control" name="name" placeholder="Deals Code" required>
                                                 </div>
                                                 
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Type</label>
-                                                    <select class="form-control" name="type">
+                                                    <select class="form-control" name="type" required>
                                                         <option value="flat">Flat</option>
                                                         <option value="percentage">Percentage</option>
 
@@ -115,7 +115,7 @@
 
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Minimum Order Price</label>
-                                                    <input type="text" class="form-control" name="minimum_price" placeholder="Minimum Order Price">
+                                                    <input type="text" class="form-control" name="minimum_price" placeholder="Minimum Order Price" required>
 
                                                 </div>
                                               
@@ -129,20 +129,20 @@
                                             <div class="row" style="margin-top: 20px;">
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Short Description </label>
-                                                  <input type="text" name="short_description" placeholder="Short Description" class="form-control">
+                                                  <input type="text" name="short_description" placeholder="Short Description" class="form-control" required>
                                                 </div>
 
 
 
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Maximum Cashback Price</label>
-                                                    <input type="number" class="form-control" name="maximum_cashback_price" placeholder="Product Quantity">
+                                                    <input type="number" class="form-control" name="maximum_cashback_price" placeholder="Product Quantity" required>
                                                 </div>
 
                                           
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Discount</label>
-                                                    <input type="text" class="form-control" name="discount" placeholder="Discount">
+                                                    <input type="text" class="form-control" name="discount" placeholder="Discount" required>
                                                 </div>
                                               
                                             </div>
@@ -155,12 +155,12 @@
 
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Deals Image</label>
-                                                    <input type="file" class="form-control" name="image" placeholder="State">
+                                                    <input type="file" class="form-control" name="image" placeholder="State" required>
                                                 </div>
 
                                                 <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
                                                     <label>Expiry</label>
-                                                    <input type="date" class="form-control" name="expiry" placeholder="State">
+                                                    <input type="date" class="form-control" name="expiry" placeholder="State" required>
                                                 </div>
 
                                                 
@@ -210,7 +210,7 @@
                                                         <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'undo', null)"><i class="fa fa-undo"></i></a>         
                                                       </div>
                                                       
-                                                      <div id="editor"   contenteditable="true"></div>
+                                                      <div id="editor"   contenteditable="true" required></div>
                                                       <!-- <textarea  id="messageText" type="hidden" name = 'description' ></textarea> -->
                                                       
                                                       <!-- <div class="row">

@@ -23,7 +23,6 @@ router.post('/insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'th
         let price = ((req.body.price)*(req.body.discount))/100
         let net_price = (req.body.price)-price
         body['net_amount'] = Math.round(net_price);
-        body['categoryid'] = req.session.categoryid;
     }
 
     body['image'] = req.files.image[0].filename;

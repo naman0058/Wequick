@@ -91,7 +91,7 @@ table+=`<tr>
     
 <td>${item.name}</td>
 <td>${item.type}</td>
-<td>${item.mimimum_price}</td>
+<td>${item.minimum_price}</td>
 <td>${item.maximum_cashback_price}</td>
 <td>${item.discount}</td>
 <td>${item.expiry}</td>

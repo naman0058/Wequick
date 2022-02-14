@@ -1,6 +1,5 @@
 <%- include ('./Header.ejs') %>
 
-
 <style>
 
     body {
@@ -105,18 +104,18 @@
 <input type="hidden" name="categoryid" id="categoryid" value="<%=categoryid%>">
 
 
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>Category Name</label>
-                                                   <select class="form-control" id="subcategoryid" name="subcategoryid"></select>
+                                                   <select class="form-control" id="subcategoryid" name="subcategoryid" required></select>
 
                                                 </div>
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>Brand Name</label>
-                                                   <select class="form-control" id="brandid" name="brandid"></select>
+                                                   <select class="form-control" id="brandid" name="brandid" required></select>
                                                 </div>
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>Product Name</label>
-                                                    <input type="text" class="form-control" name="name" placeholder="Product Name">
+                                                    <input type="text" class="form-control" name="name" placeholder="Product Name" required>
                                                 </div>
                                                 
                                               
@@ -124,13 +123,13 @@
 
 
                                             <div class="row" style="margin-top: 20px;">
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>MRP Price</label>
-                                                    <input type="number" class="form-control" name="price" placeholder="Product Price">
+                                                    <input type="number" class="form-control" name="price" placeholder="Product Price" required>
                                                 </div>
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>Discount</label>
-                                                    <input type="number" class="form-control" name="discount" placeholder="Discount">
+                                                    <input type="number" class="form-control" name="discount" placeholder="Discount" required>
                                                 </div>
 
                                                
@@ -147,7 +146,7 @@
 
                                                 <div class="col-12">
                                                     <label>Quantity</label>
-                                                    <input type="number" class="form-control" name="quantity" placeholder="Product Quantity">
+                                                    <input type="number" class="form-control" name="quantity" placeholder="Product Quantity" required>
                                                 </div>
 
                                               
@@ -159,15 +158,15 @@
 
 
                                             <div class="row" style="margin-top: 20px;">
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>Small Description</label>
-                                                   <textarea class="form-control" name="small_description" placeholder="Prdocut Description (Small Description)"></textarea>
+                                                   <textarea class="form-control" name="small_description" placeholder="Prdocut Description (Small Description)" required></textarea>
                                                 </div>
 
 
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
-                                                    <label>Description</label>
-                                                   <textarea class="form-control" name="keyword" placeholder="Keywords"></textarea>
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
+                                                    <label>Keywords</label>
+                                                   <textarea class="form-control" name="keyword" placeholder="Keywords" required></textarea>
                                                 </div>
 
                                               
@@ -179,13 +178,13 @@
 
                                            
                                             <div class="row" style="margin-top: 20px;">
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>Product Thumbnail</label>
-                                                    <input type="file" class="form-control" name="thumbnail" placeholder="Category Name">
+                                                    <input type="file" class="form-control" name="thumbnail" placeholder="Category Name" required>
                                                 </div>
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                     <label>Product Image</label>
-                                                    <input type="file" class="form-control" name="image" placeholder="State">
+                                                    <input type="file" class="form-control" name="image" placeholder="State" required>
                                                 </div>
                                                 
                                               
@@ -236,7 +235,7 @@
                                                         <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'undo', null)"><i class="fa fa-undo"></i></a>         
                                                       </div>
                                                       
-                                                      <div id="editor"   contenteditable="true"></div>
+                                                      <div id="editor"   contenteditable="true" ></div>
                                                       <!-- <textarea  id="messageText" type="hidden" name = 'description' ></textarea> -->
                                                       
                                                       <!-- <div class="row">
@@ -293,15 +292,15 @@
                                               <div class="basic-form">
                                                          <div class="row">
                                                            <input type="hidden" id="pid">
-                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                               <label>Category Name</label>
                                                              <select class="form-control" id="psubcategoryid" name="subcategoryid"></select>
                                                           </div>
-                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                               <label>Brand Name</label>
                                                              <select class="form-control" id="pbrandid" name="brandid"></select>
                                                           </div>
-                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                               <label>Product Name</label>
                                                               <input type="text" class="form-control" id="pname" placeholder="Product Name">
                                                           </div>
@@ -311,11 +310,11 @@
           
           
                                                       <div class="row" style="margin-top: 20px;">
-                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                               <label>MRP Price</label>
                                                               <input type="number" class="form-control" id="pprice" placeholder="Product Price">
                                                           </div>
-                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                               <label>Discount</label>
                                                               <input type="number" class="form-control" id="pdiscount" placeholder="Discount">
                                                           </div>
@@ -347,13 +346,13 @@
           
           
                                                       <div class="row" style="margin-top: 20px;">
-                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                               <label>Small Description</label>
                                                              <textarea class="form-control" id="psmall_description" placeholder="Prdocut Description (Small Description)"></textarea>
                                                           </div>
           
           
-                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                          <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12" style='margin-top:10px''>
                                                               <label>Keyword</label>
                                                              <textarea class="form-control" id="pkeyword" placeholder="Keywords"></textarea>
                                                           </div>

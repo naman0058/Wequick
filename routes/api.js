@@ -1409,6 +1409,13 @@ router.get('/get-details-dynamic',(req,res)=>{
 })
 
 
+router.post('/get-vendor-product',(req,res)=>{
+  pool.query(`select * from product where vendorid = '${req.body.vendorid}'`,(err,result)=>{
+    err ? console.log(err) : res.json(result)
+  })
+})
+
+
 
 // router.get('/get-profile')
 

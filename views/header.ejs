@@ -98,20 +98,46 @@
                                 <li class="active">
                                     <a href="/">Home</a>
                                 </li>
-			 <% for(i=0;i<result[0].length;i++){%>
-                               
-                                <li>
-                                    <a href="/shop-by-category?categoryid=<%=result[0][i].id%>"><%=result[0][i].name%></a>
-                                    <ul>
-                                        <% const filteredData = result[1].filter(item => item.categoryid == result[0][i].id) %>
-                                        <% for(j=0;j<filteredData.length;j++){ %>
 
-                                        <li><a href="/shop-by-category?categoryid=<%=result[0][i].id%>"><%=filteredData[j].name%></a></li>
+                                
+
+
+                                <li>
+                                    <a href="#">Segments</a>
+                                    <ul>
+                                      
+                                        <% for(i=0;i<result[0].length;i++){%>
+
+                                        <li>
+                                            <a href="/shop-by-category?categoryid=<%=result[0][i].id%>"><%=result[0][i].name%></a>
+                                        </li>
 <% } %>
                                        
                                     </ul>
                                 </li>
-                             <% } %>  
+
+
+                                <li>
+                                    <a href="/">Exclusive Deals & Offers</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="/">Coupons</a>
+                                </li>
+
+                                <li>
+                                    <a href="/">New Release</a>
+                                </li>
+
+                                <li>
+                                    <a href="/">Our Channel Partner</a>
+                                </li>
+
+
+                              
+
+
                             </ul>
                         </nav>
                     </div>

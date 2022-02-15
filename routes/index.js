@@ -1176,10 +1176,36 @@ res.render('allshop',{login:true})
 
 router.get('/single-vendor-details',(req,res)=>{
   if(req.session.usernumber){
-res.render('single-vendor-details',{login:true})
+    var query = `select * from products where vendorid = '${req.query.vendorid}';`
+    var query1 = `select * from vendor where id = '${req.query.vendorid}';`
+    var query2 = `select * from coupon where vendorid = '${req.query.vendorid}';`
+    var query3 = `select * from deals where vendorid = '${req.query.vendorid}';`
+    var query4 = `select * from rating where vendorid = '${req.query.vendorid}';`
+
+pool.query(query+query1+query2+query3+query4,(err,result)=>{
+  if(err) throw err;
+  else {
+    res.render('single-vendor-details',{login:true,result})
+
+  }
+})
+
+
   }
   else{
-    res.render('single-vendor-details',{login:false})
+    var query = `select * from products where vendorid = '${req.query.vendorid}';`
+    var query1 = `select * from vendor where id = '${req.query.vendorid}';`
+    var query2 = `select * from coupon where vendorid = '${req.query.vendorid}';`
+    var query3 = `select * from deals where vendorid = '${req.query.vendorid}';`
+    var query4 = `select * from rating where vendorid = '${req.query.vendorid}';`
+
+pool.query(query+query1+query2+query3+query4,(err,result)=>{
+  if(err) throw err;
+  else {
+    res.render('single-vendor-details',{login:false,result})
+
+  }
+})
 
   }
 })

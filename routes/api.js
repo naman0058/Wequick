@@ -1400,6 +1400,7 @@ router.post('/check-bde-code',(req,res)=>{
 
 
 
+
 router.get('/get-details-dynamic',(req,res)=>{
   pool.query(`select * from details order by id desc`,(err,result)=>{
     if(err) throw err;
@@ -1407,5 +1408,8 @@ router.get('/get-details-dynamic',(req,res)=>{
   })
 })
 
+
+
+// router.get('/get-profile')
 
 module.exports = router;

@@ -12484,8 +12484,8 @@ body .product-popup {
 }
 
 .header-middle {
-  padding-top: 3.2rem;
-  padding-bottom: 3.2rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   color: #333;
   background: #fff;
   font-size: 1.2rem;

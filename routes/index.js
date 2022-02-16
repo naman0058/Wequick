@@ -1153,10 +1153,22 @@ else{
 
 router.get('/shop-by-category',(req,res)=>{
   if(req.session.usernumber){
-res.render('allshop',{login:true})
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('allshop',{login:true,result})
+    })
+
   }
   else{
-    res.render('allshop',{login:false})
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('allshop',{login:false,result})
+    })
+   
 
   }
 })
@@ -1178,7 +1190,11 @@ router.get('/single-vendor-details',(req,res)=>{
   if(req.session.usernumber){
     var query = `select * from products where vendorid = '${req.query.vendorid}';`
     var query1 = `select * from vendor where id = '${req.query.vendorid}';`
-    var query2 = `select * from coupon where vendorid = '${req.query.vendorid}';`
+    var query2 = `select c.* , 
+     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+     
+     from coupon c where c.vendorid = '${req.query.vendorid}';`
     var query3 = `select * from deals where vendorid = '${req.query.vendorid}';`
     var query4 = `select * from rating where vendorid = '${req.query.vendorid}';`
 
@@ -1212,5 +1228,54 @@ pool.query(query+query1+query2+query3+query4,(err,result)=>{
 
 
 
+
+router.get('/exclusive-deals-and-offers',(req,res)=>{
+  if(req.session.usernumber){
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('show_all_category',{login:true,result})
+    })
+  }
+  else{
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('show_all_category',{login:false,result})
+    })
+  }
+  
+})
+
+
+
+
+router.post('/redeem-this-code',(req,res)=>{
+  let body = req.body;
+  body['usernumber'] = req.session.usernumber;
+  body['otp'] = Math.floor(100000 + Math.random() * 9000);
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  
+  today = mm + '/' + dd + '/' + yyyy;
+
+
+
+  body['date'] = today
+
+  if(req.session.usernumber){
+  pool.query(`insert into redeem_code set ?`,body,(err,result)=>{
+    if(err) throw err;
+    else res.json({msg:'success'})
+  })
+  }
+  else{
+    res.json({msg:'failed'})
+  }
+})
 
 module.exports = router;

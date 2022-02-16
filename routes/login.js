@@ -11,7 +11,13 @@ var pool =  require('./pool');
 
 
 router.get('/',(req,res)=>{
-  res.render('login',{msg : ''})
+  var query = `select * from category;`
+  var query1 = `select * from category;`
+  pool.query(query+query1,(err,result)=>{
+    if(err) throw err;
+    else res.render('login',{msg : '',result , login:'false'})
+  })
+  
 
 })
 
@@ -42,7 +48,13 @@ pool.query(`select * from users where number = '${req.body.number}'`,(err,result
 
   }
   else {
-    res.render('login',{msg : '* Mobile Number Not Exists'})
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('login',{msg : '* Mobile Number Not Exists',result , login:'false'})
+    })
+   
   }
 })
 

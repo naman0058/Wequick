@@ -1252,6 +1252,29 @@ router.get('/exclusive-deals-and-offers',(req,res)=>{
 
 
 
+router.get('/coupons',(req,res)=>{
+  if(req.session.usernumber){
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('show_all_category',{login:true,result})
+    })
+  }
+  else{
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('show_all_category',{login:false,result})
+    })
+  }
+  
+})
+
+
+
+
 router.post('/redeem-this-code',(req,res)=>{
   let body = req.body;
   body['usernumber'] = req.session.usernumber;

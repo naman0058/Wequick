@@ -1,35 +1,13 @@
 let categories = []
 
-let table = '/admin/dashboard/store-listing/city'
-
-
-
-$.getJSON(`/api/get-state`, data => {
-    subcategories = data
-    fillDropDown('stateid',data, 'Choose State', 0)
-})
-
-
-
-function fillDropDown(id, data, label, selectedid = 0) {
-    $(`#${id}`).empty()
-    $(`#${id}`).append($('<option>').val("null").text(label))
-
-    $.each(data, (i, item) => {
-        if (item.id == selectedid) {
-            $(`#${id}`).append($('<option selected>').val(item.id).text(item.name))
-        } else {
-            $(`#${id}`).append($('<option>').val(item.id).text(item.name))
-        }
-    })
-}
+let table = '/admin/dashboard/store-listing/state'
 
 
 
 
 $('#show').click(function(){
 
-$.getJSON('/api/get-city',data=>{
+$.getJSON('/api/get-state',data=>{
     categories = data
     makeTable(data)
 })
@@ -48,10 +26,9 @@ function makeTable(categories){
 <tr>
 <th>Image</th>
 <th>Icon</th>
-<th>State Name</th>
+<th>Name</th>
 <th>Code</th>
 
-<th>Name</th>
 <th>Options</th>
 </tr>
 </thead>
@@ -65,10 +42,9 @@ table+=`<tr>
 <td>
 <img src="/images/${item.icon}" class="img-fluid img-radius wid-40" alt="" style="width:30px;height:30px">
 </td>
-<td>${item.state_name}</td>
+<td>${item.name}</td>
 <td>${item.code}</td>
 
-<td>${item.name}</td>
 <td>
 <a href="#!" class="btn btn-info btn-sm edits" id="${item.id}"><i class="feather icon-edit"></i>&nbsp;Edit </a>
 <a href="#!" class="btn btn-info btn-sm updateimage"  id="${item.id}"><i class="feather icon-edit"></i>&nbsp;Edit Image </a>
@@ -103,19 +79,13 @@ $('#result').on('click', '.deleted', function() {
 $('#result').on('click', '.edits', function() {
     const id = $(this).attr('id')
     const result = categories.find(item => item.id == id);
-    console.log('res',result)
-    fillDropDown('pstateid', subcategories, 'Choose State', result.stateid)
-
-
-
+  
     $('#editdiv').show()
     $('#result').hide()
     $('#insertdiv').hide() 
     $('#pid').val(result.id)
-
      $('#pname').val(result.name)
      $('#pcode').val(result.code)
-     $('#pname').val(result.name)
 
    
  })
@@ -135,10 +105,11 @@ $('#update').click(function(){  //data insert in database
     let updateobj = {
         id: $('#pid').val(),
         name: $('#pname').val(),
-        code : $('#pcode').val(),
-        stateid : $('#pstateid').val()
+        code : $('#pcode').val()
        
         }
+
+
 
     $.post(`${table}/update`, updateobj , function(data) {
        update()
@@ -152,7 +123,7 @@ $('#update').click(function(){  //data insert in database
 
 function refresh() 
 {
-    $.getJSON('/api/get-city',data=>{
+    $.getJSON('/api/get-state',data=>{
         makeTable(data)
     })
 }

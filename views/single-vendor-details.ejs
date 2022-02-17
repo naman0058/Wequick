@@ -145,22 +145,22 @@
                                           
                                         </nav>
                                         <div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
-                                            <% for(i=0;i<result[0].length;i++){ %>
+                                            <% for(i=0;i<result[5].length;i++){ %>
                                             <div class="product-wrap">
                                                 <div class="product product-simple text-center">
                                                     <figure class="product-media">
-                                                        <a href="/product?id=<%=result[0][i].id%>">
-                                                            <img src="/images/<%=result[0][i].thumbnail%>" alt="Product"
+                                                        <a href="/product?id=<%=result[5][i].id%>">
+                                                            <img src="/images/<%=result[5][i].thumbnail%>" alt="Product"
                                                                 width="300" height="338" />
                                                         </a>
                                                        
                                                     </figure>
                                                     <div class="product-details">
-                                                        <h4 class="product-name"><a href="/product?id=<%=result[0][i].id%>">
-                                                                <%=result[0][i].name%></a></h4>
+                                                        <h4 class="product-name"><a href="/product?id=<%=result[5][i].id%>">
+                                                                <%=result[5][i].name%></a></h4>
                                                       
                                                         <div class="product-pa-wrapper">
-                                                            <div class="product-price"><%=result[0][i].net_amount%></div>
+                                                            <div class="product-price"><%=result[5][i].net_amount%></div>
                                                             <div class="product-action">
                                                                
                                                             </div>
@@ -180,7 +180,7 @@
                                         <div class="policies-area">
 
                                             <div class="widget widget-collapsible widget-coupons">
-                                                <h3 class="widget-title"><span>Store Deals</span></h3>
+                                                <h3 class="widget-title"><span>Exclusive deals</span></h3>
                                                 <% for(i=0;i<result[3].length;i++) { %>
                                                 <div class="widget-body">
                                                     <div class="coupon">
@@ -197,7 +197,52 @@
 
 
                                             <div class="widget widget-collapsible widget-coupons">
-                                                <h3 class="widget-title"><span>Store Coupons</span></h3>
+                                                <h3 class="widget-title"><span>Deals of the Day</span></h3>
+                                                <% for(i=0;i<result[2].length;i++) { %>
+                                                <div class="widget-body">
+                                                    <div class="coupon">
+                                                        <% if(result[2][i].isredeem == null || result[2][i].isredeem == '' || result[2][i].isredeem == 'null' || result[2][i].isredeem ==[]){ %>
+                                                        XXXX - <%=result[2][i].short_description%>
+                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[2][i].id%>" code="<%=result[2][i].name%>" expiry="<%=result[2][i].expiry%>" vendorid = '<%=result[2][i].vendorid%>' style="float: right;">Redeem This Code</button>
+                                                        <% } else { %>
+                                                            <%=result[2][i].name%>    - <%=result[2][i].short_description%> - your otp is <%=result[2][i].userotp%>
+                                                            <% } %>
+                                                        <div class="coupon-tip">
+                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[2][i].maximum_cashback_price%></div>
+                                                            <div class="coupon-info-date"><%=result[2][i].expiry%></div>
+                                                            <div>Test coupon for vendor page</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } %>
+                                            </div>
+
+
+
+                                            <div class="widget widget-collapsible widget-coupons">
+                                                <h3 class="widget-title"><span>Mega Deals</span></h3>
+                                                <% for(i=0;i<result[2].length;i++) { %>
+                                                <div class="widget-body">
+                                                    <div class="coupon">
+                                                        <% if(result[2][i].isredeem == null || result[2][i].isredeem == '' || result[2][i].isredeem == 'null' || result[2][i].isredeem ==[]){ %>
+                                                        XXXX - <%=result[2][i].short_description%>
+                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[2][i].id%>" code="<%=result[2][i].name%>" expiry="<%=result[2][i].expiry%>" vendorid = '<%=result[2][i].vendorid%>' style="float: right;">Redeem This Code</button>
+                                                        <% } else { %>
+                                                            <%=result[2][i].name%>    - <%=result[2][i].short_description%> - your otp is <%=result[2][i].userotp%>
+                                                            <% } %>
+                                                        <div class="coupon-tip">
+                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[2][i].maximum_cashback_price%></div>
+                                                            <div class="coupon-info-date"><%=result[2][i].expiry%></div>
+                                                            <div>Test coupon for vendor page</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } %>
+                                            </div>
+
+
+                                            <div class="widget widget-collapsible widget-coupons">
+                                                <h3 class="widget-title"><span>Coupons</span></h3>
                                                 <% for(i=0;i<result[2].length;i++) { %>
                                                 <div class="widget-body">
                                                     <div class="coupon">

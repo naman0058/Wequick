@@ -78,6 +78,7 @@
         <!--**********************************
             Content body start
         ***********************************-->
+        <div class="content-body">
 
             
             <!-- row -->
@@ -86,7 +87,7 @@
               
                 <div class="row" id='insertdiv'>
                     <div class="col-12">
-                        <h3 class="content-heading mt-3">   <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
+                        <h3 class="content-heading mt-3">New Deals    <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
 
                     </div>
                    
@@ -94,12 +95,11 @@
                         <div class="card">
                             <div class="card-body">    
                                     <div class="basic-form">
-                                        <form action="/merchant-api/deals/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
-                                            
-                                          
+                                        <form action="/vendor-dashboard/admin/deals/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
+                                               
                                           <div class="row">
                                                
-                                            <div class="col-12">
+                                            <div class="col-6">
                                                 <label>Deals Type</label>
                                                 <select class="form-control" name="deals_type" id="deals_type">
                                                   <option>Exclusive Deals</option>
@@ -108,22 +108,30 @@
 
                                                 </select>
                                             </div>
+
+
+                                            <div class="col-6">
+                                                <label>Merchant Name</label>
+                                                <select class="form-control" name="vendorid" id="vendorid">
+                                               
+
+                                                </select>
+                                            </div>
                                             
                                           
                                           
                                         </div>
                                           
-                                          <div class="row">
-<input type="hidden" name="vendorid" id="vendorid" value="<%=vendorid%>">
+                                          <div class="row" style="margin-top: 20px;">
                                                
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-4">
                                                     <label>Deals Code</label>
-                                                    <input type="text" class="form-control" name="name" placeholder="Deals Code" required>
+                                                    <input type="text" class="form-control" name="name" placeholder="Deals Code">
                                                 </div>
                                                 
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-4">
                                                     <label>Type</label>
-                                                    <select class="form-control" name="type" required>
+                                                    <select class="form-control" name="type">
                                                         <option value="flat">Flat</option>
                                                         <option value="percentage">Percentage</option>
 
@@ -131,9 +139,9 @@
                                                 </div>
 
 
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-4">
                                                     <label>Minimum Order Price</label>
-                                                    <input type="text" class="form-control" name="minimum_price" placeholder="Minimum Order Price" required>
+                                                    <input type="text" class="form-control" name="minimum_price" placeholder="Minimum Order Price">
 
                                                 </div>
                                               
@@ -145,22 +153,22 @@
 
 
                                             <div class="row" style="margin-top: 20px;">
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-4">
                                                     <label>Short Description </label>
-                                                  <input type="text" name="short_description" placeholder="Short Description" class="form-control" required>
+                                                  <input type="text" name="short_description" placeholder="Short Description" class="form-control">
                                                 </div>
 
 
 
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-4">
                                                     <label>Maximum Cashback Price</label>
-                                                    <input type="number" class="form-control" name="maximum_cashback_price" placeholder="Product Quantity" required>
+                                                    <input type="number" class="form-control" name="maximum_cashback_price" placeholder="Product Quantity">
                                                 </div>
 
                                           
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-4">
                                                     <label>Discount</label>
-                                                    <input type="text" class="form-control" name="discount" placeholder="Discount" required>
+                                                    <input type="text" class="form-control" name="discount" placeholder="Discount">
                                                 </div>
                                               
                                             </div>
@@ -171,14 +179,14 @@
                                             <div class="row" style="margin-top: 20px;">
                                                
 
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-6">
                                                     <label>Deals Image</label>
-                                                    <input type="file" class="form-control" name="image" placeholder="State" required>
+                                                    <input type="file" class="form-control" name="image" placeholder="State">
                                                 </div>
 
-                                                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-12">
+                                                <div class="col-6">
                                                     <label>Expiry</label>
-                                                    <input type="date" class="form-control" name="expiry" placeholder="State" required>
+                                                    <input type="date" class="form-control" name="expiry" placeholder="State">
                                                 </div>
 
                                                 
@@ -228,7 +236,7 @@
                                                         <a href="javascript:void(0)" role="button" onclick="runCommand(this, 'undo', null)"><i class="fa fa-undo"></i></a>         
                                                       </div>
                                                       
-                                                      <div id="editor"   contenteditable="true" required></div>
+                                                      <div id="editor"   contenteditable="true"></div>
                                                       <!-- <textarea  id="messageText" type="hidden" name = 'description' ></textarea> -->
                                                       
                                                       <!-- <div class="row">
@@ -287,8 +295,10 @@
         <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer" style="margin-top: 200px;">
-           
+        <div class="footer">
+            <div class="copyright">
+                <p><a href="templatespoint.net">Templates Point</a></p>
+            </div>
         </div>
         <!--**********************************
             Footer end
@@ -614,7 +624,7 @@
 
 
 
-<script src="/merchant_javascripts/deals.js"></script>
+<script src="/javascripts/admin_deals.js"></script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>

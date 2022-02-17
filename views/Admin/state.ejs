@@ -13,7 +13,7 @@
               
                 <div class="row" id='insertdiv'>
                     <div class="col-12">
-                        <h3 class="content-heading mt-3">New City    <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
+                        <h3 class="content-heading mt-3">New State    <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
 
                     </div>
                    
@@ -21,42 +21,30 @@
                         <div class="card">
                             <div class="card-body">    
                                     <div class="basic-form">
-                                        <form action="/admin/dashboard/store-listing/city/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
-                                             
-                                            
-                                            
-                                            <div class="form-row">
+                                        <form action="/admin/dashboard/store-listing/state/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
+                                               <div class="form-row">
                                                 <div class="col-6">
                                                     <label>State Name</label>
-                                                  <select id="stateid" name="stateid" class="form-control"></select>
+                                                    <input type="text" class="form-control" name="name" placeholder="State Name">
                                                 </div>
                                                 <div class="col-6">
-                                                    <label>City Code</label>
-                                                    <input type="text" class="form-control" name="code" placeholder="City Code">
+                                                    <label>State Code</label>
+                                                    <input type="text" class="form-control" name="code" placeholder="State Code">
                                                 </div>
-                                               
+                                              
                                               
                                             </div>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
+
+
                                             <div class="form-row" style="margin-top: 20px;">
-                                                <div class="col-4">
-                                                    <label>City Name</label>
-                                                    <input type="text" class="form-control" name="name" placeholder="City Name">
-                                                </div>
-                                                <div class="col-4">
-                                                    <label>City Image</label>
+                                              
+                                                <div class="col-6">
+                                                    <label>State Image</label>
                                                     <input type="file" class="form-control" name="image" placeholder="State">
                                                 </div>
-                                                <div class="col-4">
-                                                    <label>City Icon</label>
-                                                    <input type="file" class="form-control" name="icon" placeholder="City Name">
+                                                <div class="col-6">
+                                                    <label>State Icon</label>
+                                                    <input type="file" class="form-control" name="icon" placeholder="State Name">
                                                 </div>
                                               
                                             </div>
@@ -94,7 +82,7 @@
                     <div class="col-12">
     <h6 class="card-header"><span><button type="button" class="btn btn-primary show" id="back1" style="margin:10px">Back</button></span>Edit Data</h6>
 
-                        <h3 class="content-heading mt-3">New City    <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
+                        <h3 class="content-heading mt-3">New State    <span style="float: right;cursor: pointer;color:#1f5ab0;" id="show">Show All</span></h3>
 
                     </div>
                    
@@ -103,15 +91,14 @@
                             <div class="card-body">    
                                     <div class="basic-form">
                                                <div class="form-row">
-
                                                 <div class="col-6">
-                                                    <label>City ID</label>
+                                                    <label>State ID</label>
                                                     <input type="text" class="form-control" id="pid" readonly>
                                                 </div>
                                              
                                                 <div class="col-6">
-                                                    <label>City Name</label>
-                                                    <input type="text" class="form-control" id="pname" placeholder="City Name">
+                                                    <label>State Name</label>
+                                                    <input type="text" class="form-control" id="pname" placeholder="State Name">
                                                 </div>
                                                
                                               
@@ -120,15 +107,12 @@
 
 
                                             <div class="form-row">
-                                                <div class="col-6">
-                                                    <label>State Name</label>
-                                                  <select id="pstateid" name="pstateid" class="form-control"></select>
+                                             
+                                                <div class="col-12" style="margin-top: 20px;">
+                                                    <label>State Code</label>
+                                                    <input type="text" class="form-control" id="pcode" placeholder="State Code">
                                                 </div>
-                                                <div class="col-6">
-                                                    <label>City Code</label>
-                                                    <input type="text" class="form-control" id="pcode" placeholder="City Code">
-                                                </div>
-                                               
+                                              
                                               
                                             </div>
 
@@ -155,7 +139,7 @@
                     <h6 class="card-header"><span><button type="button" class="btn btn-primary show" id="back2" style="margin:10px">Back</button></span> Upload Image</h6>
                     <div class="card-body">
                     
-                        <form action="/admin/dashboard/store-listing/city/update-image" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/dashboard/store-listing/state/update-image" method="POST" enctype="multipart/form-data">
                             <div class="form-row">
                        
                                 <div class="form-group col-md-4 col-lg-4">
@@ -448,7 +432,7 @@
 
 
 
-<script src="/javascripts/city.js"></script>
+<script src="/javascripts/state.js"></script>
 
 
 

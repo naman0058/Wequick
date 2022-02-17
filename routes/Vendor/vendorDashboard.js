@@ -518,6 +518,23 @@ router.post('/update/vendor/details', (req, res) => {
             err ? console.log(err) : res.json(result)
         })
     })
+
+
+    router.post('/admin/deals/insert',upload.single('image'),(req,res)=>{
+        let body = req.body
+       body['image'] = req.file.filename;
+      console.log('mydata',req.body);
+       pool.query(`insert into deals set ?`,body,(err,result)=>{
+           err ? console.log(err) : res.json({msg : 'success'})
+       })
+    })
+
+
+    router.get('/all-deals-show',(req,res)=>{
+        pool.query(`select p.* , (select v.business_name from vendor v where v.id = p.vendorid) as businessname from deals p`,(err,result)=>{
+            err ? console.log(err) : res.json(result)
+        })
+    })
     
     
 

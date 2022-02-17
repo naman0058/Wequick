@@ -66,6 +66,8 @@ function makeTable(categories){
 <th>Image</th>
 
 <th>Code</th>
+<th>Deals Type</th>
+
 <th>Type</th>
 <th>Minimum Order Price</th>
 <th>Maximum Cashback Price</th>
@@ -89,6 +91,8 @@ table+=`<tr>
 
     
 <td>${item.name}</td>
+<td>${item.deals_type}</td>
+
 <td>${item.type}</td>
 <td>${item.minimum_price}</td>
 <td>${item.maximum_cashback_price}</td>

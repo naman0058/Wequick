@@ -88,7 +88,27 @@ router.get('/get-category',(req,res)=>{
 
 
    router.get('/get-city',(req,res)=>{
-    pool.query(`select * from city order by id desc`,(err,result)=>{
+    pool.query(`select c.* , (select s.name from state s where s.id = c.stateid) as state_name from city c order by id desc`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
+
+
+   
+router.get('/get-merchant',(req,res)=>{
+  pool.query(`select * from vendor order by id desc`,(err,result)=>{
+      if(err) throw err;
+      else res.json(result)
+  })
+ 
+ })
+
+
+
+   router.get('/get-state',(req,res)=>{
+    pool.query(`select * from state order by id desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })

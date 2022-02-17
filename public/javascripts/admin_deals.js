@@ -5,9 +5,17 @@ let services = []
 
 let table = '/vendor-dashboard'
 
+
+
+$.getJSON(`/api/get-merchant`, data => {
+    subcategories = data
+    fillDropDown('vendorid',data, 'Choose Merchant', 0)
+})
+
+
 $('#show').click(function(){
   
-$.getJSON(`/vendor-dashboard/deals-show`, data => {
+$.getJSON(`/vendor-dashboard/all-deals-show`, data => {
     console.log(data)
     services = data
     makeTable(data)
@@ -28,15 +36,6 @@ $.getJSON(`/vendor-dashboard/subcategory`, data => {
 
 
 
-$.getJSON(`/api/get-brand`, data => {
-    subcategories = data
-    fillDropDown('brandid', [], 'Choose Brand', 0)
-})
-
-$('#subcategoryid').change(() => {
-    const filteredData = subcategories.filter(item => item.subcategoryid == $('#subcategoryid').val())
-    fillDropDown('brandid', filteredData, 'Choose Brand', 0)
-})
 
 
 
@@ -46,9 +45,9 @@ function fillDropDown(id, data, label, selectedid = 0) {
 
     $.each(data, (i, item) => {
         if (item.id == selectedid) {
-            $(`#${id}`).append($('<option selected>').val(item.id).text(item.name))
+            $(`#${id}`).append($('<option selected>').val(item.id).text(item.business_name))
         } else {
-            $(`#${id}`).append($('<option>').val(item.id).text(item.name))
+            $(`#${id}`).append($('<option>').val(item.id).text(item.business_name))
         }
     })
 }
@@ -66,6 +65,8 @@ function makeTable(categories){
 
 <th>Code</th>
 <th>Deals Type</th>
+<th>Merchant Name</th>
+
 
 <th>Type</th>
 <th>Minimum Order Price</th>
@@ -91,6 +92,8 @@ table+=`<tr>
     
 <td>${item.name}</td>
 <td>${item.deals_type}</td>
+<td>${item.businessname}</td>
+
 <td>${item.type}</td>
 <td>${item.minimum_price}</td>
 <td>${item.maximum_cashback_price}</td>
@@ -126,10 +129,7 @@ $('#result').on('click', '.deleted', function() {
 
 
 
-$('#pcategoryid').change(() => {
-    const filteredData = subcategories.filter(item => item.categoryid == $('#pcategoryid').val())
-    fillDropDown('psubcategoryid', filteredData, 'Choose Sub-Category', 0)
-})
+
 
 
 
@@ -191,7 +191,7 @@ $('#update').click(function(){  //data insert in database
 
 function refresh() 
 {
-    $.getJSON(`/vendor-dashboard/coupon-show`, data => {
+    $.getJSON(`/vendor-dashboard/all-deals-show`, data => {
         console.log(data)
         services = data
         makeTable(data)

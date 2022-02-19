@@ -6,7 +6,7 @@ var upload = require('../multer');
 
 
 router.post('/validate',(req,res)=>{
-    pool.query(`select * from agent were number = '${req.body.number}'`,(err,result)=>{
+    pool.query(`select * from agent where number = '${req.body.number}'`,(err,result)=>{
         if(err) throw err;
         else if(result[0]){
             res.json({msg:success,result})

@@ -12,14 +12,14 @@
                 <div class="container">
                     <div class="store store-wcfm-banner">
                         <figure class="store-media">
-                            <img src="/wolmart/assets/images/vendor/wcfm/1.jpg" alt="Vendor" width="1240" height="460"
+                            <img src="/images/<%=result[1][0].shop_img2%>" style="width:1240px;height:460px" alt="Vendor" width="1240" height="460"
                                 style="background-color: #40475e;" />
                         </figure>
                         <div class="store-content">
                             <div class="store-content-left mr-auto">
                                 <div class="personal-info">
                                     <figure class="seller-brand">
-                                        <img src="/wolmart/assets/images/vendor/brand/2-100x100.png" alt="Brand" width="100"
+                                        <img src="/images/<%=result[1][0].image%>" style="width:100px;height:100px" alt="Brand" width="100"
                                             height="100" />
                                     </figure>
                                     
@@ -66,25 +66,25 @@
                                         </h3>
                                         <ul class="widget-body">
                                             <li>
-                                                <span>Monday:</span>9:00 - 10:00 pm
+                                                <span>Monday:</span><%=result[1][0].monday_time%>
                                             </li>
                                             <li>
-                                                <span>Tuesday:</span>9:00 - 10:00 pm
+                                                <span>Tuesday:</span><%=result[1][0].tuesday_time%>
                                             </li>
                                             <li>
-                                                <span>Wednesday:</span>9:00 - 10:00 pm
+                                                <span>Wednesday:</span><%=result[1][0].wednesday_time%>
                                             </li>
                                             <li>
-                                                <span>Thursday:</span>9:00 - 2:00 pm
+                                                <span>Thursday:</span><%=result[1][0].thursday_time%>
                                             </li>
                                             <li>
-                                                <span>Friday:</span>9:00 - 10:00 pm
+                                                <span>Friday:</span><%=result[1][0].friday_time%>
                                             </li>
                                             <li>
-                                                <span>Saturday:</span>9:00 - 10:00 pm
+                                                <span>Saturday:</span><%=result[1][0].saturday_time%>
                                             </li>
                                             <li>
-                                                <span>Sunday:</span>9:00 - 10:00 pm
+                                                <span>Sunday:</span><%=result[1][0].sunday_time%>
                                             </li>
                                         </ul>
                                     </div>
@@ -100,16 +100,11 @@
 
                                       
                                         <div class="widget-body">
-                                            <p class="mb-0">Delivery Time: 1-2 business days</p>
+                                            <p class="mb-0">Delivery Time:  <%=result[1][0].time%></p>
                                         </div>
                                     </div>
                                     <!-- End of Widget -->
-                                    <div class="widget widget-collapsible widget-location">
-                                        <h3 class="widget-title"><span>Store Location</span></h3>
-                                        <div class="widget-body">
-                                            <div class="google-map" id="googlemaps"></div>
-                                        </div>
-                                    </div>
+                                   
                                     <!-- End of Widget -->
                                     
                                     <!-- End of Widget -->
@@ -181,35 +176,40 @@
 
                                             <div class="widget widget-collapsible widget-coupons">
                                                 <h3 class="widget-title"><span>Exclusive deals</span></h3>
-                                                <% for(i=0;i<result[3].length;i++) { %>
-                                                <div class="widget-body">
-                                                    <div class="coupon">
-                                                        <%=result[3][i].name%> - <%=result[3][i].short_description%>
-                                                        <div class="coupon-tip">
-                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[3][i].maximum_cashback_price%></div>
-                                                            <div class="coupon-info-date"><%=result[3][i].expiry%></div>
-                                                            <div>Test coupon for vendor page</div>
+                                                <% for(i=0;i<result[6].length;i++) { %>
+                                                    <div class="widget-body">
+                                                        <div class="coupon">
+                                                            <% if(result[6][i].isredeem == null || result[6][i].isredeem == '' || result[6][i].isredeem == 'null' || result[6][i].isredeem ==[]){ %>
+                                                            XXXX - <%=result[6][i].short_description%>
+                                                            <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[6][i].id%>" code="<%=result[6][i].name%>" expiry="<%=result[6][i].expiry%>" vendorid = '<%=result[6][i].vendorid%>' style="float: right;">Redeem This Code</button>
+                                                            <% } else { %>
+                                                                <%=result[6][i].name%>    - <%=result[6][i].short_description%> - your otp is <%=result[6][i].userotp%>
+                                                                <% } %>
+                                                            <div class="coupon-tip">
+                                                                <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[6][i].maximum_cashback_price%></div>
+                                                                <div class="coupon-info-date"><%=result[6][i].expiry%></div>
+                                                                <div>Test coupon for vendor page</div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <% } %>
+                                                    <% } %>
                                             </div>
 
 
                                             <div class="widget widget-collapsible widget-coupons">
                                                 <h3 class="widget-title"><span>Deals of the Day</span></h3>
-                                                <% for(i=0;i<result[2].length;i++) { %>
+                                                <% for(i=0;i<result[7].length;i++) { %>
                                                 <div class="widget-body">
                                                     <div class="coupon">
-                                                        <% if(result[2][i].isredeem == null || result[2][i].isredeem == '' || result[2][i].isredeem == 'null' || result[2][i].isredeem ==[]){ %>
-                                                        XXXX - <%=result[2][i].short_description%>
-                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[2][i].id%>" code="<%=result[2][i].name%>" expiry="<%=result[2][i].expiry%>" vendorid = '<%=result[2][i].vendorid%>' style="float: right;">Redeem This Code</button>
+                                                        <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
+                                                        XXXX - <%=result[7][i].short_description%>
+                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[7][i].id%>" code="<%=result[7][i].name%>" expiry="<%=result[7][i].expiry%>" vendorid = '<%=result[7][i].vendorid%>' style="float: right;">Redeem This Code</button>
                                                         <% } else { %>
-                                                            <%=result[2][i].name%>    - <%=result[2][i].short_description%> - your otp is <%=result[2][i].userotp%>
+                                                            <%=result[7][i].name%>    - <%=result[7][i].short_description%> - your otp is <%=result[7][i].userotp%>
                                                             <% } %>
                                                         <div class="coupon-tip">
-                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[2][i].maximum_cashback_price%></div>
-                                                            <div class="coupon-info-date"><%=result[2][i].expiry%></div>
+                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[7][i].maximum_cashback_price%></div>
+                                                            <div class="coupon-info-date"><%=result[7][i].expiry%></div>
                                                             <div>Test coupon for vendor page</div>
                                                         </div>
                                                     </div>
@@ -221,18 +221,18 @@
 
                                             <div class="widget widget-collapsible widget-coupons">
                                                 <h3 class="widget-title"><span>Mega Deals</span></h3>
-                                                <% for(i=0;i<result[2].length;i++) { %>
+                                                <% for(i=0;i<result[8].length;i++) { %>
                                                 <div class="widget-body">
                                                     <div class="coupon">
-                                                        <% if(result[2][i].isredeem == null || result[2][i].isredeem == '' || result[2][i].isredeem == 'null' || result[2][i].isredeem ==[]){ %>
-                                                        XXXX - <%=result[2][i].short_description%>
-                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[2][i].id%>" code="<%=result[2][i].name%>" expiry="<%=result[2][i].expiry%>" vendorid = '<%=result[2][i].vendorid%>' style="float: right;">Redeem This Code</button>
+                                                        <% if(result[8][i].isredeem == null || result[8][i].isredeem == '' || result[8][i].isredeem == 'null' || result[8][i].isredeem ==[]){ %>
+                                                        XXXX - <%=result[8][i].short_description%>
+                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[8][i].id%>" code="<%=result[8][i].name%>" expiry="<%=result[8][i].expiry%>" vendorid = '<%=result[8][i].vendorid%>' style="float: right;">Redeem This Code</button>
                                                         <% } else { %>
-                                                            <%=result[2][i].name%>    - <%=result[2][i].short_description%> - your otp is <%=result[2][i].userotp%>
+                                                            <%=result[8][i].name%>    - <%=result[8][i].short_description%> - your otp is <%=result[8][i].userotp%>
                                                             <% } %>
                                                         <div class="coupon-tip">
-                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[2][i].maximum_cashback_price%></div>
-                                                            <div class="coupon-info-date"><%=result[2][i].expiry%></div>
+                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[8][i].maximum_cashback_price%></div>
+                                                            <div class="coupon-info-date"><%=result[8][i].expiry%></div>
                                                             <div>Test coupon for vendor page</div>
                                                         </div>
                                                     </div>
@@ -246,12 +246,9 @@
                                                 <% for(i=0;i<result[2].length;i++) { %>
                                                 <div class="widget-body">
                                                     <div class="coupon">
-                                                        <% if(result[2][i].isredeem == null || result[2][i].isredeem == '' || result[2][i].isredeem == 'null' || result[2][i].isredeem ==[]){ %>
-                                                        XXXX - <%=result[2][i].short_description%>
-                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[2][i].id%>" code="<%=result[2][i].name%>" expiry="<%=result[2][i].expiry%>" vendorid = '<%=result[2][i].vendorid%>' style="float: right;">Redeem This Code</button>
-                                                        <% } else { %>
-                                                            <%=result[2][i].name%>    - <%=result[2][i].short_description%> - your otp is <%=result[2][i].userotp%>
-                                                            <% } %>
+                                                       
+                                                            <%=result[2][i].name%>    - <%=result[2][i].short_description%> 
+                                                            
                                                         <div class="coupon-tip">
                                                             <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[2][i].maximum_cashback_price%></div>
                                                             <div class="coupon-info-date"><%=result[2][i].expiry%></div>

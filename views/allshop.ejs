@@ -25,25 +25,29 @@
 
                     <!-- Start of Vendor Store -->
                     <div class="row cols-lg-3 cols-sm-2">
+
+
+
+                        <% for(i=0;i<result[1].length;i++){ %>
+
                         <div class="store-wrap mb-4">
                             <div class="store store-wcmp br-sm">
                                 <figure class="store-banner">
-                                    <img src="/wolmart/assets/images/vendor/wcmp/1.jpg" alt="Vendor" 
+                                    <img src="/images/<%=result[1][i].shop_img2%>" style="width:400px;height:318px" alt="Vendor" 
                                         width="400" height="318" style="background-color: #454b63;" />
                                 </figure>
                                 <div class="store-content">
                                     <figure class="seller-brand">
-                                        <img src="/wolmart/assets/images/vendor/brand/1.jpg" alt="Brand" width="80" height="80" />
+                                        <img src="/images/<%=result[1][i].image%>" style="width: 80px;height: 80px;" alt="Brand" width="80" height="80" />
                                     </figure>
                                     <div class="seller-date">
                                         <h4 class="store-title">
-                                            <a href="/single-vendor-details?vendorid=4">Vendor 1</a>
+                                            <a href="/single-vendor-details?vendorid=<%=result[1][i].id%>"><%=result[1][i].business_name%></a>
                                         </h4>
                                         <ul class="seller-info-list list-style-none">
                                             <li class="store-address">
                                                 <i class="w-icon-map-marker"></i>
-                                                <p>287 cherry Hill Ave. South El 
-                                                Monte, CA 91733, Aland lslands</p>
+                                                <p><%=result[1][i].address%></p>
                                             </li>
                                             <li class="store-rating">
                                                 <div class="ratings-container">
@@ -59,164 +63,9 @@
                             </div>
                             <!-- End of Store -->
                         </div>
-                        <div class="store-wrap mb-4">
-                            <div class="store store-wcmp br-sm">
-                                <figure class="store-banner">
-                                    <img src="/wolmart/assets/images/vendor/wcmp/2.jpg" alt="Vendor" 
-                                        width="400" height="318" style="background-color: #6a6867;" />
-                                </figure>
-                                <div class="store-content">
-                                    <figure class="seller-brand">
-                                        <img src="/wolmart/assets/images/vendor/brand/2.jpg" alt="Brand" width="80" height="80" />
-                                    </figure>
-                                    <div class="seller-date">
-                                        <h4 class="store-title">
-                                            <a href="/single-vendor-details?vendorid=4">Vendor 2</a>
-                                        </h4>
-                                        <ul class="seller-info-list list-style-none">
-                                            <li class="store-address">
-                                                <i class="w-icon-map-marker"></i>
-                                                <p>Fuchu, Hiroshima, Thai Nguyen,
-                                                Hiroshima, Japan,27000</p>
-                                            </li>
-                                            <li class="store-rating">
-                                                <i class="w-icon-star-full"></i>
-                                                <p>No Rating Yet</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of Store -->
-                        </div>
-                        <div class="store-wrap mb-4">
-                            <div class="store store-wcmp br-sm">
-                                <figure class="store-banner">
-                                    <img src="/wolmart/assets/images/vendor/wcmp/3.jpg" alt="Vendor" 
-                                        width="400" height="318" style="background-color: #5a5958;" />
-                                </figure>
-                                <div class="store-content">
-                                    <figure class="seller-brand">
-                                        <img src="/wolmart/assets/images/vendor/brand/3.jpg" alt="Brand" width="80" height="80" />
-                                    </figure>
-                                    <div class="seller-date">
-                                        <h4 class="store-title">
-                                            <a href="/single-vendor-details?vendorid=4">Vendor 3</a>
-                                        </h4>
-                                        <ul class="seller-info-list list-style-none">
-                                            <li class="store-address">
-                                                <i class="w-icon-map-marker"></i>
-                                                <p>848 Baker Rd, Huntsville, AL 35803,
-                                                Minato, Tokyo, Japan, 12000</p>
-                                            </li>
-                                            <li class="store-rating">
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of Store -->
-                        </div>
-                        <div class="store-wrap mb-4">
-                            <div class="store store-wcmp br-sm">
-                                <figure class="store-banner">
-                                    <img src="/wolmart/assets/images/vendor/wcmp/4.jpg" alt="Vendor" 
-                                        width="400" height="318" style="background-color: #585e65;" />
-                                </figure>
-                                <div class="store-content">
-                                    <figure class="seller-brand">
-                                        <img src="/wolmart/assets/images/vendor/brand/4.jpg" alt="Brand" width="80" height="80" />
-                                    </figure>
-                                    <div class="seller-date">
-                                        <h4 class="store-title">
-                                            <a href="/single-vendor-details?vendorid=4">Vendor 4</a>
-                                        </h4>
-                                        <ul class="seller-info-list list-style-none">
-                                            <li class="store-address">
-                                                <i class="w-icon-map-marker"></i>
-                                                <p>908 New Hampshire Avenue #100,
-                                                Washington, United States</p>
-                                            </li>
-                                            <li class="store-rating">
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of Store -->
-                        </div>
-                        <div class="store-wrap mb-4">
-                            <div class="store store-wcmp br-sm">
-                                <figure class="store-banner">
-                                    <img src="/wolmart/assets/images/vendor/wcmp/5.jpg" alt="Vendor" 
-                                        width="400" height="318" style="background-color: #27282c;" />
-                                </figure>
-                                <div class="store-content">
-                                    <figure class="seller-brand">
-                                        <img src="/wolmart/assets/images/vendor/brand/5.jpg" alt="Brand" width="80" height="80" />
-                                    </figure>
-                                    <div class="seller-date">
-                                        <h4 class="store-title">
-                                            <a href="/single-vendor-details?vendorid=4">Vendor 5</a>
-                                        </h4>
-                                        <ul class="seller-info-list list-style-none">
-                                            <li class="store-address">
-                                                <i class="w-icon-map-marker"></i>
-                                                <p>Fuchu, Hiroshima, Thai Nguyen,
-                                                Hiroshima, Japan,27000</p>
-                                            </li>
-                                            <li class="store-rating">
-                                                <i class="w-icon-star-full"></i>
-                                                <p>No Rating Yet</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of Store -->
-                        </div>
-                        <div class="store-wrap mb-4">
-                            <div class="store store-wcmp br-sm">
-                                <figure class="store-banner">
-                                    <img src="/wolmart/assets/images/vendor/wcmp/6.jpg" alt="Vendor" 
-                                        width="400" height="318" style="background-color: #a387b8;" />
-                                </figure>
-                                <div class="store-content">
-                                    <figure class="seller-brand">
-                                        <img src="/wolmart/assets/images/vendor/brand/6.jpg" alt="Brand" width="80" height="80" />
-                                    </figure>
-                                    <div class="seller-date">
-                                        <h4 class="store-title">
-                                            <a href="/single-vendor-details?vendorid=4">Vendor 6</a>
-                                        </h4>
-                                        <ul class="seller-info-list list-style-none">
-                                            <li class="store-address">
-                                                <i class="w-icon-map-marker"></i>
-                                                <p>848 Baker Rd, Huntsville, AL 35803,
-                                                Minato, Tokyo, Japan, 12000</p>
-                                            </li>
-                                            <li class="store-rating">
-                                                <i class="w-icon-star-full"></i>
-                                                <p>No Rating Yet</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of Store -->
-                        </div>
+
+                        <% } %>
+                     
                     </div>
                     <!-- End of Vendor Store -->
                 </div>

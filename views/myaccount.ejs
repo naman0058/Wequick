@@ -31,6 +31,11 @@
                             <li class="nav-item">
                                 <a href="#account-dashboard" class="nav-link active">Dashboard</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="#deals" class="nav-link">My Deals</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a href="#account-orders" class="nav-link">Orders</a>
                             </li>
@@ -41,10 +46,8 @@
                             <li class="nav-item">
                                 <a href="#account-details" class="nav-link">Account details</a>
                             </li>
-                           
-                            <li class="nav-item">
-                                <a href="/logout" class="nav-link">Logout</a>
-                            </li>
+
+
                         </ul>
 
                         <div class="tab-content mb-6">
@@ -92,13 +95,13 @@
                                         </a>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-                                        <a href="/wishlist" class="link-to-tab">
+                                        <a href="#deals" class="link-to-tab">
                                             <div class="icon-box text-center">
                                                 <span class="icon-box-icon icon-wishlist">
                                                     <i class="w-icon-heart"></i>
                                                 </span>
                                                 <div class="icon-box-content">
-                                                    <p class="text-uppercase mb-0">Wishlist</p>
+                                                    <p class="text-uppercase mb-0">My Deals</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -160,6 +163,54 @@
 
                                 <a href="/" class="btn btn-dark btn-rounded btn-icon-right">Go
                                     Shop<i class="w-icon-long-arrow-right"></i></a>
+                            </div>
+
+
+
+
+                            <div class="tab-pane mb-4" id="deals">
+                                <div class="icon-box icon-box-side icon-box-light">
+                                    <span class="icon-box-icon icon-orders">
+                                        <i class="w-icon-orders"></i>
+                                    </span>
+                                    <div class="icon-box-content">
+                                        <h4 class="icon-box-title text-capitalize ls-normal mb-0">Deals</h4>
+                                    </div>
+                                </div>
+
+                                <table class="shop-table deals-table mb-6">
+                                    <thead>
+                                        <tr>
+                                            <th class="order-id">Code</th>
+                                            <th class="order-date">Merchant Name</th>
+                                            <th class="order-status">Expiry Date</th>
+                                            <th class="order-status">Description</th>
+
+                                            <th class="order-total">Maximum Cashback</th>
+                                            <th class="order-actions">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(i=0;i<result[5].length;i++) { %>
+
+                                        <tr>
+                                            <td class="order-id"><%=result[5][i].otp%></td>
+                                            <td class="order-date"><%=result[5][i].vendorbusinessname%></td>
+                                            <td class="order-status"><%=result[5][i].expiry%></td>
+                                            <td class="order-status"><%=result[5][i].coupon_description%></td>
+                                            <td class="order-status">Rs. <%=result[5][i].coupon_cashprice%></td>
+                                          
+                                            <td class="order-total">
+                                                <span class="order-price"> <%=result[5][i].status%></span> 
+                                            </td>
+                                            
+                                        </tr>
+                                        <% } %>
+                                      
+                                    </tbody>
+                                </table>
+
+                              
                             </div>
 
                            

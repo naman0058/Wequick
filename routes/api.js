@@ -131,7 +131,7 @@ router.get('/get-all-shops',(req,res)=>{
   var query = `SELECT *, SQRT(
       POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
       POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-  FROM vendor having distance <= 60 ORDER BY distance;`
+  FROM vendor having distance <= 60000000000 ORDER BY distance;`
 
 
 pool.query(query,(err,result)=>{
@@ -146,7 +146,7 @@ router.get('/get-all-shops-by-category',(req,res)=>{
     var query = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor where categoryid = '${req.query.categoryid}' having distance <= 60 ORDER BY distance;`
+    FROM vendor where categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query,(err,result)=>{
        if(err) throw err;
        else res.json(result)
@@ -208,7 +208,7 @@ router.get('/get-all-products',(req,res)=>{
 
 
 router.get('/get-agent',(req,res)=>{
-  pool.query(`select s.* from agent s where s.channel_partner_id = '${req.session.channel_partner_id}'`,(err,result)=>{
+  pool.query(`select s.* from agent s where s.channel_partner_id = '${req.query.channel_partner_id}'`,(err,result)=>{
       if(err) throw err;
       else res.json(result)
   }) 
@@ -1013,12 +1013,7 @@ router.post("/payment-initiate", (req, res) => {
 
 
 
-  router.post('/get-products-api',(req,res)=>{
-    pool.query(`select * from products where subcategoryid = '${req.body.subcategoryid}'`,(err,result)=>{
-      if(err) throw err;
-      else res.json(result)
-    })
-  })
+ 
 
 
 router.post('/check',(req,res)=>{
@@ -1432,6 +1427,59 @@ router.get('/get-details-dynamic',(req,res)=>{
 router.post('/get-vendor-product',(req,res)=>{
   pool.query(`select * from products where vendorid = '${req.body.vendorid}'`,(err,result)=>{
     err ? console.log(err) : res.json(result)
+  })
+})
+
+
+
+
+
+router.get('/deals',(req,res)=>{
+  
+    var query7 = `select c.* ,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Exclusive Deals';`
+    var query8 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Deals Of the Day';`
+    var query9 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Mega Deals';`
+
+    pool.query(query7+query8+query9,(err,result)=>{
+      if(err) throw err;
+      else res.json(result)
+    })
+})
+
+
+
+router.get('/vendor-coupon',(req,res)=>{
+  var query = `select * from coupon where vendorid = '${req.query.vendorid}';`
+  pool.query(query,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+
+})
+
+
+router.get('/single-vendor-details',(req,res)=>{
+  var query = `select * from vendor where id = '${req.query.vendorid}';`
+  pool.query(query,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+
+})
+
+router.post('/get-products-api',(req,res)=>{
+  pool.query(`select * from products where vendorid = '${req.body.vendorid}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
   })
 })
 

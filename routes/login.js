@@ -26,11 +26,7 @@ router.get('/',(req,res)=>{
 router.post('/verification',(req,res)=>{
     let body = req.body
     body['number'] = 91+req.body.number
-    //   console.log(req.body)
 
-pool.query(`select * from users where number = '${req.body.number}'`,(err,result)=>{
-  if(err) throw err;
-  else if(result[0]) {
     req.session.numberverify = 91+req.body.number
     var otp =   Math.floor(100000 + Math.random() * 9000);
     req.session.reqotp = otp;
@@ -43,25 +39,6 @@ pool.query(`select * from users where number = '${req.body.number}'`,(err,result
   //  }
   //      })
 
-    
-    
-
-  }
-  else {
-    var query = `select * from category;`
-    var query1 = `select * from category;`
-    pool.query(query+query1,(err,result)=>{
-      if(err) throw err;
-      else res.render('login',{msg : '* Mobile Number Not Exists',result , login:'false'})
-    })
-   
-  }
-})
-
-
-   
-     
-    
    })
 
 

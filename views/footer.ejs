@@ -74,11 +74,27 @@
             <div class="footer-middle">
                 <div class="widget widget-category">
                     <div class="category-box">
+                        <a href="#" style="font-weight: bold;">Segments</a>
+
 			 <% for(i=0;i<result[0].length;i++){%>
                        
                         <a href="/shop-by-category?id=<%=result[0][i].id%>"><%=result[0][i].name%></a>
                        <% } %>
                     </div>
+
+
+                    
+                   
+                </div>
+
+                <div class="widget widget-category">
+                    <div class="category-box">
+
+		<span id="citites"></span>
+                    </div>
+
+
+                    
                    
                 </div>
             </div>
@@ -638,48 +654,24 @@
 
 
 <script>
+let cities = []
+$.getJSON('/api/get-city',data=>{
+        console.log(data)
+        cities = data
+        makecities(data)
 
-    $('.addToCart').click(function(){
-                
-         
-                let quantity = $('#userquantity').val()
-                let booking_id = $(this).attr('booking_id');
-                let price = $(this).attr('price');
-                let oneprice = $(this).attr('price');
-                let categoryid = $(this).attr('categoryid');
-                let subcategoryid = $(this).attr('subcategoryid');
-                let totalquantity = $(this).attr('totalquantity');
-                let categoryname = $(this).attr('categoryname')
+    })
 
-    
-                // let vendorid = $(this).attr('vendorid');
-    
-    
-                if(quantity > totalquantity){
-                    
-                    alert(`We have only ${totalquantity} stock availbale`)
-                }
-            
-                else {
-                    price = price*quantity
-            
-            $.post('/cart-handler',{booking_id,price,categoryid,oneprice,quantity,subcategoryid},data=>{
-                alert('done')
+    function makecities(data){
+        
+        let table=`<a href="#" style="font-weight: bold;">Cities We are availble</a>`
+        $.each(data,(i,item)=>{
+        table+= `<a href="/">${item.name}</a>`
+        $('#citites').html(table)
+})
+    }
+</script>
 
-            })  
-                }
-            
-                 
-                
-            })
-    
-    
-    
-    
-           
-              
-    
-    </script>
     
 
 <!-- Mirrored from portotheme.com/html/wolmart// by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:18:08 GMT -->

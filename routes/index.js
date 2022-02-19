@@ -6,8 +6,23 @@ const fetch = require("node-fetch");
 
 
 
+router.get('/',(req,res)=>{
+  res.render('index',{msg:''})
+})
+
+
+router.post('/enquiry-submit',(req,res)=>{
+  let body = req.body;
+  console.log('body',body)
+  pool.query(`insert into landing_data set ?`,body,(err,result)=>{
+    if(err) throw err;
+    else res.render('index',{msg:'We received your message and you will hear from us soon. Thank You!'})
+  })
+})
+
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/index1', function(req, res, next) {
   if(req.session.usernumber){
    var query = `select * from category order by id desc;`
    var query1 = `select * from banner where type = 'Front Banner' order by id desc;`
@@ -24,11 +39,29 @@ router.get('/', function(req, res, next) {
    var query3 = `select * from promotional_text order by id desc;`
    var query4 = `select * from cart where usernumber = '${req.session.number}';`
    var query5 = `select * from banner where type = 'Bottom Banner' order by id desc;`
-   var query6 = `select * from subcategory order by name ;`
+   var query6 = `select * from subcategory order by name;`
+
+   var query7 = `select c.* ,
+   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+   from deals c where c.deals_type = 'Exclusive Deals';`
+   var query8 = `select c.*,
+   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+   from deals c where c.deals_type = 'Deals Of the Day';`
+   var query9 = `select c.*,
+   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+   from deals c where c.deals_type = 'Mega Deals';`
+   var query10 = `SELECT *, SQRT(
+    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+    FROM vendor having distance <= 600000000000000 ORDER BY distance;`
+
  
-   pool.query(query+query6+query1+query2+query3+query4+query5,(err,result)=>{
+   pool.query(query+query6+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{
      if(err) throw err;
-     else  res.render('index', { title: 'Express',result,login:true });
+     else res.render('index', { title: 'Express',result,login:true });
    })
   }
   else{
@@ -47,9 +80,25 @@ router.get('/', function(req, res, next) {
    var query3 = `select * from promotional_text order by id desc;`
    var query4 = `select * from cart where usernumber = '${req.session.number}';`
    var query5 = `select * from banner where type = 'Bottom Banner' order by id desc;`
-   var query6 = `select * from subcategory order by name ;`
+   var query6 = `select * from subcategory order by name;`
+   var query7 = `select c.*,
+   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+   from deals c where c.deals_type = 'Exclusive Deals';`
+   var query8 = `select c.*,
+   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+   from deals c where c.deals_type = 'Deals Of the Day';`
+   var query9 = `select c.*,
+   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+   from deals c where c.deals_type = 'Mega Deals';`
+   var query10 = `SELECT *, SQRT(
+    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+    FROM vendor  having distance <= 600000000000000 ORDER BY distance;`
 
-   pool.query(query+query6+query1+query2+query3+query4+query5,(err,result)=>{
+   pool.query(query+query6+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{
      if(err) throw err;
      else  res.render('index', { title: 'Express',result,login:false });
     // else res.json(result[3])
@@ -83,7 +132,7 @@ router.get('/product',(req,res)=>{
         var query5 = `select * from images where productid = '${req.query.id}';`
         pool.query(query+query1+query3+query4+query5,(err,result)=>{
           if(err) throw err;
-          else res.render('view-product', { title: 'Express',login:true, result : result});
+          else res.render('view-product', { title: 'Express',login:true, result : result , productid : req.query.id});
         })
         
     
@@ -100,7 +149,7 @@ router.get('/product',(req,res)=>{
   
         pool.query(query+query1+query3+query4+query5,(err,result)=>{
           if(err) throw err;
-          else res.render('view-product', { title: 'Express',login:false , result : result});
+          else res.render('view-product', { title: 'Express',login:false , result : result , productid : req.query.id});
     
         })
     
@@ -139,7 +188,7 @@ router.get('/product',(req,res)=>{
             if (err) throw err;
             else if (result[0]) {
                // res.json(result[0])
-                pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity} , dp_price = ${req.body.dp_price}*${req.body.quantity}  where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}'`,(err,result)=>{
+                pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity} , dp_price = ${req.body.price}*${req.body.quantity}  where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}'`,(err,result)=>{
                     if (err) throw err;
                     else {
                         res.json({
@@ -151,7 +200,7 @@ router.get('/product',(req,res)=>{
             }
             else {
               body["price"] = (req.body.price)*(req.body.quantity)
-              body["dp_price"] = (req.body.dp_price)*(req.body.quantity)
+              body["dp_price"] = (req.body.price)*(req.body.quantity)
                  pool.query(`insert into cart set ?`, body, (err, result) => {
                  if (err) throw err;
                  else {
@@ -189,7 +238,7 @@ router.get('/product',(req,res)=>{
               if (err) throw err;
               else if (result[0]) {
                  // res.json(result[0])
-                  pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity} , dp_price = ${req.body.dp_price}*${req.body.quantity}   where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}'`,(err,result)=>{
+                  pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity} , dp_price = ${req.body.price}*${req.body.quantity}   where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}'`,(err,result)=>{
                       if (err) throw err;
                       else {
                           res.json({
@@ -201,7 +250,7 @@ router.get('/product',(req,res)=>{
               }
               else {
                 body["price"] = (req.body.price)*(req.body.quantity)
-              body["dp_price"] = (req.body.dp_price)*(req.body.quantity)
+              body["dp_price"] = (req.body.price)*(req.body.quantity)
 
                    pool.query(`insert into cart set ?`, body, (err, result) => {
                    if (err) throw err;
@@ -242,7 +291,7 @@ router.get('/product',(req,res)=>{
               if (err) throw err;
               else if (result[0]) {
                  // res.json(result[0])
-                  pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity} , dp_price = ${req.body.dp_price}*${req.body.quantity}  where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}'`,(err,result)=>{
+                  pool.query(`update cart set quantity = ${req.body.quantity} , price = ${result[0].oneprice}*${req.body.quantity} , dp_price = ${req.body.price}*${req.body.quantity}  where booking_id = '${req.body.booking_id}' and categoryid = '${req.body.categoryid}' and usernumber = '${req.body.usernumber}'`,(err,result)=>{
                       if (err) throw err;
                       else {
                           res.json({
@@ -254,7 +303,7 @@ router.get('/product',(req,res)=>{
               }
               else {
                 body["price"] = (req.body.price)*(req.body.quantity)
-              body["dp_price"] = (req.body.dp_price)*(req.body.quantity)
+              body["dp_price"] = (req.body.price)*(req.body.quantity)
 
                    pool.query(`insert into cart set ?`, body, (err, result) => {
                    if (err) throw err;
@@ -773,12 +822,12 @@ router.post('/order-now',(req,res)=>{
         pool.query(`select sum(dp_price) as totaldp from booking where orderid = '${orderid}'`,(err,result)=>{
           if(err) throw err;
           else {
-            check_repurchse(req.session.usernumber,result[0].totaldp)
+          
+         res.redirect('/my-account#account-orders')
         
           }
         })
         
-        //  res.redirect('/confirmation')
       }
     })
     
@@ -834,8 +883,14 @@ router.get('/my-account',(req,res)=>{
     var query2 = `select * from users where number = '${req.session.usernumber}';`
     var query3 = `select * from address where usernumber = '${req.session.usernumber}';`
     var query4 = `select email from users where number = '${req.session.usernumber}';`
+    var query5 = `select r.* , 
+    (select v.business_name from vendor v where v.id = r.vendorid) as vendorbusinessname,
+    (select c.short_description from coupon c where c.id = r.coupounid ) as coupon_description,
+    (select c.maximum_cashback_price from coupon c where c.id = r.coupounid ) as coupon_cashprice
 
-    pool.query(query+query1+query2+query3+query4,(err,result)=>{
+    from redeem_code r where usernumber = '${req.session.usernumber}' order by id desc limit 30;`
+
+    pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
       if(err) throw err;
       else res.render('myaccount',{result:result,login:true})
     })
@@ -1154,19 +1209,31 @@ else{
 router.get('/shop-by-category',(req,res)=>{
   if(req.session.usernumber){
     var query = `select * from category;`
-    var query1 = `select * from category;`
+    var query1 = `SELECT *, SQRT(
+      POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+      POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+      FROM vendor where categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('allshop',{login:true,result})
+      else if(result[1][0]){
+        res.render('allshop',{login:true,result})
+      }
+      else res.render('nodatafound',{login:true,result})
     })
 
   }
   else{
     var query = `select * from category;`
-    var query1 = `select * from category;`
+    var query1 = `SELECT *, SQRT(
+      POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+      POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+      FROM vendor where categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('allshop',{login:false,result})
+      else if(result[1][0]){
+        res.render('allshop',{login:false,result})
+      }
+      else res.render('nodatafound',{login:false,result})
     })
    
 
@@ -1196,10 +1263,24 @@ router.get('/single-vendor-details',(req,res)=>{
      (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
      
      from coupon c where c.vendorid = '${req.query.vendorid}';`
-    var query3 = `select * from deals where vendorid = '${req.query.vendorid}';`
+    var query3 = `select * from coupon where vendorid = '${req.query.vendorid}';`
     var query4 = `select * from rating where vendorid = '${req.query.vendorid}';`
 
-pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
+
+    var query7 = `select c.* ,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Exclusive Deals';`
+    var query8 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Deals Of the Day';`
+    var query9 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Mega Deals';`
+
+pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
   if(err) throw err;
   else {
     res.render('single-vendor-details',{login:true,result})
@@ -1217,7 +1298,20 @@ pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
     var query3 = `select * from deals where vendorid = '${req.query.vendorid}';`
     var query4 = `select * from rating where vendorid = '${req.query.vendorid}';`
 
-    pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
+    var query7 = `select c.* ,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Exclusive Deals';`
+    var query8 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Deals Of the Day';`
+    var query9 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Mega Deals';`
+
+    pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
 
   if(err) throw err;
   else {
@@ -1255,13 +1349,13 @@ router.get('/exclusive-deals-and-offers',(req,res)=>{
 
 
 
-router.get('/coupons',(req,res)=>{
+router.get('/about-us',(req,res)=>{
   if(req.session.usernumber){
     var query = `select * from category;`
     var query1 = `select * from category;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('show_all_category',{login:true,result})
+      else res.render('about',{login:true,result})
     })
   }
   else{
@@ -1269,7 +1363,7 @@ router.get('/coupons',(req,res)=>{
     var query1 = `select * from category;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('show_all_category',{login:false,result})
+      else res.render('about',{login:false,result})
     })
   }
   
@@ -1282,6 +1376,7 @@ router.post('/redeem-this-code',(req,res)=>{
   let body = req.body;
   body['usernumber'] = req.session.usernumber;
   body['otp'] = Math.floor(100000 + Math.random() * 9000);
+  body['status'] = 'pending'
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -1302,6 +1397,15 @@ router.post('/redeem-this-code',(req,res)=>{
   else{
     res.json({msg:'failed'})
   }
+})
+
+
+
+router.get('/product-description',(req,res)=>{
+  pool.query(`select * from products where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
 })
 
 module.exports = router;

@@ -1,860 +1,615 @@
+<!DOCTYPE html>
 
-<%- include ('./header.ejs') %>
-
-
-<main class="main">
-    <div class="intro-section">
-        <div class="owl-carousel owl-theme owl-nav-inner owl-dot-inner row gutter-no cols-1 animation-slider"
-            data-owl-options="{
-            'nav': false,
-            'dots': true,
-            'items': 1,
-            'autoplay': false,
-            'responsive': {
-                '1630': {
-                    'nav': true,
-                    'dots': false
-                }
-            }
-        }">
-           
-        
-        <% for(i=0;i<result[2].length;i++) { %>
-            <a href='#'>
-        <div class="banner banner-fixed intro-slide intro-slide1+<%=result[2][i].id%>"
-                style="background-image: url(/images/<%=result[2][i].image%>); background-color: whitesmoke;">
-                <div class="container">
-                    <figure class="slide-image floating-item slide-animate" data-animation-options="{
-                        'name': 'fadeInDownShorter', 'duration': '1s'
-                    }" data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
-                        data-child-depth="0.2">
-                      
-                    </figure>
-                   
-                    <!-- End of .banner-content -->
-                </div>
-                <!-- End of .container -->
-            </div>
-            <!-- End of .intro-slide1 -->
-</a>
-            <% } %>
-
-           
-
-         
-            <!-- End of .intro-slide3 -->
-        </div>
-    </div>
-    <!-- End of .intro-section -->
-
-    <div class="container">
-        <div class="owl-carousel owl-theme row cols-md-4 cols-sm-3 cols-1 icon-box-wrapper appear-animate br-sm mt-6 mb-10 appear-animate"
-            data-owl-options="{
-            'nav': false,
-            'dots': false,
-            'loop': true,
-            'autoplay': true,
-            'autoplayTimeout': 4000,
-            'responsive': {
-                '0': {
-                    'items': 1
-                },
-                '576': {
-                    'items': 2
-                },
-                '768': {
-                    'items': 3
-                },
-                '992': {
-                    'items': 3
-                },
-                '1200': {
-                    'items': 4
-                }
-            }
-        }">
-            <div class="icon-box icon-box-side text-dark">
-                <span class="icon-box-icon icon-shipping">
-                    <i class="w-icon-truck"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Free Shipping & Returns</h4>
-                    <p class="text-default">For all orders over $99</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark">
-                <span class="icon-box-icon icon-payment">
-                    <i class="w-icon-bag"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Secure Payment</h4>
-                    <p class="text-default">We ensure secure payment</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark icon-box-money">
-                <span class="icon-box-icon icon-money">
-                    <i class="w-icon-money"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Money Back Guarantee</h4>
-                    <p class="text-default">Any back within 30 days</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark icon-box-chat">
-                <span class="icon-box-icon icon-chat">
-                    <i class="w-icon-chat"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Customer Support</h4>
-                    <p class="text-default">Call or email us 24/7</p>
-                </div>
-            </div>
-        </div>
-        <!-- End of Iocn Box Wrapper -->
-
-      
-        <!-- End of Product Deals Warpper -->
-
-        <h3>Exclusive Deals</h3>
+<html lang="zxx">
 
 
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
-                        <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
-                            At
-                            <strong class="text-secondary">$125.00</strong>
-                        </div>
-                        <hr class="banner-divider bg-white" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-white btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
+
+
+<head>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N43HN4X');</script>
+    <!-- End Google Tag Manager -->
+
+
+
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="keywords" content="">
+
+    <meta name="description" content="">
+
+
+
+    <title>LaunchPage - Creative Landing Page Template</title>
+
+    
+
+    <!-- Loading Bootstrap -->
+
+    <link href="/Landing/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <!-- Loading Template CSS -->
+
+    <link href="/Landing/css/style.css" rel="stylesheet">
+
+    <link href="/Landing/css/animate.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/Landing/css/pe-icon-7-stroke.css">
+
+    <link href="/Landing/css/style-magnific-popup.css" rel="stylesheet">
+
+
+
+
+
+    <!-- Awsome Fonts -->
+
+    <link rel="stylesheet" href="/Landing/css/all.min.css">
+
+
+
+    <!-- Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&amp;display=swap" rel="stylesheet">
+
+
+
+    <!-- Font Favicon -->
+
+    <link rel="shortcut icon" href="/Landing/images/favicon.ico">
+
+    
+
+</head>
+
+
+
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N43HN4X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <!--begin header -->
+
+    <header class="header">
+
+
+
+        <!--begin navbar-fixed-top -->
+
+        <nav class="navbar navbar-expand-lg navbar-default navbar-fixed-top" style=" background-color: transparent;">
+
+            
+
+            <!--begin container -->
+
+            <div class="container" >
+
+
+
+                    <!--begin logo -->
+
+                    <a class="navbar-brand" href="#"><img src="/images/deal_logo.png" style="object-fit: contain;width:100%;height: 100px;"></a>
+
+                    <!--end logo -->
+
+
+
             </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    		<!--end container -->
 
+            
 
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
-                        <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
-                            At
-                            <strong class="text-secondary">$125.00</strong>
-                        </div>
-                        <hr class="banner-divider bg-white" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-white btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </nav>
 
-        <h3>Deals Of the Day</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
-                        <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
-                            At
-                            <strong class="text-secondary">$125.00</strong>
-                        </div>
-                        <hr class="banner-divider bg-white" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-white btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
-                        <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
-                            At
-                            <strong class="text-secondary">$125.00</strong>
-                        </div>
-                        <hr class="banner-divider bg-white" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-white btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-        <h3>Mega Deals</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
-                        <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
-                            At
-                            <strong class="text-secondary">$125.00</strong>
-                        </div>
-                        <hr class="banner-divider bg-white" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-white btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-1.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title text-white ls-25 mb-0">Electronics</h3>
-                        <div class="banner-price-info text-white font-weight-bold text-uppercase mb-1">Starting
-                            At
-                            <strong class="text-secondary">$125.00</strong>
-                        </div>
-                        <hr class="banner-divider bg-white" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-white btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/1-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #eeedec;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h3 class="banner-title ls-25 text-capitalize mb-0">Cosmetics Sets</h3>
-                        <div class="banner-price-info font-weight-bold text-uppercase mb-1">Sale Up To
-                            <strong class="text-secondary">30% Off</strong>
-                        </div>
-                        <hr class="banner-divider bg-dark" />
-                        <a href="/shop-by-category?categoryid=13"
-                            class="btn btn-dark btn-link btn-underline btn-icon-right">
-                            Shop Now<i class="w-icon-long-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        
-        <!-- End of Category Wrapper -->
-
-       
-        <!-- End of Vendor Wrapper -->
-   
-        <!-- End of Tab Title-->
-
-        <!-- End of Tab Content -->
-
-       
-        <!-- End of Sale Banner -->
-
-        
-        <!-- End of Banner Product Wrapper -->
-
-        <div class="row category-wrapper sports-fashion mb-8 appear-animate">
-            <div class="col-md-6 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/2-1.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #EAEAEA;" />
-                    </figure>
-                    <div class="banner-content y-50 text-right">
-                        <h5 class="banner-subtitle text-uppercase font-weight-bold">New Arrivals</h5>
-                        <h3 class="banner-title text-capitalize ls-25">Sport Outfits</h3>
-                        <hr class="banner-divider bg-dark ml-auto mb-3">
-                        <div class="banner-price-info text-dark">
-                            From <span class="text-secondary font-weight-bolder ls-25">$150.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/wolmart/assets/images/demos/demo2/categories/2-2.jpg" alt="Category Banner"
-                            width="640" height="200" style="background-color: #181411;" />
-                    </figure>
-                    <div class="banner-content y-50">
-                        <h5 class="banner-subtitle text-uppercase font-weight-normal text-white">SmartWatches
-                        </h5>
-                        <h3 class="banner-title text-white ls-25">Sale up to 20% Off</h3>
-                        <hr class="banner-divider bg-white">
-                        <div class="banner-price-info text-white">
-                            Starting at <span class="text-secondary font-weight-bolder ls-25">$270.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End of Category Wrapper -->
-
-
-        <div class="page-content mb-8" style="margin-top: 20px;">
-            <div class="container">
-                <!-- Start of Vendor Map -->
-              
-                <!-- End of Vendor Map -->
-
-                <!-- Start of Vendor Filter -->
-                
-                <!-- End of Vendor Filter -->
-
-                <!-- Start of Vendor Store -->
-                <div class="row cols-lg-3 cols-sm-2">
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/wolmart/assets/images/vendor/wcmp/1.jpg" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #454b63;" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/wolmart/assets/images/vendor/brand/1.jpg" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=4">Vendor 1</a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p>287 cherry Hill Ave. South El 
-                                            Monte, CA 91733, Aland lslands</p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <div class="ratings-container">
-                                                <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
-                                                    <span class="tooltiptext tooltip-top"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/wolmart/assets/images/vendor/wcmp/2.jpg" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #6a6867;" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/wolmart/assets/images/vendor/brand/2.jpg" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=4">Vendor 2</a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p>Fuchu, Hiroshima, Thai Nguyen,
-                                            Hiroshima, Japan,27000</p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <i class="w-icon-star-full"></i>
-                                            <p>No Rating Yet</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/wolmart/assets/images/vendor/wcmp/3.jpg" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #5a5958;" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/wolmart/assets/images/vendor/brand/3.jpg" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=4">Vendor 3</a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p>848 Baker Rd, Huntsville, AL 35803,
-                                            Minato, Tokyo, Japan, 12000</p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <div class="ratings-container">
-                                                <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
-                                                    <span class="tooltiptext tooltip-top"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/wolmart/assets/images/vendor/wcmp/4.jpg" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #585e65;" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/wolmart/assets/images/vendor/brand/4.jpg" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=4">Vendor 4</a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p>908 New Hampshire Avenue #100,
-                                            Washington, United States</p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <div class="ratings-container">
-                                                <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
-                                                    <span class="tooltiptext tooltip-top"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/wolmart/assets/images/vendor/wcmp/5.jpg" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #27282c;" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/wolmart/assets/images/vendor/brand/5.jpg" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=4">Vendor 5</a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p>Fuchu, Hiroshima, Thai Nguyen,
-                                            Hiroshima, Japan,27000</p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <i class="w-icon-star-full"></i>
-                                            <p>No Rating Yet</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/wolmart/assets/images/vendor/wcmp/6.jpg" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #a387b8;" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/wolmart/assets/images/vendor/brand/6.jpg" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=4">Vendor 6</a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p>848 Baker Rd, Huntsville, AL 35803,
-                                            Minato, Tokyo, Japan, 12000</p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <i class="w-icon-star-full"></i>
-                                            <p>No Rating Yet</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                </div>
-                <!-- End of Vendor Store -->
-            </div>
-        </div>
-
-       
-        <!-- End of Banner Product Wrapper -->
-
-        <div class="banner br-sm banner-electronics appear-animate" style="background-image: url(/wolmart/assets/images/demos/demo2/banners/3.jpg);
-            background-color: #333;">
-            <div class="banner-content mr-10 pr-1">
-                <div class="banner-price-info text-white font-weight-normal ls-25">
-                    Save Big on <span class="font-weight-bolder text-secondary text-uppercase">50% Off</span>
-                </div>
-                <h3 class="banner-title text-white mb-0 ls-25">Cameras and Leans Sale</h3>
-            </div>
-            <a href="/shop-by-category?categoryid=13" class="btn btn-white btn-rounded btn-icon-right mt-1">Shop Now<i
-                    class="w-icon-long-arrow-right"></i></a>
-        </div>
-        <!-- End of Banner -->
-
-
+    	<!--end navbar-fixed-top -->
 
         
 
+    </header>
+
+    <!--end header -->
 
 
 
-        
+    <!--begin home section -->
+
+    <section class="home-section" id="home">
 
 
 
-			 <% for(i=0;i<result[4].length;i++){%>
-
-
-        <div class="title-link-wrapper mb-2 appear-animate">
-            <h2 class="title"><%=result[4][i].name%></h2>
-            <!-- <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">More Products<i
-                    class="w-icon-long-arrow-right"></i></a> -->
-        </div>
-
-    <% const filteredData = result[3].filter(item => item.textname == result[4][i].name) %>
+        <div class="home-section-overlay"></div>
 
 
 
-        <div class="owl-carousel owl-theme top-products row cols-lg-5 cols-md-4 cols-sm-3 cols-2 mb-6 appear-animate"
-            data-owl-options="{
-            'nav': false,
-            'dots': true,
-            'margin': 20,
-            'responsive': {
-                '0': {
-                    'items': 2
-                },
-                '576': {
-                    'items': 3
-                },
-                '768': {
-                    'items': 4
-                },
-                '992': {
-                    'items': 5
-                }
-            }
-        }">
-          
-        <% for(j=0;j<filteredData.length;j++){ %>
-        
-        <div class="product-wrap">
-                <div class="product text-center">
-                    <figure class="product-media">
-                        <a href="/product?id=<%=filteredData[j].productid%>">
-                            <img src="/images/<%=filteredData[j].productimage%>" alt="Product" width="300"
-                                height="338">
-                          
-                        </a>
-                       
-                       
-                       
-                    </figure>
-                    <div class="product-details">
-                        <h4 class="product-name"><a href="/product?id=<%=filteredData[j].productid%>"><%=filteredData[j].productname%></a></h4>
-                        <div class="ratings-container">
+		<!--begin container -->
+
+		<div class="container">
+
+
+
+	        <!--begin row -->
+
+	        <div class="row">
+
+	          
+
+                <!--begin col-md-6-->
+
+                <div class="col-md-6 padding-top-120">
+
+
+
+                    <h1>Ab har dukaan hogi online...</h1>
+
+
+
+                    <p class="hero-text">Phalaye apna business pura india mai sirf ek click par</p>
+
+
+
+                 
+
+                </div>
+
+                <!--end col-md-6-->
+
+
+
+                <!--begin col-md-5-->
+
+                <div class="col-md-5 offset-md-1 margin-top-20">
+
+
+
+                    <!--begin register-form-wrapper-->
+
+                    <div class="register-form-wrapper wow bounceIn" data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: bounceIn;">
+
+
+
+                        <!-- <h3>Get Your Free 14-Day Trial</h3> -->
+
+
+
+
+
+
+                        <!--begin form-->
+
+                        <div>
+
+                             
+
+                            <!--begin success message -->
+
+                            <p><%=msg%></p>
+
+                            <!--end success message -->
+
                             
+
+                            <!--begin register form -->
+
+                            <form  class="register-form register" action="/enquiry-submit" method="post">
+
+                                
+
+                    
+
+                                <input class="register-input name-input white-input" required="" name="name" placeholder="Full Name*" type="text">
+
+                                <input class="register-input name-number white-input" required="" name="number" placeholder="Mobile Number*" type="number">
+
+                            
+
+                                <input class="register-input name-email white-input" required="" name="email" placeholder="Email Address*" type="email">
+
+                                <input class="register-input name-location white-input" required="" name="location" placeholder="Location*" type="text">
+
+                                <textarea style="background-color: #F9F9F9;color: black;" class="register-input name-email white-input" name="message" placeholder="Message (optional)"></textarea>
+
+
+
+
+                            
+
+                               
+
+                                <input value="Submit" class="register-submit" type="submit">
+
+                                    
+
+                            </form>
+
+                            <!--end register form -->
+
+
+
+
+                            
+
                         </div>
-                        <div class="product-price">
-                            <ins class="new-price">Rs.<%=filteredData[j].productnetamount%></ins>
-                        </div>
+
+                        <!--end form-->
+
+
+
                     </div>
+
+                    <!--end register-form-wrapper-->
+
+
+
                 </div>
+
+                <!--end col-md-5-->
+
+
+
+	        </div>
+
+	        <!--end row -->
+
+
+
+		</div>
+
+		<!--end container -->
+
+
+
+    </section>
+
+    <!--end home section -->
+
+
+
+
+
+    <!--begin section-grey -->
+
+    <section class="section-grey" id="about">
+
+
+
+        <!--begin container -->
+
+        <div class="container">
+
+
+
+            <!--begin row -->
+
+            <div class="row">
+
+
+
+                <!--begin col-md-12 -->
+
+                <div class="col-md-12 text-center margin-bottom-10">
+
+
+
+                    <h2 class="section-title">About us</h2>
+
+
+
+                    <p class="section-subtitle">Dealsaaj is a team of 100+ energetic and experience team who makes it one of the fastest growing E-commerce platforms as well as in offline platform in the populous couponing space. With the offering of Exclusive and lightning deals we help our customers to get the best value for each penny spent and saving money while shopping.</p>
+
+                    
+
+                </div>
+
+                <!--end col-md-12 -->
+
+
+
             </div>
-          <% } %>
+
+            <!--end row -->
+
+
+
         </div>
 
-       
+        <!--end container -->
 
-<% } %>
+
+
+        <!--begin services-wrapper -->
+
+        <div class="services-wrapper">
+
+
+
+            <!--begin container -->
+
+            <div class="container">
+
+
+
+                <!--begin row -->
+
+                <div class="row">
+
+
+
+                    <!--begin col-md-4 -->
+
+                    <div class="col-md-4">
+
+
+
+                        <div class="main-services blue">
+
+
+
+                            <i class="far fa-chart-bar"></i>
+
+
+
+                            <h4>Why we</h4>
+
+
+
+                            <p>We want to connect local sellers and buyers from across different parts of India, not just limited to their cities. We want to give them a platform where they can reach out to a large number of sellers, find the best-suited offer which can be redeemed at the counter or online.</p>
+
+                            
+
+                        </div>
+
+
+
+                    </div>
+
+                    <!--end col-md-4 -->
+
+
+
+                    <!--begin col-md-4 -->
+
+                    <div class="col-md-4">
+
+
+
+                        <div class="main-services red">
+
+
+
+                            <i class="far fa-heart"></i>
+
+
+
+                            <h4>Who we are?</h4>
+
+
+
+                            <p>Dealsaaz is an e-marketplace platform where local merchants and users can interact directly. Helping local merchants to boost their business online and offline thereby offering a platform where users can get the best nearby deal with one tap.</p>
+
+                            
+
+                        </div>
+
+
+
+                    </div>
+
+                    <!--end col-md-4 -->
+
+
+
+                    <!--begin col-md-4 -->
+
+                    <div class="col-md-4">
+
+
+
+                        <div class="main-services green">
+
+
+
+                            <i class="fas fa-anchor"></i>
+
+
+
+                            <h4>Where we are</h4>
+
+
+
+                            <p>We are currently present in Chhattisgarh, Madhya Pradesh, Bihar, Jharkhand, Uttar Pradesh & West Bengal. Soon we will be expanding to 500+ cities.</p>
+
+                            
+
+                        </div>
+
+
+
+                    </div>
+
+                    <!--end col-md-4 -->
+
+               
+
+                </div>
+
+                <!--end row -->
+
+                
+
+            </div>
+
+            <!--end container -->
+
+
+
+        </div>
+
+        <!--end services-wrapper -->
+
+
+
+    </section>
+
+    <!--end section-grey -->
+
+
+
+
+
+
+    <!--begin footer -->
+
+    <div class="footer">
+
+            
+
+        <!--begin container -->
+
+        <div class="container">
+
         
-        <!-- End of Owl Carousel -->
 
-       
-        <!-- End of Owl Carousel -->
+            <!--begin row -->
 
-        
-        <!-- End of Brands Wrapper -->
+            <div class="row">
 
-     
+            
+
+                <!--begin col-md-5 -->
+
+                <div class="col-md-5">
+
+                   
+
+                    <p>© 2022 <span style="color: #722A74;font-weight: bold;">Deals</span> <span style="color: #BC3069;font-weight: bold;">Aaj</span> Store. All Rights Reserved.
+
+                    </p>
+
+                    
+
+                </div>
+
+                <!--end col-md-5 -->
+
+                
+
+                <!--begin col-md-2 -->
+
+                <div class="col-md-2"></div>
+
+                <!--end col-md-2 -->
+
+                
+
+                <!--begin col-md-5 -->
+
+                <div class="col-md-5">
+
+                                         
+
+                    <!--begin footer_social -->
+
+                    <ul class="footer_social">
+
+
+
+                        <li>Follw us:</li>
+
+
+
+                        <li><a href="https://twitter.com/dealsaaj?t=HhOUbgqR21PA0vCdfNATvA&s=08"><i class="fab fa-twitter"></i></a></li>
+
+
+
+                        <li><a href="https://youtube.com/channel/UCpY9qRgvTV_cjRwakeetAMA"><i class="fab fa-youtube" style="color: red;"></i></a></li>
+
+
+
+                        <li><a href="https://www.facebook.com/dealsaaj/"><i class="fab fa-facebook-square"></i></a></li>
+
+
+
+                        <li><a href="https://www.instagram.com/dealsaaj/"><i class="fab fa-instagram"></i></a></li>
+
+
+
+                      
+
+
+
+                    </ul>
+
+                    <!--end footer_social -->
+
+                    
+
+                </div>
+
+                <!--end col-md-5 -->
+
+                
+
+            </div>
+
+            <!--end row -->
+
+
+
+        </div>
+
+        <!--end container -->
+
+               
+
     </div>
-    <!-- End of Container -->
-</main>
-<!-- End of Main -->
 
-<%- include ('./footer.ejs') %>
+    <!--end footer -->
 
+
+
+
+
+<!-- Load JS here for greater good =============================-->
+
+<script src="/Landing/js/jquery-3.3.1.min.js"></script>
+
+<script src="/Landing/js/bootstrap.min.js"></script>
+
+<script src="/Landing/js/jquery.scrollTo-min.js"></script>
+
+<script src="/Landing/js/jquery.magnific-popup.min.js"></script>
+
+<script src="/Landing/js/jquery.nav.js"></script>
+
+<script src="/Landing/js/wow.js"></script>
+
+<script src="/Landing/js/plugins.js"></script>
+
+<script src="/Landing/js/custom.js"></script>
+
+
+
+
+
+</body>
+
+
+<!-- Mirrored from demo.epic-webdesign.com/tf-launchpage/v1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Feb 2022 08:48:40 GMT -->
+</html>

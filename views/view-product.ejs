@@ -99,27 +99,8 @@
 
                                         <hr class="product-divider">
 
-                                        <div class="product-form product-variation-form product-color-swatch">
-                                            <label>Color:</label>
-                                            <div class="d-flex align-items-center product-variations">
-                                                <a href="#" class="color" style="background-color: #ffcc01"></a>
-                                                <a href="#" class="color" style="background-color: #ca6d00;"></a>
-                                                <a href="#" class="color" style="background-color: #1c93cb;"></a>
-                                                <a href="#" class="color" style="background-color: #ccc;"></a>
-                                                <a href="#" class="color" style="background-color: #333;"></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-form product-variation-form product-size-swatch">
-                                            <label class="mb-1">Size:</label>
-                                            <div class="flex-wrap d-flex align-items-center product-variations">
-                                                <a href="#" class="size">Small</a>
-                                                <a href="#" class="size">Medium</a>
-                                                <a href="#" class="size">Large</a>
-                                                <a href="#" class="size">Extra Large</a>
-                                            </div>
-                                            <!-- <a href="#" class="product-variation-clean">Clean All</a> -->
-                                        </div>
-
+                                     
+                                      
                                         <!-- <div class="product-variation-price">
                                             <span></span>
                                         </div> -->
@@ -163,54 +144,13 @@
                                     <div class="tab-pane active" id="product-tab-description">
                                         <div class="row mb-4">
                                             <div class="col-md-6 mb-5">
-                                                <h4 class="title tab-pane-title font-weight-bold mb-2">Detail</h4>
-                                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor incididunt arcu cursus vitae congue mauris.
-                                                    Sagittis id consectetur purus ut. Tellus rutrum tellus pelle Vel
-                                                    pretium lectus quam id leo in vitae turpis massa.</p>
-                                                <ul class="list-type-check">
-                                                    <li>Nunc nec porttitor turpis. In eu risus enim. In vitae mollis
-                                                        elit.
-                                                    </li>
-                                                    <li>Vivamus finibus vel mauris ut vehicula.</li>
-                                                    <li>Nullam a magna porttitor, dictum risus nec, faucibus sapien.
-                                                    </li>
-                                                </ul>
+                                               <div id="result"></div>
+                                               
+                                                
                                             </div>
-                                            <div class="col-md-6 mb-5">
-                                                <div class="banner banner-video product-video br-xs">
-                                                    <figure class="banner-media">
-                                                        <a href="#">
-                                                            <img src="/wolmart/assets/images/products/video-banner-610x300.jpg"
-                                                                alt="banner" width="610" height="300"
-                                                                style="background-color: #bebebe;">
-                                                        </a>
-                                                        <a class="btn-play-video btn-iframe"
-                                                            href="/wolmart/assets/video/memory-of-a-woman.mp4"></a>
-                                                    </figure>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
-                                        <div class="row cols-md-3">
-                                            <div class="mb-3">
-                                                <h5 class="sub-title font-weight-bold"><span class="mr-3">1.</span>Free
-                                                    Shipping &amp; Return</h5>
-                                                <p class="detail pl-5">We offer free shipping for products on orders
-                                                    above 50$ and offer free delivery for all orders in US.</p>
-                                            </div>
-                                            <div class="mb-3">
-                                                <h5 class="sub-title font-weight-bold"><span>2.</span>Free and Easy
-                                                    Returns</h5>
-                                                <p class="detail pl-5">We guarantee our products and you could get back
-                                                    all of your money anytime you want in 30 days.</p>
-                                            </div>
-                                            <div class="mb-3">
-                                                <h5 class="sub-title font-weight-bold"><span>3.</span>Special Financing
-                                                </h5>
-                                                <p class="detail pl-5">Get 20%-50% off items over 50$ for a month or
-                                                    over 250$ for a year with our special credit card.</p>
-                                            </div>
-                                        </div>
+                                    
                                     </div>
                                     <div class="tab-pane" id="product-tab-specification">
                                         <ul class="list-none">
@@ -1091,7 +1031,7 @@
                 let vendorid = $(this).attr('vendorid')
                 let dp_price = $(this).attr('dp_price')
 
-    // alert(quantity)
+    console.log('dd',(+quantity) > (+totalquantity))
                 // let vendorid = $(this).attr('vendorid');
     
     
@@ -1121,6 +1061,19 @@
     
     </script>
     
+
+    <input type="hidden" value="<%=productid%>" id="product-id">
+
+    <script>
+        $( document ).ready(function() {
+            let id = $('#product-id').val()
+    $.getJSON('/product-description',{id},data=>{
+        console.log(data[0])
+        let table = `<p>${data[0].description}</p>`
+        $('#result').html(table)
+    })
+});
+    </script>
 
 <!-- Mirrored from portotheme.com/html/wolmart/product-default.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:19:18 GMT -->
 </html>

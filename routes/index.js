@@ -6,8 +6,8 @@ const fetch = require("node-fetch");
 
 
 
-router.get('/',(req,res)=>{
-  res.render('index',{msg:''})
+router.get('/landing-page',(req,res)=>{
+  res.render('adpage',{msg:''})
 })
 
 
@@ -16,13 +16,13 @@ router.post('/enquiry-submit',(req,res)=>{
   console.log('body',body)
   pool.query(`insert into landing_data set ?`,body,(err,result)=>{
     if(err) throw err;
-    else res.render('index',{msg:'We received your message and you will hear from us soon. Thank You!'})
+    else res.render('adpage',{msg:'We received your message and you will hear from us soon. Thank You!'})
   })
 })
 
 
 /* GET home page. */
-router.get('/index1', function(req, res, next) {
+router.get('/', function(req, res, next) {
   if(req.session.usernumber){
    var query = `select * from category order by id desc;`
    var query1 = `select * from banner where type = 'Front Banner' order by id desc;`

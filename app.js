@@ -18,6 +18,9 @@ var vendorLogin = require('./routes/Vendor/login');
 var agentLogin = require('./routes/Agent/login');
 var agent_dashboard = require('./routes/Agent/agentDashboard');
 var channel_partner_login = require('./routes/Channel_Partner/login');
+var channel_partner_api = require('./routes/Channel_Partner/api');
+var agent_api = require('./routes/agent/api');
+
 
 var banner = require('./routes/banner');
 var repurchasingapi = require('./routes/repurchasing_api');
@@ -86,6 +89,8 @@ app.use('/repurchasing-api',repurchasingapi);
 app.use('/mlm',mlm);
 app.use('/shop_banner',shop_banner);
 app.use('/merchant-api',merchant_api);
+app.use('/channe-partner-api',channel_partner_api);
+app.use('/agent-api',agent_api)
 
 
 // catch 404 and forward to error handler

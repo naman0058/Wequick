@@ -19,7 +19,7 @@ var agentLogin = require('./routes/Agent/login');
 var agent_dashboard = require('./routes/Agent/agentDashboard');
 var channel_partner_login = require('./routes/Channel_Partner/login');
 var channel_partner_api = require('./routes/Channel_Partner/api');
-var agent_api = require('./routes/agent/api');
+var agent_api = require('./routes/Agent/api');
 
 
 var banner = require('./routes/banner');

@@ -2,6 +2,10 @@ var express = require('express');
 const pool = require('../routes/pool');
 var router = express.Router();
 
+const fs = require('fs');
+const readline = require('readline');
+const {google} = require('googleapis');
+
 const fetch = require("node-fetch");
 
 
@@ -10,6 +14,13 @@ router.get('/landing-page',(req,res)=>{
   res.render('adpage',{msg:''})
 })
 
+
+router.get('/landing-page-data-show',(req,res)=>{
+  pool.query(`select * from landing_data order by id desc`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
 
 router.post('/enquiry-submit',(req,res)=>{
   let body = req.body;

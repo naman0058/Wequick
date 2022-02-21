@@ -5,6 +5,7 @@ var upload = require('../multer');
 
 
 router.post('/validate',(req,res)=>{
+    console.log(req.body)
     pool.query(`select * from channel_partner where number = '${req.body.number}'`,(err,result)=>{
         if(err) throw err;
         else if(result[0]){

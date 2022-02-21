@@ -32,6 +32,8 @@ var shop_banner = require('./routes/shop_banner');
 var channel_partner_dashboard = require('./routes/Channel_Partner/channelPartnerDashboard');
 
 var merchant_api = require('./routes/Vendor/merchant_api');
+var blogs = require('./routes/blogs');
+
 
 
 var app = express();
@@ -91,6 +93,8 @@ app.use('/shop_banner',shop_banner);
 app.use('/merchant-api',merchant_api);
 app.use('/channe-partner-api',channel_partner_api);
 app.use('/agent-api',agent_api)
+app.use('/blogs',blogs);
+
 
 
 // catch 404 and forward to error handler

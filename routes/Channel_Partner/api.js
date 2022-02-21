@@ -69,7 +69,7 @@ router.post('/all-order',(req,res)=>{
    })
 
 
-   router.get('/all-payout',(req,res)=>{
+   router.post('/all-payout',(req,res)=>{
     pool.query(`select b.*,
     (select p.name from products p where p.id = b.booking_id) as productname
     from booking b where b.payout is not null and b.vendorid = '${req.body.id}' order by date desc;`,(err,result)=>{

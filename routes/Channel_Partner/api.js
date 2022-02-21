@@ -21,6 +21,7 @@ router.post('/validate',(req,res)=>{
 
 
 router.post('/get-all-agent',(req,res)=>{
+    console.log(req.body)
     pool.query(`select * from agent where channel_partner_id = '${req.body.id}'`,(err,result)=>{
         if(err) throw err;
         else res.json(result)

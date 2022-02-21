@@ -9,6 +9,7 @@ router.post('/validate',(req,res)=>{
     pool.query(`select * from channel_partner where number = '${req.body.number}'`,(err,result)=>{
         if(err) throw err;
         else if(result[0]){
+            console.log(result)
             res.json({msg:'success',result})
         }
         else {

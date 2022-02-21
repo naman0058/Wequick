@@ -32,6 +32,7 @@ router.post('/get-all-agent',(req,res)=>{
 
 
 router.post('/get-all-merchant',(req,res)=>{
+    console.log(req.body)
     pool.query(`select * from vendor where agentid = '${req.body.id}'`,(err,result)=>{
             if(err) throw err;
             else res.json(result)

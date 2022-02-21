@@ -87,7 +87,6 @@ router.post('/add-agent',upload.fields([{ name: 'image', maxCount: 1 }, { name: 
     console.log(req.files)
     var otp = Math.floor(1000 + Math.random() * 9000);
     body['userid'] = 'DLSJ' + otp;
-    body['channel_partner_id'] = req.session.channel_partner_id;
 
 if(req.files.icon){
     body['image'] = req.files.image[0].filename;

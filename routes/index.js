@@ -31,7 +31,7 @@ router.post('/reverse-geocoding1',(req,res)=>{
   // res.send(body)
     mapsdk.reverseGeoCodeGivenLatiLongi('a05d263ba2572310eb0bda1777e15526',req.body.latitude,req.body.longitude).then(function(data)
     {
-        res.json(data) 
+        res.json(data.results[0]) 
   
    
   

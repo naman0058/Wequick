@@ -28,9 +28,11 @@ let body = req.body;
 
 router.post('/reverse-geocoding1',(req,res)=>{
   let body = req.body;
+
   // res.send(body)
     mapsdk.reverseGeoCodeGivenLatiLongi('a05d263ba2572310eb0bda1777e15526',req.body.latitude,req.body.longitude).then(function(data)
     {
+      console.log(data.results)
         res.json(data.results[0]) 
   
    

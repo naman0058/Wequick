@@ -93,6 +93,52 @@ else {
 
 
 
+router.post('/channel-partner-insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 }]),(req,res)=>{
+    let body = req.body
+ 
+    console.log(req.files)
+
+pool.query(`select * from state where id = '${req.body.categoryid}'`,(err,result)=>{
+    if(err) throw err;
+    else {
+        let statecode = result[0].code;
+        pool.query(`select * from city where id = '${req.body.subcategoryid}'`,(err,result)=>{
+            if(err) throw err;
+            else {
+                let citycode = result[0].code;
+                body['userid'] = statecode + citycode +  Math.floor(100 + Math.random() * 9000);
+                if(req.files.icon){
+                    body['image'] = req.files.image[0].filename;
+                    body['icon'] = req.files.icon[0].filename;
+                 console.log(req.body)
+                   pool.query(`insert into channel_partner set ?`,body,(err,result)=>{
+                       err ? console.log(err) : res.json({msg : 'success'})
+                   })
+                }
+                else {
+                    body['image'] = req.files.image[0].filename;
+                    // body['icon'] = req.files.icon[0].filename;
+                 console.log(req.body)
+                   pool.query(`insert into channel_partner set ?`,body,(err,result)=>{
+                       err ? console.log(err) : res.json({msg : 'success'})
+                   })
+                }
+            }
+        })
+    }
+})
+
+
+
+
+    
+   
+})
+
+
+
+
+
 
 
 router.post('/listing-category/insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 }]),(req,res)=>{

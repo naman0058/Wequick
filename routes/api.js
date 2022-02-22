@@ -200,7 +200,10 @@ router.get('/get-all-products',(req,res)=>{
    
 
    router.get('/get-channel_partner',(req,res)=>{
-    pool.query(`select s.* , (select c.name from city c where c.id = s.categoryid) as categoryname from channel_partner s`,(err,result)=>{
+    pool.query(`select s.* , (select c.name from state c where c.id = s.categoryid) as categoryname,
+    (select c.name from city c where c.id = s.subcategoryid) as subcategoryname
+    
+    from channel_partner s`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     }) 
@@ -1439,15 +1442,15 @@ router.get('/deals',(req,res)=>{
     var query7 = `select c.* ,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Exclusive Deals';`
+    from deals c where c.deals_type = 'Exclusive Deals' and c.vendorid = '${req.query.vendorid}';`
     var query8 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Deals Of the Day';`
+    from deals c where c.deals_type = 'Deals Of the Day' and c.vendorid = '${req.query.vendorid}';`
     var query9 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Mega Deals';`
+    from deals c where c.deals_type = 'Mega Deals' and c.vendorid = '${req.query.vendorid}';`
 
     pool.query(query7+query8+query9,(err,result)=>{
       if(err) throw err;

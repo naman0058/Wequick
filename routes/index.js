@@ -2,9 +2,30 @@ var express = require('express');
 const pool = require('../routes/pool');
 var router = express.Router();
 
-const fs = require('fs');
-const readline = require('readline');
-const {google} = require('googleapis');
+
+
+const request = require('request');
+const auth = 'bearer 8170b1fc-302d-4f5d-b6a8-72fb6dbdb804'
+
+var mapsdk = require('mapmyindia-sdk-nodejs');
+
+
+router.post('/reverse-geocoding',(req,res)=>{
+let body = req.body;
+// res.send(body)
+  mapsdk.reverseGeoCodeGivenLatiLongi('a05d263ba2572310eb0bda1777e15526',req.body.latitude,req.body.longitude).then(function(data)
+  {
+      res.json(data.results[0].formatted_address) 
+
+ 
+
+  }).catch(function(ex){
+      console.log(ex);
+      res.json(ex)
+  });
+})
+
+
 
 const fetch = require("node-fetch");
 
@@ -1246,9 +1267,7 @@ router.get('/shop-by-category',(req,res)=>{
       }
       else res.render('nodatafound',{login:false,result})
     })
-   
-
-  }
+     }
 })
 
 
@@ -1281,15 +1300,15 @@ router.get('/single-vendor-details',(req,res)=>{
     var query7 = `select c.* ,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Exclusive Deals';`
+    from deals c where c.deals_type = 'Exclusive Deals' and c.vendorid = '${req.query.vendorid}';`
     var query8 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Deals Of the Day';`
+    from deals c where c.deals_type = 'Deals Of the Day' c.vendorid = '${req.query.vendorid}' ;`
     var query9 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Mega Deals';`
+    from deals c where c.deals_type = 'Mega Deals' c.vendorid = '${req.query.vendorid}';`
 
 pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
   if(err) throw err;
@@ -1312,15 +1331,15 @@ pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,re
     var query7 = `select c.* ,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Exclusive Deals';`
+    from deals c where c.deals_type = 'Exclusive Deals' c.vendorid = '${req.query.vendorid}';`
     var query8 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Deals Of the Day';`
+    from deals c where c.deals_type = 'Deals Of the Day' c.vendorid = '${req.query.vendorid}';`
     var query9 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Mega Deals';`
+    from deals c where c.deals_type = 'Mega Deals' c.vendorid = '${req.query.vendorid}';`
 
     pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
 
@@ -1454,20 +1473,75 @@ router.get('/new-release-full-description',(req,res)=>{
   if(req.session.usernumber){
     var query = `select * from category;`
     var query1 = `select * from blogs where id = '${req.query.id}';`
-    pool.query(query+query1,(err,result)=>{
+    var query2 = `select * from blogs where id!= '${req.query.id}';`
+    pool.query(query+query1+query2,(err,result)=>{
       if(err) throw err;
-      else res.render('new_release_full_description',{login:true,result})
+      else res.render('new_release_full_description',{login:true,result,id:req.query.id})
     })
   }
   else{
     var query = `select * from category;`
     var query1 = `select * from blogs where id = '${req.query.id}';`
-    pool.query(query+query1,(err,result)=>{
+    var query2 = `select * from blogs where id!= '${req.query.id}';`
+
+    pool.query(query+query1+query2,(err,result)=>{
       if(err) throw err;
-      else res.render('new_release_full_description',{login:false,result})
+      else res.render('new_release_full_description',{login:false,result,id:req.query.id})
     })
   }
 })
+
+
+router.get('/get-single-blog-description',(req,res)=>{
+  pool.query(`select * from blogs where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+
+
+
+
+
+
+
+router.get('/invoice',(req,res)=>{
+  if(req.session.usernumber){
+    var query = `select * from category order by id desc;`
+    var query1 = `select c.*,
+    (select p.name from products p where p.id = c.booking_id) as bookingname,
+    (select p.image from products p where p.id = c.booking_id) as bookingimage,
+    (select u.email from users u where u.id = c.usernumber) as usermobilenumber,
+   
+    (select a.city from address a where a.id = c.address ) as usercity,
+    (select a.pincode from address a where a.id = c.address ) as userpostcode,
+    (select a.state from address a where a.id = c.address ) as userstate
+    from booking c where c.orderid = '${req.query.orderid}';`
+    var query10= `select sum(price) as totalamount from booking where orderid = '${req.query.orderid}';`
+
+
+    var query2 = `select * from category where id = '${req.query.id}';`
+    var query6 = `select * from users where id = '${req.session.usernumber}';`
+      var query7 = `select sum(quantity) as counter from cart where usernumber = '${req.session.usernumber}';`
+      var query8 = `select count(id) as counter from wishlist where usernumber = '${req.session.usernumber}';`
+
+
+  
+  
+    pool.query(query+query1+query2+query6+query7+query8+query10,(err,result)=>{
+      if(err) throw err;
+       else res.render('invoice',{login:true,result,title:'Invoice'})
+      // else res.json(result)
+    })
+  }
+  else{
+    res.redirect('/login')
+  }
+})
+
 
 
 module.exports = router;

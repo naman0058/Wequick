@@ -21,23 +21,32 @@
                         <div class="card">
                             <div class="card-body">    
                                     <div class="basic-form">
-                                        <form action="/admin/dashboard/store-listing/channel_partner/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
+                                        <form action="/admin/dashboard/channel-partner-insert" method="POST" enctype="multipart/form-data" class="uploadImage">
                                                <div class="row">
-                                                <div class="col-4">
-                                                    <label>City Name</label>
+                                                <div class="col-6">
+                                                    <label>State Name</label>
                                                    <select class="form-control" id="categoryid" name="categoryid"></select>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-6">
+                                                    <label>City Name</label>
+                                                    <select class="form-control" id="subcategoryid" name="subcategoryid"></select>
+
+                                                </div>
+
+                                              
+                                                
+                                              
+                                            </div>
+
+                                            <div class="row" style="margin-top: 20px;">
+                                                <div class="col-6">
                                                     <label>Channel Partner Name</label>
                                                     <input type="text" class="form-control" name="name" placeholder="Channel Partner Name">
                                                 </div>
-
-                                                <div class="col-4">
-                                                    <label>Mobile Number</label>
-                                                    <input type="text" class="form-control" name="number" placeholder="Channel Partner Mobile Number">
-                                                </div>
-                                                
-                                              
+                                            <div class="col-6">
+                                                <label>Mobile Number</label>
+                                                <input type="text" class="form-control" name="number" placeholder="Channel Partner Mobile Number">
+                                            </div>
                                             </div>
 
                                             <div class="row" style="margin-top: 20px;">
@@ -104,19 +113,20 @@
                             <div class="card-body">    
                                     <div class="basic-form">
                                                <div class="row">
+                                                <input type="hidden" class="form-control" id="pid" readonly>
+
+                                              
 
                                                 <div class="col-6">
-                                                    <label>Channel Partner ID</label>
-                                                    <input type="text" class="form-control" id="pid" readonly>
-
-                                                </div>
-
-                                                <div class="col-6">
-                                                    <label>Category Name</label>
+                                                    <label>State Name</label>
                                                    <select class="form-control" id="pcategoryid" name="categoryid"></select>
                                                 </div>
                                                 
-                                                
+                                                <div class="col-6">
+                                                    <label>City Name</label>
+                                                    <select type="text" class="form-control" id="psubcategoryid"></select>
+
+                                                </div>
                                               
                                             </div>
 

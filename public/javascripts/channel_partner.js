@@ -1,5 +1,6 @@
 let categories = []
 let subcategories = []
+let services = []
 
 
 let table = '/admin/dashboard/store-listing/channel_partner'
@@ -7,7 +8,7 @@ let table = '/admin/dashboard/store-listing/channel_partner'
 $('#show').click(function(){
   
 $.getJSON(`/api/get-channel_partner`, data => {
-    subcategories = data
+    services = data
     makeTable(data)
     
   
@@ -19,10 +20,22 @@ $.getJSON(`/api/get-channel_partner`, data => {
 
 
 
-$.getJSON(`/api/get-city`, data => {
+$.getJSON(`/api/get-state`, data => {
     categories = data
-    fillDropDown('categoryid', data, 'Choose Category', 0)
+    fillDropDown('categoryid', data, 'Choose State', 0)
   
+})
+
+
+$.getJSON(`/api/get-city`, data => {
+    subcategories = data
+    fillDropDown('subcategoryid', [], 'Choose City', 0)
+})
+
+
+$('#categoryid').change(() => {
+    const filteredData = subcategories.filter(item => item.stateid == $('#categoryid').val())
+    fillDropDown('subcategoryid', filteredData, 'Choose City', 0)
 })
 
 
@@ -51,7 +64,9 @@ function fillDropDown(id, data, label, selectedid = 0) {
     <th>PAN Card</th>
     <th>Address Proof</th>
 
+    <th>State Name</th>
     <th>City Name</th>
+
     <th>Name</th>
     <th>Mobile Number</th>
 
@@ -70,6 +85,8 @@ function fillDropDown(id, data, label, selectedid = 0) {
     <img src="/images/${item.icon}" class="img-fluid img-radius wid-40" alt="" style="width:50px;height:50px">
     </td>
     <td>${item.categoryname}</td>
+    <td>${item.subcategoryname}</td>
+
     <td>${item.name}</td>
     <td>${item.number}</td>
 
@@ -101,15 +118,27 @@ $('#result').on('click', '.deleted', function() {
 })
 
 
+$('#pcategoryid').change(() => {
+// alert($('#pcategoryid').val())
+    const filteredData = subcategories.filter(item => item.stateid == $('#pcategoryid').val())
+    console.log(filteredData)
+    fillDropDown('psubcategoryid', filteredData, 'Choose City', 0)
+})
+
+
 
 $('#result').on('click', '.edits', function() {
     const id = $(this).attr('id')
-    const result = subcategories.find(item => item.id == id);
+    const result = services.find(item => item.id == id);
+    // fillDropDown('pcategoryid', categories, 'Choose Category', result.categoryid)
     fillDropDown('pcategoryid', categories, 'Choose Category', result.categoryid)
+    $('#psubcategoryid').append($('<option>').val(result.subcategoryid).text(result.subcategoryname))
     $('#editdiv').show()
     $('#result').hide()
     $('#insertdiv').hide() 
     $('#pid').val(result.id)
+    $('#pcategoryid').val(result.categoryid)
+     $('#psubcategoryid').val(result.subcategoryid)
      $('#pname').val(result.name)
      $('#pnumber').val(result.number)
 
@@ -136,11 +165,12 @@ $('#update').click(function(){  //data insert in database
         id: $('#pid').val(),
         name: $('#pname').val(),
         categoryid:$('#pcategoryid').val(),
+        subcategoryid:$('#psubcategoryid').val(),
         number:$('#pnumber').val(),
 
        
         }
-
+console.log(updateobj)
     $.post(`${table}/update`, updateobj , function(data) {
        update()
     })

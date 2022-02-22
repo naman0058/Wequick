@@ -429,5 +429,42 @@
     })
 </script>
 
+
+
+    <script>
+
+getLocation()
+  var x = document.getElementById("demo");
+  
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+          
+
+    } else { 
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+  
+  function showPosition(position) {
+    // alert(position.coords.latitude)
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude
+ 
+// alert(longitude)
+    // $.post('/reverse-geocoding',{latitude,longitude},data=>{
+    //   console.log('mapdata',data)
+     
+    // })
+
+    let table = `<p>
+        <span>Circular Road, Kasturba Nagar, Shahdara, New Delhi, Delhi. Pin-110032 (India)</span>
+        </p>`
+        $('#locationtype').html(table)
+        $('#locationtype1').html(data)
+  }
+  </script>
+
+
 <%- include ('./footer.ejs') %>
 

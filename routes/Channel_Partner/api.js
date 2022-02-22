@@ -178,7 +178,7 @@ router.post('/update-agent-image',upload.fields([{ name: 'image', maxCount: 1 },
 
 router.get('/delete-agent', (req, res) => {
     let body = req.body
-    pool.query(`delete from agent where userid = ${req.query.id}`, (err, result) => {
+    pool.query(`delete from agent where userid = '${req.query.id}'`, (err, result) => {
         if(err) {
             res.json({
                 status:500,

@@ -1419,4 +1419,55 @@ router.get('/product-description',(req,res)=>{
   })
 })
 
+
+
+
+
+
+
+
+
+
+
+router.get('/new-release',(req,res)=>{
+  if(req.session.usernumber){
+    var query = `select * from category;`
+    var query1 = `select * from blogs order by id desc;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('new_release',{login:true,result})
+    })
+  }
+  else{
+    var query = `select * from category;`
+    var query1 = `select * from blogs order by id desc;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('new_release',{login:false,result})
+    })
+  }
+  
+})
+
+
+router.get('/new-release-full-description',(req,res)=>{
+  if(req.session.usernumber){
+    var query = `select * from category;`
+    var query1 = `select * from blogs where id = '${req.query.id}';`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('new_release_full_description',{login:true,result})
+    })
+  }
+  else{
+    var query = `select * from category;`
+    var query1 = `select * from blogs where id = '${req.query.id}';`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('new_release_full_description',{login:false,result})
+    })
+  }
+})
+
+
 module.exports = router;

@@ -452,16 +452,19 @@ getLocation()
     let longitude = position.coords.longitude
  
 // alert(longitude)
-    // $.post('/reverse-geocoding',{latitude,longitude},data=>{
-    //   console.log('mapdata',data)
-     
-    // })
-
-    let table = `<p>
-        <span>Circular Road, Kasturba Nagar, Shahdara, New Delhi, Delhi. Pin-110032 (India)</span>
+    $.post('/reverse-geocoding',{latitude,longitude},data=>{
+      console.log('mapdata',data)
+      let table = `<p>
+        <span>${data}</span>
+        </p>`
+        let table1 = `<p>
+        <span>${data}</span>
         </p>`
         $('#locationtype').html(table)
-        $('#locationtype1').html(table)
+        $('#locationtype1').val(tale1)
+    })
+
+
   }
   </script>
 

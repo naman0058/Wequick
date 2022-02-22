@@ -1124,7 +1124,10 @@ router.post('/show-vendor-orders',(req,res)=>{
 router.get('/profile',(req,res)=>{
   pool.query(`select v.*, (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where id = '${req.query.id}'`,(err,result)=>{
     if(err) throw err;
-    else res.json(result);
+    else {
+      console.log(result)
+      res.json(result)
+    };
   })
 })
 

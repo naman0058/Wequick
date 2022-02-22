@@ -68,7 +68,7 @@ Codepen: https://codepen.io/supah/
                     <table width="220" border="0" cellpadding="0" cellspacing="0" align="left" class="col">
                       <tbody>
                         <tr>
-                          <td align="left"> <img src="/leffet.in/themes/leo_qos/assets/img/modules/appagebuilder/images/black-logo.png"  alt="logo" border="0" /></td>
+                          <td align="left"> <img src="/images/deal_logo.png" style="width: 100px;"  alt="logo" border="0" /></td>
                         </tr>
                         <tr class="hiddenMobile">
                           <td height="40"></td>
@@ -156,9 +156,7 @@ Codepen: https://codepen.io/supah/
                       <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 10px 7px 0;" width="52%" align="left">
                         Item
                       </th>
-                      <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;" align="left">
-                        <small>Size</small>
-                      </th>
+  
                       <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;" align="center">
                         Quantity
                       </th>
@@ -179,7 +177,6 @@ Codepen: https://codepen.io/supah/
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
                         <%=result[1][i].bookingname%>
                       </td>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><small><%=result[1][i].size%></small></td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="center"><%=result[1][i].quantity%></td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">Rs. <%=result[1][i].price%></td>
                     </tr>
@@ -225,7 +222,7 @@ Codepen: https://codepen.io/supah/
                         Subtotal
                       </td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap;" width="80">
-                        Rs. <%=result[7][0].totalamount%>
+                        Rs. <%=result[6][0].totalamount%>
                       </td>
                     </tr>
                     <tr>
@@ -241,7 +238,7 @@ Codepen: https://codepen.io/supah/
                         <strong>Grand Total (Incl.Tax)</strong>
                       </td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                        <strong>Rs.<%=(+result[7][0].totalamount) + (+result[1][0].shipping_charges)%></strong>
+                        <strong>Rs.<%=(+result[6][0].totalamount) + (+result[1][0].shipping_charges)%></strong>
                       </td>
                     </tr>
                    
@@ -291,12 +288,8 @@ Codepen: https://codepen.io/supah/
                             </tr>
                             <tr>
                               <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-								<%=result[1][0].useraddress1%> <br/>
-								<%=result[1][0].useraddress2%> <br/>
-								 <%=result[1][0].userstate%> <br/>
-								  <%=result[1][0].usercity%> <br/>
-								  <%=result[1][0].userpostcode%> <br/>
-								  <%result[1][0].usercountry%>
+								<%=result[1][0].address%> <br/>
+								
                               </td>
                             </tr>
                           </tbody>
@@ -344,51 +337,14 @@ Codepen: https://codepen.io/supah/
                             <tr class="visibleMobile">
                               <td height="20"></td>
                             </tr>
-                            <tr>
-                              <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                <strong>SHIPPING INFORMATION</strong>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="100%" height="10"></td>
-                            </tr>
-                            <tr>
-                              <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-								<%=result[1][0].useraddress1%> <br/>
-								<%=result[1][0].useraddress2%> <br/>
-								 <%=result[1][0].userstate%> <br/>
-								  <%=result[1][0].usercity%> <br/>
-								  <%=result[1][0].userpostcode%> <br/>
-								  <%result[1][0].usercountry%>
-                              </td>
-                            </tr>
+                        
+                           
+                       
                           </tbody>
                         </table>
 
 
-                        <table width="220" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
-                          <tbody>
-                            <tr class="hiddenMobile">
-                              <td height="35"></td>
-                            </tr>
-                            <tr class="visibleMobile">
-                              <td height="20"></td>
-                            </tr>
-                            <tr>
-                              <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                <strong>SHIPPING METHOD</strong>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="100%" height="10"></td>
-                            </tr>
-                            <tr>
-                              <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                Delhivery
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                      
                       </td>
                     </tr>
                   </tbody>

@@ -967,18 +967,18 @@ router.get('/shop',(req,res)=>{
 
 
 
-// router.get('/search',(req,res)=>{
-//   var query = `select * from category order by id desc;`
-//   var query1 = `select * from products where keyword Like '%${req.query.search}%';`
-//   pool.query(query+query1,(err,result)=>{
-//     if(err) throw err;
-//     else if(result[1][0]){
-//       res.render('shop',{result:result})
-//     }
-//     else res.send('no')
-//   })
+router.get('/search',(req,res)=>{
+  var query = `select * from category order by id desc;`
+  var query1 = `select * from products where keyword Like '%${req.query.search}%';`
+  pool.query(query+query1,(err,result)=>{
+    if(err) throw err;
+    else if(result[1][0]){
+      res.render('shop',{result:result})
+    }
+    else res.send('no')
+  })
  
-// })
+})
 
 
 
@@ -1542,7 +1542,7 @@ router.get('/invoice',(req,res)=>{
 
 
     var query2 = `select * from category where id = '${req.query.id}';`
-    var query6 = `select * from users where id = '${req.session.usernumber}';`
+    var query6 = `select * from users where number = '${req.session.usernumber}';`
       var query7 = `select sum(quantity) as counter from cart where usernumber = '${req.session.usernumber}';`
       var query8 = `select count(id) as counter from wishlist where usernumber = '${req.session.usernumber}';`
 
@@ -1552,7 +1552,7 @@ router.get('/invoice',(req,res)=>{
     pool.query(query+query1+query2+query6+query7+query8+query10,(err,result)=>{
       if(err) throw err;
        else res.render('invoice',{login:true,result,title:'Invoice'})
-      // else res.json(result)
+      // else res.json({msg:result[3], number:req.session.usernumber})
     })
   }
   else{

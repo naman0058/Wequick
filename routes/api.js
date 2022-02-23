@@ -1135,6 +1135,44 @@ router.get('/profile',(req,res)=>{
 
 router.post('/update-profile', (req, res) => {
   let body = req.body
+
+  if(req.body.checked){
+
+  
+ if(req.body.checked == 1){
+   body['checked'] = true
+ }
+ else{
+  body['checked'] = false
+
+ }
+  }
+
+  if(req.body.checked1){
+
+ if(req.body.checked1 == 1){
+  body['checked1'] = true
+}
+else{
+ body['checked1'] = false
+
+}
+  }
+
+
+  if(req.body.checked2){
+
+
+if(req.body.checked2 == 1){
+  body['checked2'] = true
+}
+else{
+ body['checked2'] = false
+
+}
+
+  }
+
   pool.query(`update vendor set ? where id = ?`, [req.body, req.body.vendorid], (err, result) => {
       if(err) {
           res.json({

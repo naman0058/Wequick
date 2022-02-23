@@ -1136,43 +1136,6 @@ router.get('/profile',(req,res)=>{
 router.post('/update-profile', (req, res) => {
   let body = req.body
 
-  if(req.body.timings){
-
-  
- if(req.body.timings == 1){
-   body['timings'] = true
- }
- else{
-  body['timings'] = false
-
- }
-  }
-
-  if(req.body.COD){
-
- if(req.body.COD == 1){
-  body['COD'] = true
-}
-else{
- body['COD'] = false
-
-}
-  }
-
-
-  if(req.body.online_pay){
-
-
-if(req.body.online_pay == 1){
-  body['online_pay'] = true
-}
-else{
- body['online_pay'] = false
-
-}
-
-  }
-
   pool.query(`update vendor set ? where id = ?`, [req.body, req.body.vendorid], (err, result) => {
       if(err) {
           res.json({
@@ -1420,6 +1383,45 @@ body['date'] = today
 router.post('/update-merchant', (req, res) => {
   let body = req.body
   console.log(req.body)
+
+
+  if(req.body.timings){
+
+  
+    if(req.body.timings == 1){
+      body['timings'] = true
+    }
+    else{
+     body['timings'] = false
+   
+    }
+     }
+   
+     if(req.body.COD){
+   
+    if(req.body.COD == 1){
+     body['COD'] = true
+   }
+   else{
+    body['COD'] = false
+   
+   }
+     }
+   
+   
+     if(req.body.online_pay){
+   
+   
+   if(req.body.online_pay == 1){
+     body['online_pay'] = true
+   }
+   else{
+    body['online_pay'] = false
+   
+   }
+   
+     }
+
   pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {
         console.log('err',err);

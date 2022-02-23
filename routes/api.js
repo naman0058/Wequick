@@ -1136,38 +1136,38 @@ router.get('/profile',(req,res)=>{
 router.post('/update-profile', (req, res) => {
   let body = req.body
 
-  if(req.body.checked){
+  if(req.body.timings){
 
   
- if(req.body.checked == 1){
-   body['checked'] = true
+ if(req.body.timings == 1){
+   body['timings'] = true
  }
  else{
-  body['checked'] = false
+  body['timings'] = false
 
  }
   }
 
-  if(req.body.checked1){
+  if(req.body.COD){
 
- if(req.body.checked1 == 1){
-  body['checked1'] = true
+ if(req.body.COD == 1){
+  body['COD'] = true
 }
 else{
- body['checked1'] = false
+ body['COD'] = false
 
 }
   }
 
 
-  if(req.body.checked2){
+  if(req.body.online_pay){
 
 
-if(req.body.checked2 == 1){
-  body['checked2'] = true
+if(req.body.online_pay == 1){
+  body['online_pay'] = true
 }
 else{
- body['checked2'] = false
+ body['online_pay'] = false
 
 }
 

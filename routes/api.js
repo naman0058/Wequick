@@ -1597,6 +1597,24 @@ router.get('/my-deals',(req,res)=>{
   })
 })
 
+
+
+
+
+
+router.post('/remove-all-data-by-id',(req,res)=>{
+  pool.query(`delete from cart where usernumber = '${req.body.number}' and id ='${req.body.id}'`,(err,result)=>{
+      if(err) throw err;
+      else {
+          res.json({
+              msg : 'success'
+          })
+      }
+  })
+})
+
+
+
 // router.get('/get-profile')
 
 module.exports = router;

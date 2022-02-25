@@ -1614,6 +1614,21 @@ router.post('/remove-all-data-by-id',(req,res)=>{
 })
 
 
+router.post('/remove-all-data',(req,res)=>{
+  pool.query(`delete from cart where usernumber = '${req.body.number}'`,(err,result)=>{
+      if(err) throw err;
+      else {
+          res.json({
+              msg : 'success'
+          })
+      }
+  })
+})
+
+
+
+
+
 
 // router.get('/get-profile')
 

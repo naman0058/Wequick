@@ -554,29 +554,29 @@ body['date'] = today
 
 
 router.post('/order-now',(req,res)=>{
-    let body = req.body;
+  let body = req.body;
 console.log('body',req.body)
-    let cartData = req.body
+  let cartData = req.body
 
 
-  //  console.log('CardData',cartData)
+//  console.log('CardData',cartData)
 
-     body['status'] = 'pending'
-      
+   body['status'] = 'pending'
+    
 
-    var today = new Date();
+  var today = new Date();
 var dd = today.getDate();
 
 var mm = today.getMonth()+1; 
 var yyyy = today.getFullYear();
 if(dd<10) 
 {
-    dd='0'+dd;
+  dd='0'+dd;
 } 
 
 if(mm<10) 
 {
-    mm='0'+mm;
+  mm='0'+mm;
 } 
 today = yyyy+'-'+mm+'-'+dd;
 
@@ -585,67 +585,81 @@ body['date'] = today
 
 
 
-    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var result = '';
-    for ( var i = 0; i < 12; i++ ) {
-        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
-    }
-   orderid = result;
+  var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var result = '';
+  for ( var i = 0; i < 12; i++ ) {
+      result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+  }
+ orderid = result;
 
 
-   
+ 
 
 
-   pool.query(`select * from cart where number = '${req.body.usernumber}'`,(err,result)=>{
-       if(err) throw err;
-       else {
+ pool.query(`select * from cart where number = '${req.body.usernumber}'`,(err,result)=>{
+     if(err) throw err;
+     else {
 
-       let data = result
+     let data = result
 
-       for(i=0;i<result.length;i++){
-        data[i].name = req.body.name
-        data[i].date = today
-        data[i].orderid = orderid
-        data[i].status = 'pending'
-        data[i].number = req.body.number
-        data[i].usernumber = req.body.usernumber
-        data[i].payment_mode = 'cash'
-        data[i].address = req.body.address
-        data[i].id = null
+     for(i=0;i<result.length;i++){
+      data[i].name = req.body.name
+      data[i].date = today
+      data[i].orderid = orderid
+      data[i].status = 'pending'
+      data[i].number = req.body.number
+      data[i].usernumber = req.body.usernumber
+      data[i].payment_mode = 'cash'
+      data[i].address = req.body.address
+      data[i].id = null
 
 
-       }
+     }
 
-       console.log('updating quantity',data[i])
+
 
 
 for(i=0;i<data.length;i++) {
-   pool.query(`insert into booking set ?`,data[i],(err,result)=>{
-           if(err) throw err;
-           else {
-  pool.query(`update products set quantity = quantity - ${data[i].quantity} where id = '${data[i].booking_id}'`,(err,result)=>{
-   if(err) throw err;
-   else {
+ let j = i;
+ pool.query(`insert into booking set ?`,data[i],(err,result)=>{
+         if(err) throw err;
+         else if(result){
 
-   }
+// console.log('afyeri',j);
 
-  })
 
-           }
-      })
+pool.query(`update products set quantity = quantity - ${data[j].quantity} where id = '${data[j].booking_id}'`,(err,result)=>{
+ if(err) throw err;
+ else {
+console.log(data[j].quantity);
+ }
+
+})
+
+         }
+    })
 }
 
 
-    
-
-res.json('success')
+  
 
 
+pool.query(`delete from cart where number = '${req.body.usernumber}'`,(err,result)=>{
+  if(err) throw err;
+  else {
 
-       }
-   })
+    res.json({
+      msg : 'success'
+  })
 
-   
+  }
+})
+
+
+     }
+ })
+
+ 
 })
 
 

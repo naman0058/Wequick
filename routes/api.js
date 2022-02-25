@@ -1583,6 +1583,20 @@ router.post('/redeem-this-code',(req,res)=>{
   })
 })
 
+
+
+router.get('/my-deals',(req,res)=>{
+  pool.query(`select r.* , 
+  (select v.business_name from vendor v where v.id = r.vendorid) as vendorbusinessname,
+  (select c.short_description from coupon c where c.id = r.coupounid ) as coupon_description,
+  (select c.maximum_cashback_price from coupon c where c.id = r.coupounid ) as coupon_cashprice
+
+  from redeem_code r where usernumber = '${req.query.number}' order by id desc limit 30;`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
 // router.get('/get-profile')
 
 module.exports = router;

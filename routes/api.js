@@ -243,7 +243,7 @@ router.get('/search',(req,res)=>{
 
 router.get('/product-description',(req,res)=>{
 
-
+console.log(req.query.id)
   pool.query(`select * from products where id  = '${req.query.id}'`,(err,result)=>{
     if(err) throw err;
     else {
@@ -383,7 +383,7 @@ router.post('/save-user',(req,res)=>{
 
 
 router.post("/mycart", (req, res) => {
- 
+ console.log(req.body)
     var query = `select c.*,(select s.name from products s where s.id = c.booking_id) as servicename
     ,(select s.image from products s where s.id = c.booking_id) as productlogo,
     (select s.quantity from products s where s.id = c.booking_id) as productquantity

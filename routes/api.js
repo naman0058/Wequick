@@ -1582,7 +1582,6 @@ router.get('/get-mega-deals',(req,res)=>{
 
 router.post('/redeem-this-code',(req,res)=>{
   let body = req.body;
-  body['usernumber'] = req.body.number;
   body['otp'] = Math.floor(100000 + Math.random() * 9000);
   body['status'] = 'pending'
   var today = new Date();

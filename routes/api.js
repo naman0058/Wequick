@@ -248,7 +248,7 @@ router.get('/product-description',(req,res)=>{
     if(err) throw err;
     else {
       console.log(result)
-      let subcategory = result[0].subcategoryid
+      let category = result[0].categoryid
 
 
       var query = `select p.* , 
@@ -256,7 +256,7 @@ router.get('/product-description',(req,res)=>{
       
       from products p  where p.id = '${req.query.id}';`
       var query1 = `select * from images where productid = '${req.query.id}';`
-      var query2 = `select  * from products where subcategoryid = '${subcategory}';`
+      var query2 = `select  * from products where categoryid = '${category}';`
 
       
       pool.query(query+query1+query2,(err,result)=>{

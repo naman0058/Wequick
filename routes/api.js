@@ -1531,6 +1531,58 @@ router.post('/get-products-api',(req,res)=>{
 
 
 
+router.get('/get-exclusive-deals',(req,res)=>{
+  pool.query(`select c.* ,
+  (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as isredeem ,
+  (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as userotp 
+  from deals c where c.deals_type = 'Exclusive Deals'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.get('/get-deals-of-the-day',(req,res)=>{
+  pool.query(`select c.* ,
+  (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as isredeem ,
+  (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as userotp 
+  from deals c where c.deals_type = 'Deals Of the Day'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.get('/get-mega-deals',(req,res)=>{
+  pool.query(`select c.* ,
+  (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as isredeem ,
+  (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as userotp 
+  from deals c where c.deals_type = 'Mega Deals'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+router.post('/redeem-this-code',(req,res)=>{
+  let body = req.body;
+  body['usernumber'] = req.body.number;
+  body['otp'] = Math.floor(100000 + Math.random() * 9000);
+  body['status'] = 'pending'
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  today = mm + '/' + dd + '/' + yyyy;
+  body['date'] = today
+ pool.query(`insert into redeem_code set ?`,body,(err,result)=>{
+    if(err) throw err;
+    else res.json({msg:'success'})
+  })
+})
+
 // router.get('/get-profile')
 
 module.exports = router;

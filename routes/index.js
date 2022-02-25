@@ -969,11 +969,17 @@ router.get('/shop',(req,res)=>{
 
 router.get('/search',(req,res)=>{
   var query = `select * from category order by id desc;`
-  var query1 = `select * from products where keyword Like '%${req.query.search}%';`
-  pool.query(query+query1,(err,result)=>{
+  var query1 = `SELECT *, SQRT(
+    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+    FROM vendor where name Like '%${req.query.search}%' having  distance <= 600000000000000 ORDER BY distance;`
+  var query2 = `select * from products where name Like '%${req.query.search}%'  ;`
+  
+
+  pool.query(query+query1+query2,(err,result)=>{
     if(err) throw err;
-    else if(result[1][0]){
-      res.render('shop',{result:result})
+    else if(result[1][0] || result[2][0]){
+     res.json(result)
     }
     else res.send('no')
   })
@@ -1289,16 +1295,6 @@ router.get('/shop-by-category',(req,res)=>{
 })
 
 
-router.get('/search',(req,res)=>{
-  if(req.session.usernumber){
-res.render('allshop',{login:true})
-  }
-  else{
-    res.render('allshop',{login:false})
-
-  }
-})
-
 
 
 router.get('/single-vendor-details',(req,res)=>{
@@ -1322,11 +1318,11 @@ router.get('/single-vendor-details',(req,res)=>{
     var query8 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Deals Of the Day' c.vendorid = '${req.query.vendorid}' ;`
+    from deals c where c.deals_type = 'Deals Of the Day' and c.vendorid = '${req.query.vendorid}' ;`
     var query9 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Mega Deals' c.vendorid = '${req.query.vendorid}';`
+    from deals c where c.deals_type = 'Mega Deals' and c.vendorid = '${req.query.vendorid}';`
 
 pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
   if(err) throw err;
@@ -1349,15 +1345,15 @@ pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,re
     var query7 = `select c.* ,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Exclusive Deals' c.vendorid = '${req.query.vendorid}';`
+    from deals c where c.deals_type = 'Exclusive Deals' and c.vendorid = '${req.query.vendorid}';`
     var query8 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Deals Of the Day' c.vendorid = '${req.query.vendorid}';`
+    from deals c where c.deals_type = 'Deals Of the Day' and c.vendorid = '${req.query.vendorid}';`
     var query9 = `select c.*,
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Mega Deals' c.vendorid = '${req.query.vendorid}';`
+    from deals c where c.deals_type = 'Mega Deals' and c.vendorid = '${req.query.vendorid}';`
 
     pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
 

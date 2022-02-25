@@ -1630,6 +1630,51 @@ router.post('/remove-all-data',(req,res)=>{
 
 
 
+router.get('/delete-address',(req,res)=>{
+  pool.query(`delete from address where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json({msg:'success'})
+  })
+})
+
+
+
+router.get('/get-single-address',(req,res)=>{
+  pool.query(`select * from address where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+
+router.post('/update-address', (req, res) => {
+  console.log('data',req.body)
+  pool.query(`update address set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+          
+      }
+  })
+})
+
+
+
+
+
 // router.get('/get-profile')
 
 module.exports = router;

@@ -74,7 +74,7 @@ router.post('/enquiry-submit',(req,res)=>{
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(req.session.usernumber){
-   var query = `select * from category order by id desc;`
+   var query = `select * from category order by name;`
    var query1 = `select * from banner where type = 'Front Banner' order by id desc;`
    var query2=` SELECT bannerid ,productid , (select t.name from promotional_text t where t.id = bannerid) as textname ,
    (select p.name from products p where p.id = productid) as productname,
@@ -115,7 +115,7 @@ router.get('/', function(req, res, next) {
    })
   }
   else{
-   var query = `select * from category order by id desc;`
+   var query = `select * from category order by name;`
    var query1 = `select * from banner where type = 'Front Banner' order by id desc;`
    var query2=` SELECT bannerid ,productid , (select t.name from promotional_text t where t.id = bannerid) as textname ,
    (select p.name from products p where p.id = productid) as productname,
@@ -172,7 +172,7 @@ router.get('/product',(req,res)=>{
       let categoryid = result[0].categoryid
   
       if(req.session.usernumber){
-        var query = `select * from category order by id desc;`
+        var query = `select * from category order by name`
         var query1 = `select p.* , 
         (select b.name from brand b where b.id = p.brandid) as brandname
         
@@ -188,7 +188,7 @@ router.get('/product',(req,res)=>{
     
       }
       else{
-        var query = `select * from category order by id desc;`
+        var query = `select * from category order by name`
         var query1 = `select p.* , 
         (select b.name from brand b where b.id = p.brandid) as brandname
       
@@ -392,7 +392,7 @@ router.get('/mycart',(req,res)=>{
   console.log(req.session.ipaddress)
  
    if(req.session.usernumber){
-     var query = `select * from category order by id desc;`
+     var query = `select * from category order by name`
      var query1 = `select c.* , 
      (select p.name from products p where p.id = c.booking_id) as bookingname,
      (select p.image from products p where p.id = c.booking_id) as bookingimage,
@@ -425,7 +425,7 @@ router.get('/mycart',(req,res)=>{
  
    }
    else{
-     var query = `select * from category order by id desc;`
+     var query = `select * from category order by name`
      var query1 = `select c.* , 
      (select p.name from products p where p.id = c.booking_id) as bookingname,
      (select p.image from products p where p.id = c.booking_id) as bookingimage,
@@ -649,7 +649,7 @@ console.log('hd',req.session.usernumber)
       if(err) throw err;
       // else if(result[0].email==null || result[0].email == ''){
       //   req.session.newuser = '1';
-      //   var query = `select * from category order by id desc;`
+      //   var query = `select * from category order by name`
       //   var query1 = `select * from users where number = '${req.session.usernumber}';`
     
       //   pool.query(query+query1,(err,result)=>{
@@ -658,7 +658,7 @@ console.log('hd',req.session.usernumber)
       //   })
       // }
       else {
-        var query = `select * from category order by id desc;`
+        var query = `select * from category order by name`
    
         var query1 = `select c.* ,
                      (select p.name from products p where p.id = c.booking_id) as bookingname
@@ -926,7 +926,7 @@ function check_repurchse(number,dp){
 router.get('/my-account',(req,res)=>{
   if(req.session.usernumber){
     req.session.page = null;
-    var query = `select * from category order by id desc;`
+    var query = `select * from category order by name`
     var query1 = `select b.* , (select p.name from products p where p.id = b.booking_id) as bookingname,
     (select p.image from products p where p.id = b.booking_id) as bookingimage
     from booking b where usernumber = '${req.session.usernumber}' order by id desc ;`
@@ -956,7 +956,7 @@ router.get('/my-account',(req,res)=>{
 
 
 router.get('/shop',(req,res)=>{
-  var query = `select * from category order by id desc;`
+  var query = `select * from category order by name`
   var query1 = `select * from products where categoryid = '${req.query.categoryid}';`
   pool.query(query+query1,(err,result)=>{
     if(err) throw err;
@@ -968,7 +968,7 @@ router.get('/shop',(req,res)=>{
 
 
 router.get('/search',(req,res)=>{
-  var query = `select * from category order by id desc;`
+  var query = `select * from category order by name`
   var query1 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
@@ -1039,7 +1039,7 @@ router.get('/view-all-product',(req,res)=>{
 
 
   if(req.session.usernumber){
-    var query = `select * from category order by id desc;`
+    var query = `select * from category order by name`
     var query1 = `select t.* ,   
     (select p.name from products p where p.id = t.productid) as productname,
     (select p.price from products p where p.id = t.productid) as productprice,
@@ -1057,7 +1057,7 @@ router.get('/view-all-product',(req,res)=>{
     })
   }
   else{
-    var query = `select * from category order by id desc;`
+    var query = `select * from category order by name`
     var query1 = `select t.* ,   
     (select p.name from products p where p.id = t.productid) as productname,
     (select p.price from products p where p.id = t.productid) as productprice,
@@ -1122,7 +1122,7 @@ router.post('/myaccount-update', (req, res) => {
 
 router.get('/wishlist',(req,res)=>{
   if(req.session.usernumber){
-    var query = `select * from category order by id desc;`
+    var query = `select * from category order by name`
     var query1 = `select t.*,
     (select p.name from products p where p.id = t.booking_id) as productname,
     (select p.price from products p where p.id = t.booking_id) as productprice,
@@ -1524,7 +1524,7 @@ router.get('/get-single-blog-description',(req,res)=>{
 
 router.get('/invoice',(req,res)=>{
   if(req.session.usernumber){
-    var query = `select * from category order by id desc;`
+    var query = `select * from category order by name`
     var query1 = `select c.*,
     (select p.name from products p where p.id = c.booking_id) as bookingname,
     (select p.image from products p where p.id = c.booking_id) as bookingimage,

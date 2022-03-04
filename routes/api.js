@@ -1698,6 +1698,17 @@ router.get('/get-single-deals',(req,res)=>{
 })
 
 
+router.get('/get-single-coupon',(req,res)=>{
+  pool.query(`select c.* ,
+  (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as isredeem ,
+  (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.query.number}' and r.vendorid = c.vendorid) as userotp 
+  from coupon c where c.id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
+
+
 
 router.get('/get-single-order',(req,res)=>{
   pool.query(`select * from booking  where id = '${req.query.id}'`,(err,result)=>{

@@ -73,7 +73,8 @@ router.post('/enquiry-submit',(req,res)=>{
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(req.session.usernumber){
+  req.session.usernumber ? login =  true : login = false
+
    var query = `select * from category order by name;`
    var query1 = `select * from banner where type = 'Front Banner' order by id desc;`
    var query2=` SELECT bannerid ,productid , (select t.name from promotional_text t where t.id = bannerid) as textname ,
@@ -111,51 +112,8 @@ router.get('/', function(req, res, next) {
  
    pool.query(query+query6+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{
      if(err) throw err;
-     else res.render('index', { title: 'Express',result,login:true });
+     else res.render('index', { title: 'Express',result,login });
    })
-  }
-  else{
-   var query = `select * from category order by name;`
-   var query1 = `select * from banner where type = 'Front Banner' order by id desc;`
-   var query2=` SELECT bannerid ,productid , (select t.name from promotional_text t where t.id = bannerid) as textname ,
-   (select p.name from products p where p.id = productid) as productname,
-   (select p.price from products p where p.id = productid) as productprice,
-   (select p.quantity from products p where p.id = productid) as productquantity,
-   (select p.discount from products p where p.id = productid) as productdiscount,
-   (select p.image from products p where p.id = productid) as productimage,
-   (select p.categoryid from products p where p.id = productid) as productcategoryid,
-   (select p.subcategoryid from products p where p.id = productid) as productsubcategoryid,
-   (select p.net_amount from products p where p.id = productid) as productnetamount
-        FROM promotional_text_management p;`
-   var query3 = `select * from promotional_text order by id desc;`
-   var query4 = `select * from cart where usernumber = '${req.session.number}';`
-   var query5 = `select * from banner where type = 'Bottom Banner' order by id desc;`
-   var query6 = `select * from subcategory order by name;`
-   var query7 = `select c.*,
-   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
-   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-   from deals c where c.deals_type = 'Exclusive Deals';`
-   var query8 = `select c.*,
-   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
-   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-   from deals c where c.deals_type = 'Deals Of the Day';`
-   var query9 = `select c.*,
-   (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
-   (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-   from deals c where c.deals_type = 'Mega Deals';`
-   var query10 = `SELECT *, SQRT(
-    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
-    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor  having distance <= 600000000000000 ORDER BY distance;`
-
-   pool.query(query+query6+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{
-     if(err) throw err;
-     else  res.render('index', { title: 'Express',result,login:false });
-    // else res.json(result[3])
-   })
-  }
- 
- 
   
  });
  
@@ -171,40 +129,18 @@ router.get('/product',(req,res)=>{
     else {
       let categoryid = result[0].categoryid
   
-      if(req.session.usernumber){
-        var query = `select * from category order by name`
-        var query1 = `select p.* , 
-        (select b.name from brand b where b.id = p.brandid) as brandname
-        
+      req.session.usernumber ? login =  true : login = false
+
+        var query = `select * from category order by name;`
+        var query1 = `select p.* 
         from products p where p.id = '${req.query.id}';`
         var query3 = `select * from products order by id desc;`
         var query4 = `select * from products where categoryid = '${categoryid}' order by id desc limit 8;`
         var query5 = `select * from images where productid = '${req.query.id}';`
         pool.query(query+query1+query3+query4+query5,(err,result)=>{
           if(err) throw err;
-          else res.render('view-product', { title: 'Express',login:true, result : result , productid : req.query.id});
+          else res.render('view-product', { title: 'Express',login, result : result , productid : req.query.id});
         })
-        
-    
-      }
-      else{
-        var query = `select * from category order by name`
-        var query1 = `select p.* , 
-        (select b.name from brand b where b.id = p.brandid) as brandname
-      
-        from products p where p.id = '${req.query.id}';`
-        var query3 = `select * from products order by id desc;`
-        var query4 = `select * from products where categoryid = '${categoryid}' order by id desc limit 8;`
-        var query5 = `select * from images where productid = '${req.query.id}';`
-  
-        pool.query(query+query1+query3+query4+query5,(err,result)=>{
-          if(err) throw err;
-          else res.render('view-product', { title: 'Express',login:false , result : result , productid : req.query.id});
-    
-        })
-    
-      }
-  
     }
   })
   
@@ -384,23 +320,18 @@ router.get('/product',(req,res)=>{
 
 
 
-
-
  
 router.get('/mycart',(req,res)=>{
-
   console.log(req.session.ipaddress)
  
-   if(req.session.usernumber){
-     var query = `select * from category order by name`
+  req.session.usernumber ? login =  true : login = false
+
+     var query = `select * from category order by name;`
      var query1 = `select c.* , 
      (select p.name from products p where p.id = c.booking_id) as bookingname,
      (select p.image from products p where p.id = c.booking_id) as bookingimage,
      (select p.quantity from products p where p.id = c.booking_id) as availablequantity
-     
- 
-     
-      from cart c where c.usernumber = '${req.session.usernumber}';`
+     from cart c where c.usernumber = '${req.session.usernumber}';`
     var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.usernumber}';`              
  
  
@@ -409,11 +340,11 @@ router.get('/mycart',(req,res)=>{
        else{
  
  if(result[2][0].totalprice > 500) {
-   res.render('cart', { title: 'Express',login:true,result , shipping_charges : 0 });
+   res.render('cart', { title: 'Express',login,result , shipping_charges : 0 });
  
  }
  else {
-   res.render('cart', { title: 'Express',login:true,result , shipping_charges : 500 });
+   res.render('cart', { title: 'Express',login,result , shipping_charges : 500 });
  
  }
  
@@ -423,39 +354,7 @@ router.get('/mycart',(req,res)=>{
     
         })
  
-   }
-   else{
-     var query = `select * from category order by name`
-     var query1 = `select c.* , 
-     (select p.name from products p where p.id = c.booking_id) as bookingname,
-     (select p.image from products p where p.id = c.booking_id) as bookingimage,
-     (select p.quantity from products p where p.id = c.booking_id) as availablequantity
- 
-     
-      from cart c where c.usernumber = '${req.session.ipaddress}';`
-    var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.ipaddress}';`              
- 
-     pool.query(query+query1+query2,(err,result)=>{
-       if(err) throw err;
-       else{
-      
- 
-         if(result[2][0].totalprice > 500) {
-           res.render('cart', { title: 'Express',login:false,result , shipping_charges : 0 });
-         
-         }
-         else {
-           res.render('cart', { title: 'Express',login:false,result , shipping_charges : 500 });
-         
-         }
-         
-    
-       }
-    
-    
-        })
- 
-   }
+   
  })
    
 
@@ -649,7 +548,7 @@ console.log('hd',req.session.usernumber)
       if(err) throw err;
       // else if(result[0].email==null || result[0].email == ''){
       //   req.session.newuser = '1';
-      //   var query = `select * from category order by name`
+      //   var query = `select * from category order by name;`
       //   var query1 = `select * from users where number = '${req.session.usernumber}';`
     
       //   pool.query(query+query1,(err,result)=>{
@@ -658,7 +557,7 @@ console.log('hd',req.session.usernumber)
       //   })
       // }
       else {
-        var query = `select * from category order by name`
+        var query = `select * from category order by name;`
    
         var query1 = `select c.* ,
                      (select p.name from products p where p.id = c.booking_id) as bookingname
@@ -894,39 +793,10 @@ router.post('/order-now',(req,res)=>{
 
 
 
-
-function check_repurchse(number,dp){
-
-  pool.query(`select * from member where number = '${number}'`,(err,result)=>{
-    if(err) throw err;
-    else if(result[0]){
-   
-      let bv = (dp*20)/100;
-      pool.query(`update member set bv = bv+${bv} where number = '${number}'`,(err,result)=>{
-        if(err) throw err;
-        else {
-          res.redirect('/confirmation')
-        }
-      })
-
-
-    }
-    else{
-      res.json({
-        msg : 'success'
-    })
-    }
-  })
-
-}
-
-
-
-
 router.get('/my-account',(req,res)=>{
   if(req.session.usernumber){
     req.session.page = null;
-    var query = `select * from category order by name`
+    var query = `select * from category order by name;`
     var query1 = `select b.* , (select p.name from products p where p.id = b.booking_id) as bookingname,
     (select p.image from products p where p.id = b.booking_id) as bookingimage
     from booking b where usernumber = '${req.session.usernumber}' order by id desc ;`
@@ -956,7 +826,7 @@ router.get('/my-account',(req,res)=>{
 
 
 router.get('/shop',(req,res)=>{
-  var query = `select * from category order by name`
+  var query = `select * from category order by name;`
   var query1 = `select * from products where categoryid = '${req.query.categoryid}';`
   pool.query(query+query1,(err,result)=>{
     if(err) throw err;
@@ -968,7 +838,7 @@ router.get('/shop',(req,res)=>{
 
 
 router.get('/search',(req,res)=>{
-  var query = `select * from category order by name`
+  var query = `select * from category order by name;`
   var query1 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
@@ -985,14 +855,6 @@ router.get('/search',(req,res)=>{
   })
  
 })
-
-
-
-
-
-
-
-
 
 
 
@@ -1021,25 +883,11 @@ router.get("/payment", (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 router.get('/view-all-product',(req,res)=>{
 
+  req.session.usernumber ? login =  true : login = false
 
-  if(req.session.usernumber){
-    var query = `select * from category order by name`
+    var query = `select * from category order by name;`
     var query1 = `select t.* ,   
     (select p.name from products p where p.id = t.productid) as productname,
     (select p.price from products p where p.id = t.productid) as productprice,
@@ -1052,31 +900,10 @@ router.get('/view-all-product',(req,res)=>{
     from promotional_text_management t where t.bannerid = '${req.query.id}' order by productquantity desc `
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else if(result[1][0]) res.render('view_all_product',{result:result,login:true})
-      else  res.render('not_found',{result,login:true})
+      else if(result[1][0]) res.render('view_all_product',{result:result,login})
+      else  res.render('not_found',{result,login})
     })
-  }
-  else{
-    var query = `select * from category order by name`
-    var query1 = `select t.* ,   
-    (select p.name from products p where p.id = t.productid) as productname,
-    (select p.price from products p where p.id = t.productid) as productprice,
-    (select p.quantity from products p where p.id = t.productid) as productquantity,
-    (select p.discount from products p where p.id = t.productid) as productdiscount,
-    (select p.image from products p where p.id = t.productid) as productimage,
-    (select p.categoryid from products p where p.id = t.productid) as productcategoryid,
-    (select p.subcategoryid from products p where p.id = t.productid) as productsubcategoryid,
-    (select p.net_amount from products p where p.id = t.productid) as productnetamount 
-    from promotional_text_management t where t.bannerid = '${req.query.id}' order by productquantity desc ;`
-    pool.query(query+query1,(err,result)=>{
-      if(err) throw err;
-      else  res.render('view_all_product',{result:result,login:false})
-    })
-  }
-  
-  
 
- 
 })
 
 
@@ -1122,7 +949,7 @@ router.post('/myaccount-update', (req, res) => {
 
 router.get('/wishlist',(req,res)=>{
   if(req.session.usernumber){
-    var query = `select * from category order by name`
+    var query = `select * from category order by name;`
     var query1 = `select t.*,
     (select p.name from products p where p.id = t.booking_id) as productname,
     (select p.price from products p where p.id = t.booking_id) as productprice,
@@ -1220,42 +1047,6 @@ router.post('/website-customization-insert',(req,res)=>{
 
 
 
-router.get('/cdguy',(req,res)=>{
-  for (var i = 0; i < Infinity; i++) {
-if(i==10){
- return;
-}
-else{
-  console.log(i)
-}
-}
-
-})
-
-
-
-
-
-
-// public function addDownline($newID, $userId)
-//     {
-//         $user = User::where('id', $userId)->first();
-//         $userId = $user->placement_id;
-//         if ($userId == '') {
-//             return;
-//         }
-//         $data = array(
-//             'user_id' => $userId,
-//             'downline_id' => $newID,
-//             'placement' => $user->placement,
-//             // 'join_amt' => 0,
-//             'created_at' => date('Y-m-d H:i:s'),
-//             'updated_at' => date('Y-m-d H:i:s'),
-//         );
-//         $downline = Downline::create($data);
-
-//         $this->addDownline($newID, $userId);
-//     }
 
 
 
@@ -1263,42 +1054,28 @@ else{
 
 
 router.get('/shop-by-category',(req,res)=>{
-  if(req.session.usernumber){
-    var query = `select * from category;`
-    var query1 = `SELECT *, SQRT(
-      POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
-      POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-      FROM vendor where categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
+  req.session.usernumber ? login =  true : login = false
+  var query = `select * from category;`
+  var query1 = `SELECT *, SQRT(
+    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+    FROM vendor where status= 'approved' and business_details = 'done' and delivery_details = 'done' and categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
       else if(result[1][0]){
-        res.render('allshop',{login:true,result})
-      }
-      else res.render('nodatafound',{login:true,result})
+        res.render('allshop',{login,result})
+         }
+      else res.render('nodatafound',{login,result})
     })
-
-  }
-  else{
-    var query = `select * from category;`
-    var query1 = `SELECT *, SQRT(
-      POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
-      POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-      FROM vendor where categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
-    pool.query(query+query1,(err,result)=>{
-      if(err) throw err;
-      else if(result[1][0]){
-        res.render('allshop',{login:false,result})
-      }
-      else res.render('nodatafound',{login:false,result})
-    })
-     }
+  
 })
 
 
 
 
 router.get('/single-vendor-details',(req,res)=>{
-  if(req.session.usernumber){
+  req.session.usernumber ? login =  true : login = false
+
     var query = `select * from category;`
     var query5 = `select * from products where vendorid = '${req.query.vendorid}';`
     var query1 = `select * from vendor where id = '${req.query.vendorid}';`
@@ -1327,89 +1104,40 @@ router.get('/single-vendor-details',(req,res)=>{
 pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
   if(err) throw err;
   else {
-    res.render('single-vendor-details',{login:true,result})
+    res.render('single-vendor-details',{login,result})
 
   }
 })
-
-
-  }
-  else{
-    var query = `select * from category;`
-    var query5 = `select * from products where vendorid = '${req.query.vendorid}';`
-    var query1 = `select * from vendor where id = '${req.query.vendorid}';`
-    var query2 = `select * from coupon where vendorid = '${req.query.vendorid}';`
-    var query3 = `select * from deals where vendorid = '${req.query.vendorid}';`
-    var query4 = `select * from rating where vendorid = '${req.query.vendorid}';`
-
-    var query7 = `select c.* ,
-    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
-    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Exclusive Deals' and c.vendorid = '${req.query.vendorid}';`
-    var query8 = `select c.*,
-    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
-    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Deals Of the Day' and c.vendorid = '${req.query.vendorid}';`
-    var query9 = `select c.*,
-    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
-    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-    from deals c where c.deals_type = 'Mega Deals' and c.vendorid = '${req.query.vendorid}';`
-
-    pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
-
-  if(err) throw err;
-  else {
-    res.render('single-vendor-details',{login:false,result})
-
-  }
-})
-
-  }
 })
 
 
 
 
 router.get('/exclusive-deals-and-offers',(req,res)=>{
-  if(req.session.usernumber){
+  req.session.usernumber ? login =  true : login = false
+
     var query = `select * from category;`
     var query1 = `select * from category;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('show_all_category',{login:true,result})
+      else res.render('show_all_category',{login,result})
     })
-  }
-  else{
-    var query = `select * from category;`
-    var query1 = `select * from category;`
-    pool.query(query+query1,(err,result)=>{
-      if(err) throw err;
-      else res.render('show_all_category',{login:false,result})
-    })
-  }
-  
+ 
 })
 
 
 
 
 router.get('/about-us',(req,res)=>{
-  if(req.session.usernumber){
+  req.session.usernumber ? login =  true : login = false
+
     var query = `select * from category;`
     var query1 = `select * from category;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('about',{login:true,result})
+      else res.render('about',{login,result})
     })
-  }
-  else{
-    var query = `select * from category;`
-    var query1 = `select * from category;`
-    pool.query(query+query1,(err,result)=>{
-      if(err) throw err;
-      else res.render('about',{login:false,result})
-    })
-  }
+ 
   
 })
 
@@ -1455,54 +1183,29 @@ router.get('/product-description',(req,res)=>{
 
 
 
-
-
-
-
-
-
-
 router.get('/new-release',(req,res)=>{
-  if(req.session.usernumber){
+  req.session.usernumber ? login =  true : login = false
+
     var query = `select * from category;`
     var query1 = `select * from blogs order by id desc;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('new_release',{login:true,result})
+      else res.render('new_release',{login,result})
     })
-  }
-  else{
-    var query = `select * from category;`
-    var query1 = `select * from blogs order by id desc;`
-    pool.query(query+query1,(err,result)=>{
-      if(err) throw err;
-      else res.render('new_release',{login:false,result})
-    })
-  }
   
 })
 
 
 router.get('/new-release-full-description',(req,res)=>{
-  if(req.session.usernumber){
+  req.session.usernumber ? login =  true : login = false
     var query = `select * from category;`
     var query1 = `select * from blogs where id = '${req.query.id}';`
     var query2 = `select * from blogs where id!= '${req.query.id}';`
     pool.query(query+query1+query2,(err,result)=>{
       if(err) throw err;
-      else res.render('new_release_full_description',{login:true,result,id:req.query.id})
+      else res.render('new_release_full_description',{login,result,id:req.query.id})
     })
-  }
-  else{
-    var query = `select * from category;`
-    var query1 = `select * from blogs where id = '${req.query.id}';`
-    var query2 = `select * from blogs where id!= '${req.query.id}';`
-
-    pool.query(query+query1+query2,(err,result)=>{
-      if(err) throw err;
-      else res.render('new_release_full_description',{login:false,result,id:req.query.id})
-    })
-  }
+  
 })
 
 
@@ -1524,7 +1227,7 @@ router.get('/get-single-blog-description',(req,res)=>{
 
 router.get('/invoice',(req,res)=>{
   if(req.session.usernumber){
-    var query = `select * from category order by name`
+    var query = `select * from category order by name;`
     var query1 = `select c.*,
     (select p.name from products p where p.id = c.booking_id) as bookingname,
     (select p.image from products p where p.id = c.booking_id) as bookingimage,

@@ -20,38 +20,6 @@ $.getJSON(`/vendor-dashboard/show-product`, data => {
 })
 
 
-$.getJSON(`/vendor-dashboard/subcategory`, data => {
-    categories = data
-    fillDropDown('subcategoryid', data, 'Choose Category', 0)
-  
-})
-
-
-
-$.getJSON(`/api/get-brand`, data => {
-    subcategories = data
-    fillDropDown('brandid', [], 'Choose Brand', 0)
-})
-
-$('#subcategoryid').change(() => {
-    const filteredData = subcategories.filter(item => item.subcategoryid == $('#subcategoryid').val())
-    fillDropDown('brandid', filteredData, 'Choose Brand', 0)
-})
-
-
-
-function fillDropDown(id, data, label, selectedid = 0) {
-    $(`#${id}`).empty()
-    $(`#${id}`).append($('<option>').val("null").text(label))
-
-    $.each(data, (i, item) => {
-        if (item.id == selectedid) {
-            $(`#${id}`).append($('<option selected>').val(item.id).text(item.name))
-        } else {
-            $(`#${id}`).append($('<option>').val(item.id).text(item.name))
-        }
-    })
-}
 
 
 
@@ -63,8 +31,7 @@ function makeTable(categories){
 <thead>
 <tr>
 <th>Image</th>
-<th>Category Name</th>
-<th>Subcategory Name</th>
+
 <th>Name</th>
 <th>Price</th>
 <th>Discount</th>
@@ -85,8 +52,6 @@ table+=`<tr>
 <img src="/images/${item.image}" class="img-fluid img-radius wid-40" alt="" style="width:50px;height:50px">
 </td>
 
-<td>${item.subcategoryname}</td>
-<td>${item.brandname}</td>
 
     
 <td>${item.name}</td>
@@ -126,18 +91,11 @@ $('#result').on('click', '.deleted', function() {
 
 
 
-$('#psubcategoryid').change(() => {
-    const filteredData = subcategories.filter(item => item.subcategoryid == $('#psubcategoryid').val())
-    fillDropDown('pbrandid', filteredData, 'Choose Brand', 0)
-})
-
 
 $('#result').on('click', '.edits', function() {
     const id = $(this).attr('id')
     const result = services.find(item => item.id == id);
-    fillDropDown('psubcategoryid', categories, 'Choose Category', result.subcategoryid)
     // $('#psubcategoryid').append($('<option>').val(result.subcategoryid).text(result.subcategoryname))
-    $('#pbrandid').append($('<option>').val(result.brandid).text(result.brandname))
 
  
     $('#editdiv').show()
@@ -145,8 +103,6 @@ $('#result').on('click', '.edits', function() {
     $('#insertdiv').hide() 
     $('#pid').val(result.id)
      $('#pname').val(result.name)
-     $('#pbrandid').val(result.brandid)
-     $('#psubcategoryid').val(result.subcategoryid)
      $('#pprice').val(result.price)
      $('#pquantity').val(result.quantity)
      $('#psmall_description').val(result.small_description)
@@ -176,8 +132,6 @@ $('#update').click(function(){  //data insert in database
     let updateobj = {
         id: $('#pid').val(),
         name: $('#pname').val(),
-        subcategoryid:$('#psubcategoryid').val(),
-        brandid:$('#pbrandid').val(),
         name:$('#pname').val(),
         price:$('#pprice').val(),
        quantity : $('#pquantity').val(),

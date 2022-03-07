@@ -86,8 +86,8 @@ router.get('/', function(req, res, next) {
    (select p.categoryid from products p where p.id = productid) as productcategoryid,
    (select p.subcategoryid from products p where p.id = productid) as productsubcategoryid,
    (select p.net_amount from products p where p.id = productid) as productnetamount
-        FROM promotional_text_management p;`
-   var query3 = `select * from promotional_text order by id desc;`
+        FROM promotional_text_management p order by id limit 1;`
+   var query3 = `select * from promotional_text order by id desc limit 1;`
    var query4 = `select * from cart where usernumber = '${req.session.number}';`
    var query5 = `select * from banner where type = 'Bottom Banner' order by id desc;`
    var query6 = `select * from subcategory order by name;`
@@ -107,7 +107,7 @@ router.get('/', function(req, res, next) {
    var query10 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor having distance <= 600000000000000 ORDER BY distance limit 8;`
 
  
    pool.query(query+query6+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{

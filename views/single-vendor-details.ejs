@@ -1,486 +1,576 @@
-<%- include ('./otherheader.ejs') %>
 
 
-        <!-- Start of Main -->
-        <main class="main">
-            <!-- Start of Breadcrumb -->
-           
-            <!-- End of Breadcrumb -->
-
-            <!-- Start of Pgae Contetn -->
-            <div class="page-content mb-8" style="margin-top: 20px;">
-                <div class="container">
-                    <div class="store store-wcfm-banner">
-                        <figure class="store-media">
-                            <img src="/images/<%=result[1][0].shop_img2%>" style="width:1240px;height:460px" alt="Vendor" width="1240" height="460"
-                                style="background-color: #40475e;" />
-                        </figure>
-                        <div class="store-content">
-                            <div class="store-content-left mr-auto">
-                                <div class="personal-info">
-                                    <figure class="seller-brand">
-                                        <img src="/images/<%=result[1][0].image%>" style="width:100px;height:100px" alt="Brand" width="100"
-                                            height="100" />
-                                    </figure>
-                                    
-                                </div>
-                                <div class="address-info">
-                                    <h4 class="store-title"><%=result[1][0].business_name%></h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <%=result[1][0].address%>
-                                        </li>
-                                        <li class="store-phone">
-                                            <a href="tel:<%=result[1][0].number%>">
-                                                <i class="w-icon-phone"></i>
-                                                <%=result[1][0].number%>
-                                            </a>
-                                        </li>
-                                       
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="store-content-right">
-                               
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Store WCMP Banner -->
-
-                    <div class="row gutter-lg">
-                        <aside class="sidebar left-sidebar vendor-sidebar sticky-sidebar-wrapper sidebar-fixed">
-                            <!-- Start of Sidebar Overlay -->
-                            <div class="sidebar-overlay"></div>
-                            <a class="sidebar-close" href="#"><i class="close-icon"></i></a>
-                            <a href="#" class="sidebar-toggle"><i class="w-icon-angle-right"></i></a>
-                            <div class="sidebar-content">
-                                <div class="sticky-sidebar">
-                                    
-                                    <!-- End of Widget -->
-                                  
-                                    <!-- End of Widget -->
-                                    <div class="widget widget-collapsible widget-time">
-                                        <h3 class="widget-title"><span><i class="far fa-clock"></i>Store Time</span>
-                                        </h3>
-                                        <ul class="widget-body">
-                                            <li>
-                                                <span>Monday:</span><%=result[1][0].monday_time%>
-                                            </li>
-                                            <li>
-                                                <span>Tuesday:</span><%=result[1][0].tuesday_time%>
-                                            </li>
-                                            <li>
-                                                <span>Wednesday:</span><%=result[1][0].wednesday_time%>
-                                            </li>
-                                            <li>
-                                                <span>Thursday:</span><%=result[1][0].thursday_time%>
-                                            </li>
-                                            <li>
-                                                <span>Friday:</span><%=result[1][0].friday_time%>
-                                            </li>
-                                            <li>
-                                                <span>Saturday:</span><%=result[1][0].saturday_time%>
-                                            </li>
-                                            <li>
-                                                <span>Sunday:</span><%=result[1][0].sunday_time%>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- End of Widget -->
-
-
-                                        
-                                        
-
-                                    <div class="widget widget-collapsible">
-                                        <h3 class="widget-title"><span><i class="w-icon-truck"></i>Shipping Rules</span>
-                                        </h3>
-
-                                      
-                                        <div class="widget-body">
-                                            <p class="mb-0">Delivery Time:  <%=result[1][0].time%></p>
-                                        </div>
-                                    </div>
-                                    <!-- End of Widget -->
-                                   
-                                    <!-- End of Widget -->
-                                    
-                                    <!-- End of Widget -->
-                                </div>
-                            </div>
-                        </aside>
-                        <!-- End of Sidebar -->
-
-                        <div class="main-content">
-                            <div class="tab tab-nav-underline tab-nav-boxed tab-vendor-wcfm">
-                                <ul class="nav nav-tabs">
-
-
-                                    <li class="nav-item">
-                                        <a href="#tab-3" class="nav-link active">Coupons & Deals</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        
-                                        <a href="#tab-1" class="nav-link ">Products</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#tab-2" class="nav-link">About</a>
-                                    </li>
-                                   
-                                    <li class="nav-item">
-                                        <a href="#tab-4" class="nav-link">Reviews(1)</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div class="tab-pane " id="tab-1">
-                                        <nav class="toolbox sticky-toolbox sticky-content fix-top">
-                                          
-                                        </nav>
-                                        <div class="product-wrapper row cols-md-3 cols-sm-2 cols-2">
-                                            <% for(i=0;i<result[5].length;i++){ %>
-                                            <div class="product-wrap">
-                                                <div class="product product-simple text-center">
-                                                    <figure class="product-media">
-                                                        <a href="/product?id=<%=result[5][i].id%>">
-                                                            <img src="/images/<%=result[5][i].thumbnail%>" alt="Product"
-                                                                width="300" height="338" />
-                                                        </a>
-                                                       
-                                                    </figure>
-                                                    <div class="product-details">
-                                                        <h4 class="product-name"><a href="/product?id=<%=result[5][i].id%>">
-                                                                <%=result[5][i].name%></a></h4>
-                                                      
-                                                        <div class="product-pa-wrapper">
-                                                            <div class="product-price"><%=result[5][i].net_amount%></div>
-                                                            <div class="product-action">
-                                                               
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <% } %>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab-2">
-                                       
-                                        <p class="mb-4"><%=result[1][0].short_description%></p>
-                                      
-                                    </div>
-                                    <div class="tab-pane active" id="tab-3">
-                                        <div class="policies-area">
-
-                                            <div class="widget widget-collapsible widget-coupons">
-                                                <h3 class="widget-title"><span>Exclusive deals</span></h3>
-                                                <% for(i=0;i<result[6].length;i++) { %>
-                                                    <div class="widget-body">
-                                                        <div class="coupon">
-                                                            <% if(result[6][i].isredeem == null || result[6][i].isredeem == '' || result[6][i].isredeem == 'null' || result[6][i].isredeem ==[]){ %>
-                                                            XXXX - <%=result[6][i].short_description%>
-                                                            <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[6][i].id%>" code="<%=result[6][i].name%>" expiry="<%=result[6][i].expiry%>" vendorid = '<%=result[6][i].vendorid%>' style="float: right;">Redeem This Code</button>
-                                                            <% } else { %>
-                                                                <%=result[6][i].name%>    - <%=result[6][i].short_description%> - your otp is <%=result[6][i].userotp%>
-                                                                <% } %>
-                                                            <div class="coupon-tip">
-                                                                <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[6][i].maximum_cashback_price%></div>
-                                                                <div class="coupon-info-date"><%=result[6][i].expiry%></div>
-                                                                <div>Test coupon for vendor page</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <% } %>
-                                            </div>
-
-
-                                            <div class="widget widget-collapsible widget-coupons">
-                                                <h3 class="widget-title"><span>Deals of the Day</span></h3>
-                                                <% for(i=0;i<result[7].length;i++) { %>
-                                                <div class="widget-body">
-                                                    <div class="coupon">
-                                                        <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
-                                                        XXXX - <%=result[7][i].short_description%>
-                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[7][i].id%>" code="<%=result[7][i].name%>" expiry="<%=result[7][i].expiry%>" vendorid = '<%=result[7][i].vendorid%>' style="float: right;">Redeem This Code</button>
-                                                        <% } else { %>
-                                                            <%=result[7][i].name%>    - <%=result[7][i].short_description%> - your otp is <%=result[7][i].userotp%>
-                                                            <% } %>
-                                                        <div class="coupon-tip">
-                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[7][i].maximum_cashback_price%></div>
-                                                            <div class="coupon-info-date"><%=result[7][i].expiry%></div>
-                                                            <div>Test coupon for vendor page</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <% } %>
-                                            </div>
+<%- include ('./header.ejs') %>
 
 
 
-                                            <div class="widget widget-collapsible widget-coupons">
-                                                <h3 class="widget-title"><span>Mega Deals</span></h3>
-                                                <% for(i=0;i<result[8].length;i++) { %>
-                                                <div class="widget-body">
-                                                    <div class="coupon">
-                                                        <% if(result[8][i].isredeem == null || result[8][i].isredeem == '' || result[8][i].isredeem == 'null' || result[8][i].isredeem ==[]){ %>
-                                                        XXXX - <%=result[8][i].short_description%>
-                                                        <button type="button" class="btn btn-link redeem_this_code float-right" id="<%=result[8][i].id%>" code="<%=result[8][i].name%>" expiry="<%=result[8][i].expiry%>" vendorid = '<%=result[8][i].vendorid%>' style="float: right;">Redeem This Code</button>
-                                                        <% } else { %>
-                                                            <%=result[8][i].name%>    - <%=result[8][i].short_description%> - your otp is <%=result[8][i].userotp%>
-                                                            <% } %>
-                                                        <div class="coupon-tip">
-                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[8][i].maximum_cashback_price%></div>
-                                                            <div class="coupon-info-date"><%=result[8][i].expiry%></div>
-                                                            <div>Test coupon for vendor page</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <% } %>
-                                            </div>
+<section class="restaurant-detailed-banner">
+<div class="text-center">
+<img class="img-fluid cover" src="https://www.dealsaaj.com/images/<%=result[1][0].shop_img2%>">
+</div>
+<div class="restaurant-detailed-header">
+<div class="container">
+<div class="row d-flex align-items-end">
+<div class="col-lg-8">
+<div class="restaurant-detailed-header-left d-flex align-items-center">
+<img class="img-fluid-pic mr-3 float-left" alt="Osahan Deel" src="https://www.dealsaaj.com/images/<%=result[1][0].image%>" style="width:100px;height:100px;border-radius: 50%;object-fit: contain;">
+<div>
+<h3 class="text-gray-900 mb-2"><%=result[1][0].business_name%></h3>
+<p class="mb-1"><i class="icofont-location-pin"></i>  <%=result[1][0].address%>
+</p>
+
+</div>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="restaurant-detailed-header-right text-right">
+<button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> Open
+</button>
+<h6 class="mb-0 restaurant-detailed-ratings font-weight-normal"><span class="bg-gradient-primary rounded text-white"><i class="icofont-star"></i>
+3.1</span> 23 Ratings <i class="ml-3 icofont-speech-comments"></i> 91 reviews</h6>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="custom-nav bg-white border-top shadow-sm">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+<span class="restaurant-detailed-action-btn float-right">
+</span>
+<ul class="nav" id="pills-tab" role="tablist">
+<li class="nav-item">
+<span class="nav-link active" id="pills-order-online-tab" data-toggle="pill" href="#pills-order-online" role="tab" aria-controls="pills-order-online" aria-selected="true">Order Online</span>
+</li>
+<li class="nav-item">
+<span class="nav-link" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false">Deals & Coupons</span>
+</li>
+<li class="nav-item">
+<span class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false">Restaurant Info</span>
+</li>
+<!-- <li class="nav-item">
+<span class="nav-link" id="pills-book-tab" data-toggle="pill" href="#pills-book" role="tab" aria-controls="pills-book" aria-selected="false">Book A Table</span>
+</li> -->
+<li class="nav-item">
+<span class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">Ratings & Reviews</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="offer-dedicated-body section-padding">
+<div class="container py-lg-4">
+<div class="row">
+<div class="col-lg-8">
+<div class="offer-dedicated-body-left">
+<div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show active" id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
 
 
-                                            <div class="widget widget-collapsible widget-coupons">
-                                                <h3 class="widget-title"><span>Coupons</span></h3>
-                                                <% for(i=0;i<result[2].length;i++) { %>
-                                                <div class="widget-body">
-                                                    <div class="coupon">
-                                                       
-                                                            <%=result[2][i].name%>    - <%=result[2][i].short_description%> 
-                                                            
-                                                        <div class="coupon-tip">
-                                                            <div class="coupon-info-title">Maximum Cashback upto Rs. <%=result[2][i].maximum_cashback_price%></div>
-                                                            <div class="coupon-info-date"><%=result[2][i].expiry%></div>
-                                                            <div>Test coupon for vendor page</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <% } %>
-                                            </div>
+<div class="row">
+<h5 class="mb-3 mt-3 col-md-12 text-gray-900">Quick Bites <small class="h6 text-gray-800">3 ITEMS</small></h5>
+<div class="col-md-12">
+<div class="bg-white rounded shadow-sm mb-4">
+<div class="gold-members p-3 border-bottom">
+<a class="btn btn-white btn-sm float-right xs-btn" href="#">ADD</a>
+<div class="media">
+<div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i>
+</div>
+<div class="media-body">
+<h6 class="mb-1 text-gray-800">Chicken Tikka Sub</h6>
+<p class="text-secondary mb-0">$314 - 12" (30 cm)</p>
+</div>
+</div>
+</div>
+<div class="gold-members p-3 border-bottom">
+<span class="count-number float-right">
+<button class="btn btn-white  btn-sm left dec"> <i class="icofont-minus"></i> </button>
+<input class="count-number-input" type="text" value="1" readonly="">
+<button class="btn btn-white btn-sm right inc"> <i class="icofont-plus"></i> </button>
+</span>
+<div class="media">
+<div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i>
+</div>
+<div class="media-body">
+<h6 class="mb-1 text-gray-800">Cheese corn Roll <span class="badge badge-danger">BESTSELLER</span></h6>
+<p class="text-secondary mb-0">$600</p>
+</div>
+</div>
+</div>
+<div class="gold-members p-3">
+<span class="count-number float-right">
+<button class="btn btn-white  btn-sm left dec"> <i class="icofont-minus"></i> </button>
+<input class="count-number-input" type="text" value="1" readonly="">
+<button class="btn btn-white btn-sm right inc"> <i class="icofont-plus"></i> </button>
+</span>
+<div class="media">
+<div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>
+<div class="media-body">
+<h6 class="mb-1 text-gray-800">Cheese Spinach corn Roll <span class="badge badge-success">Pure Veg</span></h6>
+<p class="text-secondary mb-0">$600</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-                                            
-                                         
-                                        </div>
-                                      
-                                     
-                                    </div>
-                                    <div class="tab-pane" id="tab-4">
-                                       
-                                        <!-- End of Reveiw Area -->
-                                        <div class="review-area">
-                                            <h3 class="title font-weight-bold mb-5">Reviews</h3>
-                                            <div class="reviewers d-flex align-items-center flex-wrap mb-7">
-                                                <div class="reviewers-picture d-flex mr-2">
-                                                    <figure>
-                                                        <img src="/wolmart/assets/images/vendor/wcfm/avatar.png" alt="Avatar"
-                                                            width="113" height="112" />
-                                                    </figure>
-                                                    <figure>
-                                                        <img src="/wolmart/assets/images/vendor/wcfm/avatar.png" alt="Avatar"
-                                                            width="113" height="112" />
-                                                    </figure>
-                                                    <figure>
-                                                        <img src="/wolmart/assets/images/vendor/wcfm/avatar.png" alt="Avatar"
-                                                            width="113" height="112" />
-                                                    </figure>
-                                                </div>
-                                                <div class="reviewer-name">
-                                                    <a href="#" class="font-weight-bold mr-1">John Doe</a>has reviewed
-                                                    this store
-                                                </div>
-                                            </div>
-                                            <!-- End of Reviewers -->
-                                            <div class="review-ratings">
-                                                <div class="review-ratings-left mr-auto">
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Feature</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Varity</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Flexibility</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Delivery</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Support</label>
-                                                    </div>
-                                                </div>
-                                                <!-- End of Review Ratings Left -->
-                                                <div class="review-ratings-right">
-                                                    <div class="average-rating">5.0<sub>/5</sub></div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full mr-0">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End of Review Ratings Right -->
-                                            </div>
-                                            <!-- End of Review Ratings -->
-                                            <div class="user-wrap">
-                                                <div class="user-photo">
-                                                    <figure>
-                                                        <img src="/wolmart/assets/images/vendor/wcfm/avatar.png" alt="Avatar"
-                                                            width="113" height="112" />
-                                                    </figure>
-                                                    <div class="rated text-center">
-                                                        <label>Rated</label>
-                                                        <span class="score">5.0</span>
-                                                    </div>
-                                                </div>
-                                                <!-- End of User Photo -->
-                                                <div class="user-info">
-                                                    <h4 class="user-name">John Doe</h4>
-                                                    <div class="user-date mb-7">
-                                                        <span>1 Reviews</span>
-                                                        <span>April 1, 2021 12:12 Pm</span>
-                                                    </div>
-                                                    <p>Diam in arcu cursus euismod quis. Eget sit amet tellusvitae
-                                                        sapien pellentesque habitant morbi tristique senectus et.
-                                                        Cras adipiscing enim ermentum et sollicitudin ac orci phasellus.
-                                                    </p>
-                                                </div>
-                                                <!-- End of User Info -->
-                                                <div class="review-ratings">
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Feature</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Varity</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Flexibility</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Delivery</label>
-                                                    </div>
-                                                    <div class="ratings-container">
-                                                        <div class="ratings-full">
-                                                            <span class="ratings" style="width: 100%;"></span>
-                                                        </div>
-                                                        <label>5.0 Support</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End of User Wrap -->
-                                        </div>
-                                        <!-- End of Reveiw Area -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Main Content -->
-                    </div>
-                </div>
-            </div>
-            <!-- End of Page Content -->
-        </main>
-        <!-- End of Main -->
-
-        <!-- Start of Footer -->
-      
+</div>
+<div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
+<div id="gallery" class="bg-white rounded shadow-sm p-4 mb-4">
+    <p style="font-weight: bold;font-size: 16px;">Exclusive Deals</p>
+    <div class="row">
+<div class="col-lg-6">
+<div class="pb-2">
+<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
+<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
+<div>
+<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
+<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
+</div>
+<div class="icon-overlap">
+<i class="icofont-sale-discount"></i>
+</div>
+</div>
+</div>
 
 
-        <%- include ('./footer.ejs') %>
+</div>
+<div class="col-lg-6">
+    <div class="pb-2">
+    <div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
+    <img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
+    <div>
+    <h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
+    <p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
+    </div>
+    <div class="icon-overlap">
+    <i class="icofont-sale-discount"></i>
+    </div>
+    </div>
+    </div>
+    
+    
+    </div>
+</div>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-    <script>
 
-        /*
-        Map Settings
+<p style="font-weight: bold;font-size: 16px;">Deals of the Day</p>
+<div class="row">
+<div class="col-lg-6">
+<div class="pb-2">
+<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
+<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
+<div>
+<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
+<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
+</div>
+<div class="icon-overlap">
+<i class="icofont-sale-discount"></i>
+</div>
+</div>
+</div>
 
-            Find the Latitude and Longitude of your address:
-                - https://www.latlong.net/
-                - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
 
-        */
+</div>
+<div class="col-lg-6">
+<div class="pb-2">
+<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
+<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
+<div>
+<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
+<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
+</div>
+<div class="icon-overlap">
+<i class="icofont-sale-discount"></i>
+</div>
+</div>
+</div>
 
-        // Map Markers
-        var mapMarkers = [{
-            address: "New York, NY 10017",
-            html: "<strong>New York Office<\/strong><br>New York, NY 10017",
-            popup: true
-        }];
 
-        // Map Initial Location
-        var initLatitude = 40.75198;
-        var initLongitude = -73.96978;
+</div>
+</div>
 
-        // Map Extended Settings
-        var mapSettings = {
-            controls: {
-                draggable: !window.Wolmart.isMobile,
-                panControl: true,
-                zoomControl: true,
-                mapTypeControl: true,
-                scaleControl: true,
-                streetViewControl: true,
-                overviewMapControl: true
-            },
-            scrollwheel: false,
-            markers: mapMarkers,
-            latitude: initLatitude,
-            longitude: initLongitude,
-            zoom: 11
-        };
 
-        var map = $('#googlemaps').gMap(mapSettings);
 
-        // Map text-center At
-        var mapCenterAt = function (options, e) {
-            e.preventDefault();
-            $('#googlemaps').gMap("centerAt", options);
-        }
+<p style="font-weight: bold;font-size: 16px;">Mega Deals</p>
+<div class="row">
+<div class="col-lg-6">
+<div class="pb-2">
+<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
+<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
+<div>
+<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
+<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
+</div>
+<div class="icon-overlap">
+<i class="icofont-sale-discount"></i>
+</div>
+</div>
+</div>
 
-    </script>
+
+</div>
+<div class="col-lg-6">
+<div class="pb-2">
+<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
+<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
+<div>
+<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
+<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
+</div>
+<div class="icon-overlap">
+<i class="icofont-sale-discount"></i>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+</div>
+</div>
+<div class="tab-pane fade" id="pills-restaurant-info" role="tabpanel" aria-labelledby="pills-restaurant-info-tab">
+<div id="restaurant-info" class="bg-white rounded shadow-sm p-4 mb-4">
+<div class="address-map float-right ml-5">
+<div class="mapouter">
+<div class="gmap_canvas"><iframe width="300" height="170" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+</div>
+</div>
+<h5 class="mb-3 text-gray-900">Restaurant Info</h5>
+<p class="mb-3">Jagjit Nagar, Near Railway Crossing,
+<br> Near Model Town, Ab Kettleby, LE14. United Kingdom
+</p>
+<p class="mb-2"><i class="icofont-phone-circle text-primary mr-2"></i> +91
+01234-56789, +91 01234-56789</p>
+<p class="mb-2"><i class="icofont-email text-primary mr-2"></i> <a href="https://askbootstrap.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fa83958f889f979b9396ba9d979b9396d4999597">[email&#160;protected]</a>,
+Osahan <a href="https://askbootstrap.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a4e0c1c1c8c1c5d0e4c3c9c5cdc88ac7cbc9">[email&#160;protected]</a></p>
+<p class="mb-2"><i class="icofont-clock-time text-primary mr-2"></i> Today 11am –
+5pm, 6pm – 11pm
+<span class="badge badge-success"> OPEN NOW </span>
+</p>
+<hr class="clearfix">
+
+<hr class="clearfix">
+<h5 class="mt-4 text-gray-900 mb-3">More Info</h5>
+<p class="mb-3">Dal Makhani, Panneer Butter Masala, Kadhai Paneer, Raita, Veg Thali,
+Laccha Paratha, Butter Naan</p>
+
+</div>
+</div>
+<div class="tab-pane fade" id="pills-book" role="tabpanel" aria-labelledby="pills-book-tab">
+<div id="book-a-table" class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+<h5 class="mb-4 text-gray-900">Book A Table</h5>
+<form>
+<div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label>Full Name</label>
+<input class="form-control" type="text" placeholder="">
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label>Email Address</label>
+<input class="form-control" type="text" placeholder="">
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-6">
+<div class="form-group">
+<label>Mobile number</label>
+<input class="form-control" type="text" placeholder="">
+</div>
+</div>
+<div class="col-sm-6">
+<div class="form-group">
+<label>Date And Time</label>
+<input class="form-control" type="text" placeholder="">
+</div>
+</div>
+</div>
+<div class="form-group text-right">
+<button class="btn btn-primary" type="button"> Submit </button>
+</div>
+</form>
+</div>
+</div>
+<div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+<div id="ratings-and-reviews" class="bg-white rounded shadow-sm p-4 mb-4 clearfix restaurant-detailed-star-rating">
+<span class="star-rating float-right">
+<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+</span>
+<h5 class="mb-0 pt-1 text-gray-900">Rate this Place</h5>
+</div>
+<div class="bg-white rounded shadow-sm p-4 mb-4 clearfix graph-star-rating">
+<h5 class="mb-0 mb-4 text-gray-900">Ratings and Reviews</h5>
+<div class="graph-star-rating-header">
+<div class="star-rating">
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating"></i></a> <b class="text-gray-800 ml-2">334</b>
+</div>
+<p class="text-gray-800 mb-4 mt-2">Rated 3.5 out of 5</p>
+</div>
+<div class="graph-star-rating-body">
+<div class="rating-list">
+<div class="rating-list-left text-gray-800">
+5 Star
+</div>
+<div class="rating-list-center">
+<div class="progress rounded">
+<div style="width: 56%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+<span class="sr-only">80% Complete (danger)</span>
+</div>
+</div>
+</div>
+<div class="rating-list-right text-gray-800">56%</div>
+</div>
+<div class="rating-list">
+<div class="rating-list-left text-gray-800">
+4 Star
+</div>
+<div class="rating-list-center">
+<div class="progress rounded">
+<div style="width: 23%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+<span class="sr-only">80% Complete (danger)</span>
+</div>
+</div>
+</div>
+<div class="rating-list-right text-gray-800">23%</div>
+</div>
+<div class="rating-list">
+<div class="rating-list-left text-gray-800">
+3 Star
+</div>
+<div class="rating-list-center">
+<div class="progress rounded">
+<div style="width: 11%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+<span class="sr-only">80% Complete (danger)</span>
+</div>
+</div>
+</div>
+<div class="rating-list-right text-gray-800">11%</div>
+</div>
+<div class="rating-list">
+<div class="rating-list-left text-gray-800">
+2 Star
+</div>
+<div class="rating-list-center">
+<div class="progress rounded">
+<div style="width: 2%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+<span class="sr-only">80% Complete (danger)</span>
+</div>
+</div>
+</div>
+<div class="rating-list-right text-gray-800">02%</div>
+</div>
+</div>
+<div class="graph-star-rating-footer text-center mt-3 mb-3">
+<button type="button" class="btn btn-outline-primary">Rate and Review</button>
+</div>
+</div>
+<div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+<a href="#" class="btn btn-outline-primary btn-sm float-right">Top Rated</a>
+<h5 class="mb-1 text-gray-900">All Ratings and Reviews</h5>
+<div class="reviews-members pt-4 pb-4">
+<div class="media">
+<a href="#"><img alt="Generic placeholder image" src="/new_design/images/user/1.png" class="mr-3 rounded-pill"></a>
+ <div class="media-body">
+<div class="reviews-members-header">
+<span class="star-rating float-right">
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating"></i></a>
+</span>
+<h6 class="mb-1 text-gray-800"><a class="text-gray-900" href="#">Mishn
+Osahan Deel</a></h6>
+<p class="text-gray">Tue, 20 Mar 2020</p>
+</div>
+<div class="reviews-members-body">
+<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It
+has roots in a piece of classical Latin literature from 45 BC, making
+it over 2000 years old. Richard McClintock, a Latin professor at
+Hampden-Sydney College in Virginia, looked up one of the more obscure
+Latin words, consectetur, from a Lorem Ipsum passage, and going
+through the cites of the word in classical literature, discovered the
+undoubtable source. Lorem Ipsum comes from sections </p>
+</div>
+<div class="reviews-members-footer">
+<a class="total-like" href="#"><i class="icofont-thumbs-up"></i>
+856M</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> 158K</a>
+<span class="total-like-user-main ml-2" dir="rtl">
+<a data-toggle="tooltip" data-placement="top" title="John Osahan Deel" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/5.png" class="total-like-user rounded-pill"></a>
+<a data-toggle="tooltip" data-placement="top" title="John Mishn" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/2.png" class="total-like-user rounded-pill"></a>
+<a data-toggle="tooltip" data-placement="top" title="Askbootstrap" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/3.png" class="total-like-user rounded-pill"></a>
+<a data-toggle="tooltip" data-placement="top" title="Osahan Deel" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/4.png" class="total-like-user rounded-pill"></a>
+</span>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<div class="reviews-members pt-4 pb-4">
+<div class="media">
+<a href="#"><img alt="Generic placeholder image" src="/new_design/images/user/6.png" class="mr-3 rounded-pill"></a>
+<div class="media-body">
+<div class="reviews-members-header">
+<span class="star-rating float-right">
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating active"></i></a>
+<a href="#"><i class="icofont-ui-rating"></i></a>
+</span>
+<h6 class="mb-1 text-gray-800"><a class="text-gray-900" href="#">John
+Mishn</a></h6>
+<p class="text-gray">Tue, 20 Mar 2020</p>
+</div>
+<div class="reviews-members-body">
+<p>It is a long established fact that a reader will be distracted by the
+readable content of a page when looking at its layout. The point of
+using Lorem Ipsum is that it has a more-or-less normal distribution
+of letters, as opposed to using 'Content here, content here', making
+it look like readable English.</p>
+</div>
+<div class="reviews-members-footer">
+<a class="total-like" href="#"><i class="icofont-thumbs-up"></i> 88K</a>
+<a class="total-like" href="#"><i class="icofont-thumbs-down"></i>
+1K</a>
+<span class="total-like-user-main ml-2" dir="rtl">
+<a data-toggle="tooltip" data-placement="top" title="John Osahan Deel" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/5.png" class="total-like-user rounded-pill"></a>
+<a data-toggle="tooltip" data-placement="top" title="John Mishn" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/2.png" class="total-like-user rounded-pill"></a>
+<a data-toggle="tooltip" data-placement="top" title="Askbootstrap" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/3.png" class="total-like-user rounded-pill"></a>
+<a data-toggle="tooltip" data-placement="top" title="Osahan Deel" href="#"><img alt="Generic placeholder image" src="/new_design/images/user/4.png" class="total-like-user rounded-pill"></a>
+</span>
+</div>
+</div>
+</div>
+</div>
+<hr>
+<a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">See All
+Reviews</a>
+</div>
+<div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
+<h5 class="mb-4  text-gray-900">Leave Comment</h5>
+<p class="mb-2">Rate the Place</p>
+<div class="mb-4">
+<span class="star-rating">
+<a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+<a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+</span>
+</div>
+<form>
+<div class="form-group">
+<label>Your Comment</label>
+<textarea class="form-control"></textarea>
+</div>
+<div class="form-group mb-0 text-right">
+<button class="btn btn-primary" type="button"> Submit Comment </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4">
+<div class="pb-2">
+<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
+<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
+<div>
+<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
+<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
+</div>
+<div class="icon-overlap">
+<i class="icofont-sale-discount"></i>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+</section>
+<section class="py-4 bg-white osahan-copyright">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="d-flex align-items-center justify-content-between">
+<p class="m-0 text-secondary">Copyright © Your Website 2020</p>
+<p class="m-0">
+<a href="#" class="text-secondary">About Us</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Privacy Policy</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Terms &amp; Conditions</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+</div>
+
+</div>
+
+
+
+<a class="scroll-to-top rounded-circle" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
+</div>
+</div>
+</div>
+</div>
+
+<script data-cfasync="false" src="/new_design/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/new_design/vendor/jquery/jquery.min.js" type="3773ca5a02d1352d00b2f303-text/javascript"></script>
+<script src="/new_design/vendor/bootstrap/js/bootstrap.bundle.min.js" type="3773ca5a02d1352d00b2f303-text/javascript"></script>
+
+<script src="/new_design/vendor/jquery-easing/jquery.easing.min.js" type="3773ca5a02d1352d00b2f303-text/javascript"></script>
+
+<script src="/new_design/vendor/select2/js/select2.min.js" type="3773ca5a02d1352d00b2f303-text/javascript"></script>
+
+<script src="/new_design/vendor/owl-carousel/owl.carousel.js" type="3773ca5a02d1352d00b2f303-text/javascript"></script>
+
+<script src="/new_design/js/custom.js" type="3773ca5a02d1352d00b2f303-text/javascript"></script>
+<script src="/new_design/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="3773ca5a02d1352d00b2f303-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d940baf138a20","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
 </body>
 
-
-<script>
-    $('.redeem_this_code').click(function(){
-        let coupounid = $(this).attr('id')
-        let code = $(this).attr('code')
-        let expiry = $(this).attr('expiry')
-        let vendorid = $(this).attr('vendorid')
-
-        $.post('/redeem-this-code',{coupounid,code,expiry,vendorid},data=>{
-            if(data.msg=='failed') window.location.href = '/login';
-            else window.location.reload()
-        })
-    })
-</script>
-
-<!-- Mirrored from portotheme.com/html/wolmart/vendor-wcfm-store-product-grid.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:19:45 GMT -->
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/restaurant-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:44:24 GMT -->
 </html>

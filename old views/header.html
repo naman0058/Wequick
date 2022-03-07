@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<!-- Mirrored from portotheme.com/html/wolmart// by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:16:54 GMT -->
+<head>
+
+    <meta name="facebook-domain-verification" content="x9ysntjmpzyf8hxw998if6fadq96yr" />
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Deal Saaj | Home</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Deal Saaj - Home">
+    <meta name="author" content="D-THEMES">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = '/wolmart/assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2"
+        crossorigin="anonymous">
+    <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2"
+            crossorigin="anonymous">
+    <link rel="preload" href="/wolmart/assets/fonts/wolmart87d5.ttf?png09e" as="font" type="font/ttf" crossorigin="anonymous">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/fontawesome-free/css/all.min.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="/wolmart/assets/css/demo2.min.css">
+
+
+
+
+</head>
+
+<body class="home">
+    <div class="page-wrapper">
+        <!-- Start of Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-left">
+                        <p class="welcome-msg">Welcome to <span style="color: #722A74;font-weight: bold;">Deals</span> <span style="color: #BC3069;font-weight: bold;">Aaj</span>  Store!</p>
+                
+                    </div>
+
+                    <div class="header-right pr-0">
+                      
+                        <!-- End of DropDown Menu -->
+                        <a id="locationtype" style="margin-top: 3%;" class="d-lg-show" ></a>
+
+                      
+                        <!-- End of Dropdown Menu -->
+                      <% if(login == true) { %>
+                        <a href="/my-account" class="d-lg-show">My Account</a>
+                       
+                        <% } else { %>
+
+                        <a href="/login" class="d-lg-show"><i
+                                class="w-icon-account"></i>Sign In</a>
+
+                                <% } %>
+
+                    </div>
+                </div>
+            </div>
+            <p id="locationtype1" style="margin-left: 2%;margin-right:2%;" class="d-none d-xs-block d-md-none" ></p>
+
+            <!-- End of Header Top -->
+
+            <div class="header-middle" style=" background-image: linear-gradient(#722A74, #BC3069);">
+                <div class="container">
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
+                        </a>
+                        <a href="/" class="logo ml-lg-0">
+                            <img src="/images/logo.png" alt="logo" style="object-fit: contain;width:100%;height: 100px;" />
+
+                        </a>
+                        <nav class="main-nav">
+                            <ul class="menu">
+                                <li class="" style="color: white;">
+                                    <a href="/">Home</a>
+                                </li>
+
+                                
+
+
+                                <li>
+                                    <a href="#" style="color: white;">Segments</a>
+                                    <ul>
+                                      
+                                        <% for(i=0;i<result[0].length;i++){%>
+
+                                        <li>
+                                            <a href="/shop-by-category?categoryid=<%=result[0][i].id%>"><%=result[0][i].name%></a>
+                                        </li>
+<% } %>
+                                       
+                                    </ul>
+                                </li>
+
+
+                                <li>
+                                    <a href="/exclusive-deals-and-offers" style="color: white;">Exclusive Deals & Offers</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="/new-release" style="color: white;">New Release</a>
+                                </li>
+
+                                <li>
+                                    <a href="/channel-partner-login" style="color: white;">Our Channel Partner</a>
+                                </li>
+
+
+                              
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="header-right ml-4">
+                        <div class="header-call d-xs-show d-lg-flex align-items-center">
+                            <a href="tel:#" class="w-icon-call" style="color: white;"></a>
+                            <div class="call-info d-xl-show">
+                                <h4 class="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0">
+                                    <a href="mailto:#" class="text-capitalize" style="color: white;">Chat</a> or :</h4>
+                                <a href="tel:#" class="phone-number font-weight-bolder ls-50" style="color: white;">0(800)123-456</a>
+                            </div>
+                        </div>
+                        <!-- <a class="wishlist label-down link d-xs-show" href="wishlist.html">
+                            <i class="w-icon-heart"></i>
+                            <span class="wishlist-label d-lg-show">Wishlist</span>
+                        </a>
+                        <a class="compare label-down link d-xs-show" href="compare.html">
+                            <i class="w-icon-compare"></i>
+                            <span class="compare-label d-lg-show">Compare</span>
+                        </a> -->
+
+
+                        <div class="dropdown cart-dropdown mr-0 mr-lg-2">
+                            <div class="cart-overlay"></div>
+                            <a href="/mycart" class="cart-toggle label-down " style="color: white;">
+                                <i class="w-icon-cart">
+                                    
+                                </i>
+                                <span class="cart-label">Cart</span>
+                            </a>
+                          
+                            <!-- End of Dropdown Box -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left flex-1">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <i class="w-icon-category"></i>
+                                    <span>Browse Categories</span>
+                                </a>
+
+                                <div class="dropdown-box">
+                                    <ul class="menu vertical-menu category-menu">
+
+			 <% for(i=0;i<result[0].length;i++){%>
+
+                                        <li>
+                                            <a href="/shop-by-category?categoryid=<%=result[0][i].id%>">
+                                           <%=result[0][i].name%>
+                                            </a>
+                                          
+                                        </li>
+                                      <% } %>
+                                    
+                                    </ul>
+                                </div>
+                            </div>
+                            <form method="get" action="/search" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper mr-4 ml-4">
+                                <div class="select-box">
+                                    <select id="category" name="category">
+                                        <option value="">All Categories</option>
+			 <% for(i=0;i<result[0].length;i++){%>
+
+                                        <option value="4"><a href="/shop-by-category?categoryid=<%=result[0][i].id%>"></a><%=result[0][i].name%></a></option>
+                                      <% } %>
+                                    </select>
+                                </div>
+                                <input type="text" class="form-control" name="search" id="search"
+                                    placeholder="Search in..." required />
+                                <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End of Header -->

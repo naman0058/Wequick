@@ -1,418 +1,415 @@
 
+
+
 <%- include ('./header.ejs') %>
 
 
-<main class="main">
-    <div class="intro-section">
-        <div class="owl-carousel owl-theme owl-nav-inner owl-dot-inner row gutter-no cols-1 animation-slider"
-            data-owl-options="{
-            'nav': false,
-            'dots': true,
-            'items': 1,
-            'autoplay': false,
-            'responsive': {
-                '1630': {
-                    'nav': true,
-                    'dots': false
-                }
-            }
-        }">
-           
-        
+<section class="offer-dedicated-banner text-ceter">
+    <div class="owl-carousel p-0 owl-theme restaurant-slider">
+
         <% for(i=0;i<result[2].length;i++) { %>
-            <a href='#'>
-        <div class="banner banner-fixed intro-slide intro-slide1+<%=result[2][i].id%>"
-                style="background-image: url(/images/<%=result[2][i].image%>); background-color: whitesmoke;">
-                <div class="container">
-                    <figure class="slide-image floating-item slide-animate" data-animation-options="{
-                        'name': 'fadeInDownShorter', 'duration': '1s'
-                    }" data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
-                        data-child-depth="0.2">
-                      
-                    </figure>
-                   
-                    <!-- End of .banner-content -->
-                </div>
-                <!-- End of .container -->
-            </div>
-            <!-- End of .intro-slide1 -->
+
+
+    <div class="item p-0 m-0">
+    <img class="img-fluid" src="https://www.dealsaaj.com/images/<%=result[2][i].image%>" style="width:100%">
+    </div>
+
+    <% } %>
+
+    </div>
+    </section>
+
+
+<section class="section-padding homepage-view-offers">
+<div class="container">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<h1 class="h5 mb-0 text-gray-900">Exclusive Deals</h1>
+<a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
+</div>
+<div class="row">
+
+
+    <% for(i=0;i<result[7].length;i++) { %>
+
+<div class="col-xl-3 col-sm-6">
+<div class="custom-card shadow-sm h-100">
+<div class="custom-card-image">
+<a href="#">
+<img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[7][i].image%>">
 </a>
+
+</div>
+<div class="p-3 pt-4">
+<div class="custom-card-body">
+<h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[7][i].short_description%>
+Bank</a></h6>
+<p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[7][i].expiry%></p>
+</div>
+<div class="custom-card-footer d-flex align-items-center">
+
+<% if(result[7][i].type =='flat') { %>
+
+    <span class="text-danger">Falt Rs. <%=result[7][i].discount%> OFF</span>
+
+    <% } else { %>
+        <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[7][i].discount%> % OFF</span>
+
+        <% } %>
+
+
+        <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
+
+<a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[7][i].id%>" code="<%=result[7][i].name%>" expiry="<%=result[7][i].expiry%>" vendorid = '<%=result[7][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+
+<% } else { %>
+
+
+    <% } %>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<% } %>
+
+</div>
+</div>
+</section>
+
+
+<section class="section-padding homepage-store-block">
+<div class="container">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<h1 class="h5 mb-0 text-gray-900">Deals of the Day</h1>
+<a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
+</div>
+<div class="row  align-items-center">
+<div class="col-lg-12">
+ <div class="owl-carousel owl-theme owl-carousel-four homepage-coupon-carousel">
+
+    <% for(i=0;i<result[8].length;i++) { %>
+
+
+    <div class="item">
+<div class="custom-card bg-white shadow-sm h-100 stor-card">
+<div class="custom-card-image">
+
+<a href="#">
+<img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[8][i].image%>">
+</a>
+<div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+<svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2160 0C1440 240 720 240 720 240H0V480H2880V0H2160Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<div class="p-3">
+<div class="custom-card-body">
+<h6 class="mb-0"><a class="text-gray-900" href="#"><%=result[8][i].short_description%></a></h6>
+<p class="text-gray-500 mb-2"> Expiry at <%=result[8][i].expiry%></p>
+<% if(result[8][i].isredeem == null || result[8][i].isredeem == '' || result[8][i].isredeem == 'null' || result[8][i].isredeem ==[]){ %>
+
+    <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[8][i].id%>" code="<%=result[8][i].name%>" expiry="<%=result[8][i].expiry%>" vendorid = '<%=result[8][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+    
+    <% } else { %>
+    
+        <% } %>
+
+
+</div>
+</div>
+<div class="p-3 border-top">
+<div class="custom-card-badge">
+
+    <% if(result[8][i].type =='flat') { %>
+
+        <span class="badge badge-danger"><i class="icofont-sale-discount"></i>
+            OFFER</span>Falt Rs. <%=result[8][i].discount%> OFF
+        <% } else { %>
+
+
+            <span class="badge badge-danger"><i class="icofont-sale-discount"></i>
+                OFFER</span> <%=result[8][i].discount%> % OFF
             <% } %>
 
-           
 
-         
-            <!-- End of .intro-slide3 -->
-        </div>
-    </div>
-    <!-- End of .intro-section -->
+</div>
+</div>
+</div>
+</div>
 
+ <% } %>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+    <section class="section-padding homepage-view-offers">
     <div class="container">
-        <div class="owl-carousel owl-theme row cols-md-4 cols-sm-3 cols-1 icon-box-wrapper appear-animate br-sm mt-6 mb-10 appear-animate"
-            data-owl-options="{
-            'nav': false,
-            'dots': false,
-            'loop': true,
-            'autoplay': true,
-            'autoplayTimeout': 4000,
-            'responsive': {
-                '0': {
-                    'items': 1
-                },
-                '576': {
-                    'items': 2
-                },
-                '768': {
-                    'items': 3
-                },
-                '992': {
-                    'items': 3
-                },
-                '1200': {
-                    'items': 4
-                }
-            }
-        }">
-            <div class="icon-box icon-box-side text-dark">
-                <span class="icon-box-icon icon-shipping">
-                    <i class="w-icon-truck"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Free Shipping & Returns</h4>
-                    <p class="text-default">For all orders over $99</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark">
-                <span class="icon-box-icon icon-payment">
-                    <i class="w-icon-bag"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Secure Payment</h4>
-                    <p class="text-default">We ensure secure payment</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark icon-box-money">
-                <span class="icon-box-icon icon-money">
-                    <i class="w-icon-money"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Money Back Guarantee</h4>
-                    <p class="text-default">Any back within 30 days</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark icon-box-chat">
-                <span class="icon-box-icon icon-chat">
-                    <i class="w-icon-chat"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Customer Support</h4>
-                    <p class="text-default">Call or email us 24/7</p>
-                </div>
-            </div>
-        </div>
-        <!-- End of Iocn Box Wrapper -->
-
-      
-        <!-- End of Product Deals Warpper -->
-
-        <h3>Exclusive Deals</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            
-            <% for(i=0;i<result[7].length;i++) { %>
-            <div class="col-md-4 mb-4">
-
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/images/<%=result[7][i].image%>" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;height: 220px;object-fit: contain;" />
-                    </figure>
-                   
-
-                    <div class="banner-content y-50" style="position: relative;bottom:40px">
-                        
-                        <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
-                 
-                        <button
-                            class="btn btn-dark redeem_this_code  btn-underline btn-icon-right float-right"
-                            id="<%=result[7][i].id%>" code="<%=result[7][i].name%>" expiry="<%=result[7][i].expiry%>" vendorid = '<%=result[7][i].vendorid%>'
-                            style="background-image: linear-gradient(#722A74, #BC3069);">
-                            Redeem Deals<i class="w-icon-long-arrow-right"></i></button>
-
-                            <% } else { %>
-
-                                <button class="btn btn-primary"><%=result[7][i].userotp%></button>
-
-                                <% } %>
-                    </div>
-
-
-                </div>
-
-            </div>
-         
-<% } %>
-
-
-        </div>
-
-
-
-        <h3>Deals Of the Day</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <% for(i=0;i<result[8].length;i++) { %>
-                <div class="col-md-4 mb-4">
-    
-                    <div class="banner banner-fixed br-sm">
-                        <figure>
-                            <img src="/images/<%=result[8][i].image%>" alt="Category Banner"
-                                width="640" height="200" style="background-color: #25282D;height: 220px;object-fit: contain;" />
-                        </figure>
-
-
-
-                        <div class="banner-content y-50" style="position: relative;bottom:40px">
-                        
-                            <% if(result[8][i].isredeem == null || result[8][i].isredeem == '' || result[8][i].isredeem == 'null' || result[8][i].isredeem ==[]){ %>
-                     
-                            <button
-                                class="btn btn-dark redeem_this_code  btn-underline btn-icon-right float-right"
-                                id="<%=result[8][i].id%>" code="<%=result[8][i].name%>" expiry="<%=result[8][i].expiry%>" vendorid = '<%=result[8][i].vendorid%>'
-                                style="background-image: linear-gradient(#722A74, #BC3069);">
-                                Redeem Deals<i class="w-icon-long-arrow-right"></i></button>
-
-                                <% } else { %>
-
-                                    <button class="btn btn-primary"><%=result[8][i].userotp%></button>
-
-                                    <% } %>
-                        </div>
-
-                       
-                    </div>
-    
-                </div>
-             
-    <% } %>
-    
-        </div>
-
-
-       
-
-
-
-
-
-
-        <h3>Mega Deals</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-          
-
-            <% for(i=0;i<result[9].length;i++) { %>
-                <div class="col-md-4 mb-4">
-                    <!-- <a href="/grab-this-deals?id=<%=result[9][i].id%>"> -->
-    
-                    <div class="banner banner-fixed br-sm">
-                        <figure>
-                            <img src="/images/<%=result[9][i].image%>" alt="Category Banner"
-                                width="640" height="200" style="background-color: #25282D;height: 220px;object-fit: contain;" />
-                        </figure>
-                        <div class="banner-content y-50" style="position: relative;bottom:40px">
-                        
-                            <% if(result[9][i].isredeem == null || result[9][i].isredeem == '' || result[9][i].isredeem == 'null' || result[9][i].isredeem ==[]){ %>
-                     
-                            <button
-                                class="btn btn-dark redeem_this_code  btn-underline btn-icon-right float-right"
-                                id="<%=result[9][i].id%>" code="<%=result[9][i].name%>" expiry="<%=result[9][i].expiry%>" vendorid = '<%=result[9][i].vendorid%>'
-                                style="background-image: linear-gradient(#722A74, #BC3069);">
-                                Redeem Deals<i class="w-icon-long-arrow-right"></i></button>
-
-                                <% } else { %>
-
-                                    <button class="btn btn-primary"><%=result[9][i].userotp%></button>
-
-                                    <% } %>
-                        </div>
-                    </div>
-            <!-- </a> -->
-    
-                </div>
-             
-    <% } %>
-    
-
-        </div>
-
-
-     
-
-
-        
-      
-        <h3>Near By Shop</h3>
-
-   
-
-
-        <div class="page-content mb-8" style="margin-top: 20px;">
-            <div class="container">
-                <!-- Start of Vendor Map -->
-              
-                <!-- End of Vendor Map -->
-
-                <!-- Start of Vendor Filter -->
-                
-                <!-- End of Vendor Filter -->
-
-                <!-- Start of Vendor Store -->
-                <div class="row cols-lg-3 cols-sm-2">
-                 
-                    <% for(i=0;i<result[10].length;i++){ %>
-                 
-                 
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/images/<%=result[10][i].image%>" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #454b63;width:400px;height:318px" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/images/<%=result[10][i].image%>" style="width:80px;height:80px" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=<%=result[10][i].id%>"><%=result[10][i].business_name%></a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p><%=result[10][i].address%></p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <div class="ratings-container">
-                                                <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
-                                                    <span class="tooltiptext tooltip-top"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                 <% } %>
-                </div>
-                <!-- End of Vendor Store -->
-            </div>
-        </div>
-
-       
-        <!-- End of Banner Product Wrapper -->
-
-
-        <!-- End of Banner -->
-
-
-
-        
-
-
-
-
-        
-
-
-
-			 <% for(i=0;i<result[4].length;i++){%>
-
-
-        <div class="title-link-wrapper mb-2 appear-animate">
-        <h3><%=result[4][i].name%></h3>
-
-           
-            <!-- <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">More Products<i
-                    class="w-icon-long-arrow-right"></i></a> -->
-        </div>
-
-    <% const filteredData = result[3].filter(item => item.textname == result[4][i].name) %>
-
-
-
-        <div class="owl-carousel owl-theme top-products row cols-lg-5 cols-md-4 cols-sm-3 cols-2 mb-6 appear-animate"
-            data-owl-options="{
-            'nav': false,
-            'dots': true,
-            'margin': 20,
-            'responsive': {
-                '0': {
-                    'items': 2
-                },
-                '576': {
-                    'items': 3
-                },
-                '768': {
-                    'items': 4
-                },
-                '992': {
-                    'items': 5
-                }
-            }
-        }">
-          
-        <% for(j=0;j<filteredData.length;j++){ %>
-        
-        <div class="product-wrap">
-                <div class="product text-center">
-                    <figure class="product-media">
-                        <a href="/product?id=<%=filteredData[j].productid%>">
-                            <img src="/images/<%=filteredData[j].productimage%>" alt="Product" width="300"
-                                height="338">
-                          
-                        </a>
-                       
-                       
-                       
-                    </figure>
-                    <div class="product-details">
-                        <h4 class="product-name"><a href="/product?id=<%=filteredData[j].productid%>"><%=filteredData[j].productname%></a></h4>
-                        <div class="ratings-container">
-                            
-                        </div>
-                        <div class="product-price">
-                            <ins class="new-price">Rs.<%=filteredData[j].productnetamount%></ins>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          <% } %>
-        </div>
-
-       
-
-<% } %>
-        
-        <!-- End of Owl Carousel -->
-
-       
-        <!-- End of Owl Carousel -->
-
-        
-        <!-- End of Brands Wrapper -->
-
-     
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h5 mb-0 text-gray-900">Recommended Categories</h1>
+    <a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
     </div>
-    <!-- End of Container -->
-</main>
-<!-- End of Main -->
+    <div class="row">
+
+        <% const filteredData = result[0].filter(item => item.type == 'yes') %>
+
+			 <% for(i=0;i<filteredData.length;i++){%>
+
+
+        <div class="col-xl-2 col-sm-6 mb-4">
+            <div class="custom-card shadow-sm bg-white h-40">
+                    <a class="nav-link text-center" href="#">
+                    <img class="img-fluid" src="https://www.dealsaaj.com/images/<%=filteredData[i].icon%>" style="height:100px"> 
+                    <span><%=filteredData[i].name%></span></a>
+            
+            
+            </div>
+            </div>
+
+            <% } %>
+           
+
+    </div>
+    </div>
+    </section>
+
+
+        <section class="section-padding homepage-view-offers">
+        <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h5 mb-0 text-gray-900">Mega Deals</h1>
+        <a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
+        </div>
+        <div class="row">
+        
+        
+            <% for(i=0;i<result[9].length;i++) { %>
+        
+        <div class="col-xl-3 col-sm-6">
+        <div class="custom-card shadow-sm h-100">
+        <div class="custom-card-image">
+        <a href="#">
+        <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[9][i].image%>">
+        </a>
+        
+        </div>
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[9][i].short_description%>
+        Bank</a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[9][i].expiry%></p>
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+        
+        <% if(result[9][i].type =='flat') { %>
+        
+            <span class="text-danger">Falt Rs. <%=result[9][i].discount%> OFF</span>
+        
+            <% } else { %>
+                <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[9][i].discount%> % OFF</span>
+        
+                <% } %>
+        
+        
+                <% if(result[9][i].isredeem == null || result[9][i].isredeem == '' || result[9][i].isredeem == 'null' || result[9][i].isredeem ==[]){ %>
+        
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[9][i].id%>" code="<%=result[9][i].name%>" expiry="<%=result[9][i].expiry%>" vendorid = '<%=result[9][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        
+        <% } else { %>
+        
+        
+            <% } %>
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <% } %>
+        
+        </div>
+        </div>
+        </section>
+
+
+
+
+
+
+        <section class="section-padding homepage-view-offers">
+            <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h5 mb-0 text-gray-900">Near by Shop</h1>
+            <a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View All</a>
+            </div>
+            <div class="row">
+            
+            
+                <% for(i=0;i<result[10].length;i++) { %>
+            
+            <div class="col-xl-3 col-sm-6" style="height: 350px;">
+            <div class="custom-card shadow-sm">
+            <div class="custom-card-image">
+            <a href="/single-vendor-details?vendorid=<%=result[10][i].id%>">
+            <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[10][i].image%>">
+            </a>
+            
+            </div>
+            <div class="p-3 pt-4">
+            <div class="custom-card-body">
+            <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[10][i].business_name%>
+            </a></h6>
+           
+            </div>
+            <div class="custom-card-footer d-flex align-items-center">
+            
+          
+            
+                <span class="text-muted" style="font-size: 12px;"> <%=result[10][i].address%> </span>
+            
+            
+            
+                   
+            
+            
+            </div>
+            </div>
+            </div>
+            </div>
+            
+            <% } %>
+            
+            </div>
+            </div>
+            </section>
+
+      
+
+<section class="footer section-padding">
+<div class="container">
+<div class="row py-lg-4">
+<div class="col-xl-2 col-sm-6">
+<div class="footer-brand">
+<img class="img-fluid" src="/new_design/images/logo.svg">
+</div>
+</div>
+<div class="col-xl-2 col-sm-6">
+<h6 class="text-gray-900">PRODUCTS</h6>
+<ul>
+<li><a href="#">Page Builder</a></li>
+<li><a href="#">UI Kit</a></li>
+<li><a href="#">Styleguide</a></li>
+<li><a href="#">Documentation</a></li>
+<li><a href="#">Changelog</a></li>
+</ul>
+</div>
+<div class="col-xl-2 col-sm-6">
+<h6 class="text-gray-900">SERVICES</h6>
+<ul>
+<li><a href="#">Services</a></li>
+<li><a href="#">Contact</a></li>
+<li><a href="#">Careers</a></li>
+<li><a href="#">Pagebuilder</a></li>
+</ul>
+</div>
+<div class="col-xl-2 col-sm-6">
+<h6 class="text-gray-900">CONNECT</h6>
+<ul>
+<li><a href="#">Terms</a></li>
+<li><a href="#">Privacy</a></li>
+<li><a href="#">Page Builder</a></li>
+<li><a href="#">UI Kit</a></li>
+<li><a href="#">Styleguide</a></li>
+<li><a href="#">Documentation</a></li>
+<li><a href="#">Support</a></li>
+</ul>
+</div>
+<div class="col-xl-4 col-sm-6">
+<h6 class="text-gray-900">Subscribe to our Newsletter</h6>
+<form class="form-inline newsletter-form mb-1">
+<input type="text" class="form-control mr-sm-2" placeholder="Enter your email">
+<button type="submit" class="btn btn-primary">Subscribe</button>
+</form>
+<small><a href="#">Register now to get updates on <span class="text-info">Offers and
+Coupons</span></a></small>
+<div class="app mt-4 pt-2">
+<h6 class="text-gray-900">DOWNLOAD APP</h6>
+<a href="#">
+<img class="img-fluid" src="/new_design/images/google.png">
+</a>
+<a href="#">
+<img class="img-fluid" src="/new_design/images/apple.png">
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-4 bg-white osahan-copyright">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="d-flex align-items-center justify-content-between">
+<p class="m-0 text-secondary">Copyright © Your Website 2020</p>
+<p class="m-0">
+<a href="#" class="text-secondary">About Us</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Privacy Policy</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Terms &amp; Conditions</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+</div>
+
+</div>
+
+
+
+<a class="scroll-to-top rounded-circle" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
+</div>
+</div>
+</div>
+</div>
+
+<script src="/new_design/vendor/jquery/jquery.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="/new_design/vendor/bootstrap/js/bootstrap.bundle.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+
+<script src="/new_design/vendor/jquery-easing/jquery.easing.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+
+<script src="/new_design/vendor/select2/js/select2.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+
+<script src="/new_design/vendor/owl-carousel/owl.carousel.js" type="057b91354703151087f54c15-text/javascript"></script>
+
+<script src="/new_design/js/custom.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="/new_design/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="057b91354703151087f54c15-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d93bcde028a20","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -429,45 +426,7 @@
     })
 </script>
 
+</body>
 
-
-    <script>
-
-getLocation()
-  var x = document.getElementById("demo");
-  
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-          
-
-    } else { 
-      x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-  }
-  
-  function showPosition(position) {
-    // alert(position.coords.latitude)
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude
- 
-// alert(longitude)
-    $.post('/reverse-geocoding',{latitude,longitude},data=>{
-      console.log('mapdata',data)
-      let table = `<p>
-        <span>${data}</span>
-        </p>`
-        let table1 = `<p>
-        <span>${data}</span>
-        </p>`
-        $('#locationtype').html(table)
-        $('#locationtype1').val(tale1)
-    })
-
-
-  }
-  </script>
-
-
-<%- include ('./footer.ejs') %>
-
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:43:38 GMT -->
+</html>

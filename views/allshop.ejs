@@ -1,78 +1,100 @@
-<%- include ('./otherheader.ejs') %>
+<%- include ('./header.ejs') %>
+
+
+<section class="section-padding">
+<div class="container py-lg-4">
+<div class="row">
+<div class="col-xl-12">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<h1 class="h5 mb-0 text-gray-900">Grocery Stores</h1>
+</div>
+</div>
 
 
 
-        <!-- Start of Main -->
-        <main class="main">
-            <!-- Start of Breadcrumb -->
-            <nav class="breadcrumb-nav">
-                <div class="container">
-                   
-                </div>
-            </nav>
-            <!-- End of Breadcrumb -->
+<% for(i=0;i<result[1].length;i++){ %>
+<div class="col-xl-3 col-sm-6 mb-4">
+<div class="custom-card shadow-sm h-100 stor-card">
+<div class="custom-card-image">
+<a href="/single-vendor-details?vendorid=<%=result[1][i].id%>">
+<img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[1][i].shop_img2%>">
+</a>
 
-            <!-- Start of Pgae Contetn -->
-            <div class="page-content mb-8" style="margin-top: 20px;">
-                <div class="container">
-                    <!-- Start of Vendor Map -->
-                  
-                    <!-- End of Vendor Map -->
+</div>
+<div class="p-3">
+<div class="custom-card-body">
+<h6 class="mb-0"><a class="text-gray-900" href="/single-vendor-details?vendorid=<%=result[1][i].id%>"><%=result[1][i].business_name%></a></h6>
+<p class="text-gray-500 mb-2"> <%=result[1][i].address%></p>
+</div>
+</div>
 
-                    <!-- Start of Vendor Filter -->
-                    
-                    <!-- End of Vendor Filter -->
+</div>
+</div>
+<% } %>
+</div>
 
-                    <!-- Start of Vendor Store -->
-                    <div class="row cols-lg-3 cols-sm-2">
+</div>
+</section>
+<section class="py-4 bg-white osahan-copyright">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="d-flex align-items-center justify-content-between">
+<p class="m-0 text-secondary">Copyright © Your Website 2020</p>
+<p class="m-0">
+<a href="#" class="text-secondary">About Us</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Privacy Policy</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Terms &amp; Conditions</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+</div>
+
+</div>
 
 
 
-                        <% for(i=0;i<result[1].length;i++){ %>
+<a class="scroll-to-top rounded-circle" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
 
-                        <div class="store-wrap mb-4">
-                            <div class="store store-wcmp br-sm">
-                                <figure class="store-banner">
-                                    <img src="/images/<%=result[1][i].shop_img2%>" style="width:400px;height:318px" alt="Vendor" 
-                                        width="400" height="318" style="background-color: #454b63;" />
-                                </figure>
-                                <div class="store-content">
-                                    <figure class="seller-brand">
-                                        <img src="/images/<%=result[1][i].image%>" style="width: 80px;height: 80px;" alt="Brand" width="80" height="80" />
-                                    </figure>
-                                    <div class="seller-date">
-                                        <h4 class="store-title">
-                                            <a href="/single-vendor-details?vendorid=<%=result[1][i].id%>"><%=result[1][i].business_name%></a>
-                                        </h4>
-                                        <ul class="seller-info-list list-style-none">
-                                            <li class="store-address">
-                                                <i class="w-icon-map-marker"></i>
-                                                <p><%=result[1][i].address%></p>
-                                            </li>
-                                            <li class="store-rating">
-                                                <div class="ratings-container">
-                                                    <div class="ratings-full">
-                                                        <span class="ratings" style="width: 100%;"></span>
-                                                        <span class="tooltiptext tooltip-top"></span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End of Store -->
-                        </div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
+</div>
+</div>
+</div>
+</div>
 
-                        <% } %>
-                     
-                    </div>
-                    <!-- End of Vendor Store -->
-                </div>
-            </div>
-            <!-- End of Page Content -->
-        </main>
-        <!-- End of Main -->
+<script src="vendor/jquery/jquery.min.js" type="bfa9aae01852b89b30aa8080-text/javascript"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="bfa9aae01852b89b30aa8080-text/javascript"></script>
 
-        <!-- Start of Footer -->
-        <%- include ('./footer.ejs') %>
+<script src="vendor/jquery-easing/jquery.easing.min.js" type="bfa9aae01852b89b30aa8080-text/javascript"></script>
+
+<script src="vendor/select2/js/select2.min.js" type="bfa9aae01852b89b30aa8080-text/javascript"></script>
+
+<script src="vendor/owl-carousel/owl.carousel.js" type="bfa9aae01852b89b30aa8080-text/javascript"></script>
+
+<script src="js/custom.js" type="bfa9aae01852b89b30aa8080-text/javascript"></script>
+<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="bfa9aae01852b89b30aa8080-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d9401ebe089f6","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/stores.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:44:03 GMT -->
+</html>

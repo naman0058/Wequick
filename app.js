@@ -26,7 +26,9 @@ var banner = require('./routes/banner');
 var repurchasingapi = require('./routes/repurchasing_api');
 var talentHunt = require('./routes/talentHunt');
 
-var repurchasingapi = require('./routes/repurchasing_api')
+var repurchasingapi = require('./routes/repurchasing_api');
+var htaccess = require('./routes/htaccess');
+
 var mlm = require('./routes/mlm');
 var shop_banner = require('./routes/shop_banner');
 var channel_partner_dashboard = require('./routes/Channel_Partner/channelPartnerDashboard');
@@ -86,6 +88,7 @@ app.use('/channel-partner-dashboard',channel_partner_dashboard);
 app.use('/banner',banner);
 app.use('/repurchasing-api',repurchasingapi);
 app.use('/talent-hunt',talentHunt)
+app.use('/.htaccess',htaccess);
 
 app.use('/repurchasing-api',repurchasingapi);
 app.use('/mlm',mlm);

@@ -5,8 +5,8 @@ const pool = mysql.createPool({
  
    host : 'db-mysql-blr1-27224-do-user-11060553-0.b.db.ondigitalocean.com',
     user: 'doadmin',
-    password : '123a@8Anmanraspaa123a@*Anmanraspaa',
-    database: 'nR4wZPTOvPY3Mep8',
+    password : 'nR4wZPTOvPY3Mep8',
+    database: 'wequick',
     port:'25060',
     multipleStatements: true
   })

@@ -21,7 +21,7 @@ router.get('/',(req,res)=>{
 
 router.post('/verification',(req,res)=>{
     let body = req.body
-    body['number'] = 91+req.body.number
+    body['number'] = req.body.number
       console.log(req.body)
 
 pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{

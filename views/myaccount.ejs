@@ -1,422 +1,254 @@
-
-<%- include ('./otherheader.ejs') %>
-
-
-        <!-- Start of Main -->
-        <main class="main">
-            <!-- Start of Page Header -->
-            <div class="page-header">
-                <div class="container">
-                    <h1 class="page-title mb-0">My Account</h1>
-                </div>
-            </div>
-            <!-- End of Page Header -->
-
-            <!-- Start of Breadcrumb -->
-            <nav class="breadcrumb-nav">
-                <div class="container">
-                    <ul class="breadcrumb">
-                        <li><a href="/">Home</a></li>
-                        <li>My account</li>
-                    </ul>
-                </div>
-            </nav>
-            <!-- End of Breadcrumb -->
-
-            <!-- Start of PageContent -->
-            <div class="page-content pt-2">
-                <div class="container">
-                    <div class="tab tab-vertical row gutter-lg">
-                        <ul class="nav nav-tabs mb-6" role="tablist">
-                            <li class="nav-item">
-                                <a href="#account-dashboard" class="nav-link active">Dashboard</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#deals" class="nav-link">My Deals</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#account-orders" class="nav-link">Orders</a>
-                            </li>
-                                                      <li class="nav-item">
-                                <a href="#account-addresses" class="nav-link">Addresses</a>
-                            </li>
-                         
-                            <li class="nav-item">
-                                <a href="#account-details" class="nav-link">Account details</a>
-                            </li>
+<%- include ('./header.ejs') %>
 
 
-                        </ul>
+<section class="user-panel-body py-5">
+<div class="container">
+<div class="row">
+<div class="col-xl-3 col-sm-4">
+<div class="user-panel-body-left">
+<div class="bg-white rounded p-4 mb-4 text-center shadow-sm">
+<img class="mb-3 mt-2 user-info-img" alt="Generic placeholder image" src="/new_design/images/user-icon/user.png">
+<h6 class="text-black mb-2 text-gray-900"><%=result[2][0].name%></h6>
+<p class="mb-3"><%=result[2][0].number%></p>
+<a href="/logout">
+<button type="button" class="btn btn-primary btn-block"><i class="icofont-logout"></i>
+Logout</button>
+</a>
+<!-- <p class="mb-0 mt-3"><a href="#">Edit Profile</a></p> -->
+</div>
+<div class="user-panel-sidebar-link mb-4 bg-white rounded shadow-sm overflow-hidden">
+<a href="#md"><i class="icofont-fire"></i> My Deals</a>
+<a href="#mo"><i class="icofont-sale-discount"></i> My Orders</a>
+<a href="#ms"><i class="icofont-building"></i> My Address</a>
 
-                        <div class="tab-content mb-6">
-                            <div class="tab-pane active in" id="account-dashboard">
-                            
+</div>
+</div>
+</div>
+<div class="col-xl-9 col-sm-8">
+ <div class="user-panel-body-right">
+<div id="mc" class="user-panel-tab-view mb-4">
+<div class="shadow-sm rounded overflow-hidden mb-3">
+<div class="p-4 bg-white">
+<h5 class="mb-0 text-gray-900">My Deals</h5>
+</div>
 
-                             
+</div>
+<div>
+<div class="row">
 
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-                                        <a href="#account-orders" class="link-to-tab">
-                                            <div class="icon-box text-center">
-                                                <span class="icon-box-icon icon-orders">
-                                                    <i class="w-icon-orders"></i>
-                                                </span>
-                                                <div class="icon-box-content">
-                                                    <p class="text-uppercase mb-0">Orders</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                 
-                                    <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-                                        <a href="#account-addresses" class="link-to-tab">
-                                            <div class="icon-box text-center">
-                                                <span class="icon-box-icon icon-address">
-                                                    <i class="w-icon-map-marker"></i>
-                                                </span>
-                                                <div class="icon-box-content">
-                                                    <p class="text-uppercase mb-0">Addresses</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-                                        <a href="#account-details" class="link-to-tab">
-                                            <div class="icon-box text-center">
-                                                <span class="icon-box-icon icon-account">
-                                                    <i class="w-icon-user"></i>
-                                                </span>
-                                                <div class="icon-box-content">
-                                                    <p class="text-uppercase mb-0">Account Details</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-                                        <a href="#deals" class="link-to-tab">
-                                            <div class="icon-box text-center">
-                                                <span class="icon-box-icon icon-wishlist">
-                                                    <i class="w-icon-heart"></i>
-                                                </span>
-                                                <div class="icon-box-content">
-                                                    <p class="text-uppercase mb-0">My Deals</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-4 col-xs-6 mb-4">
-                                        <a href="/logout">
-                                            <div class="icon-box text-center">
-                                                <span class="icon-box-icon icon-logout">
-                                                    <i class="w-icon-logout"></i>
-                                                </span>
-                                                <div class="icon-box-content">
-                                                    <p class="text-uppercase mb-0">Logout</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="tab-pane mb-4" id="account-orders">
-                                <div class="icon-box icon-box-side icon-box-light">
-                                    <span class="icon-box-icon icon-orders">
-                                        <i class="w-icon-orders"></i>
-                                    </span>
-                                    <div class="icon-box-content">
-                                        <h4 class="icon-box-title text-capitalize ls-normal mb-0">Orders</h4>
-                                    </div>
-                                </div>
+    <% for(i=0;i<result[5].length;i++) { %>
+        
+        <div class="col-xl-4 col-sm-6">
+        <div class="custom-card shadow-sm h-100">
+        <div class="custom-card-image">
+        <a href="#">
+        <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[5][i].image%>">
+        </a>
+        
+        </div>
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[5][i].coupon_description%>
+        </a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[5][i].expiry%></p>
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+        
+        <% if(result[5][i].type =='flat') { %>
+        
+            <span class="text-danger">Flat Rs. <%=result[5][i].coupon_cashprice%> OFF</span>
+        
+            <% } else { %>
+                <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[5][i].coupon_cashprice%> % OFF</span>
+        
+                <% } %>
+        
+        
+        
+        <a class="btn btn-sm btn-white ml-auto" style="cursor:pointer"><%=result[5][i].otp%></a>
+        
+       
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <% } %>
 
-                                <table class="shop-table account-orders-table mb-6">
-                                    <thead>
-                                        <tr>
-                                            <th class="order-id">Order</th>
-                                            <th class="order-date">Date</th>
-                                            <th class="order-status">Status</th>
-                                            <th class="order-total">Total</th>
-                                            <th class="order-actions">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% for(i=0;i<result[1].length;i++) { %>
 
-                                        <tr>
-                                            <td class="order-id"><%=result[1][i].orderid%></td>
-                                            <td class="order-date"><%=result[1][i].date%></td>
-                                            <td class="order-status"><%=result[1][i].status%></td>
-                                            <td class="order-total">
-                                                <span class="order-price">Rs. <%=result[1][i].price%></span> 
-                                            </td>
-                                            <td class="order-action">
-                                                <a href="/invoice?orderid=<%=result[1][i].orderid%>"
-                                                    class="btn btn-outline btn-default btn-block btn-sm btn-rounded">View</a>
-                                            </td>
-                                        </tr>
-                                        <% } %>
-                                      
-                                    </tbody>
-                                </table>
+</div>
+</div>
+</div>
+<div id="mo" class="user-panel-tab-view mb-4">
+<div class="shadow-sm rounded overflow-hidden mb-3">
+<div class="p-4 bg-white">
+<h5 class="mb-0 text-gray-900">My Orders</h5>
+</div>
 
-                                <a href="/" class="btn btn-dark btn-rounded btn-icon-right">Go
-                                    Shop<i class="w-icon-long-arrow-right"></i></a>
-                            </div>
+</div>
+<div>
+<div class="row">
+
+
+    <% for(i=0;i<result[1].length;i++) { %>
+        
+        <div class="col-xl-4 col-sm-6" style="margin-top: 20px;">
+        <div class="custom-card shadow-sm h-100">
+        <div class="custom-card-image">
+        <a href="#">
+        <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[1][i].image%>">
+        </a>
+        
+        </div>
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[1][i].bookingname%></a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Order ID <%=result[1][i].orderid%></p>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Price <%=result[1][i].price%></p>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Status <%=result[1][i].status%></p>
+
+
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+        
+     
+        
+        
+        
+        <a href="/invoice?orderid=<%=result[1][i].orderid%>" class="btn btn-sm btn-white ml-auto" style="cursor:pointer">Invoice</a>
+        
+       
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <% } %>
 
 
 
+</div>
+</div>
+</div>
+<div id="ms" class="user-panel-tab-view mb-4">
+<div class="shadow-sm rounded overflow-hidden mb-3">
+<div class="p-4 bg-white">
+<h5 class="mb-0 text-gray-900">My Address</h5>
+</div>
 
-                            <div class="tab-pane mb-4" id="deals">
-                                <div class="icon-box icon-box-side icon-box-light">
-                                    <span class="icon-box-icon icon-orders">
-                                        <i class="w-icon-orders"></i>
-                                    </span>
-                                    <div class="icon-box-content">
-                                        <h4 class="icon-box-title text-capitalize ls-normal mb-0">Deals</h4>
-                                    </div>
-                                </div>
+</div>
+<div>
+<div class="row">
 
-                                <table class="shop-table deals-table mb-6">
-                                    <thead>
-                                        <tr>
-                                            <th class="order-id">Code</th>
-                                            <th class="order-date">Merchant Name</th>
-                                            <th class="order-status">Expiry Date</th>
-                                            <th class="order-status">Description</th>
+    <% for(i=0;i<result[3].length;i++) { %>
 
-                                            <th class="order-total">Maximum Cashback</th>
-                                            <th class="order-actions">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% for(i=0;i<result[5].length;i++) { %>
+        <div class="col-sm-6 mb-6">
+            <div class="ecommerce-address shipping-address pr-lg-8">
 
-                                        <tr>
-                                            <td class="order-id"><%=result[5][i].otp%></td>
-                                            <td class="order-date"><%=result[5][i].vendorbusinessname%></td>
-                                            <td class="order-status"><%=result[5][i].expiry%></td>
-                                            <td class="order-status"><%=result[5][i].coupon_description%></td>
-                                            <td class="order-status">Rs. <%=result[5][i].coupon_cashprice%></td>
-                                          
-                                            <td class="order-total">
-                                                <span class="order-price"> <%=result[5][i].status%></span> 
-                                            </td>
-                                            
-                                        </tr>
-                                        <% } %>
-                                      
-                                    </tbody>
-                                </table>
+                <address class="mb-4">
 
-                              
-                            </div>
-
-                           
-
-                            <div class="tab-pane" id="account-addresses">
-                                <div class="icon-box icon-box-side icon-box-light">
-                                    <span class="icon-box-icon icon-map-marker">
-                                        <i class="w-icon-map-marker"></i>
-                                    </span>
-                                    <div class="icon-box-content">
-                                        <h4 class="icon-box-title mb-0 ls-normal">Addresses</h4>
-                                    </div>
-                                </div>
-                                <p>The following addresses will be used on the checkout page
-                                    by default.</p>
-                                <div class="row">
-                                    <!-- <div class="col-sm-6 mb-6">
-                                        <div class="ecommerce-address billing-address pr-lg-8">
-                                            <h4 class="title title-underline ls-25 font-weight-bold">Billing Address</h4>
-                                            <address class="mb-4">
-                                                <table class="address-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>Name:</th>
-                                                            <td>John Doe</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Company:</th>
-                                                            <td>Conia</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Address:</th>
-                                                            <td>Wall Street</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>City:</th>
-                                                            <td>California</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Country:</th>
-                                                            <td>United States (US)</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Postcode:</th>
-                                                            <td>92020</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Phone:</th>
-                                                            <td>1112223334</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </address>
-                                            <a href="#"
-                                                class="btn btn-link btn-underline btn-icon-right text-primary">Edit
-                                                your billing address<i class="w-icon-long-arrow-right"></i></a>
-                                        </div>
-                                    </div> -->
-
-
-                                    <% for(i=0;i<result[3].length;i++) { %>
-
-                                    <div class="col-sm-6 mb-6">
-                                        <div class="ecommerce-address shipping-address pr-lg-8">
-                                            <h4 class="title title-underline ls-25 font-weight-bold">Shipping Address</h4>
-                                            <address class="mb-4">
-                                                <table class="address-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>Name:</th>
-                                                            <td><%=result[3][i].name%></td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <th>Mobile Number:</th>
-                                                            <td><%=result[3][i].number%></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Address:</th>
-                                                            <td><%=result[3][i].area%> , <%=result[3][i].landmark%> , <%=result[3][i].state%> , <%=result[3][i].city%> , <%=result[3][i].pincode%></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Email:</th>
-                                                            <td><%=result[3][i].email%></td>
-                                                        </tr>
-                                                       
-                                                    </tbody>
-                                                </table>
-                                                
-                                            </address>
-                                          
-                                            <a href="/edit/address?id=<%=result[3][i].id%>" id="edit-kro" class="link-to-tab">Edit your
-                                                shipping address</a>
-                                        </div>
-                                    </div>
-
-                                    <% } %>
-
-
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            <div class="tab-pane" id="edit-details">
-                                <div class="icon-box icon-box-side icon-box-light">
-                                    <span class="icon-box-icon icon-account mr-2">
-                                        <i class="w-icon-user"></i>
-                                    </span>
-                                    <div class="icon-box-content">
-                                        <h4 class="icon-box-title mb-0 ls-normal">Account Details</h4>
-                                    </div>
-                                </div>
-                                <form class="form account-details-form" action="/myaccount-update" method="post" style="margin-top:20px;">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="firstname">Full name *</label>
-                                                <input type="text" id="firstname" name="name" placeholder="Enter Name"
-                                                    class="form-control form-control-md" value="<%=result[2][0].name%>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="lastname">Mobile Number *</label>
-                                                <input type="text" id="lastname" name="number" placeholder="Mobile Number"
-                                                    class="form-control form-control-md" value="<%=result[2][0].number%>" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                 
-
-                                    <div class="form-group mb-6">
-                                        <label for="email_1">Email address *</label>
-                                        <input type="email" id="email_1" name="email" value="<%=result[2][0].email%>"
-                                            class="form-control form-control-md">
-                                    </div>
-                                  
-                                   
-                                    <button type="submit" class="btn btn-dark btn-rounded btn-sm mb-4">Save Changes</button>
-                                </form>
-                            </div>
-
-
-
-                            <div class="tab-pane" id="account-details">
-                                <div class="icon-box icon-box-side icon-box-light">
-                                    <span class="icon-box-icon icon-account mr-2">
-                                        <i class="w-icon-user"></i>
-                                    </span>
-                                    <div class="icon-box-content">
-                                        <h4 class="icon-box-title mb-0 ls-normal">Account Details</h4>
-                                    </div>
-                                </div>
-                                <form class="form account-details-form" action="/myaccount-update" method="post">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="firstname">Full name *</label>
-                                                <input type="text" id="firstname" name="name" placeholder="Enter Name"
-                                                    class="form-control form-control-md" value="<%=result[2][0].name%>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="lastname">Mobile Number *</label>
-                                                <input type="text" id="lastname" name="number" placeholder="Mobile Number"
-                                                    class="form-control form-control-md" value="<%=result[2][0].number%>" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                 
-
-                                    <div class="form-group mb-6">
-                                        <label for="email_1">Email address *</label>
-                                        <input type="email" id="email_1" name="email" value="<%=result[2][0].email%>"
-                                            class="form-control form-control-md">
-                                    </div>
-                                  
-                                   
-                                    <button type="submit" class="btn btn-dark btn-rounded btn-sm mb-4">Save Changes</button>
-                                </form>
-                            </div>
-                        </div>
+                    <div class="custom-card bg-white shadow-sm h-100 stor-card">
+                    <div class="custom-card-image">
+                    
+                    <div class="p-3">
+                    <div class="custom-card-body">
+                    <h6 class="mb-0"><a class="text-gray-900" href="#"><%=result[3][i].name%>,
+                    Inc.</a></h6>
+                    <p class="text-gray-500 mb-2"><%=result[3][i].area%> , <%=result[3][i].landmark%> , <%=result[3][i].state%> , <%=result[3][i].city%> , <%=result[3][i].pincode%></p>
+                    <p class="text-gray-500 mb-2"><span class="text-black"><%=result[3][i].number%>
+                    </span></p>
                     </div>
-                </div>
+                   
+                    </div>
+                    </div>
+                    </div>
+                    </address>
+                    
+                    
+                    
+
+                    
+              
+                <!-- <a href="/edit/address?id=<%=result[3][i].id%>" id="edit-kro" class="link-to-tab">Edit your
+                    shipping address</a> -->
             </div>
-            <!-- End of PageContent -->
-        </main>
-        <!-- End of Main -->
+        </div>
 
-        <!-- Start of Footer -->
-<%- include ('./footer.ejs') %>
-    
+        <% } %>
 
-<!-- Mirrored from portotheme.com/html/wolmart//my-account by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:18:31 GMT -->
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-4 bg-white osahan-copyright">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="d-flex align-items-center justify-content-between">
+<p class="m-0 text-secondary">Copyright © Your Website 2020</p>
+<p class="m-0">
+<a href="#" class="text-secondary">About Us</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Privacy Policy</a>
+&nbsp; · &nbsp;
+<a href="#" class="text-secondary">Terms &amp; Conditions</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+</div>
+
+</div>
+
+
+
+<a class="scroll-to-top rounded-circle" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
+</div>
+</div>
+</div>
+</div>
+
+<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
+
+<script src="vendor/jquery-easing/jquery.easing.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
+
+<script src="vendor/select2/js/select2.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
+
+<script src="vendor/owl-carousel/owl.carousel.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
+
+<script src="js/custom.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
+<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="83dfe2b238c31d63f87624d1-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d9410c97b89f6","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:44:24 GMT -->
 </html>

@@ -41,11 +41,11 @@
 <span class="restaurant-detailed-action-btn float-right">
 </span>
 <ul class="nav" id="pills-tab" role="tablist">
-<li class="nav-item">
+<!-- <li class="nav-item">
 <span class="nav-link active" id="pills-order-online-tab" data-toggle="pill" href="#pills-order-online" role="tab" aria-controls="pills-order-online" aria-selected="true">Order Online</span>
-</li>
+</li> -->
 <li class="nav-item">
-<span class="nav-link" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false">Deals & Coupons</span>
+<span class="nav-link active" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false">Deals & Coupons</span>
 </li>
 <li class="nav-item">
 <span class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false">Restaurant Info</span>
@@ -67,170 +67,200 @@
 <div class="col-lg-8">
 <div class="offer-dedicated-body-left">
 <div class="tab-content" id="pills-tabContent">
-<div class="tab-pane fade show active" id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
+<div class="tab-pane fade show " id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
 
 
 <div class="row">
-<h5 class="mb-3 mt-3 col-md-12 text-gray-900">Quick Bites <small class="h6 text-gray-800">3 ITEMS</small></h5>
-<div class="col-md-12">
-<div class="bg-white rounded shadow-sm mb-4">
-<div class="gold-members p-3 border-bottom">
-<a class="btn btn-white btn-sm float-right xs-btn" href="#">ADD</a>
-<div class="media">
-<div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i>
-</div>
-<div class="media-body">
-<h6 class="mb-1 text-gray-800">Chicken Tikka Sub</h6>
-<p class="text-secondary mb-0">$314 - 12" (30 cm)</p>
-</div>
-</div>
-</div>
-<div class="gold-members p-3 border-bottom">
-<span class="count-number float-right">
-<button class="btn btn-white  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-<input class="count-number-input" type="text" value="1" readonly="">
-<button class="btn btn-white btn-sm right inc"> <i class="icofont-plus"></i> </button>
-</span>
-<div class="media">
-<div class="mr-3"><i class="icofont-ui-press text-danger food-item"></i>
-</div>
-<div class="media-body">
-<h6 class="mb-1 text-gray-800">Cheese corn Roll <span class="badge badge-danger">BESTSELLER</span></h6>
-<p class="text-secondary mb-0">$600</p>
-</div>
-</div>
-</div>
-<div class="gold-members p-3">
-<span class="count-number float-right">
-<button class="btn btn-white  btn-sm left dec"> <i class="icofont-minus"></i> </button>
-<input class="count-number-input" type="text" value="1" readonly="">
-<button class="btn btn-white btn-sm right inc"> <i class="icofont-plus"></i> </button>
-</span>
-<div class="media">
-<div class="mr-3"><i class="icofont-ui-press text-success food-item"></i></div>
-<div class="media-body">
-<h6 class="mb-1 text-gray-800">Cheese Spinach corn Roll <span class="badge badge-success">Pure Veg</span></h6>
-<p class="text-secondary mb-0">$600</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<h5 class="mb-3 mt-3 col-md-12 text-gray-900">My Products</h5>
+<% for(i=0;i<result[5].length;i++) { %>
+
+    <div class="col-xl-6 col-sm-6">
+    <div class="custom-card shadow-sm h-100">
+    <div class="custom-card-image">
+    <a href="/product?id=<%=result[5][i].id%>">
+    <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[5][i].image%>" style="object-fit:cover">
+    </a>
+    
+    </div>
+    <div class="p-3 pt-4">
+    <div class="custom-card-body">
+    <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[5][i].name%></a></h6>
+    <p class="text-gray-500"> <%=result[5][i].description%></p>
+    </div>
+    <div class="custom-card-footer d-flex align-items-center">
+    
+
+            <span class="text-danger"> Rs.<%=result[5][i].net_amount%> </span>
+    
+    
+         
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    <% } %>
 </div>
 
 </div>
-<div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
+<div class="tab-pane  active" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
 <div id="gallery" class="bg-white rounded shadow-sm p-4 mb-4">
     <p style="font-weight: bold;font-size: 16px;">Exclusive Deals</p>
     <div class="row">
-<div class="col-lg-6">
-<div class="pb-2">
-<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
-<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
-<div>
-<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
-<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
-</div>
-<div class="icon-overlap">
-<i class="icofont-sale-discount"></i>
-</div>
-</div>
+        <% for(i=0;i<result[6].length;i++) { %>
+
+            <div class="col-xl-6 col-sm-6">
+            <div class="custom-card shadow-sm h-100">
+            <div class="custom-card-image">
+            <a href="#">
+            <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[6][i].image%>">
+            </a>
+            
+            </div>
+            <div class="p-3 pt-4">
+            <div class="custom-card-body">
+            <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[6][i].short_description%>
+            Bank</a></h6>
+            <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[6][i].expiry%></p>
+            </div>
+            <div class="custom-card-footer d-flex align-items-center">
+            
+            <% if(result[6][i].type =='flat') { %>
+            
+                <span class="text-danger">Flat Rs. <%=result[6][i].discount%> OFF</span>
+            
+                <% } else { %>
+                    <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[6][i].discount%> % OFF</span>
+            
+                    <% } %>
+            
+            
+                    <% if(result[6][i].isredeem == null || result[6][i].isredeem == '' || result[6][i].isredeem == 'null' || result[6][i].isredeem ==[]){ %>
+            
+            <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[6][i].id%>" code="<%=result[6][i].name%>" expiry="<%=result[6][i].expiry%>" vendorid = '<%=result[6][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+            
+            <% } else { %>
+            
+            
+                <% } %>
+            
+            
+            </div>
+            </div>
+            </div>
+            </div>
+            
+            <% } %>
 </div>
 
 
-</div>
-<div class="col-lg-6">
-    <div class="pb-2">
-    <div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
-    <img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
-    <div>
-    <h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
-    <p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
-    </div>
-    <div class="icon-overlap">
-    <i class="icofont-sale-discount"></i>
-    </div>
-    </div>
-    </div>
-    
-    
-    </div>
-</div>
 
-
-
-<p style="font-weight: bold;font-size: 16px;">Deals of the Day</p>
+<p style="font-weight: bold;font-size: 16px;margin-top: 20px;">Deals of the Day</p>
 <div class="row">
-<div class="col-lg-6">
-<div class="pb-2">
-<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
-<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
-<div>
-<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
-<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
-</div>
-<div class="icon-overlap">
-<i class="icofont-sale-discount"></i>
-</div>
-</div>
+
+
+    <% for(i=0;i<result[7].length;i++) { %>
+
+        <div class="col-xl-6 col-sm-6">
+        <div class="custom-card shadow-sm h-100">
+        <div class="custom-card-image">
+        <a href="#">
+        <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[7][i].image%>">
+        </a>
+        
+        </div>
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[7][i].short_description%>
+        Bank</a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[7][i].expiry%></p>
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+        
+        <% if(result[7][i].type =='flat') { %>
+        
+            <span class="text-danger">Flat Rs. <%=result[7][i].discount%> OFF</span>
+        
+            <% } else { %>
+                <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[7][i].discount%> % OFF</span>
+        
+                <% } %>
+        
+        
+                <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
+        
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[7][i].id%>" code="<%=result[7][i].name%>" expiry="<%=result[7][i].expiry%>" vendorid = '<%=result[7][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        
+        <% } else { %>
+        
+        
+            <% } %>
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <% } %>
+
+    
 </div>
 
 
-</div>
-<div class="col-lg-6">
-<div class="pb-2">
-<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
-<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
-<div>
-<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
-<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
-</div>
-<div class="icon-overlap">
-<i class="icofont-sale-discount"></i>
-</div>
-</div>
-</div>
 
-
-</div>
-</div>
-
-
-
-<p style="font-weight: bold;font-size: 16px;">Mega Deals</p>
+<p style="font-weight: bold;font-size: 16px;margin-top: 20px;">Mega Deals</p>
 <div class="row">
-<div class="col-lg-6">
-<div class="pb-2">
-<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
-<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
-<div>
-<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
-<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
-</div>
-<div class="icon-overlap">
-<i class="icofont-sale-discount"></i>
-</div>
-</div>
-</div>
 
 
-</div>
-<div class="col-lg-6">
-<div class="pb-2">
-<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
-<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
-<div>
-<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
-<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
-</div>
-<div class="icon-overlap">
-<i class="icofont-sale-discount"></i>
-</div>
-</div>
-</div>
 
+    <% for(i=0;i<result[8].length;i++) { %>
+        
+        <div class="col-xl-6 col-sm-6">
+        <div class="custom-card shadow-sm h-100">
+        <div class="custom-card-image">
+        <a href="#">
+        <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[8][i].image%>">
+        </a>
+        
+        </div>
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[8][i].short_description%>
+        Bank</a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[8][i].expiry%></p>
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+        
+        <% if(result[8][i].type =='flat') { %>
+        
+            <span class="text-danger">Flat Rs. <%=result[8][i].discount%> OFF</span>
+        
+            <% } else { %>
+                <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[8][i].discount%> % OFF</span>
+        
+                <% } %>
+        
+        
+                <% if(result[8][i].isredeem == null || result[8][i].isredeem == '' || result[8][i].isredeem == 'null' || result[8][i].isredeem ==[]){ %>
+        
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[8][i].id%>" code="<%=result[8][i].name%>" expiry="<%=result[8][i].expiry%>" vendorid = '<%=result[8][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        
+        <% } else { %>
+        
+        
+            <% } %>
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <% } %>
 
-</div>
 </div>
 
 
@@ -240,27 +270,20 @@
 <div id="restaurant-info" class="bg-white rounded shadow-sm p-4 mb-4">
 <div class="address-map float-right ml-5">
 <div class="mapouter">
-<div class="gmap_canvas"><iframe width="300" height="170" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
+<div class="gmap_canvas"><iframe width="300" height="170" id="gmap_canvas" src="https://maps.google.com/maps?q=<%=result[1][0].address%>&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div>
 </div>
 </div>
 <h5 class="mb-3 text-gray-900">Restaurant Info</h5>
-<p class="mb-3">Jagjit Nagar, Near Railway Crossing,
-<br> Near Model Town, Ab Kettleby, LE14. United Kingdom
+<p class="mb-3"><%=result[1][0].address%>
 </p>
 <p class="mb-2"><i class="icofont-phone-circle text-primary mr-2"></i> +91
-01234-56789, +91 01234-56789</p>
-<p class="mb-2"><i class="icofont-email text-primary mr-2"></i> <a href="https://askbootstrap.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fa83958f889f979b9396ba9d979b9396d4999597">[email&#160;protected]</a>,
-Osahan <a href="https://askbootstrap.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a4e0c1c1c8c1c5d0e4c3c9c5cdc88ac7cbc9">[email&#160;protected]</a></p>
-<p class="mb-2"><i class="icofont-clock-time text-primary mr-2"></i> Today 11am –
-5pm, 6pm – 11pm
+    <%=result[1][0].number%></p>
+<p class="mb-2"><i class="icofont-clock-time text-primary mr-2"></i> 
 <span class="badge badge-success"> OPEN NOW </span>
 </p>
 <hr class="clearfix">
 
-<hr class="clearfix">
-<h5 class="mt-4 text-gray-900 mb-3">More Info</h5>
-<p class="mb-3">Dal Makhani, Panneer Butter Masala, Kadhai Paneer, Raita, Veg Thali,
-Laccha Paratha, Butter Naan</p>
+
 
 </div>
 </div>
@@ -492,23 +515,63 @@ Reviews</a>
 </div>
 </div>
 </div>
+
+
 <div class="col-lg-4">
-<div class="pb-2">
-<div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center clearfix restaurant-detailed-earn-pts card-icon-overlap">
-<img class="img-fluid float-left mr-3" src="/new_design/images/earn-score-icon.png">
-<div>
-<h6 class="pt-0 mb-1 text-gray-900">OFFER</h6>
-<p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger">osahan</span></p>
-</div>
-<div class="icon-overlap">
-<i class="icofont-sale-discount"></i>
-</div>
-</div>
-</div>
+  
 
 
+    
+<% for(i=0;i<result[2].length;i++) { %>
+        
+    <div class="py-2">
+    <div class="custom-card shadow-sm h-100">
+    <div class="custom-card-image">
+    <a href="#">
+    <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[2][i].image%>">
+    </a>
+    
+    </div>
+    <div class="p-3 pt-4">
+    <div class="custom-card-body">
+    <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[2][i].short_description%>
+    Bank</a></h6>
+    <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[2][i].expiry%></p>
+    </div>
+    <div class="custom-card-footer d-flex align-items-center">
+    
+    <% if(result[2][i].type =='flat') { %>
+    
+        <span class="text-danger">Flat Rs. <%=result[2][i].discount%> OFF</span>
+    
+        <% } else { %>
+            <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[2][i].discount%> % OFF</span>
+    
+            <% } %>
+    
+    
+            <% if(result[2][i].isredeem == null || result[2][i].isredeem == '' || result[2][i].isredeem == 'null' || result[2][i].isredeem ==[]){ %>
+    
+    <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[2][i].id%>" code="<%=result[2][i].name%>" expiry="<%=result[2][i].expiry%>" vendorid = '<%=result[2][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+    
+    <% } else { %>
+    
+    
+        <% } %>
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    <% } %>
+    
+    
+    </div>
+
 </div>
-</div>
+
 </div>
 </section>
 <section class="py-4 bg-white osahan-copyright">
@@ -570,6 +633,22 @@ Reviews</a>
 
 <script src="/new_design/js/custom.js" type="3773ca5a02d1352d00b2f303-text/javascript"></script>
 <script src="/new_design/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="3773ca5a02d1352d00b2f303-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d940baf138a20","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('.redeem_this_code').click(function(){
+        let coupounid = $(this).attr('id')
+        let code = $(this).attr('code')
+        let expiry = $(this).attr('expiry')
+        let vendorid = $(this).attr('vendorid')
+
+        $.post('/redeem-this-code',{coupounid,code,expiry,vendorid},data=>{
+            if(data.msg=='failed') window.location.href = '/login';
+            else window.location.reload()
+        })
+    })
+</script>
+
 </body>
 
 <!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/restaurant-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:44:24 GMT -->

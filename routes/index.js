@@ -107,7 +107,7 @@ router.get('/', function(req, res, next) {
    var query10 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor having distance <= 600000000000000 ORDER BY distance limit 8;`
+    FROM vendor where status = 'approved' having distance <= 600000000000000 ORDER BY distance limit 8;`
 
  
    pool.query(query+query6+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{

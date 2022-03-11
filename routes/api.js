@@ -1745,7 +1745,7 @@ router.post('/get-deals',(req,res)=>{
 
 
 
-router.get('/',(req,res)=>{
+router.get('/vendor-dashboard',(req,res)=>{
       var query = `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}' and date = curdate();`
       var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.body.vendorid}' and date= curdate();`
       var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
@@ -1756,7 +1756,6 @@ router.get('/',(req,res)=>{
           if(err) throw err;
 else res.json(result);
       })
-
 })
 
 

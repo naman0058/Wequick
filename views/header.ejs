@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:42:55 GMT -->
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar// by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:42:55 GMT -->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,7 @@
 
 <style>
     .fa {
-      padding: 20px;
+      padding: 8px;
       font-size: 30px;
       width: 30px;
       text-align: center;
@@ -56,6 +56,23 @@
   background: #3B5998;
   color: white;
 }
+
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
         </style>
 
 
@@ -88,9 +105,10 @@
     <span style="color: black;">Segments</span>
     </a>
     <div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
-    <div class="bg-white py-2 collapse-inner rounded" style="width: 300px;">
+    <div class="bg-white py-2 collapse-inner rounded" style="width: 300px;height: 400px;overflow: scroll;">
 
         <% for(i=0;i<result[0].length;i++){%>
+            
     <a class="dropdown-item" href="/shop-by-category?categoryid=<%=result[0][i].id%>">  <%=result[0][i].name%></a>
     <% } %>
 

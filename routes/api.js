@@ -1759,10 +1759,10 @@ router.post('/get-deals',(req,res)=>{
 
 
 router.get('/vendor-dashboard',(req,res)=>{
-      var query = `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}' and date = curdate();`
-      var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.body.vendorid}' and date= curdate();`
-      var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
-      var query3 = `select sum(price) as total_revenue from booking wehre vendorid = '${req.body.vendorid}';`
+      var query = `select count(id) as today_order from booking where vendorid = '${req.query.vendorid}' and date = CURDATE();`
+      var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.query.vendorid}' and date= CURDATE();`
+      var query2 = `select count(id) as total_order from booking where vendorid = '${req.query.vendorid}';`
+      var query3 = `select sum(price) as total_revenue from booking wehre vendorid = '${req.query.vendorid}';`
     
       pool.query(query+query1+query2+query3,(err,result)=>{
           // res.render('Admin/Dashboard',{msg : '',result})

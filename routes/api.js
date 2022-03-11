@@ -1364,10 +1364,16 @@ console.log('before image',req.body)
 // }
 
 
+   
+if(req.files.transaction_image){
+  body['transaction_image'] = req.files.transaction_image[0].filename;
+
+}
+
+
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
 
   body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
-  body['transaction_image'] = req.files.transaction_image[0].filename;
 
   body['image'] = req.files.image[0].filename;
   body['shop_img2'] = req.files.shop_img2[0].filename;

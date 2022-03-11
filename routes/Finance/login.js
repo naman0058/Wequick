@@ -3,11 +3,11 @@ var router = express.Router();
 var pool =  require('../pool');
 
 
-var table = 'admin'
+var table = 'finance'
 
 
 router.get('/',(req,res)=>{
-  res.render('Admin/login',{msg : ''})
+  res.render('Finance/login',{msg : ''})
 
 })
 
@@ -15,16 +15,16 @@ router.get('/',(req,res)=>{
 
 router.post('/verification',(req,res)=>{
     let body = req.body
-   
+   console.log(req.body)
 
 pool.query(`select * from ${table} where email = '${req.body.email}' and password = '${req.body.password}'`,(err,result)=>{
   if(err) throw err;
   else if(result[0]) {
-      req.session.adminid = result[0].id
-   res.redirect('/admin/dashboard')
+      req.session.financeid = result[0].id
+   res.redirect('/finance/dashboard')
   }
   else {
-    res.render('Admin/login',{msg : '* Invalid Credentials'})
+    res.render('Finance/login',{msg : '* Invalid Credentials'})
   }
 })
    })
@@ -32,8 +32,8 @@ pool.query(`select * from ${table} where email = '${req.body.email}' and passwor
 
 
    router.get('/logout',(req,res)=>{
-     req.session.adminid = null;
-     res.redirect('/admin')
+     req.session.financeid = null;
+     res.redirect('/finance')
    })
 
 

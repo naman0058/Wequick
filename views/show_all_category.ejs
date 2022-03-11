@@ -13,11 +13,11 @@
     <% for(i=0;i<result[0].length;i++){ %>
 
 
-<div class="col-xl-3 col-sm-6 mb-4">
+<div class="col-xl-3 col-sm-6 col-6 col-md-3 mb-4">
 <div class="custom-card shadow-sm bg-white h-40">
         <a class="nav-link text-center" href="/shop-by-category?categoryid=<%=result[0][i].id%>">
-        <img class="img-fluid" src="http://www.dealsaaj.com/images/<%=result[0][i].icon%>" style="width:200px;height:100px"><br>
-        <span><%=result[0][i].name%></span></a>
+        <img class="img-fluid" src="http://www.dealsaaj.com/images/<%=result[0][i].icon%>" style="width:100%;height:150px;object-fit: cover;"><br><br>
+        <span style="margin-top: 10px;"><%=result[0][i].name%></span></a>
 
 
 </div>
@@ -31,66 +31,8 @@
 </div>
 </div>
 </section>
-<section class="py-4 bg-white osahan-copyright">
-<div class="container">
-<div class="row">
-<div class="col-xl-12">
-<div class="d-flex align-items-center justify-content-between">
-<p class="m-0 text-secondary">Copyright © Your Website 2020</p>
-<p class="m-0">
-<a href="#" class="text-secondary">About Us</a>
-&nbsp; · &nbsp;
-<a href="#" class="text-secondary">Privacy Policy</a>
-&nbsp; · &nbsp;
-<a href="#" class="text-secondary">Terms &amp; Conditions</a>
-</p>
-</div>
-</div>
-</div>
- </div>
-</section>
-</div>
-
-</div>
-
-</div>
 
 
 
-<a class="scroll-to-top rounded-circle" href="#page-top">
-<i class="fas fa-angle-up"></i>
-</a>
 
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">×</span>
-</button>
-</div>
-<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-<div class="modal-footer">
-<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
-</div>
-</div>
-</div>
-</div>
-
-<script src="vendor/jquery/jquery.min.js" type="edff6c25ac447d20f880759b-text/javascript"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="edff6c25ac447d20f880759b-text/javascript"></script>
-
-<script src="vendor/jquery-easing/jquery.easing.min.js" type="edff6c25ac447d20f880759b-text/javascript"></script>
-
-<script src="vendor/select2/js/select2.min.js" type="edff6c25ac447d20f880759b-text/javascript"></script>
-
-<script src="vendor/owl-carousel/owl.carousel.js" type="edff6c25ac447d20f880759b-text/javascript"></script>
-
-<script src="js/custom.js" type="edff6c25ac447d20f880759b-text/javascript"></script>
-<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="edff6c25ac447d20f880759b-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d9406fa8289f6","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-</body>
-
-<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/restaurant.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:44:12 GMT -->
-</html>
+<%- include ('./footer.ejs') %>

@@ -9,9 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Deals Aaj | Reach Repeat & Redeam</title>
+<title>Deals Aaj | Reach Redeam & Repeat</title>
 
-<link rel="icon" type="image/png" href="/new_design/images/logo.svg">
+<link rel="icon" type="image/png" href="https://dealsaaj.com/images/deal_logo.png">
 
 <link href="/new_design/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
@@ -28,6 +28,37 @@
 <link rel="stylesheet" href="/new_design/vendor/owl-carousel/owl.theme.css">
 
 <link href="/new_design/css/osahan.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+<style>
+    .fa {
+      padding: 20px;
+      font-size: 30px;
+      width: 30px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+      border-radius: 50%;
+    }
+    
+  
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+        </style>
+
+
 </head>
 <body id="page-top">
 
@@ -41,7 +72,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-light shadow-sm topbar osahan-top-main">
 
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="/">
     <img class="img-fluid" src="https://dealsaaj.com/images/deal_logo.png"  style="width: 100px;height: 100px;object-fit: contain;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,8 +84,8 @@
     <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
     </li>
     <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span>Segments</span>
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+    <span style="color: black;">Segments</span>
     </a>
     <div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
     <div class="bg-white py-2 collapse-inner rounded" style="width: 300px;">
@@ -68,14 +99,14 @@
     </li>
     <li class="nav-item">
     <a class="nav-link" href="/exclusive-deals-and-offers" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-    <span>Exclusive Deals & Offers</span>
+    <span style="color: black;">Exclusive Deals & Offers</span>
     </a>
     
     </li>
     
     <li class="nav-item">
         <a class="nav-link" href="/new-release" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span>New Release</span>
+        <span style="color: black;">New Release</span>
         </a>
         
         </li>
@@ -83,7 +114,7 @@
     
         <li class="nav-item">
             <a class="nav-link" href="/channel-partner-login" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            <span>Our Channel Partner</span>
+            <span style="color: black;">Our Channel Partner</span>
             </a>
             
             </li>
@@ -126,6 +157,9 @@
     </div>
     </li>
     
+    <% if(login == true) { %>
+
+
     <li class="nav-item dropdown no-arrow mx-1">
     <a class="nav-link dropdown-toggle" href="/mycart" id="alertsDropdown" role="button" aria-haspopup="true" aria-expanded="false">
     <i class="fa fa fa-shopping-basket" style="font-size: 18px;color: black;"></i>
@@ -136,6 +170,11 @@
     
     
     </li>
+
+    <% } else { %>
+
+
+        <% } %>
     
     
     <div class="topbar-divider d-none d-sm-block"></div>
@@ -143,7 +182,7 @@
     <li class="nav-item dropdown no-arrow">
    
         <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <img class="img-profile rounded-circle" src="/new_design/images/user-icon/user.png">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500-400" style="color: black;"></i>
     </a>
     
     <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 animated--grow-in" aria-labelledby="userDropdown">

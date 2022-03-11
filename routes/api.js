@@ -1357,10 +1357,15 @@ router.get('/get-all-vendor',(req,res)=>{
 router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 } , { name: 'transaction_image', maxCount: 1 } ]),(req,res)=>{
   let body = req.body;
 
+if(req.body.transaction_image[0]){
+  body['transaction_image'] = '';
+}
+else{
+  body['transaction_image'] = req.files.transaction_image[0].filename;
+}
 
 
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
-  body['transaction_image'] = req.files.transaction_image[0].filename;
 
   body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
   body['image'] = req.files.image[0].filename;
@@ -1717,6 +1722,41 @@ router.get('/get-single-order',(req,res)=>{
     if(err) throw err;
     else res.json(result);
   })
+})
+
+
+
+router.post('/get-coupons',(req,res)=>{
+  pool.query(`select * from coupons where vendorid = '${req.body.vendorid}' order by id desc limit 20;`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.post('/get-deals',(req,res)=>{
+  pool.query(`select * from deals where vendorid = '${req.body.vendorid}' order by id desc limit 20;`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+
+
+router.get('/',(req,res)=>{
+      var query = `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}' and date = curdate();`
+      var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.body.vendorid}' and date= curdate();`
+      var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
+      var query3 = `select sum(price) as total_revenue from booking wehre vendorid = '${req.body.vendorid}';`
+    
+      pool.query(query+query1+query2+query3,(err,result)=>{
+          // res.render('Admin/Dashboard',{msg : '',result})
+          if(err) throw err;
+else res.json(result);
+      })
+
 })
 
 

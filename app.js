@@ -16,6 +16,10 @@ var vendor_registeration = require('./routes/Vendor/registeration')
 var vendor_dashboard = require('./routes/Vendor/vendorDashboard');
 var vendorLogin = require('./routes/Vendor/login');
 var agentLogin = require('./routes/Agent/login');
+var financeLogin = require('./routes/Finance/login');
+var financeDashboard = require('./routes/Finance/Dashboard')
+
+
 var agent_dashboard = require('./routes/Agent/agentDashboard');
 var channel_partner_login = require('./routes/Channel_Partner/login');
 var channel_partner_api = require('./routes/Channel_Partner/api');
@@ -76,11 +80,15 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin',admin);
 app.use('/admin/dashboard',adminDashboard);
+app.use('/finance/dashboard',financeDashboard);
+
 app.use('/api',api);
 app.use('/vendor-registeration',vendor_registeration);
 app.use('/vendor-dashboard',vendor_dashboard);
 app.use('/vendor-login',vendorLogin);
 app.use('/agent-login',agentLogin);
+app.use('/finance-login',financeLogin);
+
 app.use('/channel-partner-login',channel_partner_login);
 app.use('/agent-dashboard',agent_dashboard);
 app.use('/channel-partner-dashboard',channel_partner_dashboard);

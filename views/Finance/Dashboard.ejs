@@ -1,0 +1,400 @@
+<%- include ('./Header.ejs') %>
+
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+
+          
+            <div class="container-fluid">
+                <div class="row justify-content-between mb-4">
+					<!-- <div class="col-xl-3 col-lg-4">
+						<h2 class="page-heading">Hi,Welcome Back!</h2>
+						<p class="mb-0">Your restaurent admin template</p>
+                    </div> -->
+                    <!-- <div class="col-xl-9 col-xxl-9 col-lg-8 mt-4 mt-lg-0">
+                        <div class="steps">
+                            <ul class="list-unstyled multi-steps">
+                                <li>Ordered</li>
+                                <li>Pending</li>
+                                <li class="is-active">Accept</li>
+                                <li>Delivery</li>
+                                <li>Received</li>
+                            </ul>
+                        </div> 
+                    </div> -->
+    
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-xxl-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body pb-0">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto">
+                                                <h4 class="text-muted mb-3">Today Revenue</h4>
+                                            </div>
+                                            <div class="col-auto">
+                                                <h2>Rs. <%=result[1][0].today_revenue%></h2>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="chart-wrapper">
+                                        <div id="home_chart_widget_1" class="home_chart_widget chart-one"></div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="col-sm-6 col-xxl-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body pb-0">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto">
+                                                <h4 class="text-muted mb-3">Today Merchant Register</h4>
+                                            </div>
+                                            <div class="col-auto">
+                                                <h2><%=result[0][0].today_merchant%></h2>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="chart-wrapper">
+                                        <div id="home_chart_widget_2" class="home_chart_widget chart-two"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xxl-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body pb-0">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto">
+                                                <h4 class="text-muted mb-3">Total Revenue</h4>
+                                            </div>
+                                            <div class="col-auto">
+                                                <h2>Rs. <%=result[3][0].total_revenue%></h2>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                    <div class="chart-wrapper">
+                                        <div id="home_chart_widget_4" class="home_chart_widget chart-four"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xxl-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-body pb-0">
+                                        <div class="row justify-content-between">
+                                            <div class="col-auto">
+                                                <h4 class="text-muted mb-3">Total Merchant</h4>
+                                            </div>
+                                            <div class="col-auto">
+                                                <h2>z <%=result[2][0].total_merchant%></h2>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="chart-wrapper">
+                                        <div id="home_chart_widget_3" class="home_chart_widget chart-three"></div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                         
+                        </div>
+                    </div>
+
+                   
+                    
+                    
+                </div>
+              
+           
+           
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p><a href="templatespoint.net">Templates Point</a></p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        
+        <!--**********************************
+            Right sidebar start
+        ***********************************-->
+        <div class="sidebar-right">
+            <a class="sidebar-right-trigger gradient-5-x" href="javascript:void(0)">
+                <span><i class="fa fa-cog fa-spin"></i></span>
+            </a>
+            <div class="sidebar-right-inner">
+                <div class="admin-settings">
+                    <h4>Pick your style</h4>
+                    <div>
+                        <p>Background</p>
+                        <select class="form-control" name="theme_version" id="theme_version">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Layout</p>
+                        <select class="form-control" name="theme_layout" id="theme_layout">
+                            <option value="vertical">Vertical</option>
+                            <option value="horizontal">Horizontal</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Sidebar</p>
+                        <select class="form-control" name="sidebar_style" id="sidebar_style">
+                            <option value="full">Full</option>
+                            <option value="mini">Mini</option>
+                            <option value="compact">Compact</option>
+                            <option value="overlay">Overlay</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Sidebar position</p>
+                        <select class="form-control" name="sidebar_position" id="sidebar_position">
+                            <option value="static">Static</option>
+                            <option value="fixed">Fixed</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Header position</p>
+                        <select class="form-control" name="header_position" id="header_position">
+                            <option value="static">Static</option>
+                            <option value="fixed">Fixed</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Container</p>
+                        <select class="form-control" name="container_layout" id="container_layout">
+                            <option value="wide">Wide</option>
+                            <option value="boxed">Boxed</option>
+                            <option value="wide-boxed">Wide Boxed</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Direction</p>
+                        <select class="form-control" name="theme_direction" id="theme_direction">
+                            <option value="ltr">LTR</option>
+                            <option value="rtl">RTL</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>Navigation Header</p>
+                        <div>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_1" class="filled-in chk-col-primary" id="nav_header_bg_1">
+                                <label for="nav_header_bg_1"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_2" class="filled-in chk-col-primary" id="nav_header_bg_2">
+                                <label for="nav_header_bg_2"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_3" class="filled-in chk-col-primary" id="nav_header_bg_3">
+                                <label for="nav_header_bg_3"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_4" class="filled-in chk-col-primary" id="nav_header_bg_4">
+                                <label for="nav_header_bg_4"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_5" class="filled-in chk-col-primary" id="nav_header_bg_5">
+                                <label for="nav_header_bg_5"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_6" class="filled-in chk-col-primary" id="nav_header_bg_6">
+                                <label for="nav_header_bg_6"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_7" class="filled-in chk-col-primary" id="nav_header_bg_7">
+                                <label for="nav_header_bg_7"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_8" class="filled-in chk-col-primary" id="nav_header_bg_8">
+                                <label for="nav_header_bg_8"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_9" class="filled-in chk-col-primary" id="nav_header_bg_9">
+                                <label for="nav_header_bg_9"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="navigation_header" value="color_10" class="filled-in chk-col-primary" id="nav_header_bg_10">
+                                <label for="nav_header_bg_10"></label>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Header</p>
+                        <div>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_1" class="filled-in chk-col-primary" id="header_bg_1">
+                                <label for="header_bg_1"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_2" class="filled-in chk-col-primary" id="header_bg_2">
+                                <label for="header_bg_2"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_3" class="filled-in chk-col-primary" id="header_bg_3">
+                                <label for="header_bg_3"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_4" class="filled-in chk-col-primary" id="header_bg_4">
+                                <label for="header_bg_4"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_5" class="filled-in chk-col-primary" id="header_bg_5">
+                                <label for="header_bg_5"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_6" class="filled-in chk-col-primary" id="header_bg_6">
+                                <label for="header_bg_6"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_7" class="filled-in chk-col-primary" id="header_bg_7">
+                                <label for="header_bg_7"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_8" class="filled-in chk-col-primary" id="header_bg_8">
+                                <label for="header_bg_8"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_9" class="filled-in chk-col-primary" id="header_bg_9">
+                                <label for="header_bg_9"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="header_bg" value="color_10" class="filled-in chk-col-primary" id="header_bg_10">
+                                <label for="header_bg_10"></label>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Sidebar</p>
+                        <div>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_1" class="filled-in chk-col-primary" id="sidebar_bg_1">
+                                <label for="sidebar_bg_1"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_2" class="filled-in chk-col-primary" id="sidebar_bg_2">
+                                <label for="sidebar_bg_2"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_3" class="filled-in chk-col-primary" id="sidebar_bg_3">
+                                <label for="sidebar_bg_3"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_4" class="filled-in chk-col-primary" id="sidebar_bg_4">
+                                <label for="sidebar_bg_4"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_5" class="filled-in chk-col-primary" id="sidebar_bg_5">
+                                <label for="sidebar_bg_5"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_6" class="filled-in chk-col-primary" id="sidebar_bg_6">
+                                <label for="sidebar_bg_6"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_7" class="filled-in chk-col-primary" id="sidebar_bg_7">
+                                <label for="sidebar_bg_7"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_8" class="filled-in chk-col-primary" id="sidebar_bg_8">
+                                <label for="sidebar_bg_8"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_9" class="filled-in chk-col-primary" id="sidebar_bg_9">
+                                <label for="sidebar_bg_9"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_10" class="filled-in chk-col-primary" id="sidebar_bg_10">
+                                <label for="sidebar_bg_10"></label>
+                            </span>
+                            <!-- <span>
+                                <input type="radio" name="sidebar_bg" value="color_11" class="filled-in chk-col-primary" id="sidebar_bg_11">
+                                <label for="sidebar_bg_11"></label>
+                            </span> -->
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_12" class="filled-in chk-col-primary" id="sidebar_bg_12">
+                                <label for="sidebar_bg_12"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_13" class="filled-in chk-col-primary" id="sidebar_bg_13">
+                                <label for="sidebar_bg_13"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_14" class="filled-in chk-col-primary" id="sidebar_bg_14">
+                                <label for="sidebar_bg_14"></label>
+                            </span>
+                            <span>
+                                <input type="radio" name="sidebar_bg" value="color_15" class="filled-in chk-col-primary" id="sidebar_bg_15">
+                                <label for="sidebar_bg_15"></label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Right sidebar end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="../../assets/plugins/common/common.min.js"></script>
+    <script src="../Admin/main/./js/custom.min.js"></script>
+    <script src="../Admin/main/./js/settings.js"></script>
+    <script src="../Admin/main/./js/quixnav.js"></script>
+    <script src="../Admin/main/./js/styleSwitcher.js"></script>
+    
+    <!-- Datamap -->
+    <script src="../../assets/plugins/d3v3/index.js"></script>
+    <script src="../../assets/plugins/topojson/topojson.min.js"></script>
+    <script src="../../assets/plugins/datamaps/datamaps.world.min.js"></script>
+    <!-- Calender -->
+    <script src="../../assets/plugins/jqueryui/js/jquery-ui.min.js"></script>
+    <script src="../../assets/plugins/moment/moment.min.js"></script>
+    <script src="../../assets/plugins/fullcalendar/js/fullcalendar.min.js"></script>
+    <!-- ChartJS -->
+    <script src="../../assets/plugins/chart.js/Chart.bundle.min.js"></script>
+    <!-- MorrisJS -->
+    <script src="../../assets/plugins/raphael/raphael.min.js"></script>
+    <script src="../../assets/plugins/morris/morris.min.js"></script>
+    <!-- Owl carousel -->
+    <script src="../../assets/plugins/owl.carousel/dist/js/owl.carousel.min.js"></script>
+    <!-- Chartist -->
+    <script src="../../assets/plugins/chartist/js/chartist.min.js"></script>
+    <script src="../../assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+
+    <!-- Init files -->
+    <script src="../Admin/main/./js/plugins-init/fullcalendar-init.js"></script>
+    <script src="../Admin/main/./js/dashboard/dashboard-1.js"></script>
+
+</body>
+
+</html>

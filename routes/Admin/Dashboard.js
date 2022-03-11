@@ -13,8 +13,6 @@ var table = 'admin'
 
 router.get('/',(req,res)=>{
     if(req.session.adminid){
-
-
         var query = `select count(id) as today_order from booking where status = 'completed' and date = curdate();`
         var query1 = `select count(id) as todat_completed_order from booking where status!= 'completed' and date= curdate();`
         var query2 = `select sum(price) as today_revenue from booking where date = curdate();`

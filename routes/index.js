@@ -838,6 +838,10 @@ router.get('/shop',(req,res)=>{
 
 
 router.get('/search',(req,res)=>{
+
+
+  req.session.usernumber ? login =  true : login = false
+
   var query = `select * from category order by name;`
   var query1 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
@@ -851,7 +855,7 @@ router.get('/search',(req,res)=>{
     else if(result[1][0] || result[2][0]){
      res.json(result)
     }
-    else res.send('no')
+    else res.render('nodatafound',{login,result})
   })
  
 })
@@ -1139,6 +1143,85 @@ router.get('/about-us',(req,res)=>{
     })
  
   
+})
+
+
+
+router.get('/privacy-policy',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('privacy',{login,result})
+    })
+ 
+  
+})
+
+
+
+router.get('/terms-and-conditions',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('terms',{login,result})
+    })
+ 
+  
+})
+
+
+
+router.get('/disclaimer',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('disclaimer',{login,result})
+    })
+ 
+  
+})
+
+
+
+router.get('/customer-support',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('support',{login,result,msg:''})
+    })
+ 
+  
+})
+
+
+router.post('/customer-support/success',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+
+  let body = req.body;
+  console.log(body);
+  pool.query(`insert into contact set ?`,body,(err,result)=>{
+    if(err) throw err;
+    else {
+      var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('support',{login,result,msg:'Our Team Will Contact You As Soon As Possible.'})
+    })
+    }
+  })
 })
 
 

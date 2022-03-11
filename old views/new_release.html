@@ -1,0 +1,52 @@
+<%- include ('./otherheader.ejs') %>
+
+
+        <!-- Start of Main -->
+        <main class="main" style="margin-top: 50px;">
+       
+           
+
+            <!-- Start of Page Content -->
+            <div class="page-content">
+                <div class="container">
+                  
+
+                    <div class="row grid cols-xl-4 cols-lg-3 cols-md-2 mb-2" data-grid-options="{
+                        'layoutMode': 'fitRows'
+                    }">
+
+
+                  <% for(i=0;i<result[1].length;i++) { %>
+ 
+                        <article class="post post-grid-type grid-item overlay-zoom fashion">
+                            <figure class="post-media br-sm">
+                                <a href="/new-release-full-description?id=<%=result[1][i].id%>">
+                                    <img src="/images/<%=result[1][i].logo%>" width="600"
+                                        height="420" alt="blog">
+                                </a>
+                            </figure>
+                            <div class="post-details">
+                               
+                                <h4 class="post-title">
+                                    <a href="/new-release-full-description?id=<%=result[1][i].id%>"><%=result[1][i].title%></a>
+                                </h4>
+                                <div class="post-content">
+                                    <p><%=result[1][i].project_description%></p> <a href="/new-release-full-description?id=<%=result[1][i].id%>" class="btn btn-link btn-primary">(read more)</a>
+                                </div>
+                                
+                            </div>
+                        </article>
+
+                        <% } %>
+                        
+                      
+                    </div>
+                
+                </div>
+            </div>
+            <!-- End of Page Content -->
+        </main>
+        <!-- End of Main -->
+
+        <!-- Start of Footer -->
+        <%- include ('./footer.ejs') %>

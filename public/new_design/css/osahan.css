@@ -1171,7 +1171,7 @@ button:focus {
 
 /* Footer */
 .footer-brand img {
-	width: 60px;
+	width: 150px;
 }
 .footer ul {
 	margin: 0;
@@ -1182,7 +1182,7 @@ button:focus {
 	line-height: 32px;
 }
 .footer a {
-	color: #7a7e8a;
+	color: black;
 	letter-spacing: 0.4px;
 	font-weight: 300;
 }
@@ -1287,9 +1287,7 @@ button:focus {
 		display: inline-block;
 		float: none !important;
 	}
-	.footer {
-		display: none;
-	}
+
 	.rating-checkbox .btn {
 		margin-bottom: 8px;
 	}
@@ -1476,9 +1474,7 @@ button:focus {
 		display: inline-block;
 		float: none !important;
 	}
-	.footer {
-		display: none;
-	}
+	
 	.offer-dedicated-header .float-right {
 		position: absolute;
 		bottom: 0;

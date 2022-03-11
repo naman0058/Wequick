@@ -1,0 +1,125 @@
+<%- include ('./otherheader.ejs') %>
+
+
+
+        <!-- Start of Main -->
+        <main class="main">
+            <!-- Start of Page Header -->
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title mb-0"><%=result[1][0].title%></h1>
+                </div>
+            </div>
+            <!-- End of Page Header -->
+
+      
+
+            <!-- Start of Page Content -->
+            <div class="page-content mb-8">
+                <div class="container">
+                    <div class="row gutter-lg">
+                        <div class="main-content post-single-content">
+                            <div class="post post-grid post-single">
+                                <figure class="post-media br-sm">
+                                    <img src="/images/<%=result[1][0].logo%>" style="width:930px;height:500px;object-fit:contain" alt="Blog" width="930" height="500" />
+                                </figure>
+                                <div class="post-details">
+                                    
+                                    <h2 class="post-title"><a href="#"><%=result[1][0].title%></a></h2>
+                                    <div class="post-content">
+                                        <p><span id="result"></span></p>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                     
+                         
+                          
+                            <!-- End Tag -->
+                           
+                          
+                            <!-- End Post Navigation -->
+                            <h4 class="title title-lg font-weight-bold mt-10 pt-1 mb-5">Related Posts</h4>
+                            <div class="post-slider owl-carousel owl-theme owl-nav-top row cols-lg-3 cols-md-4 cols-sm-3 cols-xs-2 cols-1 pb-2" data-owl-options="{
+                                'nav': true,
+                                'dots': false,
+                                'margin': 20,
+                                'responsive': {
+                                    '0': {
+                                        'items': 1
+                                    },
+                                    '576': {
+                                        'items': 2
+                                    },
+                                    '768': {
+                                        'items': 3
+                                    },
+                                    '992': {
+                                        'items': 2
+                                    },
+                                    '1200': {
+                                        'items': 3
+                                    }
+                                }
+                            }">
+
+
+                            <% for(i=0;i<result[2].length;i++) { %>
+
+                                <div class="post post-grid">
+                                    <figure class="post-media br-sm">
+                                        <a href="/new-release-full-description?id=<%=result[2][i].id%>">
+                                            <img src="/wolmart/assets/images/blog/single/2.jpg" alt="Post" width="296"
+                                                height="190" style="background-color: #bcbcb4;" />
+                                        </a>
+                                    </figure>
+                                    <div class="post-details text-center">
+                                        <div class="post-meta">
+                                             <a href="#" class="post-author"><%=result[2][i].title%></a>
+                                            
+                                        </div>
+                                        <a href="/new-release-full-description?id=<%=result[2][i].id%>" class="btn btn-link btn-dark btn-underline font-weight-normal">Read More<i class="w-icon-long-arrow-right"></i></a>
+                                    </div>
+                                </div>
+
+                                <% } %>
+                               
+                            </div>
+                            <!-- End Related Posts -->
+                            
+                          
+                            <!-- End Comments -->
+                    
+                        </div>
+                        <!-- End of Main Content -->
+                       
+                    </div>
+                </div>
+            </div>
+            <!-- End of Page Content -->
+        </main>
+        <!-- End of Main -->
+<input type="hidden" value="<%=id%>" class="blogid">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+
+
+$( document ).ready(function() {
+ let id = $('.blogid').val();
+ $.getJSON('/get-single-blog-description',{id},data=>{
+     console.log(data)
+     makeblog(data)
+  
+ })
+});
+
+function makeblog(data){
+    let table = `<span>${data[0].content}</span>`
+     $('#result').html(table)
+}
+
+        </script>
+
+        <!-- Start of Footer -->
+        <%- include ('./footer.ejs') %>
+       

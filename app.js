@@ -17,7 +17,7 @@ var vendor_dashboard = require('./routes/Vendor/vendorDashboard');
 var vendorLogin = require('./routes/Vendor/login');
 var agentLogin = require('./routes/Agent/login');
 var financeLogin = require('./routes/Finance/login');
-var financeDashboard = require('./routes/Finance/Dashboard')
+var financeDashboard = require('./routes/Finance/dashboard');
 
 
 var agent_dashboard = require('./routes/Agent/agentDashboard');

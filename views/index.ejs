@@ -11,7 +11,7 @@
 
 
     <div class="item p-0 m-0">
-    <img class="img-fluid" src="https://www.dealsaaj.com/images/<%=result[2][i].image%>" style="width:100%">
+    <img class="img-fluid" src="/images/<%=result[2][i].image%>" style="width:100%">
     </div>
 
     <% } %>
@@ -35,26 +35,18 @@
 <div class="custom-card shadow-sm h-100">
 <div class="custom-card-image">
 <a href="#">
-<img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[7][i].image%>">
+<img class="img-fluid item-img" src="/images/<%=result[7][i].image%>">
 </a>
 
 </div>
 <div class="p-3 pt-4">
 <div class="custom-card-body">
-<h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[7][i].short_description%>
-Bank</a></h6>
+<h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[7][i].short_description%></a></h6>
 <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[7][i].expiry%></p>
 </div>
 <div class="custom-card-footer d-flex align-items-center">
 
-<% if(result[7][i].type =='flat') { %>
 
-    <span class="text-danger">Flat Rs. <%=result[7][i].discount%> OFF</span>
-
-    <% } else { %>
-        <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[7][i].discount%> % OFF</span>
-
-        <% } %>
 
 
         <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
@@ -97,7 +89,7 @@ Bank</a></h6>
 <div class="custom-card-image">
 
 <a href="#">
-<img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[8][i].image%>">
+<img class="img-fluid item-img" src="/images/<%=result[8][i].image%>">
 </a>
 <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
 <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,16 +115,7 @@ Bank</a></h6>
 <div class="p-3 border-top">
 <div class="custom-card-badge">
 
-    <% if(result[8][i].type =='flat') { %>
-
-        <span class="badge badge-danger"><i class="icofont-sale-discount"></i>
-            OFFER</span>Flat Rs. <%=result[8][i].discount%> OFF
-        <% } else { %>
-
-
-            <span class="badge badge-danger"><i class="icofont-sale-discount"></i>
-                OFFER</span> <%=result[8][i].discount%> % OFF
-            <% } %>
+  
 
 
 </div>
@@ -164,7 +147,7 @@ Bank</a></h6>
         <div class="col-xl-3 col-sm-6 col-6 col-md-3 mb-4">
             <div class="custom-card shadow-sm bg-white h-40">
                     <a class="nav-link text-center" href="/shop-by-category?categoryid=<%=filteredData[i].id%>">
-                    <img class="img-fluid" src="https://www.dealsaaj.com/images/<%=filteredData[i].icon%>" style="width:100%;height:150px;object-fit: cover;"> <br><br>
+                    <img class="img-fluid" src="/images/<%=filteredData[i].icon%>" style="width:100%;height:150px;object-fit: cover;"> <br><br>
                     <span><%=filteredData[i].name%></span></a>
             
             
@@ -194,26 +177,17 @@ Bank</a></h6>
         <div class="custom-card shadow-sm h-100">
         <div class="custom-card-image">
         <a href="#">
-        <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[9][i].image%>">
+        <img class="img-fluid item-img" src="/images/<%=result[9][i].image%>">
         </a>
         
         </div>
         <div class="p-3 pt-4">
         <div class="custom-card-body">
-        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[9][i].short_description%>
-        Bank</a></h6>
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[9][i].short_description%></a></h6>
         <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[9][i].expiry%></p>
         </div>
         <div class="custom-card-footer d-flex align-items-center">
-        
-        <% if(result[9][i].type =='flat') { %>
-        
-            <span class="text-danger">Flat Rs. <%=result[9][i].discount%> OFF</span>
-        
-            <% } else { %>
-                <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[9][i].discount%> % OFF</span>
-        
-                <% } %>
+       
         
         
                 <% if(result[9][i].isredeem == null || result[9][i].isredeem == '' || result[9][i].isredeem == 'null' || result[9][i].isredeem ==[]){ %>
@@ -257,7 +231,7 @@ Bank</a></h6>
             <div class="custom-card shadow-sm">
             <div class="custom-card-image">
             <a href="/single-vendor-details?vendorid=<%=result[10][i].id%>">
-            <img class="img-fluid item-img" src="https://www.dealsaaj.com/images/<%=result[10][i].image%>">
+            <img class="img-fluid item-img" src="/images/<%=result[10][i].image%>">
             </a>
             
             </div>

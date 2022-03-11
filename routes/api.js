@@ -1356,7 +1356,7 @@ router.get('/get-all-vendor',(req,res)=>{
 
 router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 } , { name: 'transaction_image', maxCount: 1 } ]),(req,res)=>{
   let body = req.body;
-
+console.log('before image',req.body)
 if(req.body.transaction_image[0]){
   body['transaction_image'] = '';
 }
@@ -1371,6 +1371,10 @@ else{
   body['image'] = req.files.image[0].filename;
   body['shop_img2'] = req.files.shop_img2[0].filename;
   body['status'] = 'pending';
+
+  console.log('after image',req.body)
+
+
  var today = new Date();
 var dd = today.getDate();
 

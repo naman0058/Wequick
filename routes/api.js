@@ -1356,7 +1356,7 @@ router.get('/get-all-vendor',(req,res)=>{
 
 router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 } , { name: 'transaction_image', maxCount: 1 } ]),(req,res)=>{
   let body = req.body;
-console.log('before image',req.body)
+console.log('before image',req.files)
 // if(req.body.transaction_image[0]){
 //   body['transaction_image'] = '';
 // }
@@ -1369,7 +1369,9 @@ if(req.files.transaction_image){
   body['transaction_image'] = req.files.transaction_image[0].filename;
 
 }
-
+else {
+  body['transaction_image'] = ''
+}
 
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
 

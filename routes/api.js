@@ -1740,7 +1740,7 @@ router.get('/get-single-order',(req,res)=>{
 
 
 router.post('/get-coupons',(req,res)=>{
-  pool.query(`select * from coupons where vendorid = '${req.body.vendorid}' order by id desc limit 20;`,(err,result)=>{
+  pool.query(`select * from coupon where vendorid = '${req.body.vendorid}' order by id desc limit 20;`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })

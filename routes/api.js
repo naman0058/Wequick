@@ -1494,6 +1494,23 @@ router.post('/check-bde-code',(req,res)=>{
 
 
 
+router.post('/check-vendor-number',(req,res)=>{
+  pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
+    if(err) throw err;
+    else if(result[0]){
+      res.json({msg:'success'})
+    }
+    else{
+      res.json({msg:'invalid'})
+    }
+  })
+})
+
+
+
+
+
+
 
 
 router.get('/get-details-dynamic',(req,res)=>{

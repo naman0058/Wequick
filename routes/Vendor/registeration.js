@@ -8,7 +8,15 @@ var table = 'admin'
 
 
 router.get('/',(req,res)=>{
-  res.render('Vendor/registeration',{msg : ''})
+  req.session.usernumber ? login =  true : login = false
+
+  var query = `select * from category;`
+  var query1 = `select * from blogs where id = '${req.query.id}';`
+  pool.query(query+query1,(err,result)=>{
+    if(err) throw err;
+    else res.render('Vendor/registeration',{msg : '',result,login})
+  })
+  
 
 })
 

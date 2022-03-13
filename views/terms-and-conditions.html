@@ -1,5 +1,184 @@
-<%- include ('./header.ejs') %>
 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Deals Aaj | Reach Redeam & Repeat</title>
+<link rel="icon" type="image/png" href="https://dealsaaj.com/images/deal_logo.png">
+<link href="https://dealsaaj.com/new_design/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://dealsaaj.com/new_design/css/theme.css" rel="stylesheet">
+<link href="https://dealsaaj.com/new_design/vendor/icons/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="https://dealsaaj.com/new_design/vendor/select2/css/select2-bootstrap.css" />
+<link href="https://dealsaaj.com/new_design/vendor/select2/css/select2.min.css" rel="stylesheet" />
+<link href="https://dealsaaj.com/new_design/vendor/icofont/icofont.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dealsaaj.com/new_design/vendor/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="https://dealsaaj.com/new_design/vendor/owl-carousel/owl.theme.css">
+<link href="https://dealsaaj.com/new_design/css/osahan.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .fa {
+      padding: 8px;
+      font-size: 30px;
+      width: 30px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+      border-radius: 50%;
+    }
+    
+  
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+        </style>
+</head>
+<body id="page-top">
+<div id="wrapper">
+<div id="content-wrapper">
+<div id="content">
+<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-light shadow-sm topbar osahan-top-main">
+<a class="navbar-brand" href="/">
+<img class="img-fluid" src="https://dealsaaj.com/images/deal_logo.png" style="width: 100px;height: 100px;object-fit: contain;">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item active">
+<a class="nav-link" href="#"><i class="fas fa-home"></i></a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<span style="color: black;">Segments</span>
+</a>
+<div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
+<div class="bg-white py-2 collapse-inner rounded" style="width: 300px;height: 400px;overflow: scroll;">
+<a class="dropdown-item" href="/shop-by-category?categoryid=21"> Automobile Sector (Showroom)</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=23"> Automobile Service Centre</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=24"> Bags</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=26"> Bakery</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=27"> Bars</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=28"> Build Mart</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=29"> Cafe</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=31"> Clothing</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=32"> Cosmetics</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=33"> Electricals</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=34"> Electronics</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=35"> Fast Food</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=36"> Furniture</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=37"> Game Centres</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=39"> Gift Shop</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=40"> Grocery</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=41"> Gym</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=42"> Hospitals</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=43"> Hotels</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=45"> Jewellery Shop</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=47"> Medical Shop</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=48"> Optical</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=49"> Paints</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=50"> Pubs</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=51"> Resorts</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=52"> Restaurants</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=53"> Salon</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=54"> Shoes</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=55"> Spa</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=56"> Super Market</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=57"> Training And Tutorials</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=58"> Utensils</a>
+
+<a class="dropdown-item" href="/shop-by-category?categoryid=60"> Water Park</a>
+<a class="dropdown-item" href="/shop-by-category?categoryid=61"> </a>
+</div>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/exclusive-deals-and-offers" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+<span style="color: black;">Exclusive Deals & Offers</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/new-release" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+<span style="color: black;">New Release</span>
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/channel-partner-login" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+<span style="color: black;">Our Channel Partner</span>
+</a>
+</li>
+</ul>
+</div>
+<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/search" method="get">
+<div class="input-group">
+<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+<div class="input-group-append">
+<button class="btn btn-primary" type="button">
+<i class="fas fa-search fa-sm"></i>
+</button>
+</div>
+</div>
+</form>
+<ul class="navbar-nav ml-auto flex-direction-row">
+<li class="nav-item dropdown no-arrow d-sm-none">
+<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<i class="fas fa-search fa-fw" style="font-size: 18px;color: black;"></i>
+</a>
+<div class="dropdown-menu dropdown-menu-right p-3 shadow-sm border-0 animated--grow-in" aria-labelledby="searchDropdown">
+<form class="form-inline mr-auto w-100 navbar-search">
+<div class="input-group">
+<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+<div class="input-group-append">
+<button class="btn btn-primary" type="button">
+<i class="fas fa-search fa-sm"></i>
+</button>
+</div>
+</div>
+</form>
+</div>
+</li>
+<div class="topbar-divider d-none d-sm-block"></div>
+<li class="nav-item dropdown no-arrow">
+<a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500-400" style="color: black;"></i>
+</a>
+<div class="dropdown-menu dropdown-menu-right shadow-sm border-0 animated--grow-in" aria-labelledby="userDropdown">
+<a class="dropdown-item" href="/login">
+<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-500-400"></i>
+Login
+</a>
+</div>
+</li>
+</ul>
+</nav>
 <section class="inner-page-banner py-5 bg-gradient-primary">
 <div class="container">
 <div class="row">
@@ -201,4 +380,106 @@
 </div>
 </div>
 </div>
-<%- include ('./footer.ejs') %>
+<section class="footer section-padding">
+<div class="container">
+<div class="row py-lg-4">
+<div class="col-xl-2 col-md-2 col-sm-2 col-12">
+<div class="footer-brand">
+<a href="/">
+<img class="img-fluid" src="https://dealsaaj.com/images/deal_logo.png">
+</a>
+</div>
+</div>
+<div class="col-xl-3 col-md-3 col-sm-3 col-6">
+<h6 class="text-gray-900">Segments</h6>
+<ul>
+<li><a href="/shop-by-category?categoryid=40">Grocery</a></li>
+<li><a href="/shop-by-category?categoryid=42">Hospitals</a></li>
+<li><a href="/shop-by-category?categoryid=43">Hotels</a></li>
+<li><a href="/shop-by-category?categoryid=47">Medical Shop</a></li>
+<li><a href="/shop-by-category?categoryid=52">Restaurants</a></li>
+<li><a href="/shop-by-category?categoryid=56">Super Market</a></li>
+<li><a href="/exclusive-deals-and-offers">More Segments...</a></li>
+</ul>
+</div>
+<div class="col-xl-3 col-md-3 col-sm-3 col-6">
+<h6 class="text-gray-900">SERVICES</h6>
+<ul>
+<li><a href="/exclusive-deals-and-offers">Exclusive Deals & Offers</a></li>
+<li><a href="/new-release">New Release</a></li>
+<li><a href="/channel-partner-login">Channel Partner</a></li>
+<li><a href="/agent-login">Marketing Executive</a></li>
+<li><a href="/disclaimer">Disclaimer</a></li>
+<li><a href="/customer-support">Customer Support</a></li>
+</ul>
+</div>
+<div class="col-xl-4 col-md-3 col-sm-3 col-12">
+<h6 class="text-gray-900">Follow us on Social Media</h6>
+<form class="form-inline newsletter-form mb-1">
+<i href="#" style="color: white;" class="fa fa-facebook"></i>
+<i href="#" style="color: white;" class="fa fa-instagram"></i>
+<i href="#" style="color: white;" class="fa fa-youtube"></i>
+<i href="#" style="color: white;" class="fa fa-twitter"></i>
+</form>
+<div class="app mt-4 pt-2">
+<h6 class="text-gray-900">DOWNLOAD APP</h6>
+<a href="#">
+<img class="img-fluid" src="https://dealsaaj.com/new_design/images/google.png">
+</a>
+<a href="#">
+<img class="img-fluid" src="https://dealsaaj.com/new_design/images/apple.png">
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-4 bg-white osahan-copyright">
+<div class="container">
+<div class="row">
+<div class="col-xl-12">
+<div class="d-flex align-items-center justify-content-between">
+<p class="m-0 text-secondary">Copyright © <span style="color:#722A74;font-weight: bold;">Deals</span><span style="color: #C03168;font-weight: bold;">Aaj</span> 2022</p>
+<p class="m-0">
+<a href="/about-us" class="text-secondary">About Us</a>
+&nbsp; · &nbsp;
+<a href="/privacy-policy" class="text-secondary">Privacy Policy</a>
+&nbsp; · &nbsp;
+<a href="/terms-and-conditions" class="text-secondary">Terms &amp; Conditions</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<a class="scroll-to-top rounded-circle" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">×</span>
+</button>
+</div>
+<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
+</div>
+</div>
+</div>
+</div>
+<script src="https://dealsaaj.com/new_design/vendor/jquery/jquery.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="https://dealsaaj.com/new_design/vendor/bootstrap/js/bootstrap.bundle.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="https://dealsaaj.com/new_design/vendor/jquery-easing/jquery.easing.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="https://dealsaaj.com/new_design/vendor/select2/js/select2.min.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="https://dealsaaj.com/new_design/vendor/owl-carousel/owl.carousel.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="https://dealsaaj.com/new_design/js/custom.js" type="057b91354703151087f54c15-text/javascript"></script>
+<script src="https://dealsaaj.com/new_design/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="057b91354703151087f54c15-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d93bcde028a20","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

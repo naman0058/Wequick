@@ -1849,6 +1849,38 @@ else res.json(result);
 
 
 
+router.post('/merchant/update-image',upload.fields([{ name: 'qr_image', maxCount: 1 }]), (req, res) => {
+  let body = req.body;
+  body['qr_image'] = req.files.qr_image[0].filename;
+
+  // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
+  //     if(err) throw err;
+  //     else {
+  //         fs.unlinkSync(`public/images/${result[0].image}`); 
+
+
+pool.query(`update ${req.params.name} set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+      }
+  })
+
+
+})
+
+
 // router.get('/get-profile')
 
 module.exports = router;

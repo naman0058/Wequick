@@ -1859,7 +1859,7 @@ router.post('/merchant/update-image',upload.fields([{ name: 'qr_image', maxCount
   //         fs.unlinkSync(`public/images/${result[0].image}`); 
 
 
-pool.query(`update ${req.params.name} set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {
           res.json({
               status:500,

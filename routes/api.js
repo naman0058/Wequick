@@ -1894,6 +1894,10 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 })
 
 
+router.get('/check-update',(req,res)=>{
+  res.json({msg:'update'})
+})
+
 // router.get('/get-profile')
 
 module.exports = router;

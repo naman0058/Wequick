@@ -1413,10 +1413,23 @@ router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount
 
 
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
-  body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
   body['image'] = req.files.image[0].filename;
   body['shop_img2'] = req.files.shop_img2[0].filename;
   body['status'] = 'pending';
+
+
+
+
+
+  if(req.files.business_kyc_img){
+    body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
+  
+  }
+  else {
+    body['business_kyc_img'] = ''
+  }
+  
+
 
 
 if(req.files.transaction_image){

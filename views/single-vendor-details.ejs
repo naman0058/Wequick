@@ -111,7 +111,7 @@
     <div class="row">
         <% for(i=0;i<result[6].length;i++) { %>
 
-            <div class="col-xl-6 col-sm-6">
+            <div class="col-xl-6 col-sm-6" style="margin-top: 30px;">
             <div class="custom-card shadow-sm h-100">
             <div class="custom-card-image">
             <a href="#">
@@ -127,15 +127,7 @@
             </div>
             <div class="custom-card-footer d-flex align-items-center">
             
-            <% if(result[6][i].type =='flat') { %>
-            
-                <span class="text-danger">Flat Rs. <%=result[6][i].discount%> OFF</span>
-            
-                <% } else { %>
-                    <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[6][i].discount%> % OFF</span>
-            
-                    <% } %>
-            
+          
             
                     <% if(result[6][i].isredeem == null || result[6][i].isredeem == '' || result[6][i].isredeem == 'null' || result[6][i].isredeem ==[]){ %>
             

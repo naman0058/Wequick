@@ -1062,7 +1062,8 @@ router.get('/shop-by-category',(req,res)=>{
   var query = `select * from category;`
   var query1 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
-    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance,
+    (select c.name from category c where c.id = '${req.query.categoryid}') as categoryname
     FROM vendor where status= 'approved' and business_details = 'done' and delivery_details = 'done' and categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;

@@ -50,35 +50,34 @@
 
 
 
-<a href="index.html">
-<b class="logo-abbr"> Vendor Registration </b>
-<span class="brand-title"><b>Vendor Registration</b></span>
-</a>
+<b class="logo-abbr" style="font-size:22px;color:black"> Vendor Registration </b>
+<span class="brand-title"  style="font-size:22px;color: black;margin-top: 22px;"><b>Vendor Registration</b></span>
 </div>
 </div>
 </div>
-<div class="card-body">
-<form action="/vendor-registeration/verification" method="post" enctype="multipart/form-data">
-<h5 style="color: red;"></h5>
 
+
+<div class="card-body">
+<h5 style="color: red;"></h5>
 
 <div class="row">
 
     <div class="col-lg-6">
         <div class="form-group mb-4">
-            <input type="text" class="form-control rounded-0 bg-transparent" onchange="check_agent_code()" name="agentid" id="agentid" placeholder="Exicutive Code" required>
+            <input type="text" class="form-control rounded-0 bg-transparent" onchange="check_agent_code()" name="agentid" id="agentid" placeholder="Executive Code" required>
         <p id="result"></p> 
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group mb-4">
-            <input type="text" class="form-control rounded-0 bg-transparent" name="name" placeholder="Store Name" required>
+            <input type="text" class="form-control rounded-0 bg-transparent" name="business_name" id="business_name" placeholder="Shop Name" required>
             </div>
     </div>
 
     <div class="col-lg-6 ">
       
-        <input type="number" max="6" onChange = done() id="shop pin-code" class=" form-control rounded-0 bg-transparent sm pincode " name="shop-pin-code" maxlength="6"  placeholder="Shop Pin-code" required >
+        <input type="text" onChange = done() onkeypress=" return isnumeric(event)" id="pincode" class=" form-control rounded-0 bg-transparent sm pincode " name="pincode" maxlength="6"  placeholder="Shop Pincode" required >
+        <p id="pincodeerror"></p>
         <!-- <input type="number" name="gplus" class="form-control rounded-0 bg-transparent sm "  maxlength="8"  placeholder="Shop Pin-code" required/> -->
     </div>
 
@@ -86,15 +85,16 @@
   
     <div class="col-lg-6  sm ">
         <div> 
-            <select id="areaid" style="  margin-top: 4px; margin-bottom: -10px;" class="form-select form-control rounded-0 bg-transparent" aria-label="Default select example">
-               
+            <select id="areaid" style=" margin-top: 4px; margin-bottom: -10px;" class="form-select form-control rounded-0 bg-transparent" aria-label="Default select example">
+               <option value="">Choose Area</option>
               </select>
         </div>
     </div>
 
     <div class="col-lg-6 mt-4">
         <div class="form-group mb-4">
-            <input type="number" class="form-control rounded-0 bg-transparent" name="gplus" placeholder="Business Contact Number" required>
+            <input type="text" id="number" onChange = checknumber() onkeypress=" return isnumeric(event)" class=" form-control rounded-0 bg-transparent sm number " name="number" maxlength="10"  placeholder="Contact Number" required >
+            <p id="numbererror"></p>
             </div>
     </div>
 
@@ -120,17 +120,17 @@
 
 
     <div class="col-lg-12">
-        <p style="text-align:center ;color:black ;font-size:24px;"><b><u>PERSONAL KYC DOCUMENT </u></b></p>
+        <p style="text-align:center ;color:black ;font-size:22px;margin-top:20px;margin-bottom: 20px;"><b><u>PERSONAL KYC DOCUMENT </u></b></p>
     </div>
     <div class="col-lg-6">
         <div>
-            <select  class="form-select form-control rounded-0 bg-transparent " aria-label="Default select example">
-                <option selected>Adhar Card</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="3">four</option>
-                <option value="3">five</option>
+            <select  class="form-select form-control rounded-0 bg-transparent" id="kyc_document" aria-label="Default select example">
+                <option value="">Select KYC Document</option>
+                <option value="Aadhar Card">Aadhar Card</option>
+                <option value="Driving License">Driving License</option>
+                <option value="Voter ID Card">Voter ID Card</option>
+                <option value="PAN Card">PAN Card</option>
+               
               </select>
         </div>
     </div>
@@ -141,8 +141,7 @@
 
            <div class="wrapper p-1 sm " style="border:2px solid rgb(163, 163, 228);border-style:dashed;">
   <div class="file-upload ">
-    <input type="file" />
-    <i class="fa fa-check mr-2 mt-2 " style="float: right; background-color: blue;  color: white; border-radius: 19px;"></i>
+    <input type="file" id="personal_kyc_img" />
   </div>
 </div>
             
@@ -155,26 +154,69 @@
         
 
 
-        <div class="col-lg-6 ">
+        <div class="col-lg-12 ">
             <div class="form-group mb-4">
-                <input type="number" class="form-control rounded-0 bg-transparent" name="gplus" placeholder="Input Number" required>
+                <div class='row' id="aadhardoc">
+                    <div class="col-lg-6">
+             
+                    <input type="text" maxlength="12" onkeypress=" return isnumeric(event)" class="form-control rounded-0 bg-transparent" id="doc_number" placeholder="Aadhar Number" required>
+                    </div>
+                   
+                    <div class="col-lg-6">
+                  
+                    <input type="file" style="border:2px solid rgb(163, 163, 228);border-style:dashed;" class="wrapper p-1 sm form-control" id="aadhar_back" placeholder="Aadhar Number" required>
+            
+                    </div>
+
+
+                
+                    </div>
+
+
+                    <div class='row' id="drivingl">
+                        <div class="col-lg-12">
+                 
+                            <input type="text" maxlength="15"  class="form-control rounded-0 bg-transparent" name="doc_number" placeholder="Driving License" required>
+                        </div>
+                       
+                        </div>
+
+
+                        <div class='row' id="voterl">
+                            <div class="col-lg-12">
+                     
+                                <input type="text" class="form-control rounded-0 bg-transparent" name="doc_number" placeholder="Voter ID Card" required>
+                            </div>
+                           
+                            </div>
+
+
+
+                            <div class='row' id="panl">
+                                <div class="col-lg-12">
+                         
+                                    <input type="text" maxlength="10" class="form-control rounded-0 bg-transparent" name="doc_number" placeholder="PAN Number" required>
+                                </div>
+                               
+                                </div>
+
                 </div>
         </div>
 <div class="col-lg-12">
-    <p style="text-align:center; color:black; font-size:24px;"> <u> Business KYC</u></p>
+    <p style="text-align:center ;color:black ;font-size:22px;margin-top:20px;margin-bottom: 20px;"><b><u>BUSINESS KYC </u></b></p>
+
 </div>
 
         
             <div class="col-lg-6">
                
                     <div>
-                        <select class="form-select form-control rounded-0 bg-transparent " aria-label="Default select example">
-                            <option selected>Shop Establishment/ Gumasta</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                            <option value="3">four</option>
-                            <option value="3">five</option>
+                        <select class="form-select form-control rounded-0 bg-transparent" id="business_kyc" aria-label="Default select example">
+                            <option value="">Select Business Kyc Document</option>
+                            <option value="Shop Establishment/ Gumasta">Shop Establishment/ Gumasta</option>
+                            <option value="Shop Establishment">Shop Establishment</option>
+                            <option value="Gumasta">Gumasta</option>
+                          
                           </select>
                     </div>
                 
@@ -184,8 +226,7 @@
                     <div>
                         <div class="wrapper p-1 sm" style="border:2px solid rgb(163, 163, 228);border-style:dashed;">
                             <div class="file-upload">
-                              <input type="file" />
-                              <i class="fa fa-check mr-2 mt-2 " style="float: right; background-color: blue;  color: white; border-radius: 19px;"></i>
+                              <input type="file" id="business_kyc_img" />
                             </div>
                           </div>
                         
@@ -198,16 +239,14 @@
 
 
 <div class="col-lg-12">
-    <p style="color: black; font-size: 24px; text-align: center; margin-top: 29px; "><b><u>Shop Details </u></b></p>
+    <p style="text-align:center ;color:black ;font-size:22px;margin-top:20px;margin-bottom: 20px;"><b><u>SHOP DETAILS </u></b></p>
+
 </div>
-<div class="col-lg-12">
-    <p style="color: black; font-size: 17px; text-align: center;"><b>Shop Phote </b></p>
-</div>
+
 <div class="col-lg-6">
     <div class="wrapper p-1 sm" style="border:2px solid rgb(163, 163, 228);border-style:dashed;">
         <div class="file-upload">
-          <input type="file" />
-          <i class="fa fa-check mr-2 mt-2  " style="float: right; background-color: blue;  color: white; border-radius: 19px;"></i>
+          <input type="file" id="image" />
         </div>
       </div>
 </div>
@@ -215,8 +254,7 @@
 <div class="col-lg-6">
     <div class="wrapper p-1 sm" style="border:2px solid rgb(163, 163, 228);border-style:dashed;">
         <div class="file-upload">
-          <input type="file" />
-          <i class="fa fa-check mr-2 mt-2 " style="float: right; background-color: blue;  color: white; border-radius: 19px;"></i>
+          <input type="file" id="shop_img2" />
         </div>
       </div>
 </div>  
@@ -226,42 +264,51 @@
 <div class="col-lg-12 mb-3" >
 
     
-    <textarea id="discription" name="diss" rows="4" placeholder="" cols="50" style="width:100%">
-       Give Driscription About Your Business
-    </textarea>
+    <textarea id="description" class="form-control"  rows="4" placeholder="Give Driscription About Your Business" cols="50"></textarea>
     
 </div>
 
 <div class="col-lg-12">
     
-<p style="font-size:24px; text-align: center; color: black;"><u>Payment Option</u></p>
+    <p style="text-align:center ;color:black ;font-size:22px;margin-top:20px;margin-bottom: 20px;"><b><u>PAYMENT OPTION </u></b></p>
+
 
 </div>
 
 
 
-<div class="col-lg-6  sm ">
-    
-        <div class="container ">
-                                                  
-          <div class="dropdown " style="border: 1px solid #e3eaef;">
-            <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;"><b style="color:black"> Account Type </b>
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu" style="width: 100%; text-align: center;">
-    
-              <li><a href="#">one</a></li>
-              <li><a href="#" onclick="myFunction()"> two</a></li>
-              <li><a href="#">JavaScript</a></li>
-            </ul>
-          </div>
+<div class="col-lg-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="/images/DealQR.jpg"  class="img-responsive center-block d-block mx-auto" alt="Sample Image" style="width:20%;">
+               
+            </div>
         </div>
+    </div>
+</div>
+
+
+
+
+<div class="col-lg-6">
+    
+        
+                    <select  class="form-select form-control rounded-0 bg-transparent" id="payment_type" aria-label="Default select example">
+                        <option value="">Select Payment Option</option>
+                        <option value="Trial">Trial</option>
+                        <option value="Subscribe">Subscribe</option>
+                      
+                       
+                      </select>
+    
 </div>
 
 <div class="col-lg-6 sm ">
     <div class="form-group ">
     
         <!-- <input type="text" class="form-control rounded-0 bg-transparent" name="gplus" placeholder="Subscription Charge " required> -->
-        <input type="number"  class="form-control rounded-0 bg-transparent"  id="myNumber" value="0"  placeholder="Subscription Charge "   required >
+        <input type="number"  class="form-control rounded-0 bg-transparent"  id="price" value="0"  placeholder="Subscription Charge "   required >
 
         <p style="text-align:center">  Subscription Charge </p>
         </div>
@@ -269,43 +316,30 @@
 
 
 
-<div class="col-lg-6 mt-2">
+    <div class="col-lg-6 paymentsubscribe">
 
-    <!-- <input type="password" style="border: 2px solid #0000ff82; border-style: dashed;" name="cpass" class="form-select form-control rounded-0 bg-transparent" placeholder="Transition ID"/> -->
-    <div class="wrapper p-1" style="border:2px solid rgb(163, 163, 228);border-style:dashed;">
-        <div class="file-upload sm">
-            
-          <input type="password"   style="width: 100%;" placeholder="Transition ID" />
+        <input type="text" maxlength="12" onkeypress=" return isnumeric(event)" class="form-control rounded-0 bg-transparent" name="transaction_id" id='transaction_id' placeholder="Transaction ID" required>
+        </div>
        
-        </div>
-      </div>
-
-</div>
-<br>
-<div class="col-lg-6 mt-2" >
-  
-   
-    <!-- <input type="file" style="border: 2px solid #0000ff82; border-style: dashed;" class="form-control rounded-0 bg-transparent sm " name="facebook" placeholder="Upload IMAGE As proof"/> -->
-    <div class="wrapper p-1  sm " style="border:2px solid rgb(163, 163, 228);border-style:dashed;">
-        <div class="file-upload">
-          <input type="file"  placeholder="Upload IMAGE As proof" />
-          <i class="fa fa-check mr-2 mt-2" style="float: right; background-color: blue;  color: white; border-radius: 19px;"></i>
-        </div>
+        <div class="col-lg-6 paymentsubscribe">
+    <input type="file" style="border:2px solid rgb(163, 163, 228);border-style:dashed;" class="wrapper p-1 sm form-control" id='transaction_image' name="transaction_image" placeholder="Aadhar Number" required>
       
-      </div>
-      <p>Business KYC Proof</p>
-</div> 
-
-<div class="col-lg-12">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <img src="data:image/png;base64,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"  class="img-responsive center-block d-block mx-auto" alt="Sample Image" style="width:20%;">
-               
-            </div>
+    
+    
         </div>
-    </div>
+
+
+<div class="col-lg-12 ">
+    <div class="form-group mb-4">
+
+
+     <p id="paymentinput"></p>
+        </div>
 </div>
+
+<!--   -->
+
+
 <!-- <div class="col-lg-12">
     <div>
         <select class="form-select form-select form-control rounded-0 bg-transparent  mb-3">
@@ -321,12 +355,11 @@
 </div> -->
 
 </div>
-
-
-
-
-<button class="btn-primary btn-lg btn-block border-0" type="submit">Submit</button>
 </form>
+
+
+
+<button class="btn-primary btn-lg btn-block border-0" onclick="submit()" type="submit">Submit</button>
 </div>
 <div class="card-footer text-center border-0 pt-0">
 
@@ -366,31 +399,6 @@
         }
       }
 
-     function done(){
-          let pincode = $('.pincode').val();
-          $.getJSON(`https://api.postalpincode.in/pincode/${pincode}`,data=>{
-              console.log(data[0].PostOffice)
-
-            fillDropDown('areaid', data[0].PostOffice, 'Choose Area', 0)
-
-          })
-      }
-
-
-
-
-      function fillDropDown(id, data, label, selectedid = 0) {
-    $(`#${id}`).empty()
-    $(`#${id}`).append($('<option>').val("null").text(label))
-
-    $.each(data, (i, item) => {
-        if (item.id == selectedid) {
-            $(`#${id}`).append($('<option selected>').val(item.Name).text(item.Name))
-        } else {
-            $(`#${id}`).append($('<option>').val(item.Name).text(item.Name))
-        }
-    })
-}
 
       
       function showPosition(position) {
@@ -435,48 +443,38 @@ function myFunction() {
 
 
 
-function check_agent_code(){
-    let agent_id = $('#agentid').val()
-    
-    $.post('/api/check-bde-code',{agent_id},data=>{
-        // alert(data.msg)
-        if(data.msg =='invalid'){
-            let table = `<span style='color:red'>Invalid Executive Code</span>`
-            $('#result').html(table)
-
-        }
-        else{
-            let table = `<span style='color:green'>Success</span>`
-            $('#result').html(table)
-
-        }
-    })
-}
-
-
-
-
-
-$.getJSON(`/api/get-category`, data => {
-    categories = data
-    fillDropDown1('categoryid', data, 'Choose Category', 0)
-  
-})
-
-
-function fillDropDown1(id, data, label, selectedid = 0) {
-    $(`#${id}`).empty()
-    $(`#${id}`).append($('<option>').val("null").text(label))
-
-    $.each(data, (i, item) => {
-        if (item.id == selectedid) {
-            $(`#${id}`).append($('<option selected>').val(item.id).text(item.name))
-        } else {
-            $(`#${id}`).append($('<option>').val(item.id).text(item.name))
-        }
-    })
-}
-
 
       </script>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+
+
+<script>
+    
+    $('.uploadImage').submit(function (e) {
+      e.preventDefault();
+  
+      // var title = $('#title').val(); 
+  
+      $(this).ajaxSubmit({
+        // data: {title: title},
+        contentType: 'application/json',
+        success: function (response) {
+          alert('successfully')
+
+        }
+      });
+      return false;
+    });
+  
+  
+  
+  </script>
+
+<script src="/javascripts/validation.js"></script>
+
 </html>

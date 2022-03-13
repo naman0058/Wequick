@@ -1292,6 +1292,9 @@ router.get('/new-release-full-description',(req,res)=>{
 })
 
 
+
+
+
 router.get('/get-single-blog-description',(req,res)=>{
   pool.query(`select * from blogs where id = '${req.query.id}'`,(err,result)=>{
     if(err) throw err;
@@ -1341,6 +1344,21 @@ router.get('/invoice',(req,res)=>{
     res.redirect('/login')
   }
 })
+
+
+
+
+router.get('/success',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('success',{login,result,id:req.query.id})
+    })
+  
+})
+
 
 
 

@@ -1354,17 +1354,71 @@ router.get('/get-all-vendor',(req,res)=>{
 })
 
 
-router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 } , { name: 'transaction_image', maxCount: 1 } ]),(req,res)=>{
-  let body = req.body;
-console.log('before image',req.files)
-// if(req.body.transaction_image[0]){
-//   body['transaction_image'] = '';
-// }
-// else{
-// }
+// router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 } , { name: 'transaction_image', maxCount: 1 } ]),(req,res)=>{
+//   let body = req.body;
+// console.log(req.body)
+// console.log('before image',req.files)
+
+// // if(req.body.transaction_image[0]){
+// //   body['transaction_image'] = '';
+// // }
+// // else{
+// // }
 
 
    
+
+
+//   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
+
+//   body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
+
+//   body['image'] = req.files.image[0].filename;
+//   body['shop_img2'] = req.files.shop_img2[0].filename;
+//   body['status'] = 'pending';
+
+//   console.log('after image',req.body)
+
+
+//  var today = new Date();
+// var dd = today.getDate();
+
+// var mm = today.getMonth()+1; 
+// var yyyy = today.getFullYear();
+// if(dd<10) 
+// {
+//     dd='0'+dd;
+// } 
+
+// if(mm<10) 
+// {
+//     mm='0'+mm;
+// } 
+// today = yyyy+'-'+mm+'-'+dd;
+
+
+// body['date'] = today
+
+//   console.log(req.body);
+//   body['userid'] = 'TT'
+//   pool.query(`insert into vendor set ?`,body,(err,result)=>{
+//     if(err) throw err;
+//     else res.json({msg:'success'})
+//   })
+// })
+
+
+router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'aadhar_back', maxCount: 1 } ,  { name: 'image', maxCount: 1 }  ,  { name: 'transaction_image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 }  ]),(req,res)=>{
+  let body = req.body;
+
+
+  body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
+  body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
+  body['image'] = req.files.image[0].filename;
+  body['shop_img2'] = req.files.shop_img2[0].filename;
+  body['status'] = 'pending';
+
+
 if(req.files.transaction_image){
   body['transaction_image'] = req.files.transaction_image[0].filename;
 
@@ -1373,16 +1427,17 @@ else {
   body['transaction_image'] = ''
 }
 
-  body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
 
-  body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
 
-  body['image'] = req.files.image[0].filename;
-  body['shop_img2'] = req.files.shop_img2[0].filename;
-  body['status'] = 'pending';
 
-  console.log('after image',req.body)
+if(req.files.aadhar_back){
+  body['aadhar_back'] = req.files.aadhar_back[0].filename;
 
+}
+else {
+  body['aadhar_back'] = ''
+}
+  
 
  var today = new Date();
 var dd = today.getDate();
@@ -1409,9 +1464,10 @@ body['date'] = today
     if(err) throw err;
     else res.json({msg:'success'})
   })
+
+
+
 })
-
-
 
 
 router.post('/update-merchant', (req, res) => {
@@ -1495,6 +1551,7 @@ router.post('/check-bde-code',(req,res)=>{
 
 
 router.post('/check-vendor-number',(req,res)=>{
+  console.log(req.body)
   pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
     else if(result[0]){

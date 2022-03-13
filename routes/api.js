@@ -1895,7 +1895,13 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 router.get('/check-update',(req,res)=>{
-  res.json({msg:'update'})
+  if(req.query.version == 1.1){
+    res.json({msg:'update'})
+
+  }
+  else{
+    res.json({msg:'not update'})
+  }
 })
 
 // router.get('/get-profile')

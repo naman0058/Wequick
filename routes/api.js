@@ -1080,7 +1080,7 @@ router.post('/all-orders',(req,res)=>{
 
 
 router.post('/ongoing-orders',(req,res)=>{
-  pool.query(`select * from booking where vendorid = '${req.body.vendorid}' and status != 'completed'`,(err,result)=>{
+  pool.query(`select b.* , (select p.name from products p where p.id = b.booking_id ) as bookingname from booking b where b.vendorid = '${req.body.vendorid}' and b.status != 'completed'`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })
@@ -1088,7 +1088,7 @@ router.post('/ongoing-orders',(req,res)=>{
 
 
 router.post('/completed-orders',(req,res)=>{
-  pool.query(`select * from booking where vendorid = '${req.body.vendorid}' and status = 'completed'`,(err,result)=>{
+  pool.query(`select b.* , (select p.name from products p where p.id = b.booking_id ) as bookingname from booking b where b.vendorid = '${req.body.vendorid}' and b.status = 'completed'`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })

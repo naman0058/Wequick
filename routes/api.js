@@ -1058,9 +1058,40 @@ router.post('/check',(req,res)=>{
     }
  else {
 
-   res.json({
+  //  res.json({
+  //    msg : 'user not found'
+  //  })
+
+  pool.query(`select * from channel_partner where number = '${req.body.number}'`,(err,result)=>{
+    if(err) throw err;
+    else if(result[0]){
+      res.json({
+        msg : 'success',
+        result:result
+      })
+    }
+    else{
+  pool.query(`select * from channel_partner where number = '${req.body.number}'`,(err,result)=>{
+  if(err) throw err;
+  else if(result[0]){
+    res.json({
+      msg : 'success',
+      result:result
+    })
+  }
+  else{
+     res.json({
      msg : 'user not found'
    })
+  }
+
+  })
+
+    }
+  })
+
+
+
  }
   })
 })

@@ -7,11 +7,11 @@
 <section class="offer-dedicated-banner text-ceter">
     <div class="owl-carousel p-0 owl-theme restaurant-slider">
 
-        <% for(i=0;i<result[2].length;i++) { %>
+        <% for(i=0;i<result[1].length;i++) { %>
 
 
     <div class="item p-0 m-0">
-    <img class="img-fluid" src="/images/<%=result[2][i].image%>" style="width:100%;height:100%">
+    <img class="img-fluid" src="/images/<%=result[1][i].image%>" style="width:100%;height:100%">
     </div>
 
     <% } %>
@@ -29,29 +29,29 @@
 <div class="row">
 
 
-    <% for(i=0;i<result[7].length;i++) { %>
+    <% for(i=0;i<result[3].length;i++) { %>
 
 <div class="col-xl-3 col-sm-6" style="margin-top: 30px;">
 <div class="custom-card shadow-sm h-100">
 <div class="custom-card-image">
 <a href="#">
-<img class="img-fluid item-img" src="/images/<%=result[7][i].image%>" style="object-fit:cover;">
+<img class="img-fluid item-img" src="/images/<%=result[3][i].image%>" style="object-fit:cover;">
 </a>
 
 </div>
 <div class="p-3 pt-4">
 <div class="custom-card-body">
-<h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[7][i].short_description%></a></h6>
-<p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[7][i].expiry%></p>
+<h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[3][i].short_description%></a></h6>
+<p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[3][i].expiry%></p>
 </div>
 <div class="custom-card-footer d-flex align-items-center">
 
 
 
 
-        <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
+        <% if(result[3][i].isredeem == null || result[3][i].isredeem == '' || result[3][i].isredeem == 'null' || result[3][i].isredeem ==[]){ %>
 
-<a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[7][i].id%>" code="<%=result[7][i].name%>" expiry="<%=result[7][i].expiry%>" vendorid = '<%=result[7][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+<a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[3][i].id%>" code="<%=result[3][i].name%>" expiry="<%=result[3][i].expiry%>" vendorid = '<%=result[3][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
 
 <% } else { %>
 
@@ -81,7 +81,7 @@
 <div class="col-lg-12">
  <div class="owl-carousel owl-theme owl-carousel-four homepage-coupon-carousel">
 
-    <% for(i=0;i<result[8].length;i++) { %>
+    <% for(i=0;i<result[4].length;i++) { %>
 
 
     <div class="item">
@@ -89,7 +89,7 @@
 <div class="custom-card-image">
 
 <a href="#">
-<img class="img-fluid item-img" src="/images/<%=result[8][i].image%>">
+<img class="img-fluid item-img" src="/images/<%=result[4][i].image%>">
 </a>
 <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
 <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,11 +99,11 @@
 </div>
 <div class="p-3">
 <div class="custom-card-body">
-<h6 class="mb-0"><a class="text-gray-900" href="#"><%=result[8][i].short_description%></a></h6>
-<p class="text-gray-500 mb-2"> Expiry at <%=result[8][i].expiry%></p>
-<% if(result[8][i].isredeem == null || result[8][i].isredeem == '' || result[8][i].isredeem == 'null' || result[8][i].isredeem ==[]){ %>
+<h6 class="mb-0"><a class="text-gray-900" href="#"><%=result[4][i].short_description%></a></h6>
+<p class="text-gray-500 mb-2"> Expiry at <%=result[4][i].expiry%></p>
+<% if(result[4][i].isredeem == null || result[4][i].isredeem == '' || result[4][i].isredeem == 'null' || result[4][i].isredeem ==[]){ %>
 
-    <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[8][i].id%>" code="<%=result[8][i].name%>" expiry="<%=result[8][i].expiry%>" vendorid = '<%=result[8][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+    <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[4][i].id%>" code="<%=result[4][i].name%>" expiry="<%=result[4][i].expiry%>" vendorid = '<%=result[4][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
     
     <% } else { %>
     
@@ -171,28 +171,28 @@
         <div class="row">
         
         
-            <% for(i=0;i<result[9].length;i++) { %>
+            <% for(i=0;i<result[5].length;i++) { %>
         
         <div class="col-xl-3 col-sm-6">
         <div class="custom-card shadow-sm h-100">
         <div class="custom-card-image">
         <a href="#">
-        <img class="img-fluid item-img" src="/images/<%=result[9][i].image%>">
+        <img class="img-fluid item-img" src="/images/<%=result[5][i].image%>">
         </a>
         
         </div>
         <div class="p-3 pt-4">
         <div class="custom-card-body">
-        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[9][i].short_description%></a></h6>
-        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[9][i].expiry%></p>
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[5][i].short_description%></a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[5][i].expiry%></p>
         </div>
         <div class="custom-card-footer d-flex align-items-center">
        
         
         
-                <% if(result[9][i].isredeem == null || result[9][i].isredeem == '' || result[9][i].isredeem == 'null' || result[9][i].isredeem ==[]){ %>
+                <% if(result[5][i].isredeem == null || result[5][i].isredeem == '' || result[5][i].isredeem == 'null' || result[5][i].isredeem ==[]){ %>
         
-        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[9][i].id%>" code="<%=result[9][i].name%>" expiry="<%=result[9][i].expiry%>" vendorid = '<%=result[9][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[5][i].id%>" code="<%=result[5][i].name%>" expiry="<%=result[5][i].expiry%>" vendorid = '<%=result[5][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
         
         <% } else { %>
         
@@ -225,19 +225,19 @@
             <div class="row">
             
             
-                <% for(i=0;i<result[10].length;i++) { %>
+                <% for(i=0;i<result[6].length;i++) { %>
             
             <div class="col-xl-3 col-sm-6" style="height: 350px;">
             <div class="custom-card shadow-sm">
             <div class="custom-card-image">
-            <a href="/single-vendor-details?vendorid=<%=result[10][i].id%>">
-            <img class="img-fluid item-img" src="/images/<%=result[10][i].image%>">
+            <a href="/single-vendor-details?vendorid=<%=result[6][i].id%>">
+            <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>">
             </a>
             
             </div>
             <div class="p-3 pt-4">
             <div class="custom-card-body">
-            <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[10][i].business_name%>
+            <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[6][i].business_name%>
             </a></h6>
            
             </div>
@@ -245,7 +245,7 @@
             
           
             
-                <span class="text-muted" style="font-size: 12px;"> <%=result[10][i].address%> </span>
+                <span class="text-muted" style="font-size: 12px;"> <%=result[6][i].address%> </span>
             
             
             

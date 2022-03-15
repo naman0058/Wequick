@@ -12,6 +12,42 @@ const auth = 'bearer 8170b1fc-302d-4f5d-b6a8-72fb6dbdb804'
 var mapsdk = require('mapmyindia-sdk-nodejs');
 
 
+//  stripe payment start
+
+const stripe = require('stripe')('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');
+
+
+router.get('/ui',(req,res)=>{
+  res.render('ui')
+})
+
+router.post("/charge", (req, res) => {
+  console.log(req.body)
+ 
+
+  try {
+    stripe.customers
+      .create({
+        name: req.body.name,
+        email: req.body.email,
+        source: req.body.stripeToken
+      })
+      .then(customer =>
+        stripe.charges.create({
+          amount: req.body.amount * 100,
+          currency: "usd",
+          customer: customer.id
+        })
+      )
+      .then(() => res.send("thankyou"))
+      .catch(err => console.log(err));
+  } catch (err) {
+    res.send(err);
+  }
+});
+
+
+//  stripe payment end
 
 router.post('/reverse-geocoding',(req,res)=>{
   let body = req.body;

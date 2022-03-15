@@ -77,21 +77,7 @@ router.get('/', function(req, res, next) {
 
    var query = `select * from category order by name;`
    var query1 = `select * from banner where type = 'Front Banner' order by id desc;`
-   var query2=` SELECT bannerid ,productid , (select t.name from promotional_text t where t.id = bannerid) as textname ,
-   (select p.name from products p where p.id = productid) as productname,
-   (select p.price from products p where p.id = productid) as productprice,
-   (select p.quantity from products p where p.id = productid) as productquantity,
-   (select p.discount from products p where p.id = productid) as productdiscount,
-   (select p.image from products p where p.id = productid) as productimage,
-   (select p.categoryid from products p where p.id = productid) as productcategoryid,
-   (select p.subcategoryid from products p where p.id = productid) as productsubcategoryid,
-   (select p.net_amount from products p where p.id = productid) as productnetamount
-        FROM promotional_text_management p order by id limit 1;`
-   var query3 = `select * from promotional_text order by id desc limit 1;`
-   var query4 = `select * from cart where usernumber = '${req.session.number}';`
    var query5 = `select * from banner where type = 'Bottom Banner' order by id desc;`
-   var query6 = `select * from subcategory order by name;`
-
    var query7 = `select c.* ,
    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
@@ -110,7 +96,7 @@ router.get('/', function(req, res, next) {
     FROM vendor where status = 'approved' having distance <= 600000000000000 ORDER BY distance limit 8;`
 
  
-   pool.query(query+query6+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{
+   pool.query(query+query1+query5+query7+query8+query9+query10,(err,result)=>{
      if(err) throw err;
      else res.render('index', { title: 'Express',result,login });
    })
@@ -1064,7 +1050,7 @@ router.get('/shop-by-category',(req,res)=>{
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance,
     (select c.name from category c where c.id = '${req.query.categoryid}') as categoryname
-    FROM vendor where status= 'approved' and business_details = 'done' and delivery_details = 'done' and categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor where status= 'approved' and categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
       else if(result[1][0]){

@@ -1956,6 +1956,8 @@ router.post('/add-portfolio',upload.single('image'), (req, res) => {
     body['date'] = today;
     body['time'] = time;
 
+  console.log(req.body);
+
   // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
   //     if(err) throw err;
   //     else {

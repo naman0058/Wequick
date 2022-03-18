@@ -1092,43 +1092,14 @@ router.post('/check',(req,res)=>{
    })
 }
     }
- else {
-
-  //  res.json({
-  //    msg : 'user not found'
-  //  })
-
-  pool.query(`select * from channel_partner where number = '${req.body.number}'`,(err,result)=>{
-    if(err) throw err;
-    else if(result[0]){
-      res.json({
-        msg : 'success',
-        result:result
-      })
-    }
+ 
     else{
-  pool.query(`select * from agent where number = '${req.body.number}'`,(err,result)=>{
-  if(err) throw err;
-  else if(result[0]){
-    res.json({
-      msg : 'success',
-      result:result
+      res.json({
+      msg : 'user not found'
     })
-  }
-  else{
-     res.json({
-     msg : 'user not found'
-   })
-  }
-
-  })
-
-    }
-  })
+   }
 
 
-
- }
   })
 })
 
@@ -1475,27 +1446,15 @@ router.get('/get-all-vendor',(req,res)=>{
 // })
 
 
-router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'business_kyc_img', maxCount: 1 } , { name: 'aadhar_back', maxCount: 1 } ,  { name: 'image', maxCount: 1 }  ,  { name: 'transaction_image', maxCount: 1 } , { name: 'shop_img2', maxCount: 1 }  ]),(req,res)=>{
+router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount: 1 }, { name: 'aadhar_back', maxCount: 1 }   ,  { name: 'transaction_image', maxCount: 1 }   ]),(req,res)=>{
   let body = req.body;
 
 
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
-  body['image'] = req.files.image[0].filename;
-  body['shop_img2'] = req.files.shop_img2[0].filename;
+ 
   body['status'] = 'pending';
 
 
-
-
-
-  if(req.files.business_kyc_img){
-    body['business_kyc_img'] = req.files.business_kyc_img[0].filename;
-  
-  }
-  else {
-    body['business_kyc_img'] = ''
-  }
-  
 
 
 
@@ -1519,27 +1478,27 @@ else {
 }
   
 
- var today = new Date();
-var dd = today.getDate();
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-var mm = today.getMonth()+1; 
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
-if(dd<10) 
-{
-    dd='0'+dd;
-} 
 
-if(mm<10) 
-{
-    mm='0'+mm;
-} 
-today = yyyy+'-'+mm+'-'+dd;
+today = yyyy + '-' + mm + '-' + dd;
 
 
-body['date'] = today
+  body['date'] = today;
+  body['time'] = time;
+
+
 
   console.log(req.body);
-  body['userid'] = 'TT'
+ 
+  var otp = Math.floor(1000 + Math.random() * 9000);
+  body['userid'] = 'DLSJ' + otp;
+
+
   pool.query(`insert into vendor set ?`,body,(err,result)=>{
     if(err) throw err;
     else res.json({msg:'success'})
@@ -1972,5 +1931,103 @@ router.get('/check-update',(req,res)=>{
 })
 
 // router.get('/get-profile')
+
+
+
+
+
+
+// portfolio api
+
+
+router.post('/add-portfolio',upload.single('image'), (req, res) => {
+  let body = req.body;
+  body['image'] = req.file.filename;
+  var today = new Date();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  
+  today = yyyy + '-' + mm + '-' + dd;
+  
+  
+    body['date'] = today;
+    body['time'] = time;
+
+  // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
+  //     if(err) throw err;
+  //     else {
+  //         fs.unlinkSync(`public/images/${result[0].image}`); 
+
+
+pool.query(`insert into portfolio set ?`,body, (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+      }
+  })
+
+
+})
+
+
+
+router.get('/get-my-portfolio',(req,res)=>{
+  pool.query(`select * from portfolio where vendorid = '${req.body.vendorid}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
+
+
+
+
+router.post('/update-profile-image',upload.fields([{ name: 'image', maxCount: 1 }]), (req, res) => {
+  let body = req.body;
+  body['image'] = req.files.image[0].filename;
+
+  // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
+  //     if(err) throw err;
+  //     else {
+  //         fs.unlinkSync(`public/images/${result[0].image}`); 
+
+
+pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+      }
+  })
+
+
+})
+
+
+
+//
 
 module.exports = router;

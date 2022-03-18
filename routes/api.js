@@ -1071,7 +1071,7 @@ router.post("/payment-initiate", (req, res) => {
 
 router.post('/check',(req,res)=>{
   console.log('number',req.body.number)
-  pool.query(`select * from vendor where number = '${req.body.number}'`,(err,result)=>{
+  pool.query(`select v.* , (select c.category_type from category c where c.id = v.categoryid) as categorytype from vendor v where v.number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
     else if(result[0]){
 

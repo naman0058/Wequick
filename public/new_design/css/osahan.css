@@ -30,9 +30,16 @@ Version: 1.0
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&amp;display=swap');
 
 /* Extra */
-.shadow-sm {
+/* .shadow-sm {
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10196078431372549) !important;
+} */
+
+
+.shadow-sm:hover{
+
+	
 }
+
 .rounded,
 .border-radius {
 	border-radius: 8px !important;
@@ -41,7 +48,68 @@ Version: 1.0
 	background: #fff;
 	border-radius: 8px;
 	overflow: hidden;
+	transition: transform .5s;
+	border: 1px solid rgb(197, 134, 255);
+	
 }
+.custom-card:hover{
+	/* box-shadow: 20px 20px 10px rgb(230, 227, 227); */
+	-ms-transform: scale(1.1); /* IE 9 */
+	-webkit-transform: scale(0.6); /* Safari 3-8 */
+	transform: scale(1.05);
+	border: 1px solid rgb(139, 27, 245);
+	box-shadow: 1px 1px 8px rgba(128, 128, 128, 0.801);
+}
+.custom-card2 {
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform .5s;
+	border: 1px solid rgb(197, 134, 255);
+	
+}
+.custom-card2:hover{
+	-ms-transform: scale(1.1); /* IE 9 */
+	-webkit-transform: scale(0.6); /* Safari 3-8 */
+	transform: scale(1.05);
+	border: 1px solid rgb(139, 27, 245);
+	box-shadow: 1px 1px 8px rgba(128, 128, 128, 0.801);
+	
+}
+
+
+
+.custom-card3 {
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform .5s;
+	border:1px solid rgba(225, 130, 238, 0.822)
+}
+.custom-card3:hover{
+	-ms-transform: scale(1.1); /* IE 9 */
+	-webkit-transform: scale(0.6); /* Safari 3-8 */
+	transform: scale(1.05);
+	border:1px solid rgba(164, 55, 179, 0.822);
+	box-shadow: 1px 1px 8px rgba(128, 128, 128, 0.801);
+}
+
+
+
+.grad1 {
+
+	background-color: red; /* For browsers that do not support gradients */
+	background-image: linear-gradient(to right, #f94e00 , #ffb800bd);
+  }
+
+
+  .grad2 {
+
+	background-color: rgb(0, 255, 64); /* For browsers that do not support gradients */
+	background-image: linear-gradient(to right,  #3d7c08 , #8fff0099);
+  }
+
+
 .flex-direction-row{
 	flex-direction: row;
 }
@@ -262,6 +330,7 @@ h6,
 	border: 1px solid #d1d3e2;
 	outline: none;
 }
+
 .select2-dropdown {
 	border: medium none;
 	border-radius: 8px;
@@ -427,6 +496,84 @@ h6,
 	box-shadow: 0 .125rem 1.25rem rgba(0, 0, 0, .075)!important;
 	z-index: 9;
 }
+
+
+.b1{
+border:1px solid rgb(212, 206, 206);
+border-radius: 20px;
+}
+
+
+.b1:hover{
+	box-shadow: 2px 1px 14px lightblue;
+
+}
+
+
+
+
+.im1{
+	
+	margin: 10px;
+	display: inline-block;
+	color: #000;
+	
+  text-decoration: none;
+  width: 245px;
+}
+
+
+
+.im2 {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+  }
+  .im2:hover, .float-on-hover:focus, .float-on-hover:active {
+	-webkit-transform: translateY(-8px);
+	transform: translateX(-6px);
+  }
+
+
+
+
+
+  
+.im3 {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	
+  }
+  .im3:hover, .float-on-hover:focus, .float-on-hover:active {
+	-webkit-transform: translateY(8px);
+	transform: translateX(6px);
+  }
+  
+
+
+
+
+
+
+
+
 
 /* Stores */
 .banner-overlay {
@@ -1212,7 +1359,7 @@ button:focus {
 		padding: 0px;
 		position: absolute;
 		right: 16px;
-		top: 19px;
+		top: 39px;
 	}
 	.osahan-top-main .flex-direction-row {
 		flex-direction: row;
@@ -1240,8 +1387,10 @@ button:focus {
 	.osahan-top-main .navbar-collapse.collapse.show .nav-item .dropdown-menu {
 		text-align: center;
 		margin: auto;
-		left: 0;
-		right: 0;
+		left: 33px;
+		right: 0px;
+		width:50%;
+		margin-top:-225px;
 	}
 
 	
@@ -1386,6 +1535,14 @@ button:focus {
 	.osahan-pricing .shadow-sm.bg-white.rounded {
 		margin-bottom: 16px;
 	}
+
+
+
+.caro{
+
+	height: 127px;
+}
+
 }
 @media (min-width: 768px) and (max-width: 1023px) {
 
@@ -1502,4 +1659,32 @@ button:focus {
 	.container {
 		max-width: 100%;
 	}
+
+
+.caro2{
+	height:355px;
+}
+
+
+.crd{
+	height:100px;
+}
+
+	
+}
+
+
+
+
+
+
+@media (min-width: 1024px) and (max-width: 1400px) {
+
+
+	.caro2{
+		height:355px;
+	}
+	
+	
+
 }

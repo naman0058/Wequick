@@ -286,6 +286,35 @@ legend {
 	color: inherit;
 	white-space: normal;
 }
+
+
+
+
+
+.back{
+
+
+	background-image: url("https://thumbs.dreamstime.com/b/coming-soon-banner-172493836.jpg");
+	background-repeat: no-repeat;
+	height:50%;
+	background-size: cover;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 progress {
 	vertical-align: baseline;
 }
@@ -486,8 +515,7 @@ pre code {
 }
 .container {
 	width: 100%;
-	padding-right: 0.75rem;
-	padding-left: 0.75rem;
+
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -508,7 +536,7 @@ pre code {
 }
 @media (min-width: 1200px) {
 	.container {
-		max-width: 1140px;
+		max-width: 1500px;
 	}
 }
 .container-fluid {
@@ -1189,7 +1217,10 @@ pre code {
 	.col-xl-3 {
 		flex: 0 0 25%;
 		max-width: 25%;
+		margin-top:20px;
+		
 	}
+
 	.col-xl-4 {
 		flex: 0 0 33.33333%;
 		max-width: 33.33333%;
@@ -2112,11 +2143,13 @@ fieldset:disabled a.btn {
 	color: #fff;
 	background-color: #2c7be5;
 	border-color: #2c7be5;
+	background-color: rgb(214, 0, 178); /* For browsers that do not support gradients */
+	background-image: linear-gradient(to right,  #6c2a74, #be3068);
 }
 .btn-primary:hover {
 	color: #fff;
-	background-color: #1a68d1;
-	border-color: #1862c6;
+	box-shadow: 1px 1px 8px rgba(236, 27, 255, 0.801);
+
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -6587,9 +6620,9 @@ button.bg-dark:focus {
 	clip: auto;
 	white-space: normal;
 }
-.shadow-sm {
+/* .shadow-sm {
 	box-shadow: 0 0.125rem 0.25rem 0 rgba(58, 59, 69, 0.2) !important;
-}
+} */
 .shadow {
 	box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
 }

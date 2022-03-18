@@ -1988,7 +1988,7 @@ pool.query(`insert into portfolio set ?`,body, (err, result) => {
 
 
 router.get('/get-my-portfolio',(req,res)=>{
-  pool.query(`select * from portfolio where vendorid = '${req.body.vendorid}'`,(err,result)=>{
+  pool.query(`select * from portfolio where vendorid = '${req.query.vendorid}'`,(err,result)=>{
     if(err) throw err;
     else res.json(result);
   })

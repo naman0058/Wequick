@@ -5,7 +5,7 @@ var upload = require('./multer');
 const fetch = require("node-fetch");
 
 
-// console.log(Date.getDay())
+
 
 
 
@@ -18,6 +18,75 @@ var mapsdk = require('mapmyindia-sdk-nodejs');
 //  stripe payment start
 
 const stripe = require('stripe')('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');
+
+
+router.get('/check-time',(req,res)=>{
+  var today = new Date();
+
+console.log(today.getDay())
+var arr = ['sunday_time' , 'monday_time' , 'tuesday_time' , 'wednesday_time' , 'thursday_time' , 'friday_time' , 'saturday_time' ]
+console.log(arr[today.getDay()])
+
+pool.query(`select ${arr[today.getDay()]} from vendor where id = '${req.query.vendorid}'`,(err,result)=>{
+  if(err) throw err;
+  else {
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+    var date = new Date();
+
+    let hours = date.getHours();
+    let minutes = date.getMinutes();    
+    const ampm = hours >= 12 ? 'pm' : 'am';
+  
+    hours %= 12;
+    hours = hours || 12;    
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+  
+    const strTime = `${hours}:${minutes} ${ampm}`;
+  
+    // return strTime;
+    // var time1 = hours + ":" + minutes + ":" + seconds;
+
+ diff('8:00','17:00')
+
+    function diff(start, end) {
+      start = start.split(":");
+      end = end.split(":");
+      var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+      var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+      var diff = endDate.getTime() - startDate.getTime();
+      var hours = Math.floor(diff / 1000 / 60 / 60);
+      diff -= hours * 1000 * 60 * 60;
+      var minutes = Math.floor(diff / 1000 / 60);
+  
+      // If using time pickers with 24 hours format, add the below line get exact hours
+      if (hours < 0)
+         hours = hours + 24;
+  
+      return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minutes;
+  }
+
+    res.json({result,time,strTime})
+  }
+})
+})
+
+
+router.get('/check-state',(req,res)=>{
+  pool.query(`select * from state where name = '${req.query.name}' and status='active'`,(err,result)=>{
+     if(err) throw err;
+     else if(result[0]){
+       res.json({msg:'active'})
+     }
+     else{
+       res.json({
+         msg : 'not active'
+       })
+     }
+  })
+})
+
 
 
 router.get('/ui',(req,res)=>{

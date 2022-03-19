@@ -5,6 +5,9 @@ var upload = require('./multer');
 const fetch = require("node-fetch");
 
 
+// console.log(Date.getDay())
+
+
 
 const request = require('request');
 const auth = 'bearer 8170b1fc-302d-4f5d-b6a8-72fb6dbdb804'
@@ -1069,6 +1072,43 @@ router.post("/payment-initiate", (req, res) => {
  
 
 
+router.post('/check1',(req,res)=>{
+  console.log('number',req.body.number)
+  pool.query(`select v.* , (select c.category_type from category c where c.id = v.categoryid) as categorytype from vendor v where v.number = '${req.body.number}'`,(err,result)=>{
+    if(err) throw err;
+    else if(result[0]){
+
+    
+     if(result[0].status == 'approved'){
+      console.log('result approved',result)
+      res.json({
+        msg : 'success',
+        result:result
+      })
+ }
+ else if(result[0].status != 'approved'){
+  console.log('result pending',result)
+
+   res.json({
+     msg : 'pending',
+     
+   })
+}
+    }
+ 
+    else{
+      res.json({
+      msg : 'user not found'
+    })
+   }
+
+
+  })
+})
+
+
+
+
 router.post('/check',(req,res)=>{
   console.log('number',req.body.number)
   pool.query(`select v.* , (select c.category_type from category c where c.id = v.categoryid) as categorytype from vendor v where v.number = '${req.body.number}'`,(err,result)=>{
@@ -1132,7 +1172,6 @@ router.post('/check',(req,res)=>{
 
   })
 })
-
 
 
 
@@ -1483,7 +1522,7 @@ router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
  
   body['status'] = 'pending';
-
+  // body['profile_complete'] = 25;
 
 
 

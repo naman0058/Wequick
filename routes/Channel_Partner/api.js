@@ -81,48 +81,47 @@ router.post('/all-order',(req,res)=>{
 
 
 
-// router.post('/add-agent',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 } , { name: 'profile_image', maxCount: 8 }]),(req,res)=>{
-//     let body = req.body
+router.post('/add-agent1',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 } , { name: 'profile_image', maxCount: 8 }]),(req,res)=>{
+    let body = req.body
  
-//     console.log(req.files)
-//     var otp = Math.floor(1000 + Math.random() * 9000);
-//     body['userid'] = 'DLSJ' + otp;
+    console.log(req.files)
+    var otp = Math.floor(1000 + Math.random() * 9000);
+    body['userid'] = 'DLSJ' + otp;
 
-// // if(req.files.icon){
+// if(req.files.icon){
+    body['image'] = req.files.image[0].filename;
+    body['icon'] = req.files.icon[0].filename;
+    body['profile_image'] = req.files.profile_image[0].filename;
+
+
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    today = yyyy + '-' + mm + '-' + dd;
+    
+    
+      body['date'] = today;
+      body['time'] = time;
+
+ console.log(req.body)
+   pool.query(`insert into agent set ?`,body,(err,result)=>{
+       err ? console.log(err) : res.json({msg : 'success'})
+   })
+// }
+// else {
 //     body['image'] = req.files.image[0].filename;
-//     body['icon'] = req.files.icon[0].filename;
-//     body['profile_image'] = req.files.profile_image[0].filename;
-
-
-//     var today = new Date();
-//     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    
-//     var dd = String(today.getDate()).padStart(2, '0');
-//     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-//     var yyyy = today.getFullYear();
-    
-//     today = yyyy + '-' + mm + '-' + dd;
-    
-    
-//       body['date'] = today;
-//       body['time'] = time;
-
+//     // body['icon'] = req.files.icon[0].filename;
 //  console.log(req.body)
 //    pool.query(`insert into agent set ?`,body,(err,result)=>{
 //        err ? console.log(err) : res.json({msg : 'success'})
 //    })
-// // }
-// // else {
-// //     body['image'] = req.files.image[0].filename;
-// //     // body['icon'] = req.files.icon[0].filename;
-// //  console.log(req.body)
-// //    pool.query(`insert into agent set ?`,body,(err,result)=>{
-// //        err ? console.log(err) : res.json({msg : 'success'})
-// //    })
-// // }
+// }
 
-// })
-
+})
 
 
 
@@ -167,7 +166,6 @@ router.post('/add-agent',upload.fields([{ name: 'image', maxCount: 1 }, { name: 
 // }
 
 })
-
 
 
 

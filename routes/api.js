@@ -2232,7 +2232,7 @@ router.post('/cp_history',(req,res)=>{
 
 
 
-router.post('/add-menu',upload.single([{ name: 'image', maxCount: 1 }]),(req,res)=>{
+router.post('/add-menu',upload.single('image'),(req,res)=>{
   let body = req.body;
 
   console.log(req.files)

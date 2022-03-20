@@ -2198,7 +2198,7 @@ router.post('/channel-partner-dashboard',(req,res)=>{
   var query1 = `select count(id) as total_merchant from vendor where channel_partner_id = '${req.body.id}';`
   var query2 = `select count(id) as today_merchant from vendor where channel_partner_id = '${req.body.id}' and date = CURDATE();`
   var query3 = `select sum(price) as payment_pending from vendor where channel_partner_id = '${req.body.id}' and cp_payment_status = 'pending';`
-  var query4 = `select sum(price) as payment_pending from vendor where channel_partner_id = '${req.body.id}' and cp_payment_status = 'success';`
+  var query4 = `select sum(price) as payment_recieved from vendor where channel_partner_id = '${req.body.id}' and cp_payment_status = 'success';`
 
 
   pool.query(query+query1+query2+query3+query4,(err,result)=>{

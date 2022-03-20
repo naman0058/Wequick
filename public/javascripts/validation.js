@@ -104,7 +104,7 @@ function checknumber(){
     let number = $('.number').val()
     
     $.post('/api/check-vendor-number',{number},data=>{
-        alert(data.msg)
+        // alert(data.msg)
         if(data.msg =='invalid'){
            
             let table = `<span style='color:green'>Mobile Number Available</span>`
@@ -242,9 +242,7 @@ function submit(){
         else if ($('#kyc_document').val() == "" || $('#kyc_document').val() == [] || $('#kyc_document').val() == null) {
             alert('Please Select Personal Document')
         }
-        else if ($('#business_kyc').val() == "" || $('#business_kyc').val() == [] | $('#business_kyc').val() == null) {
-            alert('Please Select Business Document..')
-        }
+     
 
         else if ($('#pincode').val() == "" || $('#pincode').val() == [] || pincodeerror == 'invalid')
          
@@ -255,8 +253,12 @@ function submit(){
             alert('Select Locality...')
         }
 
-        else if (!$.trim($("#description").val())) {
-            alert('Write Something About Your Business')
+        else if ($('#doc_number').val() == "" || $('#doc_number').val() == [] || $('#doc_number').val() == null || $('#doc_number').val() == 'null') {
+            alert('Select Document Number...')
+        }
+
+        else if (!$.trim($("#address").val())) {
+            alert('Enter Shop Address')
         }
         else if ($('#payment_type').val() == "" || $('#payment_type').val() == [] || $('#payment_type').val() == null) {
             alert('Select Account Type...')
@@ -279,9 +281,7 @@ function submit(){
 
 
         else if ($('#personal_kyc_img').val() == "" || $('#personal_kyc_img').val() == []) alert("Upload Personal KYC Doc");
-        else if ($('#business_kyc_img').val() == "" || $('#business_kyc_img').val() == []) alert("Upload Business KYC  Doc");
-        else if ($('#image').val() == "" || $('#image').val() == []) alert("Upload Shop Insisde Image");
-        else if ($('#shop_img2').val() == "" || $('#shop_img2').val() == []) alert("Upload Shop Outside Image ");
+      
       
     //     else if ($('#kyc_document').val() == "Aadhar Card") {
     //         if ($('#aadhar_back').val() == "" || $('#aadhar_back').val() == 'undefined'){
@@ -310,11 +310,11 @@ function submit(){
             formData.append('number', $('#number').val());
             formData.append('categoryid', $('#categoryid').val());
             formData.append('personal_doc', $('#kyc_document').val());
-            formData.append('business_kyc', $('#business_kyc').val());
+            // formData.append('business_kyc', $('#business_kyc').val());
             formData.append('pincode', $('#pincode').val());
             formData.append('latitude', '4545');
             formData.append('longitude', '6565');
-            formData.append('description', $('#description').val());
+            formData.append('address', $('#address').val());
             formData.append('agentid', $('#agentid').val());
             formData.append('transaction_id', $('#transaction_id').val());
             formData.append('locality', $('#areaid').val());
@@ -324,9 +324,9 @@ function submit(){
             formData.append('city', city);
 
 formData.append('personal_kyc_img', document.getElementById("personal_kyc_img").files[0]);
-formData.append('business_kyc_img', document.getElementById("business_kyc_img").files[0]);
-formData.append('image', document.getElementById("image").files[0]);
-formData.append('shop_img2', document.getElementById("shop_img2").files[0]);
+// formData.append('business_kyc_img', document.getElementById("business_kyc_img").files[0]);
+// formData.append('image', document.getElementById("image").files[0]);
+// formData.append('shop_img2', document.getElementById("shop_img2").files[0]);
 
 
 

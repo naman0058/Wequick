@@ -1636,7 +1636,10 @@ today = yyyy + '-' + mm + '-' + dd;
   pool.query(`select channel_partner_id from agent where userid = '${req.body.agentid}'`,(err,result)=>{
     if(err) throw err;
     else {
-      body['channel_partner_id'] = result[0].userid;
+      console.log(result[0])
+
+      body['channel_partner_id'] = result[0].channel_partner_id;
+      console.log(req.body)
       pool.query(`insert into vendor set ?`,body,(err,result)=>{
         if(err) throw err;
         else res.json({msg:'success'})

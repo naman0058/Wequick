@@ -1806,8 +1806,10 @@ router.get('/vendor-coupon',(req,res)=>{
 })
 
 
+
+
 router.get('/single-vendor-details',(req,res)=>{
-  var query = `select * from vendor where id = '${req.query.vendorid}';`
+  var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
   pool.query(query,(err,result)=>{
     if(err) throw err;
     else res.json(result);
@@ -2214,6 +2216,60 @@ else res.json(result);
 
 router.post('/cp_history',(req,res)=>{
   pool.query(`select * from cp_transaction where cp_id = '${req.body.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+router.post('/add-menu',upload.single([{ name: 'image', maxCount: 1 }]),(req,res)=>{
+  let body = req.body;
+
+  console.log(req.files)
+  body['image'] = req.file.filename
+  var today = new Date();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  
+  today = yyyy + '-' + mm + '-' + dd;
+  
+  
+    body['date'] = today;
+    body['time'] = time;
+
+console.log(req.body)
+ pool.query(`insert into menu set ?`,body,(err,result)=>{
+     err ? console.log(err) : res.json({msg : 'success'})
+ })
+// }
+// else {
+//     body['image'] = req.files.image[0].filename;
+//     // body['icon'] = req.files.icon[0].filename;
+//  console.log(req.body)
+//    pool.query(`insert into agent set ?`,body,(err,result)=>{
+//        err ? console.log(err) : res.json({msg : 'success'})
+//    })
+// }
+
+})
+
+
+
+router.get('/get-menu',(req,res)=>{
+  pool.query(`select * from menu where vendorid = '${req.query.id}'`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })

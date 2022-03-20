@@ -1591,6 +1591,8 @@ router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
  
   body['status'] = 'pending';
+  body['cp_payment_status'] = 'pending';
+
 
 if(req.files.transaction_image){
   body['transaction_image'] = req.files.transaction_image[0].filename;
@@ -2191,13 +2193,15 @@ else res.json(result);
 
 
 
-router.post('/vendor-dashboard',(req,res)=>{
-  var query = `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}';`
-  var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.body.vendorid}';`
-  var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
-  var query3 = `select sum(price) as total_revenue from booking where vendorid = '${req.body.vendorid}';`
+router.post('/channel-partner-dashboard',(req,res)=>{
+  var query = `select count(id) as total_agent from agent where channel_partner_id = '${req.body.id}';`
+  var query1 = `select count(id) as total_merchant from vendor where channel_partner_id = '${req.body.id}';`
+  var query2 = `select count(id) as today_merchant from vendor where channel_partner_id = '${req.body.id}' and date = CURDATE();`
+  var query3 = `select sum(price) as payment_pending from vendor where channel_partner_id = '${req.body.id}' and cp_payment_status = 'pending';`
+  var query4 = `select sum(price) as payment_pending from vendor where channel_partner_id = '${req.body.id}' and cp_payment_status = 'success';`
 
-  pool.query(query+query1+query2+query3,(err,result)=>{
+
+  pool.query(query+query1+query2+query3+query4,(err,result)=>{
       // res.render('Admin/Dashboard',{msg : '',result})
       if(err) throw err;
 else res.json(result);
@@ -2206,5 +2210,13 @@ else res.json(result);
 
 
 //
+
+
+router.post('/cp_history',(req,res)=>{
+  pool.query(`select * from cp_transaction where cp_id = '${req.body.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
 
 module.exports = router;

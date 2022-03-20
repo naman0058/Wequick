@@ -1591,10 +1591,6 @@ router.post('/save-merchant',upload.fields([{ name: 'personal_kyc_img', maxCount
   body['personal_kyc_img'] = req.files.personal_kyc_img[0].filename;
  
   body['status'] = 'pending';
-  // body['profile_complete'] = 25;
-
-
-
 
 if(req.files.transaction_image){
   body['transaction_image'] = req.files.transaction_image[0].filename;
@@ -1637,10 +1633,17 @@ today = yyyy + '-' + mm + '-' + dd;
   body['userid'] = 'DLSJ' + otp;
 
 
-  pool.query(`insert into vendor set ?`,body,(err,result)=>{
+  pool.query(`select userid from channel_partner where agentid = '${req.body.agentid}'`,(err,result)=>{
     if(err) throw err;
-    else res.json({msg:'success'})
+    else {
+      body['channel_partner_id'] = result[0].userid;
+      pool.query(`insert into vendor set ?`,body,(err,result)=>{
+        if(err) throw err;
+        else res.json({msg:'success'})
+      })
+    }
   })
+ 
 
 
 
@@ -2166,6 +2169,37 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 })
 
+
+
+
+
+
+router.post('/agent-dashboard',(req,res)=>{
+  var query = `select count(id) as today_vendor from vendor where agentid = '${req.body.agentid}' and date = CURDATE();`
+  var query1 = `select count(id) as total_vendor from vendor where agentid = '${req.body.agentid}';`
+
+  pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+else res.json(result);
+  })
+})
+
+
+
+
+
+router.post('/vendor-dashboard',(req,res)=>{
+  var query = `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}';`
+  var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.body.vendorid}';`
+  var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
+  var query3 = `select sum(price) as total_revenue from booking where vendorid = '${req.body.vendorid}';`
+
+  pool.query(query+query1+query2+query3,(err,result)=>{
+      // res.render('Admin/Dashboard',{msg : '',result})
+      if(err) throw err;
+else res.json(result);
+  })
+})
 
 
 //

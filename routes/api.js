@@ -2148,6 +2148,7 @@ router.get('/get-my-portfolio',(req,res)=>{
 router.post('/update-profile-image',upload.single('image'), (req, res) => {
   let body = req.body;
   body['image'] = req.file.filename
+console.log(req.body)
 
 pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {

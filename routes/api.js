@@ -2145,15 +2145,9 @@ router.get('/get-my-portfolio',(req,res)=>{
 
 
 
-router.post('/update-profile-image',upload.fields([{ name: 'image', maxCount: 1 }]), (req, res) => {
+router.post('/update-profile-image',upload.single('image'), (req, res) => {
   let body = req.body;
-  body['image'] = req.files.image[0].filename;
-
-  // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
-  //     if(err) throw err;
-  //     else {
-  //         fs.unlinkSync(`public/images/${result[0].image}`); 
-
+  body['image'] = req.file.filename
 
 pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {

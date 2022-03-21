@@ -1,5 +1,7 @@
 var createError = require('http-errors');
 var cookieSession = require('cookie-session')
+const pool = require('./routes/pool');
+
 
 var express = require('express');
 var path = require('path');
@@ -119,9 +121,21 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+
+  req.session.usernumber ? login =  true : login = false
+
+    var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else {
+        // res.status(err.status || 500);
+        res.render('error',{login,result});
+      }
+    })
+
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+
 });
 
 module.exports = app;

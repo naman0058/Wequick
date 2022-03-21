@@ -30,60 +30,62 @@
         </tr>
         </thead>
         <tbody>
+
+
+          <% for(i=0;i<result[3].length;i++) { %>
+
+
         <tr>
         <td class="product-thumbnail">
           <div class="radio">
-            <input type="radio" class="saved_address" username="Ndkdjnd" state="Z x x" city="X xnxb" pincode="989898" landmark="Xjx " area="Djdn" email="" id="4"  name="oldaddress">
-            Ndkdjnd 
+            <input  class="saved_address" 
+            username = '<%=result[3][i].name%>'
+            state = '<%=result[3][i].state%>'
+            city = '<%=result[3][i].city%>'
+            pincode = '<%=result[3][i].pincode%>'
+            landmark = '<%=result[3][i].landmark%>'
+            area = '<%=result[3][i].area%>'
+            email = '<%=result[3][i].email%>'
+             id="<%=result[3][i].id%>" type="radio"
+             name="oldaddress">
+            <%=result[3][i].name%>
             </div>
           
         </td>
 
         
         <td class="product-name">
-          Djdn , Xjx , Z x x , 989898
+          <%=result[3][i].area%> , <%=result[3][i].landmark%>  , <%=result[3][i].state%> ,  <%=result[3][i].pincode%>
         </td>
       
         </tr>
 
+<% } %>
 
-        <tr>
-          <td class="product-thumbnail">
-            <div class="radio">
-              <input type="radio" class="saved_address" username="Ndkdjnd" state="Z x x" city="X xnxb" pincode="989898" landmark="Xjx " area="Djdn" email="" id="4"  name="oldaddress">
-              Ndkdjnd 
-              </div>
-            
-          </td>
-  
-          
-          <td class="product-name">
-            Djdn , Xjx , Z x x , 989898
-          </td>
-        
-          </tr>
+     
 
         
         </tbody>
         </table>
 
 
-  <p style="font-size: 16px;font-weight: bold;">Billing Details</p>
+  <p style="font-size: 16px;font-weight: bold;">Address</p>
 
 
+  <form class="form checkout-form"action='/order-now' method="post">
 
 
     
     <div class="col-xs-6">
     <div class="form-group">
     <label>Full name *</label>
-    <input class="form-control form-control-md" id="checkoutBillingFirstName" name="first_name" type="text" value="naman Jain" placeholder="First Name" required="">
+    <input class="form-control form-control-md" id="checkoutBillingFirstName" name="first_name" type="text"  placeholder="First Name" required="">
     </div>
     </div>
     <div class="col-xs-6">
     <div class="form-group">
     <label>Email Address *</label>
-    <input class="form-control form-control-md" id="checkoutBillingEmail" name="email" type="email" placeholder="Email" value="jnaman345@gmail.com" required="">
+    <input class="form-control form-control-md" id="checkoutBillingEmail" name="email" type="email" placeholder="Email"  required="">
     </div>
     </div>
     <div class="form-group">
@@ -126,39 +128,15 @@
 
 
 <h5 class="mb-4  text-gray-900">Your Order <a class="light-gray" href="#"></a></h5>
-<div class="upgrade-coin-header clearfix">
-<div class="float-left">
-<h6 class="m-0 text-primary">Subtotal</h6>
-</div>
-<div class="float-right text-right pt-1">
-<h6 class="m-0 text-primary"><i class="icofont-money"></i>108</h6>
-</div>
 
 
-
-
-
-</div>
-<div class="upgrade-coin-header clearfix">
-    <div class="float-left">
-    <h6 class="m-0 text-primary">Shipping Charges</h6>
-    </div>
-    <div class="float-right text-right pt-1">
-    <h6 class="m-0 text-primary"><i class="icofont-money"></i>500</h6>
-    </div>
-    
-    
-    
-    
-    
-    </div>
 <hr class="divider">
 <div class="upgrade-coin-header clearfix">
     <div class="float-left">
     <h6 class="m-0 text-primary">Total</h6>
     </div>
     <div class="float-right text-right pt-1">
-    <h6 class="m-0 text-primary"><i class="icofont-money"></i>608</h6>
+    <h6 class="m-0 text-primary">Rs. <%=result[2][0].totalprice%></h6>
     </div>
     
     </div>
@@ -166,78 +144,99 @@
 <hr class="divider">
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" style="width: 100px;">
-<p>Scan this</p>
+<p>Scan this QR Code to make payment</p>
 
+<p style="color:red;"><b>Please Talk With Merchant Before Place Order </b> </p>
     
-<a href="/checkout" class="btn btn-block btn-dark btn-icon-right btn-rounded  btn-checkout">
-    Place Order<i class="w-icon-long-arrow-right"></i></a>
+
+<button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
+
+<!-- <a href="/checkout" class="btn btn-block btn-dark btn-icon-right btn-rounded  btn-checkout">
+    Place Order<i class="w-icon-long-arrow-right"></i></a> -->
 
 </div>
 
 </div>
 </div>
 </div>
+</form>
+
 </section>
-<section class="py-4 bg-white osahan-copyright">
-<div class="container">
-<div class="row">
-<div class="col-xl-12">
-<div class="d-flex align-items-center justify-content-between">
-<p class="m-0 text-secondary">Copyright © Your Website 2020</p>
-<p class="m-0">
-<a href="#" class="text-secondary">About Us</a>
-&nbsp; · &nbsp;
-<a href="#" class="text-secondary">Privacy Policy</a>
-&nbsp; · &nbsp;
-<a href="#" class="text-secondary">Terms &amp; Conditions</a>
-</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-
-</div>
-
-</div>
 
 
+<%- include ('./footer.ejs') %>
+     
 
-<a class="scroll-to-top rounded-circle" href="#page-top">
-<i class="fas fa-angle-up"></i>
-</a>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">×</span>
-</button>
-</div>
-<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-<div class="modal-footer">
-<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
-</div>
-</div>
-</div>
-</div>
+<script>
+    
 
-<script src="/new_design/vendor/jquery/jquery.min.js" type="2fd896e76e66f47cb924a382-text/javascript"></script>
-<script src="/new_design/vendor/bootstrap/js/bootstrap.bundle.min.js" type="2fd896e76e66f47cb924a382-text/javascript"></script>
+    $.getJSON(`/api/time`, data => {
+        categories1 = data
+        fillDropDown('time', data, 'Choose Time Slot', 0)
+      
+    })
+    
+    
+    $.getJSON(`/api/pincode`, data => {
+        pincode = data
+        fillDropDown1('pincode', data, 'Choose Time Slot', 0)
+      
+    })
+    
+    
+    function fillDropDown(id, data, label, selectedid = 0) {
+        $(`#${id}`).empty()
+        // $(`#${id}`).append($('<option>').val("null").text(label))
+    
+        $.each(data, (i, item) => {
+            if (item.id == selectedid) {
+                $(`#${id}`).append($('<option selected>').val(`${item.date} at ${item.time}`).text(`${item.date} at ${item.time}`))
+            } else {
+                $(`#${id}`).append($('<option>').val(`${item.date} at ${item.time}`).text(`${item.date} at ${item.time}`))
+            }
+        })
+    }
+    
+    
+    
+    
+    function fillDropDown1(id, data, label, selectedid = 0) {
+        $(`#${id}`).empty()
+        // $(`#${id}`).append($('<option>').val("null").text(label))
+    
+        $.each(data, (i, item) => {
+            if (item.id == selectedid) {
+                $(`#${id}`).append($('<option selected>').val(`${item.area} - ${item.name}`).text(`${item.area} - ${item.name}`))
+            } else {
+                $(`#${id}`).append($('<option>').val(`${item.area} - ${item.name}`).text(`${item.area} - ${item.name}`))
+            }
+        })
+    }
+    
+    
+    $('.saved_address').click(function(){
+        let username = $(this).attr('username')
+        let state = $(this).attr('state')
+        let city = $(this).attr('city')
+        let pincode = $(this).attr('pincode')
+        let area = $(this).attr('area')
+        let landmark = $(this).attr('landmark')
+        let email = $(this).attr('email')
+    
+    
+        $('#checkoutBillingFirstName').val(username)
+        $('#checkoutBillingAddress').val(area)
+        $('#checkoutBillingAddressTwo').val(landmark)
+        $('#checkoutBillingTown').val(city)
+        $('#checkoutBillingState').val(state)
+        $('#pincode').val(pincode)
+        $('#checkoutBillingEmail').val(email)
+    
+    })
+    
+    </script>
 
-<script src="/new_design/vendor/jquery-easing/jquery.easing.min.js" type="2fd896e76e66f47cb924a382-text/javascript"></script>
-
-<script src="/new_design/vendor/select2/js/select2.min.js" type="2fd896e76e66f47cb924a382-text/javascript"></script>
-
-<script src="/new_design/vendor/owl-carousel/owl.carousel.js" type="2fd896e76e66f47cb924a382-text/javascript"></script>
-
-<script src="/new_design/js/custom.js" type="2fd896e76e66f47cb924a382-text/javascript"></script>
-<script src="/new_design/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="2fd896e76e66f47cb924a382-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d9423cd3d8a20","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-</body>
-
-<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/membership.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:44:27 GMT -->
+<!-- Mirrored from portotheme.com/html/wolmart/checkout.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:20:01 GMT -->
 </html>

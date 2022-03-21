@@ -7,7 +7,6 @@
 <div class="col-xl-3 col-sm-4">
 <div class="user-panel-body-left">
 <div class="bg-white rounded p-4 mb-4 text-center shadow-sm">
-<img class="mb-3 mt-2 user-info-img" alt="Generic placeholder image" src="/new_design/images/user-icon/user.png">
 <h6 class="text-black mb-2 text-gray-900"><%=result[2][0].name%></h6>
 <p class="mb-3"><%=result[2][0].number%></p>
 <a href="/logout">
@@ -17,16 +16,72 @@ Logout</button>
 <!-- <p class="mb-0 mt-3"><a href="#">Edit Profile</a></p> -->
 </div>
 <div class="user-panel-sidebar-link mb-4 bg-white rounded shadow-sm overflow-hidden">
-<a href="#md"><i class="icofont-fire"></i> My Deals</a>
 <a href="#mo"><i class="icofont-sale-discount"></i> My Orders</a>
+
+<a href="#md"><i class="icofont-fire"></i> My Deals</a>
 <a href="#ms"><i class="icofont-building"></i> My Address</a>
+<a href="#ep"><i class="icofont-building"></i> Edit Profile</a>
+
 
 </div>
 </div>
 </div>
 <div class="col-xl-9 col-sm-8">
  <div class="user-panel-body-right">
-<div id="mc" class="user-panel-tab-view mb-4">
+    <div id="mo" class="user-panel-tab-view mb-4">
+        <div class="shadow-sm rounded overflow-hidden mb-3">
+        <div class="p-4 bg-white">
+        <h5 class="mb-0 text-gray-900">My Orders</h5>
+        </div>
+        
+        </div>
+        <div>
+        <div class="row">
+        
+        
+            <% for(i=0;i<result[1].length;i++) { %>
+                
+                <div class="col-xl-3 col-sm-6" style="margin-top: 20px;">
+                <div class="custom-card shadow-sm h-100">
+                <div class="custom-card-image">
+                <a href="#">
+                <img class="img-fluid item-img" src="/images/<%=result[1][i].bookingimage%>">
+                </a>
+                
+                </div>
+                <div class="p-3 pt-4">
+                <div class="custom-card-body">
+                <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[1][i].bookingname%></a></h6>
+                <p class="text-gray-500"><i class="icofont-clock-time"></i> Order ID <%=result[1][i].orderid%></p>
+                <p class="text-gray-500"><i class="icofont-clock-time"></i> Price <%=result[1][i].price%></p>
+                <p class="text-gray-500"><i class="icofont-clock-time"></i> Status <%=result[1][i].status%></p>
+        
+        
+                </div>
+                <div class="custom-card-footer d-flex align-items-center">
+                
+             
+                
+                
+                
+                <a href="/invoice?orderid=<%=result[1][i].orderid%>" class="btn btn-sm btn-white ml-auto" style="cursor:pointer">Invoice</a>
+                
+               
+                
+                
+                </div>
+                </div>
+                </div>
+                </div>
+                
+                <% } %>
+        
+        
+        
+        </div>
+        </div>
+        </div>
+<div id="md" class="user-panel-tab-view mb-4">
 <div class="shadow-sm rounded overflow-hidden mb-3">
 <div class="p-4 bg-white">
 <h5 class="mb-0 text-gray-900">My Deals</h5>
@@ -39,7 +94,7 @@ Logout</button>
 
     <% for(i=0;i<result[5].length;i++) { %>
         
-        <div class="col-xl-4 col-sm-6">
+        <div class="col-xl-4 col-sm-6" style="margin-bottom: 20px;">
         <div class="custom-card shadow-sm h-100">
         <div class="custom-card-image">
         <a href="#">
@@ -82,59 +137,7 @@ Logout</button>
 </div>
 </div>
 </div>
-<div id="mo" class="user-panel-tab-view mb-4">
-<div class="shadow-sm rounded overflow-hidden mb-3">
-<div class="p-4 bg-white">
-<h5 class="mb-0 text-gray-900">My Orders</h5>
-</div>
 
-</div>
-<div>
-<div class="row">
-
-
-    <% for(i=0;i<result[1].length;i++) { %>
-        
-        <div class="col-xl-4 col-sm-6" style="margin-top: 20px;">
-        <div class="custom-card shadow-sm h-100">
-        <div class="custom-card-image">
-        <a href="#">
-        <img class="img-fluid item-img" src="/images/<%=result[1][i].image%>">
-        </a>
-        
-        </div>
-        <div class="p-3 pt-4">
-        <div class="custom-card-body">
-        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[1][i].bookingname%></a></h6>
-        <p class="text-gray-500"><i class="icofont-clock-time"></i> Order ID <%=result[1][i].orderid%></p>
-        <p class="text-gray-500"><i class="icofont-clock-time"></i> Price <%=result[1][i].price%></p>
-        <p class="text-gray-500"><i class="icofont-clock-time"></i> Status <%=result[1][i].status%></p>
-
-
-        </div>
-        <div class="custom-card-footer d-flex align-items-center">
-        
-     
-        
-        
-        
-        <a href="/invoice?orderid=<%=result[1][i].orderid%>" class="btn btn-sm btn-white ml-auto" style="cursor:pointer">Invoice</a>
-        
-       
-        
-        
-        </div>
-        </div>
-        </div>
-        </div>
-        
-        <% } %>
-
-
-
-</div>
-</div>
-</div>
 <div id="ms" class="user-panel-tab-view mb-4">
 <div class="shadow-sm rounded overflow-hidden mb-3">
 <div class="p-4 bg-white">
@@ -185,70 +188,61 @@ Logout</button>
 </div>
 
 </div>
-</div>
+
+
+
+
+<div id="ep" class="user-panel-tab-view mb-4">
+    <div class="shadow-sm rounded overflow-hidden mb-3">
+    <div class="p-4 bg-white">
+    <h5 class="mb-0 text-gray-900">Account Details</h5>
+    </div>
+    
+    </div>
+    <div>
+    
+    
+        <form class="form account-details-form" action="/myaccount-update" method="post" style="margin-top:20px;">
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="firstname">Full name *</label>
+                        <input type="text" id="firstname" name="name" placeholder="Enter Name"
+                            class="form-control form-control-md" value="<%=result[2][0].name%>">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lastname">Mobile Number *</label>
+                        <input type="text" id="lastname" name="number" placeholder="Mobile Number"
+                            class="form-control form-control-md" value="<%=result[2][0].number%>" readonly>
+                    </div>
+                </div>
+            </div>
+
+         
+
+            <div class="form-group mb-6">
+                <label for="email_1">Email address *</label>
+                <input type="email" id="email_1" name="email" value="<%=result[2][0].email%>"
+                    class="form-control form-control-md">
+            </div>
+          
+           
+            <button type="submit" class="btn btn-dark btn-rounded btn-sm mb-4">Save Changes</button>
+        </form>
+    
+    </div>
+    </div>
+    
+    </div>
+
+
+
 </div>
 </div>
 </section>
-<section class="py-4 bg-white osahan-copyright">
-<div class="container">
-<div class="row">
-<div class="col-xl-12">
-<div class="d-flex align-items-center justify-content-between">
-<p class="m-0 text-secondary">Copyright © Your Website 2020</p>
-<p class="m-0">
-<a href="#" class="text-secondary">About Us</a>
-&nbsp; · &nbsp;
-<a href="#" class="text-secondary">Privacy Policy</a>
-&nbsp; · &nbsp;
-<a href="#" class="text-secondary">Terms &amp; Conditions</a>
-</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-
-</div>
-
-</div>
 
 
 
-<a class="scroll-to-top rounded-circle" href="#page-top">
-<i class="fas fa-angle-up"></i>
-</a>
-
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">×</span>
-</button>
-</div>
-<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-<div class="modal-footer">
-<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
-</div>
-</div>
-</div>
-</div>
-
-<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
-
-<script src="vendor/jquery-easing/jquery.easing.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
-
-<script src="vendor/select2/js/select2.min.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
-
-<script src="vendor/owl-carousel/owl.carousel.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
-
-<script src="js/custom.js" type="83dfe2b238c31d63f87624d1-text/javascript"></script>
-<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="83dfe2b238c31d63f87624d1-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d9410c97b89f6","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-</body>
-
-<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:44:24 GMT -->
-</html>
+<%- include ('./footer.ejs') %>

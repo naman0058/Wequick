@@ -38,6 +38,9 @@ Codepen: https://codepen.io/supah/
   
 </style>
 
+<link rel="icon" type="image/png" href="https://dealsaaj.com/images/deal_logo.png">
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
@@ -79,17 +82,17 @@ Codepen: https://codepen.io/supah/
 
                         <tr>
                           <td style="padding-top:10px;font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-                            GST : 27AADCE4068J1ZG.<br/>
-                            Elan Contemporary Clothing Pvt. Ltd.<br/>
-                            28th Floor, Khar West<br/>
-                            Mumbai-400052
+<br/>
+<%=result[1][0].vendoraddress%><br/>
+<%=result[1][0].vendorstate%>, <%=result[1][0].vendorcity%><br/>
+<%=result[1][0].vendorpincode%>
                           </td>
                         </tr>
 
                         <tr>
                           <td style="padding-top:10px;font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-                            Hello, <%=result[3][0].firstname%>  <%=result[3][0].lastname%>.
-                            <br> Thank you for shopping from our wed store.
+                            Hello, <%=result[1][0].name%> .
+                            <br> Thank you for shopping from our store.
                           </td>
                         </tr>
                       
@@ -217,28 +220,14 @@ Codepen: https://codepen.io/supah/
                 <!-- Table Total -->
                 <table width="480" border="0" cellpadding="0" cellspacing="0" align="center" class="fullPadding">
                   <tbody>
-                    <tr>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                        Subtotal
-                      </td>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap;" width="80">
-                        Rs. <%=result[6][0].totalamount%>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                        Shipping &amp; Handling
-                      </td>
-                      <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                        Rs. <%=result[1][0].shipping_charges%>
-                      </td>
-                    </tr>
+                 
+                    
                     <tr>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
                         <strong>Grand Total (Incl.Tax)</strong>
                       </td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                        <strong>Rs.<%=(+result[6][0].totalamount) + (+result[1][0].shipping_charges)%></strong>
+                        <strong>Rs.<%=(+result[6][0].totalamount)%></strong>
                       </td>
                     </tr>
                    
@@ -296,27 +285,6 @@ Codepen: https://codepen.io/supah/
                         </table>
 
 
-                        <table width="220" border="0" cellpadding="0" cellspacing="0" align="right" class="col">
-                          <tbody>
-                            <tr class="visibleMobile">
-                              <td height="20"></td>
-                            </tr>
-                            <tr>
-                              <td style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                <strong>PAYMENT METHOD</strong>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td width="100%" height="10"></td>
-                            </tr>
-                            <tr>
-                              <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                Online<br> Transaction ID: <a href="#" style="color: #ff0000; text-decoration:underline;"><%=result[1][0].razorpay_order_id%></a><br>
-                              
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </td>
                     </tr>
                   </tbody>

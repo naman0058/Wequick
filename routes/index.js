@@ -317,23 +317,15 @@ router.get('/mycart',(req,res)=>{
      (select p.name from products p where p.id = c.booking_id) as bookingname,
      (select p.image from products p where p.id = c.booking_id) as bookingimage,
      (select p.quantity from products p where p.id = c.booking_id) as availablequantity
-     from cart c where c.usernumber = '${req.session.usernumber}';`
-    var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.usernumber}';`              
+     from cart c where c.usernumber = '${req.session.usernumber}' or c.usernumber = '${req.session.ipaddress}' ;`
+    var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.usernumber}' or usernumber = '${req.session.ipaddress}' ;`              
  
  
      pool.query(query+query1+query2,(err,result)=>{
        if(err) throw err;
        else{
- 
- if(result[2][0].totalprice > 500) {
-   res.render('cart', { title: 'Express',login,result , shipping_charges : 0 });
- 
- }
- else {
-   res.render('cart', { title: 'Express',login,result , shipping_charges : 500 });
- 
- }
- 
+//  res.json(result[1])
+        res.render('cart', { title: 'Express',login,result , shipping_charges : 0 });
     
        }
     
@@ -785,7 +777,7 @@ router.get('/my-account',(req,res)=>{
     var query = `select * from category order by name;`
     var query1 = `select b.* , (select p.name from products p where p.id = b.booking_id) as bookingname,
     (select p.image from products p where p.id = b.booking_id) as bookingimage
-    from booking b where usernumber = '${req.session.usernumber}' order by id desc ;`
+    from booking b where usernumber = '${req.session.usernumber}' order by id desc limit 8 ;`
     var query2 = `select * from users where number = '${req.session.usernumber}';`
     var query3 = `select * from address where usernumber = '${req.session.usernumber}';`
     var query4 = `select email from users where number = '${req.session.usernumber}';`
@@ -794,7 +786,7 @@ router.get('/my-account',(req,res)=>{
     (select c.short_description from coupon c where c.id = r.coupounid ) as coupon_description,
     (select c.maximum_cashback_price from coupon c where c.id = r.coupounid ) as coupon_cashprice
 
-    from redeem_code r where usernumber = '${req.session.usernumber}' order by id desc limit 30;`
+    from redeem_code r where usernumber = '${req.session.usernumber}' order by id desc limit 10;`
 
     pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
       if(err) throw err;
@@ -829,17 +821,18 @@ router.get('/search',(req,res)=>{
   req.session.usernumber ? login =  true : login = false
 
   var query = `select * from category order by name;`
-  var query1 = `SELECT *, SQRT(
+  var query1 = `select * from category where name LIKE '%${req.query.search}%';`
+  var query2 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor where name Like '%${req.query.search}%' having  distance <= 600000000000000 ORDER BY distance;`
-  var query2 = `select * from products where name Like '%${req.query.search}%'  ;`
+    FROM vendor where business_name Like '%${req.query.search}%' having  distance <= 600000000000000 ORDER BY distance;`
+  // var query2 = `select * from products where name Like '%${req.query.search}%'  ;`
   
 
-  pool.query(query+query1+query2,(err,result)=>{
+  pool.query(query+query2+query1,(err,result)=>{
     if(err) throw err;
     else if(result[1][0] || result[2][0]){
-     res.json(result)
+       res.render('search',{login,result})
     }
     else res.render('nodatafound',{login,result})
   })
@@ -1305,7 +1298,12 @@ router.get('/invoice',(req,res)=>{
     (select p.name from products p where p.id = c.booking_id) as bookingname,
     (select p.image from products p where p.id = c.booking_id) as bookingimage,
     (select u.email from users u where u.id = c.usernumber) as usermobilenumber,
-   
+    (select v.address from vendor v where v.id = c.vendorid) as vendoraddress,
+    (select v.state from vendor v where v.id = c.vendorid) as vendorstate,
+    (select v.city from vendor v where v.id = c.vendorid) as vendorcity,
+    (select v.pincode from vendor v where v.id = c.vendorid) as vendorpincode,
+
+
     (select a.city from address a where a.id = c.address ) as usercity,
     (select a.pincode from address a where a.id = c.address ) as userpostcode,
     (select a.state from address a where a.id = c.address ) as userstate

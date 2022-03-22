@@ -81,7 +81,7 @@ router.get('/', function(req, res, next) {
    var query7 = `select c.* ,
    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
-   from deals c where c.deals_type = 'Exclusive Deals';`
+   from deals c where c.deals_type = 'Exclusive Deals' limit 4;`
    var query8 = `select c.*,
    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
@@ -1042,7 +1042,8 @@ router.get('/shop-by-category',(req,res)=>{
   var query1 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance,
-    (select c.name from category c where c.id = '${req.query.categoryid}') as categoryname
+    (select c.name from category c where c.id = '${req.query.categoryid}') as categoryname,
+    (select c.icon from category c where c.id = '${req.query.categoryid}') as categorylogo
     FROM vendor where status= 'approved' and categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;

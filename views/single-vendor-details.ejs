@@ -1,6 +1,6 @@
 
 
-<%- include ('./header.ejs') %>
+<%- include ('./otherheader.ejs') %>
 
 
 
@@ -86,7 +86,7 @@
         </div>
         <div class="p-3 pt-4">
         <div class="custom-card-body">
-        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[5][i].name%></a></h6>
+        <h6 class="mb-3"><a class="text-gray-900" href="/product?id=<%=result[5][i].id%>"><%=result[5][i].name%></a></h6>
         <p class="text-gray-500"> <%=result[5][i].short_description%></p>
         </div>
         <div class="custom-card-footer d-flex align-items-center">

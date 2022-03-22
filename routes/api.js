@@ -216,7 +216,17 @@ router.get('/get-merchant',(req,res)=>{
 
 
    router.get('/get-state',(req,res)=>{
-    pool.query(`select * from state order by id desc`,(err,result)=>{
+    pool.query(`select * from state where status = 'active' order by name desc`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
+
+
+
+   router.get('/get-city',(req,res)=>{
+    pool.query(`select * from city where stateid = '${req.query.stateid}' order by name desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })
@@ -2269,5 +2279,9 @@ router.get('/get-menu',(req,res)=>{
     else res.json(result)
   })
 })
+
+
+
+router.get('/state')
 
 module.exports = router;

@@ -1,219 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from portotheme.com/html/wolmart/shop-grid-5cols.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 30 Jun 2021 06:18:47 GMT -->
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/demo3/stores.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Mar 2022 07:54:49 GMT -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Askbootstrap">
+<meta name="author" content="Askbootstrap">
+<title>Dealsaaj - Reach Redeem Repeat</title>
 
-    <title>Wolmart eCommmerce Marketplace HTML Template</title>
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Wolmart eCommmerce Marketplace HTML Template">
-    <meta name="author" content="D-THEMES">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/logo.png">
 
-    <!-- WebFont.js -->
-    <script>
-        WebFontConfig = {
-            google: { families: ['Poppins:400,500,600,700'] }
-        };
-        (function (d) {
-            var wf = d.createElement('script'), s = d.scripts[0];
-            wf.src = '/wolmart/assets/js/webfont.js';
-            wf.async = true;
-            s.parentNode.insertBefore(wf, s);
-        })(document);
-    </script>
+<style>
+    .fa {
+      padding: 8px;
+      font-size: 30px;
+      width: 30px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+      border-radius: 50%;
+    }
+    
+  
+  .fa:hover {
+    opacity: 0.7;
+  }
+  .fa-facebook {
+  background: #3B5998;
+  color: white;
+  }
+  .fa-youtube {
+  background: #bb0000;
+  color: white;
+  }
+  .fa-instagram {
+  background: #125688;
+  color: white;
+  }
+  .fa-twitter {
+  background: #55ACEE;
+  color: white;
+  }
+  .fa-linkedin {
+  background: #007bb5;
+  color: white;
+  }
+        </style>
 
-    <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font" type="font/woff2"
-        crossorigin="anonymous">
-    <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font" type="font/woff2"
-        crossorigin="anonymous">
-    <link rel="preload" href="/wolmart/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" type="font/woff2"
-            crossorigin="anonymous">
-    <link rel="preload" href="/wolmart/assets/fonts/wolmart87d5.ttf?png09e" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="icon" type="image/png" href="/images/deal_logo.png">
 
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/animate/animate.min.css">
+<link href="/new_design/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/owl-carousel/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/nouislider/nouislider.min.css">
-    <link rel="stylesheet" type="text/css" href="/wolmart/assets/vendor/magnific-popup/magnific-popup.min.css">
+<link href="/new_design/vendor/icons/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
 
-    <!-- Default CSS -->
-    <link rel="stylesheet" type="text/css" href="/wolmart/assets/css/style.min.css">
+<link href="/new_design/vendor/select2/css/select2-bootstrap.css" />
+<link href="/new_design/vendor/select2/css/select2.min.css" rel="stylesheet" />
+
+<link href="/new_design/css/style.css" rel="stylesheet">
+
+<link href="/new_design/vendor/icofont/icofont.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/new_design/vendor/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="/new_design/vendor/owl-carousel/owl.theme.css">
 </head>
+<body>
+<div class="page-header section-rotate position-relative inner-header">
+  <section class="top-nav">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-none p-0">
+    <div class="container">
+    <!-- <p class="m-0 text-white"><i class="icofont-fire"></i> COUPONS & OFFERS <span class="text-warning">TODAY</span></p> -->
+    <p class="m-0 text-white"> <span class="text-warning"></span></p>
+    
+    
+    
+    <ul class="navbar-nav ml-auto ml-md-0">
+    
+    
+    <li class="nav-item dropdown no-arrow badge-top">
+    <a class="nav-link dropdown-toggle" href="/mycart" id="alertsDropdown" role="button" aria-expanded="false">
+    <i class="icofont-cart"></i>
+    </a>
+    
+    </li>
+    
+    <% if(login == true) { %>
+    <li class="nav-item dropdown no-arrow dropdown-user">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="icofont-user"></i>
+    
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+    <a class="dropdown-item" href="/my-account"><i class="icofont-ui-user"></i> Profile</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/logout"><i class="icofont-logout"></i> Logout</a>
+    </div>
+    </li>
+    
+    <% } else { %>
+    
+      <li class="nav-item dropdown no-arrow dropdown-user">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="icofont-user"></i>
+        
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="/login"><i class="icofont-ui-user"></i> Login</a>
+        </div>
+        </li>
+    
+      <% } %>
+    
+    </ul>
+    </div>
+    </nav>
+    </section>
+<section class="middle-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-none p-0">
+<div class="container">
+<a class="navbar-brand" href="/"><img class="img-fluid" src="/images/deal_logo.png" style="width: 100px;height: 100px;"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarText">
 
-<body class="home">
-    <div class="page-wrapper">
-        <!-- Start of Header -->
-        <header class="header">
-            <div class="header-top">
-                <div class="container">
-                    <div class="header-left">
-                        <p class="welcome-msg">Welcome to <span style="color: #722A74;font-weight: bold;">Deals</span> <span style="color: #BC3069;font-weight: bold;">Aaj</span>  Store!</p>
-                    </div>
-                    <div class="header-right pr-0">
-                      
-                        <!-- End of DropDown Menu -->
+    <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        Segments
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 400px;overflow: scroll;">
+          <% for(i=0;i<result[0].length;i++){%>
+        <a class="dropdown-item" href="/shop-by-category?categoryid=<%=result[0][i].id%>"> <%=result[0][i].name%></a>
+        <% } %>
+        </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/exclusive-deals-and-offers">Exclusive Deals & Offers</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-link" href="/new-release">New Release</a>
+                </li>
+        
+        
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Join Us
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/channel-partner-login">Channel Partner</a>
+        <a class="dropdown-item" href="/vendor-login">Merchant</a>
+        </div>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/about-us">About Us</a>
+            </li>
+        
+        
+        <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Offers
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="offers.html">Offers</a>
+        <a class="dropdown-item" href="offer-details.html">Offers Details</a>
+        </div>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Stores <span class="badge badge-primary">HOT</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="stores.html">Stores</a>
+        <a class="dropdown-item" href="store-details.html">Stores Details</a>
+        </div>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Restaurant
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="restaurant.html">Restaurant</a>
+        <a class="dropdown-item" href="restaurant-details.html">Restaurant Details</a>
+        </div>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Pages <span class="badge badge-danger badge-top">NEW</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg p-4" aria-labelledby="navbarDropdown">
+        <div class="row no-gutters">
+        <div class="col-12 col-lg-6">
+        
+        <h6 class="dropdown-header">
+        Account
+        </h6>
+        
+        <a class="dropdown-item" href="profile.html">Profile</a>
+        <a class="dropdown-item" href="enter-otp.html">Enter OTP</a>
+        <a class="dropdown-item" href="sign-in.html">Sign In</a>
+        <a class="dropdown-item" href="sign-up.html">Sign up</a>
+        
+        <h6 class="dropdown-header">
+        Extra Pages <span class="badge badge-success">HOT
+        </h6>
+        
+        <a class="dropdown-item" href="earn.html">Earn</a>
+        <a class="dropdown-item" href="membership.html">Membership</a>
+        <a class="dropdown-item" href="rating.html">Rating</a>
+        <a class="dropdown-item" href="referral.html">Referral</a>
+        </div>
+        <div class="col-12 col-lg-6">
+        
+        <h6 class="dropdown-header">
+        Company
+        </h6>
+        
+        <a class="dropdown-item" href="not-found.html">404 Not Found</a>
+        <a class="dropdown-item" href="faq.html">FAQ</a>
+        <a class="dropdown-item" href="terms.html">Terms</a>
+        <a class="dropdown-item" href="privacy.html">Privacy</a>
+        <a class="dropdown-item" href="contact.html">Contact</a>
+        <a class="dropdown-item" href="pricing.html">Pricing</a>
+        <a class="dropdown-item" href="maintence.html">Maintence</a>
+        <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
+        <a class="dropdown-item" href="components.html">Components</a>
+        </div>
+        </div>
+        </div>
+        </li> -->
+        </ul>
 
-                      
-                        <!-- End of Dropdown Menu -->
-                      <% if(login == true) { %>
-                        <a href="/my-account" class="d-lg-show">My Account</a>
-                       
-                        <% } else { %>
-
-                        <a href="/login" class="d-lg-show"><i
-                                class="w-icon-account"></i>Sign In</a>
-
-                                <% } %>
-
-                    </div>
-                </div>
-            </div>
-            <!-- End of Header Top -->
-
-            <div class="header-middle" style=" background-image: linear-gradient(#722A74, #BC3069);">
-                <div class="container">
-                    <div class="header-left mr-md-4">
-                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger">
-                        </a>
-                        <a href="/" class="logo ml-lg-0">
-                            <img src="/images/logo.png" alt="logo" style="object-fit: contain;width:100%;height: 100px;" />
-                        </a>
-                        <nav class="main-nav">
-                            <ul class="menu">
-                                <li class="">
-                                    <a href="/" style="color: white;">Home</a>
-                                </li>
-
-                                
-
-
-                                <li>
-                                    <a href="#" style="color: white;">Segments</a>
-                                    <ul>
-                                      
-                                        <% for(i=0;i<result[0].length;i++){%>
-
-                                        <li>
-                                            <a href="/shop-by-category?categoryid=<%=result[0][i].id%>"><%=result[0][i].name%></a>
-                                        </li>
-<% } %>
-                                       
-                                    </ul>
-                                </li>
-
-
-                                <li>
-                                    <a href="/exclusive-deals-and-offers" style="color: white;">Exclusive Deals & Offers</a>
-                                </li>
-
-
-                                <li>
-                                    <a href="/new-release" style="color: white;">New Release</a>
-                                </li>
-
-                                <li>
-                                    <a href="/channel-partner-login" style="color: white;">Our Channel Partner</a>
-                                </li>
-
-
-                              
-
-
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="header-right ml-4">
-                        <div class="header-call d-xs-show d-lg-flex align-items-center">
-                            <a href="tel:#" class="w-icon-call" style="color: white;"></a>
-                            <div class="call-info d-xl-show">
-                                <h4 class="chat font-weight-normal font-size-md text-normal ls-normal text-light mb-0">
-                                    <a href="mailto:#" class="text-capitalize" style="color: white;">Chat</a> or :</h4>
-                                <a href="tel:#" class="phone-number font-weight-bolder ls-50" style="color: white;">0(800)123-456</a>
-                            </div>
-                        </div>
-                        <!-- <a class="wishlist label-down link d-xs-show" href="wishlist.html">
-                            <i class="w-icon-heart"></i>
-                            <span class="wishlist-label d-lg-show">Wishlist</span>
-                        </a>
-                        <a class="compare label-down link d-xs-show" href="compare.html">
-                            <i class="w-icon-compare"></i>
-                            <span class="compare-label d-lg-show">Compare</span>
-                        </a> -->
-
-
-                        <div class="dropdown cart-dropdown mr-0 mr-lg-2">
-                            <div class="cart-overlay"></div>
-                            <a href="/mycart" class="cart-toggle label-down " style="color: white;">
-                                <i class="w-icon-cart">
-                                    
-                                </i>
-                                <span class="cart-label">Cart</span>
-                            </a>
-                          
-                            <!-- End of Dropdown Box -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End of Header Middle -->
-
-            <div class="header-bottom sticky-content fix-top sticky-header">
-                <div class="container">
-                    <div class="inner-wrap">
-                        <div class="header-left flex-1">
-                            <div class="dropdown category-dropdown has-border" data-visible="true">
-                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="true" data-display="static"
-                                    title="Browse Categories">
-                                    <i class="w-icon-category"></i>
-                                    <span>Browse Categories</span>
-                                </a>
-
-                                <div class="dropdown-box">
-                                    <ul class="menu vertical-menu category-menu">
-
-			 <% for(i=0;i<result[0].length;i++){%>
-
-                                        <li>
-                                            <a href="/shop-by-category?categoryid=<%=result[0][i].id%>">
-                                           <%=result[0][i].name%>
-                                            </a>
-                                          
-                                        </li>
-                                      <% } %>
-                                    
-                                    </ul>
-                                </div>
-                            </div>
-                            <form method="get" action="/search" class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper mr-4 ml-4">
-                                <div class="select-box">
-                                    <select id="category" name="category">
-                                        <option value="">All Categories</option>
-			 <% for(i=0;i<result[0].length;i++){%>
-
-                                        <option value="4"><a href="/shop-by-category?categoryid=<%=result[0][i].id%>"></a><%=result[0][i].name%></a></option>
-                                      <% } %>
-                                    </select>
-                                </div>
-                                <input type="text" class="form-control" name="search" id="search"
-                                    placeholder="Search in..." required />
-                                <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
-                                </button>
-                            </form>
-                        </div>
-                       
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- End of Header -->
+<span class="navbar-text">
+</span>
+</div>
+</div>
+</nav>
+</section>
+</div>

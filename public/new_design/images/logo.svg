@@ -1,34 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="81" height="81" viewBox="0 0 81 81">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="167" height="94" viewBox="0 0 167 94">
   <defs>
     <style>
-      .cls-1, .cls-2 {
-        fill: #fff;
-      }
-
-      .cls-1, .cls-2, .cls-3 {
-        stroke: #407cde;
-        stroke-linejoin: round;
-      }
-
       .cls-1 {
-        stroke-width: 8px;
+        fill: #516ab5;
+        filter: url(#filter);
       }
 
       .cls-2 {
-        fill-opacity: 0;
-      }
-
-      .cls-2, .cls-3 {
-        stroke-width: 5px;
-      }
-
-      .cls-3, .cls-4 {
-        fill: #407cde;
+        fill: #fff;
+        fill-rule: evenodd;
+        filter: url(#filter-2);
       }
     </style>
+    <filter id="filter" x="0" y="0" width="167" height="94" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="0" y="0" width="167" height="94" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTY3IiBoZWlnaHQ9Ijk0IiB2aWV3Qm94PSIwIDAgMTY3IDk0Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjMxLjMwMSIgeTE9Ijk0IiB4Mj0iMTM1LjY5OSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlZDYyNDAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjM3ODJhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSIxNjciIGhlaWdodD0iOTQiLz4KPC9zdmc+Cg=="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="8" y="13.438" width="149" height="76.563" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="3" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2"/>
+      <feFlood result="flood" flood-opacity="0.13"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
   </defs>
-  <circle class="cls-1" cx="40.5" cy="40.5" r="32.5"/>
-  <circle id="Ellipse_1_copy" data-name="Ellipse 1 copy" class="cls-2" cx="41" cy="41" r="28.719"/>
-  <circle id="Ellipse_1_copy_2" data-name="Ellipse 1 copy 2" class="cls-3" cx="41" cy="41" r="14"/>
-  <rect id="Rounded_Rectangle_1" data-name="Rounded Rectangle 1" class="cls-4" x="12.531" y="37.938" width="56.469" height="5.625" rx="2.813" ry="2.813"/>
+  <rect id="Rounded_Rectangle_1" data-name="Rounded Rectangle 1" class="cls-1" width="167" height="94" rx="47" ry="47"/>
+  <path id="OC" class="cls-2" d="M80.256,47.922c0-20.191-15.264-34.489-34.489-34.489-19.032,0-34.586,14.3-34.586,34.489,0,20.288,15.554,34.586,34.586,34.586C64.9,82.507,80.256,68.209,80.256,47.922Zm-55.163,0c0-13.718,8.4-22.317,20.674-22.317,12.173,0,20.578,8.6,20.578,22.317s-8.4,22.51-20.578,22.51C33.5,70.431,25.092,61.64,25.092,47.922Zm61.918,0.1c0,20.191,14.781,34.393,34.2,34.393,14.975,0,27.147-7.922,31.688-21.833H137.344c-3.188,6.569-8.985,9.757-16.23,9.757-11.787,0-20.192-8.695-20.192-22.316,0-13.718,8.405-22.317,20.192-22.317,7.245,0,13.042,3.188,16.23,9.661H152.9c-4.541-13.815-16.713-21.834-31.688-21.834C101.792,13.529,87.011,27.827,87.011,48.018Z"/>
 </svg>

@@ -1,58 +1,58 @@
-
-<section class="footer section-padding" style="background-color: white;">
+<section class="footer section-padding">
     <div class="container">
-    <div class="row py-lg-4">
-    <div class="col-xl-2 col-md-2 col-sm-2 col-12">
-    <div class="footer-brand">
-        <a href="/">
-    <img class="img-fluid" src="https://dealsaaj.com/images/deal_logo.png">
-    </a>
+    <div class="row">
+     <div class="col-xl-2 col-sm-6">
+    <div class="navbar-brand pt-0">
+    <img class="img-fluid" src="/images/deal_logo.png" style="width: 100px;height:100px;">
     </div>
     </div>
-    <div class="col-xl-3 col-md-3 col-sm-3 col-6">
-    <h6 class="text-gray-900">Segments</h6>
+    <div class="col-xl-2 col-sm-6">
+    <h6>Segments</h6>
     <ul>
         <% const filteredData = result[0].filter(item => item.type == 'yes') %>
 
         <% for(i=0;i<filteredData.length;i++){%>
-
     <li><a href="/shop-by-category?categoryid=<%=filteredData[i].id%>"><%=filteredData[i].name%></a></li>
-
     <% } %>
-    <li><a href="/exclusive-deals-and-offers">More Segments...</a></li>
+  
+    </ul>
+    </div>
+    <div class="col-xl-2 col-sm-6">
+    <h6>SERVICES</h6>
+    <ul>
+        <li><a href="/exclusive-deals-and-offers">Exclusive Deals & Offers</a></li>
+        <li><a href="/new-release">New Release</a></li>
+        <li><a href="/channel-partner-login">Channel Partners</a></li>
+        <li><a href="/agent-login">Agent Login</a></li>
+        <li><a href="/vendor-login">Our Merchants</a></li>
+    
+        <!-- <li><a href="/disclaimer">Disclaimer</a></li> -->
+        <li><a href="/customer-support">Customer Support</a></li>
+    </ul>
+    </div>
+    <div class="col-xl-2 col-sm-6">
+    <h6>Important Links</h6>
+    <ul>
+    <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+    <li><a href="/privacy-policy">Privacy Policy</a></li>
+    <li><a href="/about-us">About Us</a></li>
+    <li><a href="/disclaimer">Disclaimer</a></li>
    
     </ul>
     </div>
-    <div class="col-xl-3 col-md-3 col-sm-3 col-6">
-    <h6 class="text-gray-900">SERVICES</h6>
-    <ul>
-    <li><a href="/exclusive-deals-and-offers">Exclusive Deals & Offers</a></li>
-    <li><a href="/new-release">New Release</a></li>
-    <li><a href="/channel-partner-login">Channel Partners</a></li>
-    <li><a href="/agent-login">Agent Login</a></li>
-    <li><a href="/vendor-login">Our Merchants</a></li>
-
-    <li><a href="/disclaimer">Disclaimer</a></li>
-    <li><a href="/customer-support">Customer Support</a></li>
-
-    </ul>
-    </div>
- 
-    <div class="col-xl-4 col-md-3 col-sm-3 col-12">
-    <h6 class="text-gray-900">Follow us on Social Media</h6>
+    <div class="col-xl-4 col-sm-6">
+        <h6 class="text-gray-900">Follow us on Social Media</h6>
     <form class="form-inline newsletter-form mb-1">
-       <a href="https://www.facebook.com/dealsaaj/"> <i href="" style="color: white;" class="fa fa-facebook"></i></a>
-       <a href="https://www.instagram.com/dealsaaj/"> <i href="" style="color: white;" class="fa fa-instagram"></i></a>
-       <a href="https://youtube.com/channel/UCpY9qRgvTV_cjRwakeetAMA"> <i href="" style="color: white;" class="fa fa-youtube"></i></a>
-       <a href="https://twitter.com/dealsaaj?t=HhOUbgqR21PA0vCdfNATvA&s=08"> <i href="https://twitter.com/dealsaaj?t=HhOUbgqR21PA0vCdfNATvA&s=08" style="color: white;" class="fa fa-twitter"></i></a>
-       <a href="https://www.linkedin.com/company/dealsaaj/"> <i href="" style="color: white;" class="fa fa-linkedin"></i></a>
+    <a href="https://www.facebook.com/dealsaaj/"> <i href="" style="color: white;" class="fa fa-facebook"></i></a>
+    <a href="https://www.instagram.com/dealsaaj/"> <i href="" style="color: white;" class="fa fa-instagram"></i></a>
+    <a href="https://youtube.com/channel/UCpY9qRgvTV_cjRwakeetAMA"> <i href="" style="color: white;" class="fa fa-youtube"></i></a>
+    <a href="https://twitter.com/dealsaaj?t=HhOUbgqR21PA0vCdfNATvA&s=08"> <i href="https://twitter.com/dealsaaj?t=HhOUbgqR21PA0vCdfNATvA&s=08" style="color: white;" class="fa fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/company/dealsaaj/"> <i href="" style="color: white;" class="fa fa-linkedin"></i></a>
 
-
- 
     </form>
-
+    <small><a href="#">Follow us to get updates on <span class="text-info">Offers and Coupons</span></a></small>
     <div class="app mt-4 pt-2">
-    <h6 class="text-gray-900">DOWNLOAD APP</h6>
+    <h6>DOWNLOAD APP</h6>
     <a href="https://play.google.com/store/apps/details?id=com.dealsaaj_tycoon.dealsaaj">
     <img class="img-fluid" src="/new_design/images/google.png">
     </a>
@@ -60,89 +60,173 @@
     <img class="img-fluid" src="/new_design/images/apple.png">
     </a>
     </div>
-
-
-    <div class="app mt-4 pt-2">
-        <h6 class="text-gray-900">Contact Us</h6>
-        <a href="tel:077524448276">
-        077524448276
-        </a>,
-        <a href="tel:9753005007">
-       9753005007
-        </a>
-        </div>
-
     </div>
     </div>
     </div>
     </section>
-    <section class="py-4 bg-white osahan-copyright">
+    <section class="footer-bottom-search bg-dark section-padding">
     <div class="container">
     <div class="row">
     <div class="col-xl-12">
-    <div class="d-flex align-items-center justify-content-between">
-    <p class="m-0 text-secondary">Copyright © <span style="color:#722A74;font-weight: bold;">Deals</span><span style="color: #C03168;font-weight: bold;">Aaj</span> 2022</p>
+    <div class="search-links">
+    <div class="content-wrapper">
+    <div class="cat-links">
+    <span class="cat-header">TRAVEL</span>
+    <a href="#makemytrip"> Makemytrip Coupons <span>|</span></a>
+    <a href="#oyorooms"> OYO Rooms Coupons <span>|</span></a>
+    <a href="#happyeasygo"> HappyEasyGo Coupons <span>|</span></a>
+    <a href="#cleartrip"> Cleartrip Coupons <span>|</span></a>
+    <a href="#redbus"> redBus Coupons <span>|</span></a>
+    <a href="#goibibo"> Goibibo Coupons <span>|</span></a>
+    <a href="#uber"> Uber Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">Fashion</span>
+    <a href="#zivame"> Zivame Coupons <span>|</span></a>
+    <a href="#jabong"> Jabong Coupons <span>|</span></a>
+    <a href="#clovia"> Clovia Coupons <span>|</span></a>
+    <a href="#ajio"> AJIO Coupons <span>|</span></a>
+    <a href="#nnnow"> NNNOW Coupons <span>|</span></a>
+    <a href="#myntra"> Myntra Coupons <span>|</span></a>
+     <a href="#shoppersstop"> Shoppers Stop Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">Recharge</span>
+    <a href="#paytm"> Paytm Offers <span>|</span></a>
+    <a href="#phonepe"> PhonePe Offers <span>|</span></a>
+    <a href="#freecharge"> FreeCharge Coupons <span>|</span></a>
+    <a href="#mobikwik"> MobiKwik Offers <span>|</span></a>
+    <a href="#amazonpay"> Amazon Pay Coupons <span>|</span></a>
+    <a href="#googlepay"> Google Pay Offers </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">MOBILES &amp; TABLETS</span>
+    <a href="#flipkart"> Flipkart Offers <span>|</span></a>
+    <a href="#amazon"> Amazon Offers <span>|</span></a>
+    <a href="#paytmmall"> Paytm Mall Coupons <span>|</span></a>
+    <a href="#tatacliq"> TataCliQ Coupons <span>|</span></a>
+    <a href="#snapdeal"> Snapdeal Coupons <span>|</span></a>
+    <a href="#samsung_eStore"> Samsung Coupons <span>|</span></a>
+    <a href="#shopclues"> ShopClues Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">COMPUTERS, LAPTOPS &amp; GAMING</span>
+    <a href="#samsung_eStore"> Samsung Coupons <span>|</span></a>
+    <a href="#dell"> Dell India Coupons <span>|</span></a>
+    <a href="#lenovo"> Lenovo Coupons <span>|</span></a>
+    <a href="#hpshopping"> HP Official eStore Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">FOOD &amp; DINING</span>
+    <a href="#pizzahut"> Pizza Hut Offers <span>|</span></a>
+    <a href="#dominos"> Domino's Coupons <span>|</span></a>
+    <a href="#mcdonalds"> McDonald's Coupons <span>|</span></a>
+    <a href="#swiggy"> Swiggy Coupons <span>|</span></a>
+    <a href="#kfc"> KFC Coupons <span>|</span></a>
+    <a href="#zomato"> Zomato Coupons <span>|</span></a>
+    <a href="#foodpanda"> Foodpanda Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">BEAUTY &amp; HEALTH</span>
+    <a href="#medlife"> Medlife Coupons <span>|</span></a>
+    <a href="#1mg"> 1MG Coupons <span>|</span></a>
+    <a href="#netmeds"> Netmeds Coupons <span>|</span></a>
+    <a href="#nykaa"> Nykaa Coupons <span>|</span></a>
+    <a href="#apollopharmacy"> Apollo Pharmacy <span>|</span></a>
+    <a href="#healthkart"> HealthKart Coupons <span>|</span></a>
+    <a href="#pharmeasy"> PharmEasy Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">HOME FURNISHING &amp; DECOR</span>
+    <a href="#pepperfry"> Pepperfry Coupons <span>|</span></a>
+    <a href="#rentomojo"> Rentomojo Coupons <span>|</span></a>
+    <a href="#urbanladder"> Urban Ladder Coupons <span>|</span></a>
+    <a href="#homecentre"> Home Centre Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">FLOWERS, GIFTS &amp; JEWELLERY</span>
+    <a href="#fnp"> Ferns N Petals Coupons <span>|</span></a>
+    <a href="#indiangiftsportal"> Indian Gifts Portal Coupons <span>|</span></a>
+    <a href="#archies"> Archies Coupons <span>|</span></a>
+    <a href="#floweraura"> FlowerAura Coupons <span>|</span></a>
+    <a href="#giftcart"> Giftcart </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">GROCERY</span>
+    <a href="#bigbasket"> Bigbasket Coupons <span>|</span></a>
+    <a href="#grofers"> Grofers Offers <span>|</span></a>
+    <a href="#freshtohome"> FreshtoHome Coupons </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">SPECIAL COLLECTIONS</span>
+    <a href="#exclusive-coupons-offers"> Exclusive Coupons and Offers <span>|</span></a>
+    <a href="#top-offers"> Top Coupons and Offers <span>|</span></a>
+    <a href="#buy-1-get-1-free-offers"> Buy 1 Get 1 Free <span>|</span></a>
+    <a href="#summer-offers"> Summer <span>|</span></a>
+    <a href="#GOT-merchandise-offers"> GOT Merchandise </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">WALLET OFFERS:</span>
+    <a href="#amazon-pay-offers"> Amazon Pay <span>|</span></a>
+    <a href="#amazon-pay-offers"> Paypal <span>|</span></a>
+    <a href="#paytm-offers"> Paytm <span>|</span></a>
+    <a href="#mobikwik-offers"> Mobikwik <span>|</span></a>
+    <a href="#payzapp-offers"> PayZapp </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">BANK OFFERS</span>
+    <a href="#hdfc-bank-offers"> HDFC Bank <span>|</span></a>
+    <a href="#yes-bank-offers"> Yes Bank <span>|</span></a>
+    <a href="#icici-bank-offers"> ICICI Bank <span>|</span></a>
+    <a href="#sbi-bank-offers"> SBI Bank <span>|</span></a>
+    <a href="#axis-bank-offers"> Axis Bank </a>
+    </div>
+    <div class="cat-links">
+    <span class="cat-header">EVENT OFFERS</span>
+    <a href="#valentines-day-offers"> Valentine's Day Offers <span>|</span></a>
+    <a href="#christmas-offers"> Christmas Offers <span>|</span></a>
+    <a href="#end-of-season-sale-offers"> End of Season Sale Coupons and Offers <span>|</span></a>
+    <a href="#diwali-offers"> Diwali Coupons and Offers <span>|</span></a>
+    <a href="#flipkart-big-billion-days-offers"> Flipkart Big Billion Days Coupons and Offers </a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <section class="py-4">
+    <div class="container">
+    <div class="row">
+    <div class="col-xl-12">
+    <div class="d-flex align-items-center justify-content-between small">
+    <p class="m-0">Copyright © <span style="color:#722A74;font-weight: bold;">Deals</span><span style="color: #C03168;font-weight: bold;">Aaj</span> 2020</p>
     <p class="m-0">
-    <a href="/about-us" class="text-secondary">About Us</a>
+    <a href="/about-us">About Us</a>
     &nbsp; · &nbsp;
-    <a href="/privacy-policy" class="text-secondary">Privacy Policy</a>
+    <a href="/privacy-policy">Privacy Policy</a>
     &nbsp; · &nbsp;
-    <a href="/terms-and-conditions" class="text-secondary">Terms &amp; Conditions</a>
+    <a href="/terms-and-conditions">Terms &amp; Conditions</a>
     </p>
     </div>
     </div>
     </div>
     </div>
     </section>
-
-
     
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<a class="scroll-to-top rounded-circle" href="#page-top">
-<i class="fas fa-angle-up"></i>
-</a>
-
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">×</span>
-</button>
-</div>
-<div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-<div class="modal-footer">
-<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-<a class="btn btn-primary" href="https://askbootstrap.com/item/osahan-grocery-bootstrap4-responsive-light-template/">Logout</a>
-</div>
-</div>
-</div>
-</div>
-
-<script src="/new_design/vendor/jquery/jquery.min.js" type="057b91354703151087f54c15-text/javascript"></script>
-<script src="/new_design/vendor/bootstrap/js/bootstrap.bundle.min.js" type="057b91354703151087f54c15-text/javascript"></script>
-
-<script src="/new_design/vendor/jquery-easing/jquery.easing.min.js" type="057b91354703151087f54c15-text/javascript"></script>
-
-<script src="/new_design/vendor/select2/js/select2.min.js" type="057b91354703151087f54c15-text/javascript"></script>
-
-<script src="/new_design/vendor/owl-carousel/owl.carousel.js" type="057b91354703151087f54c15-text/javascript"></script>
-
-<script src="/new_design/js/custom.js" type="057b91354703151087f54c15-text/javascript"></script>
-<script src="/new_design/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="057b91354703151087f54c15-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e7d93bcde028a20","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+    <script src="/new_design/vendor/jquery/jquery.min.js" type="d31798a3900d399e25fbaabf-text/javascript"></script>
+    <script src="/new_design/vendor/bootstrap/js/bootstrap.bundle.min.js" type="d31798a3900d399e25fbaabf-text/javascript"></script>
+    
+    <script src="/new_design/vendor/select2/js/select2.min.js" type="d31798a3900d399e25fbaabf-text/javascript"></script>
+    
+    <script src="/new_design/vendor/owl-carousel/owl.carousel.js" type="d31798a3900d399e25fbaabf-text/javascript"></script>
+    
+    <script src="/new_design/js/custom.js" type="d31798a3900d399e25fbaabf-text/javascript"></script>
+    <script src="/new_design/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d31798a3900d399e25fbaabf-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6ef51e6b2eef71a2","version":"2021.12.0","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</body>
+    
+    <!-- Mirrored from askbootstrap.com/preview/osahan-deel/demo3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Mar 2022 07:54:41 GMT -->
+    </html>
+    

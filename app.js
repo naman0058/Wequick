@@ -41,6 +41,7 @@ var channel_partner_dashboard = require('./routes/Channel_Partner/channelPartner
 
 var merchant_api = require('./routes/Vendor/merchant_api');
 var blogs = require('./routes/blogs');
+var crm = require('./routes/CRM/login');
 
 
 

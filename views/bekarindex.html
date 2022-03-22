@@ -1,0 +1,523 @@
+
+
+
+<%- include ('./header.ejs') %>
+<script>
+
+
+
+window.onload = function(){
+  var slides = document.getElementsByClassName('carousel-item'),
+      addActive = function(slide) {slide.classList.add('active')},
+      removeActive = function(slide) {slide.classList.remove('active')};
+  addActive(slides[0]);
+  
+  setInterval(function (){
+    for (var i = 0; i < slides.length; i++){
+      if (i + 1 == slides.length) {
+        addActive(slides[0]);
+        slides[0].style.zIndex = 100;
+        setTimeout(removeActive, 250, slides[i]); //Doesn't be worked in IE-9
+        break;
+      }
+      if (slides[i].classList.contains('active')) { 
+        slides[i].removeAttribute('style');
+        setTimeout(removeActive, 250, slides[i]); //Doesn't be worked in IE-9
+        addActive(slides[i + 1]);
+        break;
+      }
+    } 
+  }, 4000);
+}
+  
+
+
+
+</script>
+
+<section class="offer-dedicated-banner text-ceter caro caro2">
+    <div class="owl-carousel p-0 owl-theme restaurant-slider caro ">
+
+        <% for(i=0;i<result[1].length;i++) { %>
+
+
+    <div class="item p-0 m-0 carousel-item ">
+    <img class="img-fluid caro " src="/images/<%=result[1][i].image%>" style="width:100%">
+    </div>
+
+    <% } %>
+
+    </div>
+    </section>
+
+
+
+
+
+    <div class="container-fluid" >
+        <section class="section-padding homepage-view-offers m-3" style="border-radius:28px;">
+        <div class="container">
+       
+        <div class="row">
+        
+        
+        
+        <div class="col-xl-8 col-sm-6" data-aos="fade-right" data-aos-duration="2000" >
+        <div class="shadow-sm">
+        <div class="grad1" style="border-radius: 20px;">
+        <a href="#">
+            <img src="/images/HotelIMG.jpg" style="border-radius: 20px;"  class=" im1 im3">
+
+            
+
+          
+        </a>
+        
+        </div>
+     
+        </div>
+        </div>
+        
+
+
+        <div class="col-xl-4 col-sm-6 " data-aos="fade-left" data-aos-duration="2000">
+            <div class=" shadow-sm">
+            <div class="" style="border-radius: 20px;">
+            <a href="#">
+                <!-- <img src="/images/Clothing.mp4" class=" im1 im3"> -->
+                <img src="/images/WatchImage.jpg" style="border-radius: 20px;height: 100%;" class=" im2 im1">
+
+            </a>
+            
+            </div>
+           
+            </div>
+            </div>
+
+        
+        </div>
+        </div>
+        </section>
+        </div>
+
+
+
+
+
+        <div class="container-fluid" style="margin-top: -40px;">
+            <!-- <section class="section-padding homepage-view-offers" style="border-radius:10px;"> -->
+            <!-- <div class="container"> -->
+           
+            <div class="row">
+            
+            
+            
+            <div class="col-xl-4 col-sm-6 col-6 col-md-6" data-aos="fade-right" data-aos-duration="2000" style="margin-top: 20px;" >
+            <a href="#">
+                <img src="/images/CafeImage.jpg" style="border-radius: 20px;">
+              </a>
+            </div>
+
+            <div class="col-xl-4 col-sm-6 col-6 col-md-6" data-aos="fade-right" data-aos-duration="2000" style="margin-top: 20px;" >
+                <a href="#">
+                    <img src="/images/CafeImage.jpg" style="border-radius: 20px;">
+                  </a>
+                </div>
+
+                <div class="col-xl-4 col-sm-6 col-6 col-md-6" data-aos="fade-right" data-aos-duration="2000" style="margin-top: 20px;" >
+                    <a href="#">
+                        <img src="/images/CafeImage.jpg" style="border-radius: 20px;">
+                      </a>
+                    </div>
+            <!-- </div> -->
+            
+    
+    
+            <!-- <div class="col-xl-4 col-sm-6 col-6 col-md-6 " data-aos="fade-right" data-aos-duration="2000" style="margin-top: 20px;"">
+                <div class=" shadow-sm">
+                <div class="" style="border-radius: 20px;">
+                <a href="#">
+                    <img src="/images/Cosmetics.jpg" style="border-radius: 20px;height: 100%;" class=" im2 im1">
+                   
+                </a>
+                
+                </div>
+               
+                </div>
+                </div> -->
+
+
+                
+            <div class="col-xl-4 col-sm-12 col-12 col-md-12" data-aos="fade-up" data-aos-duration="2000" style="margin-top: 20px;">
+                <div class=" shadow-sm">
+                <div class="" style="border-radius: 20px;">
+                <a href="#">
+                    <img src="/images/WatchImage.jpg" style="border-radius: 20px;height: 100%;" class=" im2 im1">
+
+                   
+                </a>
+                
+                </div>
+               
+                </div>
+                </div>
+    
+            
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            </div>
+
+
+
+            <div class="container-fluid">
+                <section class="section-padding homepage-view-offers m-3" style="border-radius:28px;">
+                <div class="container">
+               
+                <div class="row">
+                
+                
+                
+                <div class="col-xl-3 col-sm-6 col-6 col-md-6" data-aos="fade-left" data-aos-duration="3000" style="margin-top: 20px;">
+                <div class="shadow-sm" >
+                <div class="" >
+                <a href="#">
+                    <img src="https://demo.phlox.pro/shop-general/wp-content/uploads/sites/204/2020/06/Mask_Group_4.jpg" style="border-radius: 20px;" class=" im2 im1">
+                    
+        
+    
+                  
+                </a>
+                
+                </div>
+             
+                </div>
+                </div>
+                
+        
+        
+                <div class="col-xl-3 col-sm-6 col-6 col-md-6" data-aos="fade-left" data-aos-duration="3000" style="margin-top: 20px;">
+                    <div class=" shadow-sm">
+                    <div class="">
+                    <a href="#">
+                        <img src="https://demo.phlox.pro/shop-general/wp-content/uploads/sites/204/2020/06/young-woman-in-floral-spring-summer-dress-DW2XVLP-1.jpg" style="border-radius: 20px;" class=" im1 im3">
+                       
+                    </a>
+                    
+                    </div>
+                   
+                    </div>
+                    </div>
+    
+    
+                    
+                <div class="col-xl-3 col-sm-6 col-6 col-md-6" data-aos="fade-left" data-aos-duration="3000" style="margin-top: 20px;">
+                    <div class=" shadow-sm">
+                    <div class="">
+                    <a href="#">
+                        <img src="https://demo.phlox.pro/shop-general/wp-content/uploads/sites/204/2020/06/Group-1319.png" style="border-radius: 20px;" class=" im1 im3">
+                       
+                    </a>
+                    
+                    </div>
+                   
+                    </div>
+                    </div>
+        
+
+
+                    <div class="col-xl-3 col-sm-6 col-6 col-md-6 " data-aos="fade-left" data-aos-duration="3000" style="margin-top: 20px;">
+                        <div class=" shadow-sm">
+                        <div class="">
+                        <a href="#">
+                            <img src="https://demo.phlox.pro/shop-general/wp-content/uploads/sites/204/2020/06/Group-1319.png" style="border-radius: 20px;" class=" im1 im3">
+                           
+                        </a>
+                        
+                        </div>
+                       
+                        </div>
+                        </div>
+            
+                
+                </div>
+                </div>
+                </section>
+                </div>
+    
+
+
+
+
+
+
+<div class="container-fluid" data-aos="fade-up" data-aos-duration="3000">
+<section class="section-padding homepage-view-offers card" style="border-radius:10px;">
+<div class="container">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<h1 class="h5 mb-0 text-gray-900">Exclusive Deals</h1>
+<a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=" fa-sm text-white-50"></i>  Show Alll</a>
+</div>
+<div class="row">
+
+
+    <% for(i=0;i<result[3].length;i++) { %>
+
+<div class="col-xl-3 col-sm-6">
+<div class="custom-card shadow-sm h-100">
+<div class="custom-card-image">
+<a href="#">
+<img class="img-fluid item-img" src="/images/<%=result[3][i].image%>">
+</a>
+
+</div>
+<div class="p-3 pt-4">
+<div class="custom-card-body">
+<h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[3][i].short_description%></a></h6>
+<p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[3][i].expiry%></p>
+</div>
+<div class="custom-card-footer d-flex align-items-center">
+
+
+
+
+        <% if(result[3][i].isredeem == null || result[3][i].isredeem == '' || result[3][i].isredeem == 'null' || result[3][i].isredeem ==[]){ %>
+
+<a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[3][i].id%>" code="<%=result[3][i].name%>" expiry="<%=result[3][i].expiry%>" vendorid = '<%=result[3][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+
+<% } else { %>
+
+
+    <% } %>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<% } %>
+
+</div>
+</div>
+</section>
+</div>
+
+<div class="container-fluid">
+<section class="section-padding homepage-store-block card" style="border-radius:10px;margin-top: 20px;">
+<div class="container">
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+<h1 class="h5 mb-0 text-gray-900">Deals of the Day</h1>
+<a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=" fa-sm text-white-50"></i>  Show Alll</a>
+</div>
+<div class="row  align-items-center">
+<div class="col-lg-12">
+ <div class="owl-carousel owl-theme owl-carousel-four homepage-coupon-carousel">
+
+    <% for(i=0;i<result[4].length;i++) { %>
+
+
+    <div class="item">
+<div class="custom-card2 bg-white shadow-sm h-100 stor-card">
+<div class="custom-card-image">
+
+<a href="#">
+<img class="img-fluid item-img" src="/images/<%=result[4][i].image%>">
+</a>
+<div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+<svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2160 0C1440 240 720 240 720 240H0V480H2880V0H2160Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<div class="p-3">
+<div class="custom-card-body">
+<h6 class="mb-0"><a class="text-gray-900" href="#"><%=result[4][i].short_description%></a></h6>
+<p class="text-gray-500 mb-2"> Expiry at <%=result[4][i].expiry%></p>
+<% if(result[4][i].isredeem == null || result[4][i].isredeem == '' || result[4][i].isredeem == 'null' || result[4][i].isredeem ==[]){ %>
+
+    <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[4][i].id%>" code="<%=result[4][i].name%>" expiry="<%=result[4][i].expiry%>" vendorid = '<%=result[4][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+    
+    <% } else { %>
+    
+        <% } %>
+
+
+</div>
+</div>
+<div class="p-3 border-top">
+<div class="custom-card-badge">
+
+  
+
+
+</div>
+</div>
+</div>
+</div>
+
+ <% } %>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+
+    <section class="section-padding homepage-view-offers card" style="border-radius:28px; background-color: rgba(224, 221, 221, 0);">
+    <div class="container">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h5 mb-0 text-gray-900">Recommended Categories</h1>
+    <a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=" fa-sm text-white-50"></i>  Show Alll</a>
+    </div>
+    <div class="row">
+
+        <% const filteredData = result[0].filter(item => item.type == 'yes') %>
+
+			 <% for(i=0;i<filteredData.length;i++){%>
+
+
+        <div class="col-xl-3 col-sm-6 col-6 col-md-3 mb-4">
+            <div class="custom-card3 shadow-sm bg-white h-40">
+                    <a class="nav-link text-center" href="/shop-by-category?categoryid=<%=filteredData[i].id%>">
+                    <img class="img-fluid" src="/images/<%=filteredData[i].icon%>" style="width:100%;height:150px;object-fit: cover;"> <br><br>
+                    <span><%=filteredData[i].name%></span></a>
+            
+            
+            </div>
+            </div>
+
+            <% } %>
+           
+
+    </div>
+    </div>
+    </section>
+
+    <div class="container-fluid">
+        <section class="section-padding homepage-view-offers card" style="border-radius:10px;">
+        <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h5 mb-0 text-gray-900">Mega Deals</h1>
+        <a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=" fa-sm text-white-50"></i>  Show Alll</a>
+        </div>
+        <div class="row">
+        
+        
+            <% for(i=0;i<result[5].length;i++) { %>
+        
+        <div class="col-xl-3 col-sm-6">
+        <div class="custom-card shadow-sm h-100">
+        <div class="custom-card-image">
+        <a href="#">
+        <img class="img-fluid item-img" src="/images/<%=result[5][i].image%>">
+        </a>
+        
+        </div>
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[5][i].short_description%></a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[5][i].expiry%></p>
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+       
+        
+        
+                <% if(result[5][i].isredeem == null || result[5][i].isredeem == '' || result[5][i].isredeem == 'null' || result[5][i].isredeem ==[]){ %>
+        
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[5][i].id%>" code="<%=result[5][i].name%>" expiry="<%=result[5][i].expiry%>" vendorid = '<%=result[5][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        
+        <% } else { %>
+        
+        
+            <% } %>
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <% } %>
+        
+        </div>
+        </div>
+        </section>
+        </div>
+
+
+
+
+
+
+        <section class="section-padding homepage-view-offers">
+            <div class="container">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h5 mb-0 text-gray-900">Near by Shop</h1>
+            <a href="/exclusive-deals-and-offers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class=" fa-sm text-white-50"></i>  Show Alll</a>
+            </div>
+            <div class="row">
+            
+            
+                <% for(i=0;i<result[6].length;i++) { %>
+            
+            <div class="col-xl-3 col-sm-6" style="height: 350px;">
+            <div class="custom-card shadow-sm">
+            <div class="custom-card-image">
+            <a href="/single-vendor-details?vendorid=<%=result[6][i].id%>">
+            <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>">
+            </a>
+            
+            </div>
+            <div class="p-3 pt-4">
+            <div class="custom-card-body">
+            <h6 class="mb-3"><a class="text-gray-900" href="/single-vendor-details?vendorid=<%=result[6][i].id%>"><%=result[6][i].business_name%>
+            </a></h6>
+           
+            </div>
+            <div class="custom-card-footer d-flex align-items-center">
+            
+          
+            
+                <span class="text-muted" style="font-size: 12px;"> <%=result[6][i].address%> </span>
+            
+            
+            
+                   
+            
+            
+            </div>
+            </div>
+            </div>
+            </div>
+            
+            <% } %>
+            
+            </div>
+            </div>
+            </section>
+
+<%- include ('./footer.ejs') %>
+      
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('.redeem_this_code').click(function(){
+        let coupounid = $(this).attr('id')
+        let code = $(this).attr('code')
+        let expiry = $(this).attr('expiry')
+        let vendorid = $(this).attr('vendorid')
+
+        $.post('/redeem-this-code',{coupounid,code,expiry,vendorid},data=>{
+            if(data.msg=='failed') window.location.href = '/login';
+            else window.location.reload()
+        })
+    })
+</script>
+
+</body>
+
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar// by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:43:38 GMT -->
+</html>

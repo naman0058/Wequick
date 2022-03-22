@@ -1,45 +1,18 @@
 /*
-Template Name: Osahan Deel - Coupons, Deals & Discounts HTML Template
-Author: Askbootstrap
+Template Name: Osahan Deel
+Author: gurdeep
 Author URI: https://themeforest.net/user/askbootstrap
 Version: 1.0
 */
+$(document).ready(function() {
+    "use strict";
 
-(function ($) {
-    "use strict"; // Start of use strict
-
-    // Close any open menu accordions when window is resized below 768px
-    $(window).resize(function () {
-        if ($(window).width() < 768) {
-            $('.sidebar .collapse').collapse('hide');
-        };
-    });
-
-    // Scroll to top button appear
-    $(document).on('scroll', function () {
-        var scrollDistance = $(this).scrollTop();
-        if (scrollDistance > 100) {
-            $('.scroll-to-top').fadeIn();
-        } else {
-            $('.scroll-to-top').fadeOut();
-        }
-    });
-
-    // Smooth scrolling using jQuery easing
-    $(document).on('click', 'a.scroll-to-top', function (e) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top)
-        }, 1000, 'easeInOutExpo');
-        e.preventDefault();
-    });
-
-    $(function () {
-        $("body").on("input propertychange", ".floating-label-form-group", function (e) {
+    $(function() {
+        $("body").on("input propertychange", ".floating-label-form-group", function(e) {
             $(this).toggleClass("floating-label-form-group-with-value", !!$(e.target).val());
-        }).on("focus", ".floating-label-form-group", function () {
+        }).on("focus", ".floating-label-form-group", function() {
             $(this).addClass("floating-label-form-group-with-focus");
-        }).on("blur", ".floating-label-form-group", function () {
+        }).on("blur", ".floating-label-form-group", function() {
             $(this).removeClass("floating-label-form-group-with-focus");
         });
     });
@@ -68,7 +41,6 @@ Version: 1.0
             loop: true,
             dots: false,
             autoPlay: 2000,
-            margin: 15,
             nav: true,
             stopOnHover: true,
             navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"],
@@ -101,7 +73,6 @@ Version: 1.0
             loop: true,
             dots: false,
             autoPlay: 2000,
-            margin: 15,
             nav: true,
             stopOnHover: true,
             navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"],
@@ -123,40 +94,6 @@ Version: 1.0
                     items: 3
                 }
             }
-        });
-    }
-
-    var fiveobjowlcarousel = $(".owl-carousel-four");
-    if (fiveobjowlcarousel.length > 0) {
-        fiveobjowlcarousel.owlCarousel({
-            items: 4,
-            lazyLoad: true,
-            pagination: false,
-            loop: true,
-            dots: false,
-            margin: 15,
-            autoPlay: 2000,
-            nav: true,
-            stopOnHover: true,
-            navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                479: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                979: {
-                    items: 4
-                },
-                1199: {
-                    items: 4
-                }
-            }
-
         });
     }
 
@@ -169,7 +106,6 @@ Version: 1.0
             loop: true,
             dots: false,
             autoPlay: 2000,
-            margin: 15,
             nav: true,
             stopOnHover: true,
             navText: ["<i class='icofont-thin-left'></i>", "<i class='icofont-thin-right'></i>"],
@@ -187,7 +123,7 @@ Version: 1.0
                     items: 4
                 },
                 1199: {
-                    items: 5
+                    items: 4
                 }
             }
 
@@ -214,7 +150,7 @@ Version: 1.0
         // Remove links that don't actually link to anything
         .not('[href="#"]')
         .not('[href="#0"]')
-        .click(function (event) {
+        .click(function(event) {
             // On-page links
             if (
                 location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
@@ -229,7 +165,7 @@ Version: 1.0
                     event.preventDefault();
                     $('html, body').animate({
                         scrollTop: target.offset().top
-                    }, 1000, function () {
+                    }, 1000, function() {
                         // Callback after animation
                         // Must change focus!
                         var $target = $(target);
@@ -302,4 +238,4 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-120909275-1', 'auto');
 ga('send', 'pageview');
 
-})(jQuery); // End of use strict
+});

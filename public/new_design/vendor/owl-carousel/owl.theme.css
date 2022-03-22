@@ -14,39 +14,33 @@
     color: #000;
     display: inline-block;
     font-size: 21px;
-    height: 35px;
+    height: 40px;
     line-height: 40px;
     margin: 0;
     text-align: center;
     text-transform: uppercase;
-    width: 35px;
-}
-.owl-theme .owl-nav button:hover {
-    background:#2c7be5 none repeat scroll 0 0 !important;
-    color: #ffffff;
+    width: 40px;
 }
 .owl-controls .owl-page, .owl-controls .owl-buttons div {
     cursor: pointer;
 }
 .owl-carousel .item {
-    padding: 6px 0px;
-}
-.owl-carousel {
-    margin: -6px 0px;
+    padding: 5px;
 }
 .owl-prev {
-    left: -18px;
+    left: -13px;
     position: absolute;
     top: 42%;
     transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
 }
 .owl-next {
     position: absolute;
-    right: -18px;
+    right: -13px;
     top: 42%;
     transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
 }
 .owl-theme .owl-nav button i {
-    font-size: 19px;
-    line-height: 36px !important;
+    color: #000 !important;
+    font-size: 20px;
+    line-height: 40px !important;
 }

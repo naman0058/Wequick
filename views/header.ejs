@@ -1,250 +1,241 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar// by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:42:55 GMT -->
+<!-- Mirrored from askbootstrap.com/preview/osahan-deel/demo3/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Mar 2022 07:54:19 GMT -->
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Deals Aaj | Reach Redeam & Repeat</title>
+<meta name="description" content="Askbootstrap">
+<meta name="author" content="Askbootstrap">
+<title>Dealsaaj - Reach Redeem Repeat</title>
+
+
+<style>
+  .fa {
+    padding: 8px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+  }
+  
+
+.fa:hover {
+  opacity: 0.7;
+}
+.fa-facebook {
+background: #3B5998;
+color: white;
+}
+.fa-youtube {
+background: #bb0000;
+color: white;
+}
+.fa-instagram {
+background: #125688;
+color: white;
+}
+.fa-twitter {
+background: #55ACEE;
+color: white;
+}
+.fa-linkedin {
+background: #007bb5;
+color: white;
+}
+      </style>
 
 <link rel="icon" type="image/png" href="https://dealsaaj.com/images/deal_logo.png">
 
-<link href="/new_design/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-<link href="/new_design/css/theme.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="/new_design/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <link href="/new_design/vendor/icons/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
 
 <link href="/new_design/vendor/select2/css/select2-bootstrap.css" />
 <link href="/new_design/vendor/select2/css/select2.min.css" rel="stylesheet" />
+
+<link href="/new_design/css/style.css" rel="stylesheet">
+
 <link href="/new_design/vendor/icofont/icofont.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="/new_design/vendor/owl-carousel/owl.carousel.css">
 <link rel="stylesheet" href="/new_design/vendor/owl-carousel/owl.theme.css">
-
-<link href="/new_design/css/osahan.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-
-
-<style>
-    .fa {
-      padding: 8px;
-      font-size: 30px;
-      width: 30px;
-      text-align: center;
-      text-decoration: none;
-      margin: 5px 2px;
-      border-radius: 50%;
-    }
-    
-  
-.fa:hover {
-    opacity: 0.7;
-}
-
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-
-.fa-youtube {
-  background: #bb0000;
-  color: white;
-}
-
-.fa-instagram {
-  background: #125688;
-  color: white;
-}
-
-.fa-twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-
-.fa-linkedin {
-  background: #007bb5;
-  color: white;
-}
-
-        </style>
-
-
 </head>
-<body id="page-top">
+<body>
+<div class="page-header section-rotate position-relative">
+<div class="section-inner bg-gradient-primary"></div>
+<section class="top-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-none p-0">
+<div class="container">
+<!-- <p class="m-0 text-white"><i class="icofont-fire"></i> COUPONS & OFFERS <span class="text-warning">TODAY</span></p> -->
+<p class="m-0 text-white"> <span class="text-warning"></span></p>
 
-<div id="wrapper">
-
-<div id="content-wrapper">
-
-<div id="content">
 
 
+<ul class="navbar-nav ml-auto ml-md-0">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white navbar-light shadow-sm topbar osahan-top-main fixed-top">
 
-    <a class="navbar-brand" href="/">
-    <img class="img-fluid" src="https://dealsaaj.com/images/deal_logo.png"  style="width: 80px;height: 80px;object-fit: contain;">
+<li class="nav-item dropdown no-arrow badge-top">
+<a class="nav-link dropdown-toggle" href="/mycart" id="alertsDropdown" role="button" aria-expanded="false">
+<i class="icofont-cart"></i>
+</a>
+
+</li>
+
+<% if(login == true) { %>
+<li class="nav-item dropdown no-arrow dropdown-user">
+<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="icofont-user"></i>
+
+</a>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+<a class="dropdown-item" href="/my-account"><i class="icofont-ui-user"></i> Profile</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="/logout"><i class="icofont-logout"></i> Logout</a>
+</div>
+</li>
+
+<% } else { %>
+
+  <li class="nav-item dropdown no-arrow dropdown-user">
+    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="icofont-user"></i>
+    
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-    <a class="nav-link" href="/"><i class="fas fa-home"></i></a>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-    <span style="color: black;">Segments</span>
-    </a>
-    <div class="dropdown-menu shadow-sm animated--grow-in border-0" aria-labelledby="navbarDropdown">
-    <div class="bg-white py-2 collapse-inner rounded" style="width: 300px;height: 400px;overflow: scroll;">
-
-        <% for(i=0;i<result[0].length;i++){%>
-            
-    <a class="dropdown-item" href="/shop-by-category?categoryid=<%=result[0][i].id%>">  <%=result[0][i].name%></a>
-    <% } %>
-
-    </div>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+    <a class="dropdown-item" href="/login"><i class="icofont-ui-user"></i> Login</a>
     </div>
     </li>
+
+  <% } %>
+
+</ul>
+</div>
+</nav>
+</section>
+<section class="middle-nav">
+<nav class="navbar navbar-expand-lg navbar-dark bg-none p-0">
+<div class="container">
+<a class="navbar-brand" href="/"><img class="img-fluid" src="/images/deal_logo.png" style="width: 100px;height: 100px;"></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarText">
+<ul class="navbar-nav mx-auto">
+<li class="nav-item active">
+<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item dropdown" >
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+Segments
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="height: 400px;overflow: scroll;">
+  <% for(i=0;i<result[0].length;i++){%>
+<a class="dropdown-item" href="/shop-by-category?categoryid=<%=result[0][i].id%>"> <%=result[0][i].name%></a>
+<% } %>
+</div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="/exclusive-deals-and-offers">Exclusive Deals & Offers</a>
+    </li>
+
     <li class="nav-item">
-    <a class="nav-link" href="/exclusive-deals-and-offers" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-    <span style="color: black;">Exclusive Deals & Offers</span>
-    </a>
-    
-    </li>
-    
-    <li class="nav-item">
-        <a class="nav-link" href="/new-release" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span style="color: black;">New Release</span>
-        </a>
-        
-        </li>
-    
-    
-        <li class="nav-item">
-            <a class="nav-link" href="/channel-partner-login" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-            <span style="color: black;">Our Channel Partners</span>
-            </a>
-            
-            </li>
-    
-    
-    
-    </ul>
-    </div>
-    
-    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/search" method="get">
-        <div class="input-group">
-        <input type="text" class="form-control bg-light border-0 small" name="search" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-        <button class="btn btn-primary" type="button">
-        <i class="fas fa-search fa-sm"></i>
-        </button>
-        </div>
-        </div>
-        </form>
-    
-    
-    <ul class="navbar-nav ml-auto flex-direction-row">
-    
-    <li class="nav-item dropdown no-arrow d-sm-none">
-    <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-search fa-fw" style="font-size: 18px;color: black;"></i>
-    </a>
-    
-    <div class="dropdown-menu dropdown-menu-right p-3 shadow-sm border-0 animated--grow-in" aria-labelledby="searchDropdown">
-    <form class="form-inline mr-auto w-100 navbar-search">
-    <div class="input-group">
-    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-    <div class="input-group-append">
-    <button class="btn btn-primary" type="button">
-    <i class="fas fa-search fa-sm"></i>
-    </button>
-    </div>
-    </div>
-    </form>
-    </div>
-    </li>
-    
-    <% if(login == true) { %>
-
-
-    <li class="nav-item dropdown no-arrow mx-1">
-    <a class="nav-link dropdown-toggle" href="/mycart" id="alertsDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa fa-shopping-basket" style="font-size: 18px;color: black;"></i>
-    
-    
-    
-    </a>
-    
-    
-    </li>
-
-    <% } else { %>
-
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="/mycart" id="alertsDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa fa-shopping-basket" style="font-size: 18px;color: black;"></i>
-        
-        
-        
-        </a>
-        
-        
+        <a class="nav-link" href="/new-release">New Release</a>
         </li>
 
 
-        <% } %>
-    
-    
-    <div class="topbar-divider d-none d-sm-block"></div>
-    
-    <li class="nav-item dropdown no-arrow">
-   
-        <a class="nav-link dropdown-toggle pr-0" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500-400" style="color: black;"></i>
-    </a>
-    
-    <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 animated--grow-in" aria-labelledby="userDropdown">
-    
-    <% if(login == true) { %>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Join Us
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="/channel-partner-login">Channel Partner</a>
+<a class="dropdown-item" href="/vendor-login">Merchant</a>
+</div>
+</li>
 
-    
-        <a class="dropdown-item" href="/my-account">
-    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500-400"></i>
-    Profile
-    </a>
-  
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="/logout">
-    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-500-400"></i>
-    Logout
-    </a>
-
-    <% } else { %>
-
-        <a class="dropdown-item" href="/login" >
-            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-500-400"></i>
-            Login
-            </a>
-
-
-            <% } %>
-    </div>
+<li class="nav-item">
+    <a class="nav-link" href="/about-us">About Us</a>
     </li>
-    </ul>
-    </nav>
+
+
+<!-- <li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Offers
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="offers.html">Offers</a>
+<a class="dropdown-item" href="offer-details.html">Offers Details</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Stores <span class="badge badge-primary">HOT</span>
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="stores.html">Stores</a>
+<a class="dropdown-item" href="store-details.html">Stores Details</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Restaurant
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="restaurant.html">Restaurant</a>
+<a class="dropdown-item" href="restaurant-details.html">Restaurant Details</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Pages <span class="badge badge-danger badge-top">NEW</span>
+</a>
+<div class="dropdown-menu dropdown-menu-lg p-4" aria-labelledby="navbarDropdown">
+<div class="row no-gutters">
+<div class="col-12 col-lg-6">
+
+<h6 class="dropdown-header">
+Account
+</h6>
+
+<a class="dropdown-item" href="profile.html">Profile</a>
+<a class="dropdown-item" href="enter-otp.html">Enter OTP</a>
+<a class="dropdown-item" href="sign-in.html">Sign In</a>
+<a class="dropdown-item" href="sign-up.html">Sign up</a>
+
+<h6 class="dropdown-header">
+Extra Pages <span class="badge badge-success">HOT
+</h6>
+
+<a class="dropdown-item" href="earn.html">Earn</a>
+<a class="dropdown-item" href="membership.html">Membership</a>
+<a class="dropdown-item" href="rating.html">Rating</a>
+<a class="dropdown-item" href="referral.html">Referral</a>
+</div>
+<div class="col-12 col-lg-6">
+
+<h6 class="dropdown-header">
+Company
+</h6>
+
+<a class="dropdown-item" href="not-found.html">404 Not Found</a>
+<a class="dropdown-item" href="faq.html">FAQ</a>
+<a class="dropdown-item" href="terms.html">Terms</a>
+<a class="dropdown-item" href="privacy.html">Privacy</a>
+<a class="dropdown-item" href="contact.html">Contact</a>
+<a class="dropdown-item" href="pricing.html">Pricing</a>
+<a class="dropdown-item" href="maintence.html">Maintence</a>
+<a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
+<a class="dropdown-item" href="components.html">Components</a>
+</div>
+</div>
+</div>
+</li> -->
+</ul>
+
+</div>
+</div>
+</nav>
+</section>

@@ -1,6 +1,6 @@
 <%- include ('./header.ejs') %>
 
-
+<section class="pt-5 pb-5 homepage-search-block position-relative">
 <div class="container">
 <div class="row">
 <div class="col-md-8">
@@ -162,7 +162,8 @@
 </div>
 <div class="p-3 border-top">
 <div class="custom-card-badge">
-
+    <% if(result[5][i].isredeem == null || result[5][i].isredeem == '' || result[5][i].isredeem == 'null' || result[5][i].isredeem ==[]){ %>
+        
         <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[5][i].id%>" code="<%=result[5][i].name%>" expiry="<%=result[5][i].expiry%>" vendorid = '<%=result[5][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
         
         <% } else { %>
@@ -256,27 +257,3 @@
 </div>
 </section>
 <%- include ('./footer.ejs') %>
-<<<<<<< HEAD
-=======
-      
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $('.redeem_this_code').click(function(){
-        let coupounid = $(this).attr('id')
-        let code = $(this).attr('code')
-        let expiry = $(this).attr('expiry')
-        let vendorid = $(this).attr('vendorid')
-
-        $.post('/redeem-this-code',{coupounid,code,expiry,vendorid},data=>{
-            if(data.msg=='failed') window.location.href = '/login';
-            else window.location.reload()
-        })
-    })
-</script>
-
-</body>
-
-<!-- Mirrored from askbootstrap.com/preview/osahan-deel/without-sidebar// by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 06 Mar 2022 19:43:38 GMT -->
-</html>
->>>>>>> 6731de5ce1eebb28a0d07ef1c48b676bf2828dd2

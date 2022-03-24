@@ -72,11 +72,20 @@
         <h2><%=result[1][0].name%></h2>
       </div>
       <div class="row">
-        <h1><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h1>
-        &nbsp; &nbsp;
-        <h3><del> <%=result[1][0].price%></del></h3>
-        &nbsp; &nbsp;
-        <h2 class="text-success"> <%=result[1][0].discount%>% off</h2>
+
+        <% if(result[1][0].discount > 0) { %>
+          <h1><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h1>
+          &nbsp; &nbsp;
+          <h3><del> <%=result[1][0].price%></del></h3>
+          &nbsp; &nbsp;
+          <h2 class="text-success"> <%=result[1][0].discount%>% off</h2>
+          <% } else { %>
+            <h1><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h1>
+           
+
+            <% } %>
+
+   
       </div>
     
       <div class="row">
@@ -130,6 +139,22 @@
    			<div class="card-title">
    			 <a href="/product?id=<%=result[3][i].id%>" style="margin-left:5px;margin-right:5px;margin-top:5px;margin-bottom:5px;color:black"><%=result[3][i].name%></a>
    			</div> 
+         <div class="row">
+           <% if(result[3][i].discount > 0) { %>
+            <h5 style="margin-left:20px">Rs. <%=result[3][i].net_amount%></h5>
+            &nbsp; &nbsp;
+            <h6><del> <%=result[3][i].price%></del></h6>
+            &nbsp; &nbsp;
+            <h6 class="text-success"> <%=result[3][i].discount%>% off</h6>
+
+            <% } else { %>
+              <h5 style="margin-left:20px">Rs. <%=result[3][i].net_amount%></h5>
+              
+
+              <% } %>
+
+      
+        </div>
    		
    		</div>
     </a>

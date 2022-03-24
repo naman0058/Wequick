@@ -27,7 +27,7 @@ router.post('/verification',(req,res)=>{
     let body = req.body
     body['number'] = 91+req.body.number
 
-    req.session.numberverify = 91+req.body.number
+    req.session.numberverify = req.body.number
     var otp =   Math.floor(100000 + Math.random() * 9000);
     req.session.reqotp = otp;
 
@@ -45,7 +45,7 @@ router.post('/verification',(req,res)=>{
 
 
 router.post('/add-user',(req,res)=>{
-  req.session.numberverify = 91+req.body.number
+  req.session.numberverify = req.body.number
   req.session.name = req.body.name
   var otp =   Math.floor(100000 + Math.random() * 9000);
   req.session.reqotp = otp;
@@ -85,6 +85,7 @@ pool.query(`select * from users where number = '${req.session.numberverify}'`,(e
     if(err) throw err;
     else {
       req.session.usernumber = req.session.numberverify;
+      req.session.ipaddress = null;
       res.redirect('/checkout')
     }
   })

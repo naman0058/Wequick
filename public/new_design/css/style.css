@@ -124,15 +124,18 @@ input,
 
 .bg-gradient-primary {
 	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#6e00ff+0,bb00ff+100 */
-	background: #6e00ff;
+	/* background: #6e00ff; */
 	/* Old browsers */
-	background: -moz-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
+	/* background: -moz-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%); */
 	/* FF3.6-15 */
-	background: -webkit-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
+	/* background: -webkit-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%); */
 	/* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
+	/* background: linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%); */
 	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e00ff', endColorstr='#bb00ff', GradientType=1);
+
+
+	background-image:linear-gradient(to right, #672974,#c13268)
 	/* IE6-9 fallback on horizontal gradient */
 }
 

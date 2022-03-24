@@ -121,7 +121,7 @@ router.get('/product',(req,res)=>{
         var query1 = `select p.* 
         from products p where p.id = '${req.query.id}';`
         var query3 = `select * from products order by id desc;`
-        var query4 = `select * from products where categoryid = '${categoryid}' order by id desc limit 8;`
+        var query4 = `select * from products where categoryid = '${categoryid}' and id= '${req.query.id}' order by id desc limit 8;`
         var query5 = `select * from images where productid = '${req.query.id}';`
         pool.query(query+query1+query3+query4+query5,(err,result)=>{
           if(err) throw err;
@@ -323,6 +323,9 @@ router.get('/mycart',(req,res)=>{
  
      pool.query(query+query1+query2,(err,result)=>{
        if(err) throw err;
+       else if(result[1]){
+        res.render('emptyCart',{login,result,shipping_charges:0})
+       }
        else{
 //  res.json(result[1])
         res.render('cart', { title: 'Express',login,result , shipping_charges : 0 });
@@ -390,22 +393,12 @@ else{
   }
   else{
 
-
-
-  
-
-
-
-
-
-
-
   if(req.session.ipaddress){
 
 
 
     if(req.body.quantity=='0' || req.body.quantity==0){
-      pool.query(`delete from cart where booking_id = '${req.body.booking_id}' and number = '${req.session.ipaddress}'`,(err,result)=>{
+      pool.query(`delete from cart where booking_id = '${req.body.booking_id}' and usernumber = '${req.session.ipaddress}'`,(err,result)=>{
         if(err) throw err;
         else {
           res.json({
@@ -1062,7 +1055,7 @@ router.get('/single-vendor-details',(req,res)=>{
   req.session.usernumber ? login =  true : login = false
 
     var query = `select * from category;`
-    var query5 = `select * from products where vendorid = '237';`
+    var query5 = `select * from products where vendorid = '145';`
     var query1 = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
     var query2 = `select c.* , 
      (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,

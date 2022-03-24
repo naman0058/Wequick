@@ -53,9 +53,9 @@
 <!-- <li class="nav-item">
 <span class="nav-link" id="pills-book-tab" data-toggle="pill" href="#pills-book" role="tab" aria-controls="pills-book" aria-selected="false">Book A Table</span>
 </li> -->
-<li class="nav-item">
+<!-- <li class="nav-item">
 <span class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">Ratings & Reviews</span>
-</li>
+</li> -->
 </ul>
 </div>
 </div>
@@ -64,7 +64,7 @@
 <section class="offer-dedicated-body section-padding">
 <div class="container py-lg-4">
 <div class="row">
-<div class="col-lg-8">
+<div class="col-lg-12">
 <div class="offer-dedicated-body-left">
 <div class="tab-content" id="pills-tabContent">
 <div class="tab-pane fade show " id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
@@ -90,7 +90,19 @@
         <p class="text-gray-500"> <%=result[5][i].short_description%></p>
         </div>
         <div class="custom-card-footer d-flex align-items-center">
+        <% if(result[5][i].discount > 0) { %>
+            <span class="text-danger"> Rs.<%=result[5][i].net_amount%> </span>
+
+            &nbsp; &nbsp;
+            <h6><del> <%=result[5][i].price%></del></h6>
+            &nbsp; &nbsp;
+            <h5 class="text-success"> <%=result[5][i].discount%>% off</h5>
+
+            <% } else { %>
                 <span class="text-danger"> Rs.<%=result[5][i].net_amount%> </span>
+
+
+                <% } %>
         </div>
         </div>
         </div>
@@ -120,48 +132,73 @@
 <div class="tab-pane  active" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
 <div id="gallery" class="bg-white rounded shadow-sm p-4 mb-4">
     <p style="font-weight: bold;font-size: 16px;">Exclusive Deals</p>
-    <div class="row">
-        <% for(i=0;i<result[6].length;i++) { %>
 
-            <div class="col-xl-6 col-sm-6" style="margin-top: 30px;">
-            <div class="custom-card shadow-sm h-100">
-            <div class="custom-card-image">
-            <a href="#">
-            <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>">
-            </a>
-            
-            </div>
-            <div class="p-3 pt-4">
-            <div class="custom-card-body">
-            <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[6][i].short_description%>
-            Bank</a></h6>
-            <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[6][i].expiry%></p>
-            </div>
-            <div class="custom-card-footer d-flex align-items-center">
-            
-          
-            
-                    <% if(result[6][i].isredeem == null || result[6][i].isredeem == '' || result[6][i].isredeem == 'null' || result[6][i].isredeem ==[]){ %>
-            
-            <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[6][i].id%>" code="<%=result[6][i].name%>" expiry="<%=result[6][i].expiry%>" vendorid = '<%=result[6][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
-            
-            <% } else { %>
-            
-            
+    <% if(result[6][0]) { %>
+        <div class="row">
+            <% for(i=0;i<result[6].length;i++) { %>
+    
+                <div class="col-xl-4 col-sm-6" style="margin-top: 30px;">
+                <div class="custom-card shadow-sm h-100">
+                <div class="custom-card-image">
+                <a href="#">
+                <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>">
+                </a>
+                
+                </div>
+                <div class="p-3 pt-4">
+                <div class="custom-card-body">
+                <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[6][i].short_description%>
+                Bank</a></h6>
+                <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[6][i].expiry%></p>
+                </div>
+                <div class="custom-card-footer d-flex align-items-center">
+                
+              
+                
+                        <% if(result[6][i].isredeem == null || result[6][i].isredeem == '' || result[6][i].isredeem == 'null' || result[6][i].isredeem ==[]){ %>
+                
+                <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[6][i].id%>" code="<%=result[6][i].name%>" expiry="<%=result[6][i].expiry%>" vendorid = '<%=result[6][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+                
+                <% } else { %>
+                
+                
+                    <% } %>
+                
+                
+                </div>
+                </div>
+                </div>
+                </div>
+                
                 <% } %>
-            
-            
-            </div>
-            </div>
-            </div>
-            </div>
-            
+    </div>
+        
+        <% } else { %>
+            <div class="col-xl-4 col-sm-6" style="margin-top: 30px;">
+                <div class="custom-card shadow-sm h-100">
+               
+                <div class="p-3 pt-4">
+                <div class="custom-card-body">
+                <h6 class="mb-3"><a class="text-gray-900" href="#">No Exclusive Deals Available
+                </a></h6>
+                </div>
+             
+                </div>
+                </div>
+                </div>
+
             <% } %>
-</div>
+
+
+   
 
 
 
 <p style="font-weight: bold;font-size: 16px;margin-top: 20px;">Deals of the Day</p>
+
+
+<% if(result[7][0]) { %>
+
 <div class="row">
 
 
@@ -213,9 +250,28 @@
     
 </div>
 
+<% } else { %>
+    <div class="col-xl-4 col-sm-6" style="margin-top: 30px;">
+        <div class="custom-card shadow-sm h-100">
+       
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#">No Deals of the Day Available
+        </a></h6>
+        </div>
+     
+        </div>
+        </div>
+        </div>
+
+    <% } %>
 
 
 <p style="font-weight: bold;font-size: 16px;margin-top: 20px;">Mega Deals</p>
+
+
+<% if(result[8][0]) { %>
+
 <div class="row">
 
 
@@ -266,6 +322,99 @@
         <% } %>
 
 </div>
+
+
+<% } else { %>
+    <div class="col-xl-4 col-sm-6" style="margin-top: 30px;">
+        <div class="custom-card shadow-sm h-100">
+       
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#">No Mega Deals Available
+        </a></h6>
+        </div>
+     
+        </div>
+        </div>
+        </div>
+
+    <% } %>
+
+
+
+<p style="font-weight: bold;font-size: 16px;margin-top: 20px;">Coupons</p>
+
+<% if(result[3][0]) { %>
+
+
+
+<div class="row">
+
+
+
+    <% for(i=0;i<result[3].length;i++) { %>
+        
+        <div class="col-xl-6 col-sm-6">
+        <div class="custom-card shadow-sm h-100">
+        <div class="custom-card-image">
+        <a href="#">
+        <img class="img-fluid item-img" src="/images/<%=result[3][i].image%>">
+        </a>
+        
+        </div>
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[3][i].short_description%>
+        </a></h6>
+        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[3][i].expiry%></p>
+        </div>
+        <div class="custom-card-footer d-flex align-items-center">
+        
+        <% if(result[3][i].type =='flat') { %>
+        
+            <span class="text-danger">Flat Rs. <%=result[3][i].discount%> OFF</span>
+        
+            <% } else { %>
+                <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[3][i].discount%> % OFF</span>
+        
+                <% } %>
+        
+        
+                <% if(result[3][i].isredeem == null || result[3][i].isredeem == '' || result[3][i].isredeem == 'null' || result[3][i].isredeem ==[]){ %>
+        
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[3][i].id%>" code="<%=result[3][i].name%>" expiry="<%=result[3][i].expiry%>" vendorid = '<%=result[3][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        
+        <% } else { %>
+        
+        
+            <% } %>
+        
+        
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        <% } %>
+
+</div>
+
+
+<% } else { %>
+    <div class="col-xl-4 col-sm-6" style="margin-top: 30px;">
+        <div class="custom-card shadow-sm h-100">
+       
+        <div class="p-3 pt-4">
+        <div class="custom-card-body">
+        <h6 class="mb-3"><a class="text-gray-900" href="#">No Coupons Available
+        </a></h6>
+        </div>
+     
+        </div>
+        </div>
+        </div>
+
+    <% } %>
 
 
 </div>

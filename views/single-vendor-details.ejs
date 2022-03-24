@@ -50,9 +50,9 @@
 <li class="nav-item">
 <span class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false"><%=result[1][0].categoryname%> Info</span>
 </li>
-<!-- <li class="nav-item">
+<li class="nav-item">
 <span class="nav-link" id="pills-book-tab" data-toggle="pill" href="#pills-book" role="tab" aria-controls="pills-book" aria-selected="false">Book A Table</span>
-</li> -->
+</li>
 <!-- <li class="nav-item">
 <span class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">Ratings & Reviews</span>
 </li> -->
@@ -468,10 +468,31 @@
 <div class="col-sm-6">
 <div class="form-group">
 <label>Date And Time</label>
-<input class="form-control" type="text" placeholder="">
+<input type="datetime-local"  class="form-control" id="birthdaytime" name="dateandime">
 </div>
 </div>
 </div>
+<div class="row">
+    <div class="col-sm-6">
+    <div class="form-group">
+    <label>Age</label>
+    <input class="form-control" type="text" placeholder="">
+    </div>
+    </div>
+    <div class="col-sm-6 form-group ">
+        <span class="legend">Select Gender </span>
+<fieldset id="setD">
+	<input id="setD_male" type="radio" name="setD_gender">
+		<label for="setD_male">Male</label>
+	<input id="setD_female" type="radio" name="setD_gender">
+		<label for="setD_female">Female</label>
+        <input id="setD_female" type="radio" name="setD_gender">
+		<label for="setD_female">Other</label>
+</fieldset>
+
+        
+    </div>
+    </div>
 <div class="form-group text-right">
 <button class="btn btn-primary" type="button"> Submit </button>
 </div>

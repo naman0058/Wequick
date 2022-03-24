@@ -210,8 +210,6 @@ router.get('/get-category',(req,res)=>{
 
 
 
-
-<<<<<<< HEAD
    
 router.get('/get-merchant',(req,res)=>{
   pool.query(`select * from vendor order by id desc`,(err,result)=>{
@@ -223,10 +221,8 @@ router.get('/get-merchant',(req,res)=>{
 
 
 
-   router.get('/get-state',(req,res)=>{
-=======
   router.get('/get-state',(req,res)=>{
->>>>>>> 6731de5ce1eebb28a0d07ef1c48b676bf2828dd2
+
     pool.query(`select * from state where status = 'active' order by name desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)

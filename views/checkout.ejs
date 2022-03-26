@@ -33,8 +33,6 @@
 
 
           <% for(i=0;i<result[3].length;i++) { %>
-
-
         <tr>
         <td class="product-thumbnail">
           <div class="radio">
@@ -52,14 +50,12 @@
             </div>
           
         </td>
-
         
         <td class="product-name">
           <%=result[3][i].area%> , <%=result[3][i].landmark%>  , <%=result[3][i].state%> ,  <%=result[3][i].pincode%>
         </td>
       
         </tr>
-
 <% } %>
 
      
@@ -171,7 +167,6 @@
 
 <script>
     
-
     $.getJSON(`/api/time`, data => {
         categories1 = data
         fillDropDown('time', data, 'Choose Time Slot', 0)

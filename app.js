@@ -42,6 +42,7 @@ var channel_partner_dashboard = require('./routes/Channel_Partner/channelPartner
 var merchant_api = require('./routes/Vendor/merchant_api');
 var blogs = require('./routes/blogs');
 var crm = require('./routes/CRM/login');
+var news = require('./routes/news');
 
 
 
@@ -108,6 +109,7 @@ app.use('/merchant-api',merchant_api);
 app.use('/channe-partner-api',channel_partner_api);
 app.use('/agent-api',agent_api)
 app.use('/blogs',blogs);
+app.use('/news',news);
 
 
 

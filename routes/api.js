@@ -2291,6 +2291,10 @@ router.get('/get-menu',(req,res)=>{
 
 
 
-router.get('/state')
+// router.get('/state')
+
+
+
+
 
 module.exports = router;

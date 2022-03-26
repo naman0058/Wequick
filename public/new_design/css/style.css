@@ -2855,10 +2855,8 @@ button:focus {
 
 @media (max-width: 575.98px) {
 	.page-header.section-rotate.position-relative {
-		background: #6e00ff;
-		background: -moz-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
-		background: -webkit-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
-		background: linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
+		
+	background-image:linear-gradient(to right, #672974,#c13268);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e00ff', endColorstr='#bb00ff', GradientType=1);
 	}
 	.section-inner.bg-gradient-primary {
@@ -3379,10 +3377,8 @@ button:focus {
 
 @media (min-width: 576px) and (max-width: 767.98px) {
 	.page-header.section-rotate.position-relative {
-		background: #6e00ff;
-		background: -moz-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
-		background: -webkit-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
-		background: linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
+		
+	background-image:linear-gradient(to right, #672974,#c13268);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e00ff', endColorstr='#bb00ff', GradientType=1);
 	}
 	.section-inner.bg-gradient-primary {
@@ -3886,14 +3882,13 @@ button:focus {
 
 @media (min-width: 768px) and (max-width: 991.98px) {
 	.page-header.section-rotate.position-relative {
-		background: #6e00ff;
-		background: -moz-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
-		background: -webkit-linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
-		background: linear-gradient(45deg, #6e00ff 0%, #bb00ff 100%);
+		
+	background-image:linear-gradient(to right, #672974,#c13268);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e00ff', endColorstr='#bb00ff', GradientType=1);
 	}
 	.section-inner.bg-gradient-primary {
 		display: none;
+		
 	}
 	.section-padding {
 		padding: 50px 0;

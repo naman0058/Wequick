@@ -1,7 +1,16 @@
 <%- include ('./otherheader.ejs') %>
+<style>
+.responsive1 {
+  width: 100%;
+  height: auto;
+}
+</style>
+<section class="">
+    <!-- style="background-image: url('/images/<%=result[1][0].categorylogo%>');background-repeat: no-repeat;" -->
 
-<section class="store-banner" style="background: url('/images/<%=result[1][0].categorylogo%>');background-repeat: no-repeat;object-fit: stretch;">
-<div class="banner-overly"></div>
+<img src="/images/<%=result[1][0].categorylogo%>" style="width:100%; object-fit: cover;">
+
+    <div class="banner-overly"></div>
 <div class="container">
 <div class="row">
 <div class="col-md-12 text-center">

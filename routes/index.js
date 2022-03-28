@@ -121,7 +121,7 @@ router.get('/product',(req,res)=>{
         var query1 = `select p.* 
         from products p where p.id = '${req.query.id}';`
         var query3 = `select * from products order by id desc;`
-        var query4 = `select * from products where categoryid = '${categoryid}' and id= '${req.query.id}' order by id desc limit 8;`
+        var query4 = `select * from products where categoryid = '${categoryid}' and id!= '${req.query.id}' order by id desc limit 8;`
         var query5 = `select * from images where productid = '${req.query.id}';`
         pool.query(query+query1+query3+query4+query5,(err,result)=>{
           if(err) throw err;
@@ -1032,16 +1032,19 @@ router.post('/website-customization-insert',(req,res)=>{
 router.get('/shop-by-category',(req,res)=>{
   req.session.usernumber ? login =  true : login = false
   var query = `select * from category;`
-  var query1 = `SELECT *, SQRT(
+  var query1 = `SELECT v.*, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance,
     (select c.name from category c where c.id = '${req.query.categoryid}') as categoryname,
-    (select c.icon from category c where c.id = '${req.query.categoryid}') as categorylogo
-    FROM vendor where status= 'approved' and categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
+    (select c.icon from category c where c.id = '${req.query.categoryid}') as categorylogo,
+    (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
+    FROM vendor v where v.status= 'approved' and v.categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
+  
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
       else if(result[1][0]){
         res.render('allshop',{login,result})
+        // res.json(result[1][0].vendor_image)
          }
       else res.render('nodatafound',{login,result})
     })
@@ -1056,7 +1059,10 @@ router.get('/single-vendor-details',(req,res)=>{
 
     var query = `select * from category;`
     var query5 = `select * from products where vendorid = '${req.query.vendorid}';`
-    var query1 = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
+    var query1 = `select v.* ,
+     (select c.name from category c where c.id = v.categoryid) as categoryname,
+     (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
+     from vendor v where v.id = '${req.query.vendorid}';`
     var query2 = `select c.* , 
      (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
      (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 

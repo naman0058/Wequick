@@ -1055,7 +1055,7 @@ router.get('/single-vendor-details',(req,res)=>{
   req.session.usernumber ? login =  true : login = false
 
     var query = `select * from category;`
-    var query5 = `select * from products where vendorid = '145';`
+    var query5 = `select * from products where vendorid = '${req.query.vendorid}';`
     var query1 = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
     var query2 = `select c.* , 
      (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,

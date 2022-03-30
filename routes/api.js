@@ -2219,6 +2219,33 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 
+router.post('/update-profile-video',upload.single('image'), (req, res) => {
+  let body = req.body;
+  body['image'] = req.file.filename
+console.log(req.body)
+
+pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+      }
+  })
+
+
+})
+
+
 
 
 router.post('/agent-dashboard',(req,res)=>{

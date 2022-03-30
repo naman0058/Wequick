@@ -2219,9 +2219,9 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 
-router.post('/update-profile-video',upload.single('image'), (req, res) => {
+router.post('/update-profile-video',upload.single('video'), (req, res) => {
   let body = req.body;
-  body['image'] = req.file.filename
+  body['video'] = req.file.filename
 console.log(req.body)
 
 pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {

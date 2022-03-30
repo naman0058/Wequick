@@ -2058,7 +2058,7 @@ router.post('/vendor-dashboard',(req,res)=>{
       var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
       var query3 = `select sum(price) as total_revenue from booking where vendorid = '${req.body.vendorid}';`
       var query4 = `select count(id) as today_viewers from viewers where vendorid = '${req.body.vendorid}';`
-      var query5 = `select viewers,id as vendor from booking where id = '${req.body.vendorid}';`
+      var query5 = `select viewers,id  from vendor where id = '${req.body.vendorid}';`
 
     
       pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{

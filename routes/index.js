@@ -1057,6 +1057,16 @@ router.get('/shop-by-category',(req,res)=>{
 router.get('/single-vendor-details',(req,res)=>{
   req.session.usernumber ? login =  true : login = false
 
+  var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+
     var query = `select * from category;`
     var query5 = `select * from products where vendorid = '${req.query.vendorid}';`
     var query1 = `select v.* ,
@@ -1084,14 +1094,26 @@ router.get('/single-vendor-details',(req,res)=>{
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
     from deals c where c.deals_type = 'Mega Deals' and c.vendorid = '${req.query.vendorid}';`
+  
 
-pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
-  if(err) throw err;
-  else {
-    res.render('single-vendor-details',{login,result})
+    pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
+      if(err) throw err;
+      else {
+        pool.query(`insert into viewers(vendorid,date,viewers) values('${req.query.vendorid}' , '${today}' , '1')`,(err,result)=>{
+          if(err) throw err;
+          else{
+            pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
+              if(err) throw err;
+              else {
+                res.render('single-vendor-details',{login,result})
+              }
+            })
+  
+          }
+        })
+      }
+    })
 
-  }
-})
 })
 
 
@@ -1285,12 +1307,6 @@ router.get('/get-single-blog-description',(req,res)=>{
 
 
 
-
-
-
-
-
-
 router.get('/invoice',(req,res)=>{
   if(req.session.usernumber){
     var query = `select * from category order by name;`
@@ -1343,6 +1359,21 @@ router.get('/success',(req,res)=>{
     })
   
 })
+
+
+
+
+
+router.get('/faq',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+ var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('faq',{login,result})
+    })
+ })
+
 
 
 

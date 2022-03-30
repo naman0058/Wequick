@@ -1645,6 +1645,8 @@ today = yyyy + '-' + mm + '-' + dd;
 
   body['date'] = today;
   body['time'] = time;
+  body['viewers'] = 0;
+
 
 
 
@@ -1828,13 +1830,25 @@ router.get('/vendor-coupon',(req,res)=>{
 
 
 router.get('/single-vendor-details',(req,res)=>{
-  var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
-  pool.query(query,(err,result)=>{
-    if(err) throw err;
-    else res.json(result);
-  })
 
+  var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
+  pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
+ if(err) throw err;
+    else {
+      pool.query(`insert into viewers(vendorid,date,viewers) values('${req.query.vendorid}' , '${today}' , '1')`,(err,result)=>{
+        if(err) throw err;
+        else{
+          pool.query(query,(err,result)=>{
+            if(err) throw err;
+            else res.json(result);
+          })
+        }
+      })
+    }
+  })
 })
+
+
 
 router.post('/get-products-api',(req,res)=>{
   pool.query(`select * from products where vendorid = '${req.body.vendorid}'`,(err,result)=>{
@@ -2039,15 +2053,17 @@ router.post('/get-deals',(req,res)=>{
 
 
 router.post('/vendor-dashboard',(req,res)=>{
-      var query = `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}';`
+      var query =  `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}';`
       var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.body.vendorid}';`
       var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
       var query3 = `select sum(price) as total_revenue from booking where vendorid = '${req.body.vendorid}';`
+      var query4 = `select count(id) as today_viewers from viewers where vendorid = '${req.body.vendorid}';`
+      var query5 = `select viewers , id as vendor from booking where id = '${req.body.vendorid}';`
+
     
-      pool.query(query+query1+query2+query3,(err,result)=>{
-          // res.render('Admin/Dashboard',{msg : '',result})
+      pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
           if(err) throw err;
-else res.json(result);
+          else res.json(result);
       })
 })
 

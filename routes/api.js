@@ -209,6 +209,16 @@ router.get('/get-category',(req,res)=>{
 
 
 
+   router.get('/get-training',(req,res)=>{
+    pool.query(`select * from training order by id desc`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
+
+
+
 
    
 router.get('/get-merchant',(req,res)=>{
@@ -2308,6 +2318,7 @@ router.get('/get-menu',(req,res)=>{
 
 
 // router.get('/state')
+
 
 
 

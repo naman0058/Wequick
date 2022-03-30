@@ -219,8 +219,25 @@ router.post('/store-listing/:name/update', (req, res) => {
 
 router.post('/store-listing/:name/update-image',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 }]), (req, res) => {
     let body = req.body;
-    body['image'] = req.files.image[0].filename;
-    body['icon'] = req.files.icon[0].filename;
+
+
+    if(req.files.image){
+        body['image'] = req.files.image[0].filename;
+      
+      }
+      else {
+        body['image'] = ''
+      }
+
+      
+
+      if(req.files.icon){
+        body['icon'] = req.files.icon[0].filename;
+      
+      }
+      
+      
+  
 
     // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
     //     if(err) throw err;

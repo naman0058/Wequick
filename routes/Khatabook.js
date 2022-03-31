@@ -23,7 +23,7 @@ router.post('/add-customer',(req,res)=>{
 router.get('/get-customer',(req,res)=>{
     pool.query(`select * from khatabook_customer where vendorid = '${req.query.vendorid}'`,(err,result)=>{
         if(err) throw err;
-        else req.json(result)
+        else res.json(result)
     })
 })
 
@@ -101,8 +101,14 @@ router.post('/add-transaction',(req,res)=>{
 router.get('/get-transaction',(req,res)=>{
     pool.query(`select * from khatabook_transaction where customer_id = '${req.query.customer_id}'`,(err,result)=>{
         if(err) throw err;
-        else req.json(result)
+        else res.json(result)
     })
+})
+
+
+
+router.get('/date-wise-filter',(req,res)=>{
+    pool.query(`select * from khatabook_transaction where vendorid = '${req.query.vendorid}' and date between '${req.query.from_date}' and '${req.query.to_date}'`)
 })
 
 

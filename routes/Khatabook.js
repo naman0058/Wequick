@@ -32,7 +32,7 @@ router.get('/get-customer',(req,res)=>{
 
 
 router.post('/add-transaction',(req,res)=>{
-
+console.log(req.body)
     pool.query(`select amount from khatabook_customer where id = '${req.body.customer_id}'`,(err,result)=>{
         if(err) throw err;
         else {
@@ -108,13 +108,19 @@ router.get('/get-transaction',(req,res)=>{
 
 
 router.get('/date-wise-filter',(req,res)=>{
-    pool.query(`select * from khatabook_transaction where vendorid = '${req.query.vendorid}' and date between '${req.query.from_date}' and '${req.query.to_date}'`)
+    pool.query(`select * from khatabook_transaction where vendorid = '${req.query.vendorid}' and date between '${req.query.from_date}' and '${req.query.to_date}'`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
 })
 
 
 
 router.get('/date-wise-filter',(req,res)=>{
-    pool.query(`select * from khatabook_transaction where vendorid = '${req.query.vendorid}' and date between '${req.query.from_date}' and '${req.query.to_date}'`)
+    pool.query(`select * from khatabook_transaction where vendorid = '${req.query.vendorid}' and date between '${req.query.from_date}' and '${req.query.to_date}'`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
 })
 
 module.exports = router;

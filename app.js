@@ -44,6 +44,7 @@ var blogs = require('./routes/blogs');
 var crm = require('./routes/CRM/login');
 var news = require('./routes/news');
 var product_launch = require('./routes/product_launch');
+var khatabook = require('./routes/Khatabook');
 
 
 var app = express();
@@ -111,6 +112,7 @@ app.use('/agent-api',agent_api)
 app.use('/blogs',blogs);
 app.use('/news',news);
 app.use('/product_launch',product_launch);
+app.use('/khatabook',khatabook);
 
 
 // catch 404 and forward to error handler

@@ -8,6 +8,8 @@ var table = 'Khatabook'
 router.post('/add-customer',(req,res)=>{
     let body = req.body;
     body['amount'] = 0;
+    body['color'] = 'green';
+
     pool.query(`insert into khatabook_customer set ?`,body,(err,result)=>{
         if(err) throw err;
         else res.json({
@@ -19,7 +21,7 @@ router.post('/add-customer',(req,res)=>{
 
 
 router.get('/get-customer',(req,res)=>{
-    pool.query(`select * from khatabook_customer`,(err,result)=>{
+    pool.query(`select * from khatabook_customer where vendorid = '${req.query.vendorid}'`,(err,result)=>{
         if(err) throw err;
         else req.json(result)
     })
@@ -104,5 +106,9 @@ router.get('/get-transaction',(req,res)=>{
 })
 
 
+
+router.get('/date-wise-filter',(req,res)=>{
+    pool.query(`select * from khatabook_transaction where vendorid = '${req.query.vendorid}' and date between '${req.query.from_date}' and '${req.query.to_date}'`)
+})
 
 module.exports = router;

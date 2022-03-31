@@ -2221,8 +2221,10 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 router.post('/update-profile-video',upload.single('video'), (req, res) => {
   let body = req.body;
+  console.log('data recieved before',req.body)
+
   body['video'] = req.file.filename
-console.log(req.body)
+  console.log('data recieved after',req.body)
 
 pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {

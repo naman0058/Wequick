@@ -38,15 +38,15 @@ var mapsdk = require('mapmyindia-sdk-nodejs');
 
 
 
-mapsdk.reverseGeoCodeGivenLatiLongi('33OkryzDZsLQEF71nHZWBN8kuaCLc2oNn5dmt4BHmtoQjeEhM6Fs0ohQj1VcyNqUNxFuNARuMQeSkhabCfK07Q==',26.5645,85.9914).then(function(data)
-{
-   console.log(data.results) 
+// mapsdk.reverseGeoCodeGivenLatiLongi('33OkryzDZsLQEF71nHZWBN8kuaCLc2oNn5dmt4BHmtoQjeEhM6Fs0ohQj1VcyNqUNxFuNARuMQeSkhabCfK07Q==',26.5645,85.9914).then(function(data)
+// {
+//    console.log(data.results) 
 
 
 
-}).catch(function(ex){
-    console.log(ex,'error');
-});
+// }).catch(function(ex){
+//     console.log(ex,'error');
+// });
 
 
 //  stripe payment start
@@ -107,6 +107,10 @@ pool.query(`select ${arr[today.getDay()]} from vendor where id = '${req.query.ve
 })
 
 
+
+
+
+
 router.get('/check-state',(req,res)=>{
   pool.query(`select * from state where name = '${req.query.name}' and status='active'`,(err,result)=>{
      if(err) throw err;
@@ -151,6 +155,70 @@ router.post("/charge", (req, res) => {
     res.send(err);
   }
 });
+
+
+
+
+const accountSid = 'ACe8c2bb6560b201780ba9e88014de3d60';
+const authToken = '43faf4aec6d09e8fdd664805c90614b9';
+const client = require('twilio')('ACe8c2bb6560b201780ba9e88014de3d60', '43faf4aec6d09e8fdd664805c90614b9');
+
+
+//send whatsapp media done
+
+
+// client.messages
+//       .create({
+//          body: `Dealsaaj Boom.`,
+//          mediaUrl: ['https://dealsaaj.com/images/deal_logo.png'],
+//          from: 'whatsapp:+14155238886',
+//          to: 'whatsapp:+919019596147'
+//        })
+//          .then(function(res)
+//       {
+//           console.log(JSON.stringify(res));
+//       }).catch(function(ex){
+//           console.log('came in catch');
+//           console.log(ex, 'error');
+//       });
+
+
+
+// ends
+
+// send whatsapp messages done
+
+// client.messages
+//       .create({
+//          from: 'whatsapp:+14155238886',
+//          body: 'Yor are done now!',
+//          to: 'whatsapp:+918319339945'
+//        })
+//     .then(function(res)
+//       {
+//           console.log(JSON.stringify(res));
+//       }).catch(function(ex){
+//           console.log('came in catch');
+//           console.log(ex, 'error');
+//       });
+
+
+// ends here
+
+
+router.get('/send-whatsaap',(req,res)=>{
+  client.messages
+      .create({
+         from: 'whatsapp:+919582172786',
+         body: 'Hello there!',
+         to: 'whatsapp:+918319339945'
+       },(err,result)=>{
+         if(err) throw err;
+         else res.json(result)
+       })
+     
+})
+      
 
 
 //  stripe payment end
@@ -2393,6 +2461,38 @@ router.get('/get-terms-and-conditions',(req,res)=>{
 
 
 
+
+
+router.post('/merchant/update-image',upload.single('signature'), (req, res) => {
+  let body = req.body;
+  body['signature'] = req.file.filename
+
+  // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
+  //     if(err) throw err;
+  //     else {
+  //         fs.unlinkSync(`public/images/${result[0].image}`); 
+
+
+pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+      }
+  })
+
+
+})
 
 
 module.exports = router;

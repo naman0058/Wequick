@@ -2381,7 +2381,7 @@ router.post('/send-notification',async(req,res)=>{
 
 
 
-router.post('/get-terms-and-conditions',(req,res)=>{
+router.get('/get-terms-and-conditions',(req,res)=>{
   
   pool.query(`select * from website_customize where name = 'tc'`,(err,result)=>{
     if(err) throw err;

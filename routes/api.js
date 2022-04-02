@@ -28,6 +28,27 @@ const auth = 'bearer 8170b1fc-302d-4f5d-b6a8-72fb6dbdb804'
 var mapsdk = require('mapmyindia-sdk-nodejs');
 
 
+// mapsdk.autoSuggest('0XXXXXXf-dXX0-4XX0-8XXa-eXXXXXXXXXX6','lovely professional').then(function(res)
+// {
+//     console.log(JSON.stringify(res));
+// }).catch(function(ex){
+//     console.log('came in catch');
+//     console.log(ex, 'error');
+// });
+
+
+
+mapsdk.reverseGeoCodeGivenLatiLongi('33OkryzDZsLQEF71nHZWBN8kuaCLc2oNn5dmt4BHmtoQjeEhM6Fs0ohQj1VcyNqUNxFuNARuMQeSkhabCfK07Q==',26.5645,85.9914).then(function(data)
+{
+   console.log(data.results) 
+
+
+
+}).catch(function(ex){
+    console.log(ex,'error');
+});
+
+
 //  stripe payment start
 
 const stripe = require('stripe')('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');
@@ -1689,45 +1710,6 @@ today = yyyy + '-' + mm + '-' + dd;
 router.post('/update-merchant', (req, res) => {
   let body = req.body
   console.log(req.body)
-
-
-  if(req.body.timings){
-
-  
-    if(req.body.timings == 1){
-      body['timings'] = true
-    }
-    else{
-     body['timings'] = false
-   
-    }
-     }
-   
-     if(req.body.COD){
-   
-    if(req.body.COD == 1){
-     body['COD'] = true
-   }
-   else{
-    body['COD'] = false
-   
-   }
-     }
-   
-   
-     if(req.body.online_pay){
-   
-   
-   if(req.body.online_pay == 1){
-     body['online_pay'] = true
-   }
-   else{
-    body['online_pay'] = false
-   
-   }
-   
-     }
-
   pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {
         console.log('err',err);
@@ -2349,6 +2331,7 @@ router.get('/get-menu',(req,res)=>{
 
 
 // router.get('/state')
+
 
 
 

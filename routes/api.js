@@ -2461,18 +2461,9 @@ router.get('/get-terms-and-conditions',(req,res)=>{
 
 
 
-
-
-router.post('/merchant/update-image',upload.single('signature'), (req, res) => {
+router.post('/merchant/update-signature',upload.single('signature'), (req, res) => {
   let body = req.body;
   body['signature'] = req.file.filename
-
-  // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
-  //     if(err) throw err;
-  //     else {
-  //         fs.unlinkSync(`public/images/${result[0].image}`); 
-
-
 pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
       if(err) {
           res.json({

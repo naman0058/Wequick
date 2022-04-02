@@ -2334,6 +2334,63 @@ router.get('/get-menu',(req,res)=>{
 
 
 
+router.post('/send-notification',async(req,res)=>{
+  pool.query(`select token from vendor where token is not null`,(err,result)=>{
+        if(err) throw err;
+   
+        else {
+            for(i=0;i<result.length;i++) {
+                console.log(result[i].token)
+                const message = {
+                    to: result[i].token,
+                    sound: 'default',
+                    title: 'Salary Salary Salary....',
+                    body: '-',
+                    data: { someData: 'goes here' },
+                  };
+
+                  //request.post('https://exp.host/--/api/v2/push/send').form({message})   
+// request.post({url:'https://exp.host/--/api/v2/push/send',body: JSON.stringify(message)} , function(err,httpResponse,data){
+//     console.log('sending data',body)
+//     if(err) throw err;
+//     else res.json(data)
+//  })
+                
+                   fetch('https://exp.host/--/api/v2/push/send', {
+                    method: 'POST',
+                    headers: {
+                      Accept: 'application/json',
+                      'Accept-encoding': 'gzip, deflate',
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(message),
+                  });
+                
+
+            }
+            res.json({
+                msg : 'success'
+            })
+        }
+    })
+})
+
+
+
+
+
+
+
+router.post('/get-terms-and-conditions',(req,res)=>{
+  
+  pool.query(`select * from website_customize where name = 'tc'`,(err,result)=>{
+    if(err) throw err;
+    else {
+   res.json(result)
+    }
+  })
+})
+
 
 
 

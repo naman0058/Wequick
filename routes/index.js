@@ -818,7 +818,7 @@ router.get('/search',(req,res)=>{
   var query2 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor where business_name Like '%${req.query.search}%' having  distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor where business_name Like '%${req.query.search}%' and status= 'approved'  and image is not null and address is not null having  distance <= 600000000000000 ORDER BY distance;`
   // var query2 = `select * from products where name Like '%${req.query.search}%'  ;`
   
 
@@ -1038,7 +1038,7 @@ router.get('/shop-by-category',(req,res)=>{
     (select c.name from category c where c.id = '${req.query.categoryid}') as categoryname,
     (select c.icon from category c where c.id = '${req.query.categoryid}') as categorylogo,
     (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
-    FROM vendor v where v.status= 'approved' and v.categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor v where v.status= 'approved' and v.categoryid = '${req.query.categoryid}' and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance;`
   
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;

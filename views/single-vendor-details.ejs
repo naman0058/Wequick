@@ -6,8 +6,19 @@
 
 <section class="restaurant-detailed-banner">
 <div class="text-center">
-<img class="img-fluid cover" src="https://dealsaaj.com/images/<%=result[1][0].vendor_image%>" style="width:100%">
+
+
+    <% if(result[1][0].vendor_image) { %>
+        <img class="img-fluid cover" src="https://dealsaaj.com/images/<%=result[1][0].vendor_image%>" style="width:100%">
+
+        <% } else { %>
+            <img class="img-fluid cover" src="/images/thubnail.jpg" style="width:100%">
+
+            <% } %>
+
+
 </div>
+
 <div class="restaurant-detailed-header">
 <div class="container">
 <div class="row d-flex align-items-end">

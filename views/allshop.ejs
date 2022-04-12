@@ -38,14 +38,72 @@
 <div class="col-xl-3 col-sm-6 mb-4">
 <div class="custom-card shadow-sm h-100 stor-card">
 <div class="custom-card-image">
+
 <a href="/single-vendor-details?vendorid=<%=result[1][i].id%>">
-<img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[1][i].vendor_image%>">
+
+
+  <style>
+       
+        
+    .bottom-left {
+      position: absolute;
+      bottom: 8px;
+      left: 16px;
+    }
+    
+    .top-left {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+    }
+    
+    .top-right {
+      position: absolute;
+      top: 8px;
+      right: 16px;
+    }
+    
+    .bottom-right {
+      position: absolute;
+      bottom: 8px;
+      right: 16px;
+    }
+    
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    </style>
+
+
+<% if(result[1][i].image) { %>
+
+<img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[1][i].image%>" style="object-fit:fill">
+
+
+<% } else { %>
+
+    <div class="container" style="background-color: #8A8B8D;">
+        <img class="item-img" src="/images/thubnail.jpg" style="width: 100%;">
+    
+        <div class="centered" style="color: black;"><%=result[1][i].business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()%></div>
+      </div>
+<% } %>
+
+<!-- <img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[1][i].image%>"> -->
+
+
+
 </a>
+
+
 </div>
 <div class="p-3">
 <div class="custom-card-body">
 <h6 class="mb-0"><a class="text-black" href="/single-vendor-details?vendorid=<%=result[1][i].id%>"><%=result[1][i].business_name%></a></h6>
-<p class="text-gray mb-2"> <%=result[1][i].address%></p>
+<p class="text-gray mb-2"> <%=result[1][i].image%></p>
 </div>
 </div>
 

@@ -368,7 +368,8 @@
         </style>
 
 
-<% if(result[6][i].image!=null || result[6][i].image!='null' || result[6][i].image!=[] || result[6][i].image!='' ) { %>
+<% if(result[6][i].image) { %>
+
     
     <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>" style="object-fit:fill">
    

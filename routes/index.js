@@ -1044,7 +1044,7 @@ router.get('/shop-by-category',(req,res)=>{
       if(err) throw err;
       else if(result[1][0]){
         res.render('allshop',{login,result})
-        // res.json(result[1][0].vendor_image)
+        // res.json(result[1][2].image)
          }
       else res.render('nodatafound',{login,result})
     })

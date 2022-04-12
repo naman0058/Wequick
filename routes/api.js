@@ -357,7 +357,7 @@ router.get('/get-all-shops',(req,res)=>{
   var query = `SELECT *, SQRT(
       POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
       POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-  FROM vendor where status = 'approved' having distance <= 60000000000 ORDER BY distance;`
+  FROM vendor where status = 'approved' and image is not null and address is not null  having distance <= 60000000000 ORDER BY distance;`
 
 
 pool.query(query,(err,result)=>{
@@ -372,7 +372,7 @@ router.get('/get-all-shops-by-category',(req,res)=>{
     var query = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor where categoryid = '${req.query.categoryid}' having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor where categoryid = '${req.query.categoryid}' and image is not null and address is not null having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query,(err,result)=>{
        if(err) throw err;
        else res.json(result)
@@ -1887,9 +1887,17 @@ router.get('/vendor-coupon',(req,res)=>{
 })
 
 
-
-
 router.get('/single-vendor-details',(req,res)=>{
+
+
+  var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
 
   var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
   pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
@@ -2085,7 +2093,10 @@ router.get('/get-single-coupon',(req,res)=>{
 
 
 router.get('/get-single-order',(req,res)=>{
-  pool.query(`select * from booking  where id = '${req.query.id}'`,(err,result)=>{
+  pool.query(`select b.* ,
+   (select p.name from products p where p.id = b.booking_id) as product_name,
+   (select p.image from products p where p.id = b.booking_id) as product_image
+  from booking b where id = '${req.query.id}'`,(err,result)=>{
     if(err) throw err;
     else res.json(result);
   })
@@ -2107,7 +2118,6 @@ router.post('/get-deals',(req,res)=>{
     else res.json(result)
   })
 })
-
 
 
 
@@ -2268,7 +2278,6 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 
-
 router.post('/update-profile-video',upload.single('video'), (req, res) => {
   let body = req.body;
   console.log('data recieved before',req.body)
@@ -2301,7 +2310,6 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 
-
 router.post('/agent-dashboard',(req,res)=>{
   var query = `select count(id) as today_vendor from vendor where agentid = '${req.body.agentid}' and date = CURDATE();`
   var query1 = `select count(id) as total_vendor from vendor where agentid = '${req.body.agentid}';`
@@ -2311,7 +2319,6 @@ router.post('/agent-dashboard',(req,res)=>{
 else res.json(result);
   })
 })
-
 
 
 
@@ -2341,11 +2348,6 @@ router.post('/cp_history',(req,res)=>{
     else res.json(result)
   })
 })
-
-
-
-
-
 
 
 
@@ -2446,9 +2448,6 @@ router.post('/send-notification',async(req,res)=>{
 
 
 
-
-
-
 router.get('/get-terms-and-conditions',(req,res)=>{
   
   pool.query(`select * from website_customize where name = 'tc'`,(err,result)=>{
@@ -2461,81 +2460,72 @@ router.get('/get-terms-and-conditions',(req,res)=>{
 
 
 
-// router.post('/merchant/update-signature',upload.single('signature'), (req, res) => {
-//   let body = req.body;
-//   body['signature'] = req.file.filename
-// pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
-//       if(err) {
-//           res.json({
-//               status:500,
-//               type : 'error',
-//               description:err
-//           })
-//       }
-//       else {
-//           res.json({
-//               status:200,
-//               type : 'success',
-//               description:'successfully update'
-//           })
-
-//       }
-//   })
 
 
-// })
+router.get('/get-all-event',(req,res)=>{
+  pool.query(`select id,image from event order by id desc`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
 
-// Importing modules
-const PDFDocument = require('pdfkit');
-// const doc = new PDFDocument;
-var fs =  require('fs');
 
-// Create a document
-const doc = new PDFDocument();
+router.get('/get-single-event',(req,res)=>{
+  pool.query(`select * from event where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
 
-// Saving the pdf file in root directory.
-doc.pipe(fs.createWriteStream('example.pdf'));
 
-// Adding functionality
-doc
+router.post('/apply_event',(req,res)=>{
+  let body = req.body;
+  var today = new Date();
 
-.fontSize(27)
-.text('This the article for GeeksforGeeks', 100, 100);
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-// Adding an image in the pdf.
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
-// doc.image('/images/deal_logo.png', {
-// 	fit: [300, 300],
-// 	align: 'center',
-// 	valign: 'center'
-// });
+today = yyyy + '-' + mm + '-' + dd;
 
-doc
-.addPage()
-.fontSize(15)
-.text('Generating PDF with the help of pdfkit', 100, 100);
+
+  body['date'] = today;
+  body['time'] = time;
+
+
+  pool.query(`insert into apply_event set ?`,body,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
 
 
 
-// Apply some transforms and render an SVG path with the
-// 'even-odd' fill rule
-doc
-.scale(0.6)
-.translate(470, -380)
-.path('M 250,75 L 323,301 131,161 369,161 177,301 z')
-.fill('red', 'even-odd')
-.restore();
+router.post('/merchant_apply_event',(req,res)=>{
+  let body = req.body;
+  var today = new Date();
 
-// Add some text with annotations
-doc
-.addPage()
-.fillColor('blue')
-.text('The link for GeeksforGeeks website', 100, 100)
-	
-.link(100, 100, 160, 27, 'https://www.geeksforgeeks.org/');
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
-// Finalize PDF file
-doc.end();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+  body['date'] = today;
+  body['time'] = time;
+
+
+  pool.query(`insert into merchant_apply_event set ?`,body,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
+
 
 
 

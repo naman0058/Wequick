@@ -372,17 +372,17 @@
         </style>
 
 
-<% if(result[6][i].image) { %>
-    <div class="container" style="background-color: #8A8B8D;">
-        <img class="item-img" src="/images/thubnail.jpg" style="width: 100%;">
+<% if(result[6][i].image!=null || result[6][i].image!='null' || result[6][i].image!=[] || result[6][i].image!='' ) { %>
     
-        <div class="centered"><%=result[6][i].business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()%></div>
-      </div>
+    <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>" style="object-fit:fill">
 
     <% } else { %>
-        <img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[6][i].image%>" style="object-fit:fill">
 
-
+        <div class="container" style="background-color: #8A8B8D;">
+            <img class="item-img" src="/images/thubnail.jpg" style="width: 100%;">
+        
+            <div class="centered"><%=result[6][i].business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()%></div>
+          </div>
 <% } %>
 
    

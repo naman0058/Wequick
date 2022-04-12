@@ -371,13 +371,22 @@
         }
         </style>
 
-    <div class="container">
-        <img class="img-fluid item-img" src="/images/thubnail.jpg" alt="Snow" style="object-fit:cover">
+
+<% if(result[6][i].image) { %>
+    <div class="container" style="background-color: #8A8B8D;">
+        <img class="item-img" src="/images/thubnail.jpg" style="width: 100%;">
     
         <div class="centered"><%=result[6][i].business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()%></div>
       </div>
+
+    <% } else { %>
+        <img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[6][i].image%>" style="object-fit:fill">
+
+
+<% } %>
+
+   
     
-<!-- <img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[6][i].image%>" style="object-fit:fill"> -->
 </a>
 <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
 <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">

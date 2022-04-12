@@ -104,7 +104,7 @@
 <div class="form-row">
 
 <div class="col-lg-7 col-md-7 col-sm-12 form-group">
-<input type="text" name="search" placeholder="Search for stores, coupons, & offers…" class="form-control form-control-lg">
+<input type="text" name="search" onkeypress="return blockSpecialChar(event)" placeholder="Search for stores, coupons, & offers…" class="form-control form-control-lg">
 </div>
 <div class="col-lg-2 col-md-2 col-sm-12 form-group">
 <button type="submit" class="btn btn-primary btn-block btn-lg btn-gradient"><i class="icofont-search"></i></button>
@@ -121,6 +121,37 @@
 </div>
 </section>
 </div>
+
+
+
+<section class="section-padding homepage-great-deals bg-white">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-12">
+    <div class="owl-carousel owl-theme owl-carousel-one homepage-great-deals-carousel">
+        <div class="item">
+            <div class="great-deals-sstore-banners">
+            <a href="/shop-by-category?categoryid=52"><img alt="placeholder image" src="/images/Comming_Soon.jpg" class="img-fluid rounded"></a>
+            </div>
+            </div>
+        <div class="item">
+    <div class="great-deals-sstore-banners">
+    <a href="/shop-by-category?categoryid=52"><img alt="placeholder image" src="/resize_banner/Restaurants.jpg" class="img-fluid rounded"></a>
+    </div>
+    </div>
+    <div class="item">
+    <div class="great-deals-sstore-banners">
+    <a href="shop-by-category?categoryid=64"><img alt="placeholder image" src="/resize_banner/Water-Park.png" class="img-fluid rounded"></a>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+
+
 <section class="section-padding homepage-view-offers">
 <div class="container">
 <div class="row">
@@ -203,26 +234,7 @@
     </div>
     </div>
     </section>
-<section class="section-padding homepage-great-deals bg-white">
-<div class="container">
-<div class="row">
-<div class="col-lg-12">
-<div class="owl-carousel owl-theme owl-carousel-one homepage-great-deals-carousel">
-<div class="item">
-<div class="great-deals-sstore-banners">
-<a href="/shop-by-category?categoryid=52"><img alt="placeholder image" src="/resize_banner/Restaurants.jpg" class="img-fluid rounded"></a>
-</div>
-</div>
-<div class="item">
-<div class="great-deals-sstore-banners">
-<a href="shop-by-category?categoryid=64"><img alt="placeholder image" src="/resize_banner/Water-Park.png" class="img-fluid rounded"></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+
  <section class="section-padding homepage-store-block">
 <div class="container">
 <div class="row  align-items-center">
@@ -320,7 +332,52 @@
 <div class="custom-card shadow-sm bg-white h-100">
 <div class="custom-card-image">
 <a href="/single-vendor-details?vendorid=<%=result[6][i].id%>">
-<img class="img-fluid item-img" src="/images/<%=result[6][i].image%>">
+    <style>
+        .container {
+          position: relative;
+          text-align: center;
+          color: black;
+        }
+        
+        .bottom-left {
+          position: absolute;
+          bottom: 8px;
+          left: 16px;
+        }
+        
+        .top-left {
+          position: absolute;
+          top: 8px;
+          left: 16px;
+        }
+        
+        .top-right {
+          position: absolute;
+          top: 8px;
+          right: 16px;
+        }
+        
+        .bottom-right {
+          position: absolute;
+          bottom: 8px;
+          right: 16px;
+        }
+        
+        .centered {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        </style>
+
+    <div class="container">
+        <img class="img-fluid item-img" src="/images/thubnail.jpg" alt="Snow" style="object-fit:cover">
+    
+        <div class="centered"><%=result[6][i].business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()%></div>
+      </div>
+    
+<!-- <img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[6][i].image%>" style="object-fit:fill"> -->
 </a>
 <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
 <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -397,9 +454,14 @@
 
 </div>
 
-
+<!-- {item.business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()} -->
 <!-- end -->
 
-
+<script type="text/javascript">
+    function blockSpecialChar(e) {
+        var k = e.keyCode;
+        return (k != 39);
+    }
+  </script>
 
 <%- include ('./footer.ejs') %>

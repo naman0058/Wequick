@@ -97,7 +97,6 @@ app.use('/finance-login',financeLogin);
 app.use('/channel-partner-login',channel_partner_login);
 app.use('/agent-dashboard',agent_dashboard);
 app.use('/channel-partner-dashboard',channel_partner_dashboard);
-
 app.use('/banner',banner);
 app.use('/repurchasing-api',repurchasingapi);
 app.use('/talent-hunt',talentHunt)

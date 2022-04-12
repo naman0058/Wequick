@@ -825,9 +825,9 @@ router.get('/search',(req,res)=>{
   pool.query(query+query2+query1,(err,result)=>{
     if(err) throw err;
     else if(result[1][0] || result[2][0]){
-       res.render('search',{login,result})
+       res.render('search',{login,result,search:req.query.search})
     }
-    else res.render('nodatafound',{login,result})
+    else res.render('nodatafound',{login,result,search:req.query.search})
   })
  
 })
@@ -1374,6 +1374,16 @@ router.get('/faq',(req,res)=>{
     })
  })
 
+
+ router.get('/features',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+ var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('features',{login,result})
+    })
+ })
 
 
 

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pool =  require('./pool');
+const request = require('request');
 
 
 // const SendOtp = require('sendotp');
@@ -25,13 +26,21 @@ router.get('/',(req,res)=>{
 
 router.post('/verification',(req,res)=>{
     let body = req.body
-    body['number'] = 91+req.body.number
+    body['number'] = req.body.number
 
     req.session.numberverify = req.body.number
-    var otp =   Math.floor(100000 + Math.random() * 9000);
+    var otp = Math.floor(1000 + Math.random() * 9000);
     req.session.reqotp = otp;
 
-    res.render('otp',{msg : otp , anothermsg:''})
+
+request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.body.number}&dltContentId=1307164948389182926&text=Dear member, Your login verification OTP ${otp}. Valid for the next 10 minutes. Thank you for being with us. Regards, <Dealsaaj>`} , function(err,data){
+// console.log('err',otp);
+// console.log('data') 
+res.render('otp',{msg : otp , anothermsg:''})
+   
+ })
+
+
   //   sendOtp.send(req.body.number, "DELOTM", otp,(err,result)=>{
   //       if(err) throw err;
   //       else{

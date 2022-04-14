@@ -1054,6 +1054,32 @@ router.get('/shop-by-category',(req,res)=>{
 
 
 
+
+router.get('/segment/:name',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+  var query = `select * from category;`
+  var query1 = `SELECT v.*, SQRT(
+    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance,
+    (select c.name from category c where c.id = '${req.params.name}') as categoryname,
+    (select c.icon from category c where c.id = '${req.params.name}') as categorylogo,
+    (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
+    FROM vendor v where v.status= 'approved' and v.categoryid = '${req.params.name}' and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance;`
+  
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else if(result[1][0]){
+        res.render('allshop',{login,result})
+        // res.json(result[1][2].image)
+         }
+      else res.render('nodatafound',{login,result})
+    })
+  
+})
+
+
+
+
 router.get('/single-vendor-details',(req,res)=>{
   req.session.usernumber ? login =  true : login = false
 
@@ -1384,6 +1410,18 @@ router.get('/faq',(req,res)=>{
       else res.render('features',{login,result})
     })
  })
+
+
+ router.get('/robots.txt',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+ var query = `select * from category;`
+    var query1 = `select * from category;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('robots',{login,result})
+    })
+ })
+
 
 
 

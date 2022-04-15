@@ -170,7 +170,7 @@ const client = require('twilio')('ACe8c2bb6560b201780ba9e88014de3d60', '43faf4ae
 // client.messages
 //       .create({
 //          body: `Dealsaaj Boom.`,
-//          mediaUrl: ['https://dealsaaj.com/images/deal_logo.png'],
+//          mediaUrl: ['/images/deal_logo.png'],
 //          from: 'whatsapp:+14155238886',
 //          to: 'whatsapp:+919019596147'
 //        })

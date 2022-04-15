@@ -307,36 +307,110 @@ router.get('/product',(req,res)=>{
 
 
  
+// router.get('/mycart',(req,res)=>{
+//   console.log(req.session.ipaddress)
+ 
+//   req.session.usernumber ? login =  true : login = false
+
+//      var query = `select * from category order by name;`
+//      var query1 = `select c.* , 
+//      (select p.name from products p where p.id = c.booking_id) as bookingname,
+//      (select p.image from products p where p.id = c.booking_id) as bookingimage,
+//      (select p.quantity from products p where p.id = c.booking_id) as availablequantity
+//      from cart c where c.usernumber = '${req.session.usernumber}' or c.usernumber = '${req.session.ipaddress}' ;`
+//     var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.usernumber}' or usernumber = '${req.session.ipaddress}' ;`              
+ 
+ 
+//      pool.query(query+query1+query2,(err,result)=>{
+//        if(err) throw err;
+//        else if(result[1]){
+//         res.render('emptyCart',{login,result,shipping_charges:0})
+//        }
+//        else{
+// //  res.json(result[1])
+//         res.render('cart', { title: 'Express',login,result , shipping_charges : 0 });
+    
+//        }
+    
+    
+//         })
+ 
+   
+//  })
+
+
+
 router.get('/mycart',(req,res)=>{
+
   console.log(req.session.ipaddress)
  
-  req.session.usernumber ? login =  true : login = false
-
-     var query = `select * from category order by name;`
+   if(req.session.usernumber){
+     var query = `select * from category order by id desc;`
      var query1 = `select c.* , 
      (select p.name from products p where p.id = c.booking_id) as bookingname,
      (select p.image from products p where p.id = c.booking_id) as bookingimage,
      (select p.quantity from products p where p.id = c.booking_id) as availablequantity
-     from cart c where c.usernumber = '${req.session.usernumber}' or c.usernumber = '${req.session.ipaddress}' ;`
-    var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.usernumber}' or usernumber = '${req.session.ipaddress}' ;`              
+     
+ 
+     
+      from cart c where c.usernumber = '${req.session.usernumber}';`
+    var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.usernumber}';`              
  
  
      pool.query(query+query1+query2,(err,result)=>{
        if(err) throw err;
-       else if(result[1]){
-        res.render('emptyCart',{login,result,shipping_charges:0})
-       }
        else{
-//  res.json(result[1])
-        res.render('cart', { title: 'Express',login,result , shipping_charges : 0 });
+ 
+ if(result[2][0].totalprice > 500) {
+   res.render('cart', { title: 'Express',login:true,result , shipping_charges : 0 });
+ 
+ }
+ else {
+   res.render('cart', { title: 'Express',login:true,result , shipping_charges : 500 });
+ 
+ }
+ 
     
        }
     
     
         })
  
-   
+   }
+   else{
+     var query = `select * from category order by id desc;`
+     var query1 = `select c.* , 
+     (select p.name from products p where p.id = c.booking_id) as bookingname,
+     (select p.image from products p where p.id = c.booking_id) as bookingimage,
+     (select p.quantity from products p where p.id = c.booking_id) as availablequantity
+ 
+     
+      from cart c where c.usernumber = '${req.session.ipaddress}';`
+    var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.ipaddress}';`              
+ 
+     pool.query(query+query1+query2,(err,result)=>{
+       if(err) throw err;
+       else{
+      
+ 
+         if(result[2][0].totalprice > 500) {
+           res.render('cart', { title: 'Express',login:false,result , shipping_charges : 0 });
+         
+         }
+         else {
+           res.render('cart', { title: 'Express',login:false,result , shipping_charges : 500 });
+         
+         }
+         
+    
+       }
+    
+    
+        })
+ 
+   }
  })
+   
    
 
 

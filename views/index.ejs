@@ -185,6 +185,13 @@
         Redeem Deals</a>
         </div>
     <% } else { %>
+
+        <div class="custom-card-footer mb-2">
+
+            <a class="btn btn-orange float-right" style="margin-bottom: 10px;">
+                <%=result[3][i].name%></a>
+                </div>
+
         <% } %>
 
 
@@ -224,6 +231,7 @@
         <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[4][i].id%>" code="<%=result[4][i].name%>" expiry="<%=result[4][i].expiry%>" vendorid = '<%=result[4][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
         
         <% } else { %>
+            <a class="btn btn-sm btn-white ml-auto" style="cursor:pointer"><%=result[4][i].name%></a>
         
             <% } %>
     </div>
@@ -267,6 +275,7 @@
         <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[5][i].id%>" code="<%=result[5][i].name%>" expiry="<%=result[5][i].expiry%>" vendorid = '<%=result[5][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
         
         <% } else { %>
+            <a class="btn btn-sm btn-white ml-auto"  style="cursor:pointer"><%=result[5][i].name%></a>
         
         
             <% } %>

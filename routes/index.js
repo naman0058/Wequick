@@ -851,14 +851,17 @@ router.get('/my-account',(req,res)=>{
     var query4 = `select email from users where number = '${req.session.usernumber}';`
     var query5 = `select r.* , 
     (select v.business_name from vendor v where v.id = r.vendorid) as vendorbusinessname,
-    (select c.short_description from coupon c where c.id = r.coupounid ) as coupon_description,
-    (select c.maximum_cashback_price from coupon c where c.id = r.coupounid ) as coupon_cashprice
+    (select c.short_description from deals c where c.id = r.coupounid ) as coupon_description,
+    (select c.maximum_cashback_price from deals c where c.id = r.coupounid ) as coupon_cashprice,
+    (select c.image from deals c where c.id = r.coupounid ) as coupon_image
+
 
     from redeem_code r where usernumber = '${req.session.usernumber}' order by id desc limit 10;`
 
     pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
       if(err) throw err;
       else res.render('myaccount',{result:result,login:true})
+      // else res.json(result[5])
     })
   }
   else{

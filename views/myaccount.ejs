@@ -98,7 +98,7 @@ Logout</button>
         <div class="custom-card shadow-sm h-100">
         <div class="custom-card-image">
         <a href="#">
-        <img class="img-fluid item-img" src="/images/<%=result[5][i].image%>">
+        <img class="img-fluid item-img" src="/images/<%=result[5][i].coupon_image%>">
         </a>
         
         </div>
@@ -106,18 +106,11 @@ Logout</button>
         <div class="custom-card-body">
         <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[5][i].coupon_description%>
         </a></h6>
-        <p class="text-gray-500"><i class="icofont-clock-time"></i> Expiry at <%=result[5][i].expiry%></p>
         </div>
         <div class="custom-card-footer d-flex align-items-center">
+            <span class="text-danger"><%=result[5][i].code%></span>
         
-        <% if(result[5][i].type =='flat') { %>
-        
-            <span class="text-danger">Flat Rs. <%=result[5][i].coupon_cashprice%> OFF</span>
-        
-            <% } else { %>
-                <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[5][i].coupon_cashprice%> % OFF</span>
-        
-                <% } %>
+  
         
         
         

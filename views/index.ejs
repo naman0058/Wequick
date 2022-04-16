@@ -258,7 +258,6 @@
 <div class="p-3">
 <div class="custom-card-body">
 <h6 class="mb-0"><a class="text-black" href="#"><%=result[5][i].short_description%></a></h6>
-<p class="text-gray mb-2">Expiry at <%=result[5][i].expiry%></p>
 </div>
 </div>
 <div class="p-3 border-top">
@@ -331,7 +330,7 @@
 <div class="col-xl-3 col-sm-6 mb-4">
 <div class="custom-card shadow-sm bg-white h-100">
 <div class="custom-card-image">
-<a href="/single-vendor-details?vendorid=<%=result[6][i].id%>">
+<a href="/segment/<%=result[6][i].categoryname%>/<%=result[6][i].seo_name%>/<%=result[6][i].id%>">
     <style>
        
         
@@ -464,11 +463,30 @@
 <!-- {item.business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()} -->
 <!-- end -->
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('.redeem_this_code').click(function(){
+        let coupounid = $(this).attr('id')
+        let code = $(this).attr('code')
+        let expiry = $(this).attr('expiry')
+        let vendorid = $(this).attr('vendorid')
+
+        $.post('/redeem-this-code',{coupounid,code,expiry,vendorid},data=>{
+            if(data.msg=='failed') window.location.href = '/login';
+            else window.location.reload()
+        })
+    })
+</script>
+
 <script type="text/javascript">
     function blockSpecialChar(e) {
         var k = e.keyCode;
         return (k != 39);
     }
   </script>
+
+
+
 
 <%- include ('./footer.ejs') %>

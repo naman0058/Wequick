@@ -12,7 +12,7 @@
         <% const filteredData = result[0].filter(item => item.type == 'yes') %>
 
         <% for(i=0;i<filteredData.length;i++){%>
-    <li><a href="/shop-by-category?categoryid=<%=filteredData[i].id%>"><%=filteredData[i].name%></a></li>
+    <li><a href="/segment/<%=filteredData[i].seo_name%>"><%=filteredData[i].name%></a></li>
     <% } %>
   
     </ul>
@@ -90,26 +90,25 @@
     <div class="content-wrapper">
     <div class="cat-links">
     <span class="cat-header">Hospitality</span>
-    <a href="#">  Hotels <span>|</span></a>
-    <a href="#">Café<span>|</span></a>
-    <a href="#">  Saloon <span>|</span></a>
-    <a href="#">Massage parlours  <span>|</span></a>
-    <a href="#"> Clothing <span>|</span></a>
-    <a href="#"> Fast food  <span>|</span></a>
-    <a href="#"> Cosmetics  </a>
-    <a href="#"> Grocery  </a>
+    <a href="/hotels">  Hotels <span>|</span></a>
+    <a href="/cafe">Café<span>|</span></a>
+    <a href="/salon">  Salon <span>|</span></a>
+    <a href="/clothing"> Clothing <span>|</span></a>
+    <a href="/fast-food"> Fast food  <span>|</span></a>
+    <a href="/cosmetics"> Cosmetics  </a>
+    <a href="/grocery"> Grocery  </a>
     </div>
     <div class="cat-links">
     <span class="cat-header">Health Care </span>
-    <a href="#"> Medical shop  <span>|</span></a>
-    <a href="#"> Hospitals <span>|</span></a>
+    <a href="/medical-shop"> Medical shop  <span>|</span></a>
+    <a href="/hospitals"> Hospitals <span>|</span></a>
     <a href="#"> Clinics <span>|</span></a>
     <a href="#"> Path Labs <span>|</span></a>
    
     </div>
     <div class="cat-links">
     <span class="cat-header">Education </span>
-    <a href="#"> Schools <span>|</span></a>
+    <a href="/school"> Schools <span>|</span></a>
     <a href="#"> Colleges <span>|</span></a>
     <a href="#"> Institutes <span>|</span></a>
     <a href="#"> Training <span>|</span></a>
@@ -118,11 +117,11 @@
     </div>
     <div class="cat-links">
     <span class="cat-header">Retail</span>
-    <a href="#">  Grocery <span>|</span></a>
-    <a href="#"> Utensil <span>|</span></a>
-    <a href="#"> Furniture <span>|</span></a>
-    <a href="#"> Cosmetics<span>|</span></a>
-    <a href="#"> Footwear <span>|</span></a>
+    <a href="/grocery">  Grocery <span>|</span></a>
+    <a href="/utensils"> Utensil <span>|</span></a>
+    <a href="/furniture"> Furniture <span>|</span></a>
+    <a href="/cosmetics"> Cosmetics<span>|</span></a>
+    <a href="/footwear"> Footwear <span>|</span></a>
    
     </div>
     <!-- <div class="cat-links">

@@ -90,10 +90,11 @@ router.get('/', function(req, res, next) {
    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
    from deals c where c.deals_type = 'Mega Deals';`
-   var query10 = `SELECT *, SQRT(
-    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
-    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor where status = 'approved' and image is not null and address is not null having distance <= 600000000000000 ORDER BY distance limit 8;`
+   var query10 = `SELECT v.*, SQRT(
+    POW(69.1 * (v.latitude - '${req.query.latitude}'), 2) +
+    POW(69.1 * (v.longitude - '${req.query.longitude}') * COS(v.latitude / 57.3), 2)) AS distance,
+(select c.seo_name from category c where c.id = v.categoryid) as categoryname
+    FROM vendor v where v.status = 'approved' and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance limit 8;`
 
  
    pool.query(query+query1+query5+query7+query8+query9+query10,(err,result)=>{
@@ -1135,18 +1136,18 @@ router.get('/segment/:name',(req,res)=>{
   var query1 = `SELECT v.*, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance,
-    (select c.name from category c where c.id = '${req.params.name}') as categoryname,
-    (select c.icon from category c where c.id = '${req.params.name}') as categorylogo,
+    (select c.name from category c where c.seo_name = '${req.params.name}') as categoryname,
+    (select c.icon from category c where c.seo_name = '${req.params.name}') as categorylogo,
     (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
-    FROM vendor v where v.status= 'approved' and v.categoryid = '${req.params.name}' and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor v where v.status= 'approved' and v.categoryid = (select c.id from category c where c.seo_name = '${req.params.name}') and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance;`
   
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
       else if(result[1][0]){
-        res.render('allshop',{login,result})
+        res.render('allshop',{login,result,name:req.params.name})
         // res.json(result[1][2].image)
          }
-      else res.render('nodatafound',{login,result})
+      else res.render('nodatafound',{login,result,name:req.params.name})
     })
   
 })
@@ -1200,6 +1201,71 @@ today = yyyy + '-' + mm + '-' + dd;
       if(err) throw err;
       else {
         pool.query(`insert into viewers(vendorid,date,viewers) values('${req.query.vendorid}' , '${today}' , '1')`,(err,result)=>{
+          if(err) throw err;
+          else{
+            pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
+              if(err) throw err;
+              else {
+                res.render('single-vendor-details',{login,result})
+              }
+            })
+  
+          }
+        })
+      }
+    })
+
+})
+
+
+
+
+router.get('/segment/:name/:segmentname/:vendorid',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+
+  var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+
+    var query = `select * from category;`
+    var query5 = `select * from products where vendorid = '${req.params.vendorid}';`
+    var query1 = `select v.* ,
+     (select c.name from category c where c.id = v.categoryid) as categoryname,
+     (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
+     from vendor v where v.id = '${req.params.vendorid}';`
+    var query2 = `select c.* , 
+     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+     
+     from coupon c where c.vendorid = '${req.params.vendorid}';`
+    var query3 = `select * from coupon where vendorid = '${req.params.vendorid}';`
+    var query4 = `select * from rating where vendorid = '${req.params.vendorid}';`
+
+
+    var query7 = `select c.* ,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Exclusive Deals' and c.vendorid = '${req.params.vendorid}';`
+    var query8 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Deals Of the Day' and c.vendorid = '${req.params.vendorid}' ;`
+    var query9 = `select c.*,
+    (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
+    (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
+    from deals c where c.deals_type = 'Mega Deals' and c.vendorid = '${req.params.vendorid}';`
+  
+
+    pool.query(`update vendor set viewers = viewers + 1 where id = '${req.params.vendorid}'`,(err,result)=>{
+      if(err) throw err;
+      else {
+        pool.query(`insert into viewers(vendorid,date,viewers) values('${req.params.vendorid}' , '${today}' , '1')`,(err,result)=>{
           if(err) throw err;
           else{
             pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{

@@ -39,7 +39,7 @@
 <div class="custom-card shadow-sm h-100 stor-card">
 <div class="custom-card-image">
 
-<a href="/single-vendor-details?vendorid=<%=result[1][i].id%>">
+<a href="/segment/<%=name%>/<%=result[1][i].seo_name%>/<%=result[1][i].id%>">
 
 
   <style>
@@ -102,7 +102,7 @@
 </div>
 <div class="p-3">
 <div class="custom-card-body">
-<h6 class="mb-0"><a class="text-black" href="/single-vendor-details?vendorid=<%=result[1][i].id%>"><%=result[1][i].business_name%></a></h6>
+<h6 class="mb-0"><a class="text-black" href="/segment/<%=name%>/<%=result[1][i].seo_name%>/<%=result[1][i].id%>"><%=result[1][i].business_name%></a></h6>
 <p class="text-gray mb-2"> <%=result[1][i].address%></p>
 </div>
 </div>

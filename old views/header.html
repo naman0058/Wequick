@@ -117,7 +117,7 @@
                                         <% for(i=0;i<result[0].length;i++){%>
 
                                         <li>
-                                            <a href="shop-by-category?categoryid=<%=result[0][i].id%>"><%=result[0][i].name%></a>
+                                            <a href="/segment/<%=result[0][i].seo_name%>"><%=result[0][i].name%></a>
                                         </li>
 <% } %>
                                        
@@ -198,7 +198,7 @@
 			 <% for(i=0;i<result[0].length;i++){%>
 
                                         <li>
-                                            <a href="shop-by-category?categoryid=<%=result[0][i].id%>">
+                                            <a href="/segment/<%=result[0][i].seo_name%>">
                                            <%=result[0][i].name%>
                                             </a>
                                           
@@ -214,7 +214,7 @@
                                         <option value="">All Categories</option>
 			 <% for(i=0;i<result[0].length;i++){%>
 
-                                        <option value="4"><a href="shop-by-category?categoryid=<%=result[0][i].id%>"></a><%=result[0][i].name%></a></option>
+                                        <option value="4"><a href="/segment/<%=result[0][i].seo_name%>"></a><%=result[0][i].name%></a></option>
                                       <% } %>
                                     </select>
                                 </div>

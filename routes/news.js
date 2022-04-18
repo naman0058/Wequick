@@ -23,6 +23,7 @@ today = yyyy + '-' + mm + '-' + dd;
 
   body['date'] = today;
   body['time'] = time;
+  body['staus'] = 'pending'
    pool.query(`insert into ${table} set ?`,body,(err,result)=>{
      if(err) throw err;
      else res.json({msg:'success'})
@@ -79,6 +80,13 @@ today = yyyy + '-' + mm + '-' + dd;
     })
   })
   
+
+
+  router.get('/list/:type',(req,res)=>{
+    pool.query(`select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from news v where v.status = '${req.params.type}' order by id desc`,(err,result)=>{
+        err ? console.log(err) : res.render('Admin/New-list',{result})
+    })
+})
   
   
   

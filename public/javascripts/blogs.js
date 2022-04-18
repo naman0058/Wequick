@@ -73,6 +73,8 @@
 <table id="report-table" class="table table-bordered table-striped mb-0">
               <thead>
                 <tr>
+                <th scope="col">Type</th>
+
                 <th scope="col">Name</th>
                 <th scope="col">Title</th>
                 <th scope="col">Keywords</th>
@@ -88,6 +90,15 @@
                     <tr>`
                     $.each(board, function(i, item) {
                       table += `
+
+
+                      <th scope="row">
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <span class="mb-0 text-sm">${item.type}</span>
+                        </div>
+                      </div>
+                    </th>
 
 
                       <th scope="row">

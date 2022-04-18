@@ -96,8 +96,29 @@
                             <div class="card-body">    
                                     <div class="basic-form">
                                         <form action="/blogs/insert" method="POST" enctype="multipart/form-data" class="uploadImage">
-                                               
+                                     
+                                          
+
                                           <div class="row">
+                                               
+                                            <div class="col-12">
+                                              <label>Select Type</label>
+
+                                               <select name="type" id="type" class="form-control">
+                                                 <option value="news_portal">News Portal</option>
+                                                 <option value="new_release">New Release</option>
+
+                                               </select>
+                                            </div>
+
+
+                                          
+                                          
+                                          
+                                        </div>
+
+
+                                          <div class="row" style="margin-top: 20px;">
                                                
                                             <div class="col-6">
                                                 <label>Title</label>
@@ -253,6 +274,12 @@
                             <div class="col-xl-12 order-xl-1">
                               <div class="card">
                                   <div class="card-header bg-white border-0">
+
+
+
+
+
+                                    
                                       <div class="row align-items-center">
                                         <div class="col-8">
                                           <h3 class="mb-0">Edit Blogs</h3>
@@ -277,10 +304,26 @@
                         <input type="hidden" id="pid">
                         
                         
-                                      
-                        
-                        
                         <div class="row">
+                                               
+                          <div class="col-12">
+                            <label>Select Type</label>
+
+                             <select name="ptype" id="ptype" class="form-control">
+                               <option value="news_portal">News Portal</option>
+                               <option value="new_release">New Release</option>
+
+                             </select>
+                          </div>
+
+
+                        
+                        
+                        
+                      </div>
+                        
+                        
+                        <div class="row" style="margin-top: 20px;">
                           <div class="col-lg-6">
                             <div class="form-group">
                               <label class="form-control-label" for="input-username">Title</label>

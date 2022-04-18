@@ -2539,13 +2539,13 @@ router.get('/get-customer-order',(req,res)=>{
 
 router.get('/get-rating',(req,res)=>{
   var query = `select * from rating where vendorid = '${req.query.vendorid}';`
-  var query1 = `select avg(rating) from rating where vendorid = '${req.query.vendorid}';`
-  var query2 = `select count(id) from rating where vendorid = '${req.query.vendorid}';`
-  var query3 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '1';`
-  var query4 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '2';`
-  var query5 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '3';`
-  var query6 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '4';`
-  var query7 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '5';`
+  var query1 = `select avg(rating) as average_rating from rating where vendorid = '${req.query.vendorid}';`
+  var query2 = `select count(id) as total_rating from rating where vendorid = '${req.query.vendorid}';`
+  var query3 = `select count(id) as one_start_rating from rating where vendorid = '${req.query.vendorid}' and rating = '1';`
+  var query4 = `select count(id) as two_start_rating from rating where vendorid = '${req.query.vendorid}' and rating = '2';`
+  var query5 = `select count(id) as three_start_rating from rating where vendorid = '${req.query.vendorid}' and rating = '3';`
+  var query6 = `select count(id) as four_start_rating from rating where vendorid = '${req.query.vendorid}' and rating = '4';`
+  var query7 = `select count(id) as five_start_rating from rating where vendorid = '${req.query.vendorid}' and rating = '5';`
 
 
 

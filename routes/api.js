@@ -2529,4 +2529,31 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 
+router.get('/get-customer-order',(req,res)=>{
+  pool.query(`select * from booking where vendorid = '${req.query.vendorid}' and number = '${req.query.number}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
+router.get('/get-rating',(req,res)=>{
+  var query = `select * from rating where vendorid = '${req.query.vendorid}';`
+  var query1 = `select avg(rating) from rating where vendorid = '${req.query.vendorid}';`
+  var query2 = `select count(id) from rating where vendorid = '${req.query.vendorid}';`
+  var query3 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '1';`
+  var query4 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '2';`
+  var query5 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '3';`
+  var query6 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '4';`
+  var query7 = `select count(id) from rating where vendorid = '${req.query.vendorid}' and rating = '5';`
+
+
+
+  pool.query(query+query1+query2+query3+query4+query5+query6+query7,(err,result)=>{
+    if(err) throw err;
+    else res.json(result)
+  })
+})
+
+
 module.exports = router;

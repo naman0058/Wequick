@@ -66,6 +66,7 @@ today = yyyy + '-' + mm + '-' + dd;
   
   router.post('/update-news',(req,res)=>{
     let body = req.body;
+    console.log('body',body)
    pool.query(`update ${table} set ? where id = ?`,[body, req.body.id],(err,result)=>{
      if(err) throw err;
      else res.json(result);
@@ -74,7 +75,7 @@ today = yyyy + '-' + mm + '-' + dd;
   
   
   router.get('/all-news',(req,res)=>{
-    pool.query(`select * from ${table} order by id desc`,(err,result)=>{
+    pool.query(`select * from ${table} where status = 'approved' order by id desc`,(err,result)=>{
       if(err) throw err;
       else res.json(result)
     })
@@ -89,6 +90,14 @@ today = yyyy + '-' + mm + '-' + dd;
 })
   
   
+
+router.get('/update-status',(req,res)=>{
+  let body = req.body;
+ pool.query(`update ${table} set status = '${req.query.status}' where id = ${req.query.id}`,(err,result)=>{
+   if(err) throw err;
+   else res.redirect('/news/list/pending')
+ })
+})
   
   // news section end
 

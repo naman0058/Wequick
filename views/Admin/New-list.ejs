@@ -28,11 +28,14 @@
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Category</th>
-                                                <th>Number</th>
-                                                <th>Pincode</th>
-                                                <th>Joining Date</th>
-                                                <th>View Details</th>
-                                            </tr>
+                                                <th>Short Description</th>
+                                                <th>Description</th>
+                                                <th>Date</th>
+                                                <th></th>
+                                                <th></th>
+
+                                                
+                                                </tr>
                                         </thead>
                                         <tbody>
 
@@ -41,10 +44,21 @@
                                             <tr>
                                                 <td><%=result[i].name%></td>
                                                 <td><%=result[i].categoryname%></td>
-                                                <td><%=result[i].number%></td>
-                                                <td><%=result[i].pincode%></td>
-                                                <td><%=result[i].date%></td>
-                                                <td><a href="/admin/dashboard/vendor/details/<%=result[i].id%>"><button type="button" class="btn btn-link">View Details</button></a></td>
+                                                <td><%=result[i].short_description%></td>
+                                                <td><%=result[i].description%></td>
+                                                <td><%=result[i].date%> at <%=result[i].time%> </td>
+                                               <% if(result[i].status == 'pending') { %>
+                                                <td><a href="/news/update-status?status=approved&id=<%=result[i].id%>"><button type="button" class="btn btn-success">Approved</button></a></td>
+                                                <td><a href="#"><button type="button" id="<%=result[i].id%>" class="btn btn-danger reject">Reject</button></a></td>
+                                                <% } else if(result[i].status == 'reject') { %>
+<td style="color: red;"><%= result[i].reason%></td>
+                                                   
+                                                <td><a href="/news/update-status?status=approved&id=<%=result[i].id%>"><button type="button" class="btn btn-success">Approved</button></a></td>
+                                                    <% } else { %>
+<td></td>
+<td></td>
+
+                                                        <% } %>
                                             </tr>
 
                                             <% } %>
@@ -53,12 +67,12 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
+                                                <th>Category</th>
+                                                <th>Short Description</th>
+                                                <th>Description</th>
+                                                <th>Date</th>
+
+                                                </tr>
                                         </tfoot>
                                     </table>
                                 </div>
@@ -321,6 +335,21 @@
     <script src="/Admin/main/./js/plugins-init/jquery.bootgrid-init.js"></script>
     <script src="/Admin/main/./js/plugins-init/datatables.init.js"></script>
 
+    <script>
+        $('.reject').click(function(){
+            let text;
+  let person = prompt("Give Proper to reject this post:", "");
+  if (person == null || person == "") {
+    text = "User cancelled the prompt.";
+  } else {
+    // text = "Hello " + person + "! How are you today?";
+    let id = $(this).attr('id');
+    $.post('/news/update-news',{id,reason:person,status:'reject'},data=>{
+        window.location.reload();
+    })
+  }
+        })
+    </script>
 
 
 </body>

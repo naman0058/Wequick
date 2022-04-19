@@ -1887,35 +1887,6 @@ router.get('/vendor-coupon',(req,res)=>{
 })
 
 
-router.get('/single-vendor-details',(req,res)=>{
-
-
-  var today = new Date();
-
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-
-today = yyyy + '-' + mm + '-' + dd;
-
-
-  var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
-  pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
- if(err) throw err;
-    else {
-      pool.query(`insert into viewers(vendorid,date,viewers) values('${req.query.vendorid}' , '${today}' , '1')`,(err,result)=>{
-        if(err) throw err;
-        else{
-          pool.query(query,(err,result)=>{
-            if(err) throw err;
-            else res.json(result);
-          })
-        }
-      })
-    }
-  })
-})
-
 
 
 router.post('/get-products-api',(req,res)=>{
@@ -2556,6 +2527,44 @@ router.get('/get-rating',(req,res)=>{
     else res.json(result)
   })
 })
+
+
+
+
+
+
+
+router.get('/single-vendor-details',(req,res)=>{
+
+
+  var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+  var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
+  var query1 = `select * from portfolio where vendorid = '${req.query.vendorid}' order by id desc;`
+  pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
+ if(err) throw err;
+    else {
+      pool.query(`insert into viewers(vendorid,date,viewers) values('${req.query.vendorid}' , '${today}' , '1')`,(err,result)=>{
+        if(err) throw err;
+        else{
+          pool.query(query+query1,(err,result)=>{
+            if(err) throw err;
+            else res.json(result);
+          })
+        }
+      })
+    }
+  })
+})
+
+
 
 
 module.exports = router;

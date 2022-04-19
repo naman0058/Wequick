@@ -296,6 +296,14 @@ router.get('/get-category',(req,res)=>{
    
    })
 
+   router.get('/get-event',(req,res)=>{
+    pool.query(`select * from event`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
+
 
 
    router.get('/get-training',(req,res)=>{

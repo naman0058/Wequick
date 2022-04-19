@@ -470,6 +470,8 @@ router.get('/search',(req,res)=>{
 router.get('/product-description',(req,res)=>{
 
 console.log(req.query.id)
+// var query = `select * from products where categoryid = '${categoryid}' and id!= '${req.query.id}' order by id desc limit 8;`
+
   pool.query(`select * from products where id  = '${req.query.id}'`,(err,result)=>{
     if(err) throw err;
     else {
@@ -482,7 +484,8 @@ console.log(req.query.id)
       
       from products p  where p.id = '${req.query.id}';`
       var query1 = `select * from images where productid = '${req.query.id}';`
-      var query2 = `select  * from products where categoryid = '${category}';`
+      var query2 = `select * from products where categoryid = '${category}' and id!= '${req.query.id}';`
+
 
       
       pool.query(query+query1+query2,(err,result)=>{
@@ -2534,6 +2537,7 @@ router.get('/get-rating',(req,res)=>{
 
 
 
+
 router.get('/single-vendor-details',(req,res)=>{
 
   var today = new Date();
@@ -2561,6 +2565,8 @@ today = yyyy + '-' + mm + '-' + dd;
     }
   })
 })
+
+
 
 
 

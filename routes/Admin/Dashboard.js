@@ -307,7 +307,12 @@ router.get('/agent/list',(req,res)=>{
 
 
 router.get('/vendor/details/:id',(req,res)=>{
-    var query = `select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.params.id}';`
+    var query = `select v.*,
+    (select a.name from agent a where a.userid = v.agentid) as agentname,
+    (select a.number from agent a where a.userid = v.agentid) as agentnumber,
+    (select a.name from channel_partner a  where a.userid = v.channel_partner_id) as cp_name,
+    (select a.number from channel_partner a where a.userid = v.channel_partner_id) as cp_number,
+     (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.params.id}';`
     var query1 = `select sum(price) as total_price from booking where vendorid = '${req.params.id}';`
     var query2 = `select count(id) as total_orders from booking where vendorid = '${req.params.id}';`
     var query3 = `select count(id) as running_orders from booking where status != 'delivered' and vendorid = '${req.params.id}';`

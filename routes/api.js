@@ -2448,7 +2448,7 @@ router.get('/get-terms-and-conditions',(req,res)=>{
 
 
 router.get('/get-all-event',(req,res)=>{
-  pool.query(`select id,image from event order by id desc`,(err,result)=>{
+  pool.query(`select id,image from event`,(err,result)=>{
     if(err) throw err;
     else res.json(result);
   })

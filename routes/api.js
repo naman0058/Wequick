@@ -2325,6 +2325,7 @@ else res.json(result);
 
 
 router.post('/channel-partner-dashboard',(req,res)=>{
+  console.log('body h',req.body)
   var query = `select count(id) as total_agent from agent where channel_partner_id = '${req.body.id}';`
   var query1 = `select count(id) as total_merchant from vendor where channel_partner_id = '${req.body.id}';`
   var query2 = `select count(id) as today_merchant from vendor where channel_partner_id = '${req.body.id}' and date = CURDATE();`

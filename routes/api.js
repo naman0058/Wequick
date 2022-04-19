@@ -297,7 +297,7 @@ router.get('/get-category',(req,res)=>{
    })
 
    router.get('/get-event',(req,res)=>{
-    pool.query(`select * from event`,(err,result)=>{
+    pool.query(`select * from event order by id desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })

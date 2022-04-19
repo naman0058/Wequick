@@ -2544,7 +2544,7 @@ var yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
 
 
-  var query = `select v.business_name , v.image , v.number , v.address , v.shop_online , v.name_hide , v.owner_name , v.id , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
+  var query = `select v.business_name , v.image , v.number , v.address , v.shop_online , v.owner_name_hide , v.name , v.id , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
   var query1 = `select * from portfolio where vendorid = '${req.query.vendorid}' order by id desc;`
   pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
  if(err) throw err;

@@ -2174,7 +2174,7 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 router.get('/check-update',(req,res)=>{
-  if(req.query.version == 3){
+  if(req.query.version == 5){
     res.json({msg:'updated'})
 
   }

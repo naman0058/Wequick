@@ -2311,6 +2311,7 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 router.post('/agent-dashboard',(req,res)=>{
+  console.log('body',req.body)
   var query = `select count(id) as today_vendor from vendor where agentid = '${req.body.agentid}' and date = CURDATE();`
   var query1 = `select count(id) as total_vendor from vendor where agentid = '${req.body.agentid}';`
 

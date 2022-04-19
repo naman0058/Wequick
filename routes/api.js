@@ -2551,13 +2551,15 @@ today = yyyy + '-' + mm + '-' + dd;
 
   var query = `select v.business_name , v.image , v.number , v.address , v.shop_online , v.owner_name_hide , v.name , v.id , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
   var query1 = `select * from portfolio where vendorid = '${req.query.vendorid}' order by id desc;`
+  var query2 = `select avg(rating) as average_rating from rating where vendorid = '${req.query.vendorid}';`
+ 
   pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
  if(err) throw err;
     else {
       pool.query(`insert into viewers(vendorid,date,viewers) values('${req.query.vendorid}' , '${today}' , '1')`,(err,result)=>{
         if(err) throw err;
         else{
-          pool.query(query+query1,(err,result)=>{
+          pool.query(query+query1+query2,(err,result)=>{
             if(err) throw err;
             else res.json(result);
           })

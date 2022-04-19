@@ -1238,7 +1238,7 @@ router.post("/payment-initiate", (req, res) => {
   
 
   router.get('/get-top-banner',(req,res)=>{
-    pool.query(`select * from banner where type = 'Front Banner' order by id desc`,(err,result)=>{
+    pool.query(`select * from banner where type = 'Front Banner'`,(err,result)=>{
       if(err) throw err;
       else res.json(result)
     })

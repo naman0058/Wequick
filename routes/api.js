@@ -489,7 +489,7 @@ console.log(req.query.id)
 
 
       
-      pool.query(query+query1+query2,(err,result)=>{
+      pool.query(query+query1+query2+query3,(err,result)=>{
           if(err) throw err;
           else res.json(result)
       })

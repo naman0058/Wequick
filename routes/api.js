@@ -2538,7 +2538,7 @@ router.get('/get-customer-order',(req,res)=>{
 
 
 router.get('/get-rating',(req,res)=>{
-  var query = `select * from rating where vendorid = '${req.query.vendorid}';`
+  var query = `select r.* , (select u.name from users u where u.number = r.usernumber) as username from rating r where r.vendorid = '${req.query.vendorid}';`
   var query1 = `select avg(rating) as average_rating from rating where vendorid = '${req.query.vendorid}';`
   var query2 = `select count(id) as total_rating from rating where vendorid = '${req.query.vendorid}';`
   var query3 = `select count(id) as one_start_rating from rating where vendorid = '${req.query.vendorid}' and rating = '1';`

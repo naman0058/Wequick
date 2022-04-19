@@ -485,6 +485,7 @@ console.log(req.query.id)
       from products p  where p.id = '${req.query.id}';`
       var query1 = `select * from images where productid = '${req.query.id}';`
       var query2 = `select * from products where categoryid = '${category}' and id!= '${req.query.id}';`
+      var query3 = `select custom_privacy , custom_terms from vendor where id = '${req.query.vendorid}';`
 
 
       

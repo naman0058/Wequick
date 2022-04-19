@@ -484,7 +484,7 @@ console.log(req.query.id)
       
       from products p  where p.id = '${req.query.id}';`
       var query1 = `select * from images where productid = '${req.query.id}';`
-      var query2 = `select image , price , discount , net_amount , small_description , name  from products where categoryid = '${category}' and id!= '${req.query.id}';`
+      var query2 = `select image , price , discount , net_amount , small_description , name , id  from products where categoryid = '${category}' and id!= '${req.query.id}';`
       var query3 = `select custom_refund , custom_terms from vendor where id = '${req.query.vendorid}';`
 
 

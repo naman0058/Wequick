@@ -630,7 +630,8 @@ router.post("/mycart", (req, res) => {
       
     from cart c where c.quantity <= (select p.quantity from products p where p.id = c.booking_id ) and c.number = '${req.body.number}' ;`
     var query4 = `select count(id) as counter from cart c where c.quantity <= (select p.quantity from products p where p.id = c.booking_id ) and c.number = '${req.body.number}';`
-    pool.query(query+query1+query2+query3+query4, (err, result) => {
+    var query5 = `select id , upi_id , qr_image , account_holder_name , ifsc_code , branch_name , bank_name , account_number , account_type from vendor where id = '${req.query.vendorid}';`
+    pool.query(query+query1+query2+query3+query4+query5, (err, result) => {
       if (err) throw err;
       else if (result[0][0]) {
         req.body.mobilecounter = result[1][0].counter;
@@ -2576,17 +2577,16 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 router.get('/search',(req,res)=>{
-
-   var query2 = `SELECT *, SQRT(
+    
+  var query2 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
     FROM vendor where business_name Like '%${req.query.search}%' and status= 'approved'  and image is not null and address is not null having  distance <= 600000000000000 ORDER BY distance;`
-  
-  pool.query(query2,(err,result)=>{
+   pool.query(query2,(err,result)=>{
     if(err) throw err;
-    
     else res.json(result)
   })
+
  
 })
 

@@ -614,6 +614,7 @@ router.post('/save-user',(req,res)=>{
 
 
 
+
 router.post("/mycart", (req, res) => {
  console.log(req.body)
     var query = `select c.*,(select s.name from products s where s.id = c.booking_id) as servicename
@@ -646,16 +647,14 @@ router.post("/mycart", (req, res) => {
 });
 
 
+
 let data2 = []
 
 
-router.get('/index',(req,res)=>{
 
-     
-    let data1 = []
-  
-    
-    pool.query(`select * from app_order`,(err,result)=>{
+router.get('/index',(req,res)=>{
+ let data1 = []
+pool.query(`select * from app_order`,(err,result)=>{
         if(err) throw err;
         else {
     //  console.log(result.length)
@@ -784,8 +783,6 @@ body['date'] = today
 
 
 
-
-
 router.post('/order-now',(req,res)=>{
   let body = req.body;
 console.log('body',req.body)
@@ -897,56 +894,6 @@ pool.query(`delete from cart where number = '${req.body.usernumber}'`,(err,resul
 
 
 
-
-
-
-// router.post('/orders',(req,res)=>{
-//     let body = req.body;
-//     body['date'] = today
-//     body['status'] = 'pending'
-//     pool.query(`insert into booking set ?`,body,(err,result)=>{
-//         if(err) throw err;
-//         else {
-//           let insertId = result.insertId
-
-//           pool.query(`select * from cart c where c.quantity <= (select p.quantity from product p where p.id = c.booking_id ) and c.number = '${req.body.number}' and c.status is null`,(err,result)=>{
-//             if(err) throw err;
-//             else {
-//           //    res.json(result)
-//               for(i=0;i<result.length;i++){
-//                 let booking_id = result[i].booking_id
-//                 pool.query(`update product set quantity = quantity - '${result[i].quantity}' where id = '${result[i].booking_id}'`,(err,result)=>{
-//                   if(err) throw err;
-//                   else {
-//                     pool.query(`update cart set status = 'booked' , orderid = '${insertId}' where number = '${req.body.number}' and booking_id ='${booking_id}' and status is null`,(err,result)=>{
-//                       if(err) throw err;
-//                       else {
-//                            res.json({
-//                   msg :'success'
-//               })
-//                       }
-//                   })
-//                   }
-//                 })
-//               }
-            
-            
-//             }
-//           })
-           
-           
-//         }
-       
-//     })
-// })
-
-
-
-
-
-
-
-
 router.get('/view-all-product',(req,res)=>{
     console.log('que',req.query)
     var query = `select t.* ,   
@@ -966,7 +913,6 @@ router.get('/view-all-product',(req,res)=>{
        else res.json(result)
       })
   })
-  
   
   
   
@@ -1049,9 +995,6 @@ router.get('/view-all-product',(req,res)=>{
   
   
   
-  
-  
-  
   router.post('/promotional/text/update_image',upload.single('image'), (req, res) => {
     let body = req.body;
     body['image'] = req.file.filename
@@ -1084,7 +1027,6 @@ router.get('/view-all-product',(req,res)=>{
   
   
   
-  
   router.get('/get-faq',(req,res)=>{
     pool.query(`select * from faq order by id desc`,(err,result)=>{
       if(err) throw err;
@@ -1099,7 +1041,6 @@ router.get('/view-all-product',(req,res)=>{
       else res.json(result)
     })
   })
-  
   
   
   
@@ -1124,9 +1065,7 @@ router.get('/view-all-product',(req,res)=>{
     })
   })
   
-  
-  
-  
+    
   
   router.get('/all-website-customize',(req,res)=>{
     pool.query(`select * from website_customize`,(err,result)=>{
@@ -1134,10 +1073,6 @@ router.get('/view-all-product',(req,res)=>{
       else res.json(result)
     })
   })
-  
-  
-  
-  
   
   
   
@@ -1175,8 +1110,8 @@ router.get('/view-all-product',(req,res)=>{
   
   
   
-  
-router.post("/payment-initiate", (req, res) => {
+   
+  router.post("/payment-initiate", (req, res) => {
   const url = `https://rzp_live_2AYlv8GRAaT63p:iIzpixX7YsDSUVPtAtbO5SMn@api.razorpay.com/v1/orders/`;
 
   const data = {
@@ -1199,18 +1134,20 @@ router.post("/payment-initiate", (req, res) => {
         //  res.render('open',{resu : resu.id})
         res.json(resu)
     })
-})
+  })
 
 
 
   router.get("/demo", (req, res) => {
     res.render("dem");
   });
+
   
   router.get("/demo1", (req, res) => {
     console.log(req.query);
     res.send(req.query);
   });
+
   
   router.post("/razorpay-response", (req, res) => {
     let body = req.body;
@@ -1222,12 +1159,14 @@ router.post("/payment-initiate", (req, res) => {
       res.redirect("/api/failed_payment");
     }
   });
+
   
   router.get("/success_razorpay", (req, res) => {
     res.json({
       msg: "success",
     });
   });
+
   
   router.get("/failed_payment", (req, res) => {
     res.json({
@@ -1235,12 +1174,12 @@ router.post("/payment-initiate", (req, res) => {
     });
   });
   
+ 
   router.post("/failed_payment", (req, res) => {
     res.json({
       msg: "failed",
     });
   });
-  
   
   
 

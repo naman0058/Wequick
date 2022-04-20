@@ -467,12 +467,6 @@ router.get('/get-agent',(req,res)=>{
 //    }))
 
 
-router.get('/search',(req,res)=>{
-    pool.query(`select * from products where keyword Like '%${req.query.search}%'`,(err,result)=>{
-        if(err) throw err;
-        else res.json(result)
-    })
-})
 
 
 router.get('/product-description',(req,res)=>{
@@ -2577,6 +2571,30 @@ today = yyyy + '-' + mm + '-' + dd;
   })
 })
 
+
+
+
+
+
+
+
+
+router.get('/search',(req,res)=>{
+
+  var query = `select * from category order by name;`
+  var query1 = `select * from category where name LIKE '%${req.query.search}%';`
+  var query2 = `SELECT *, SQRT(
+    POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
+    POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
+    FROM vendor where business_name Like '%${req.query.search}%' and status= 'approved'  and image is not null and address is not null having  distance <= 600000000000000 ORDER BY distance;`
+  
+  pool.query(query+query2+query1,(err,result)=>{
+    if(err) throw err;
+    
+    else res.json(result)
+  })
+ 
+})
 
 
 

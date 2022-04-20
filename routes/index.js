@@ -592,16 +592,7 @@ console.log('hd',req.session.usernumber)
 
     pool.query(`select email from users where number = '${req.session.usernumber}'`,(err,result)=>{
       if(err) throw err;
-      // else if(result[0].email==null || result[0].email == ''){
-      //   req.session.newuser = '1';
-      //   var query = `select * from category order by name;`
-      //   var query1 = `select * from users where number = '${req.session.usernumber}';`
-    
-      //   pool.query(query+query1,(err,result)=>{
-      //     if(err) throw err;
-      //     else res.render('myaccount',{result:result,login:true,msg:'Please Update Your Profile To Checkout'})
-      //   })
-      // }
+      
       else {
         var query = `select * from category order by name;`
    
@@ -616,7 +607,6 @@ console.log('hd',req.session.usernumber)
          pool.query(query+query1+query2+query3+query4,(err,result)=>{
            if(err) throw err;
            else {
-     
      
      
             // res.json(result)

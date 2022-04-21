@@ -2491,7 +2491,7 @@ var yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
 
 
-  var query = `select v.business_name , v.image , v.number , v.address , v.shop_online , v.owner_name_hide , v.name , v.id , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
+  var query = `select v.description , v.business_name , v.image , v.number , v.address , v.shop_online , v.owner_name_hide , v.name , v.id , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
   var query1 = `select * from portfolio where vendorid = '${req.query.vendorid}' order by id desc;`
   var query2 = `select avg(rating) as average_rating from rating where vendorid = '${req.query.vendorid}';`
  

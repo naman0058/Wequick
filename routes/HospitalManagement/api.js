@@ -36,10 +36,11 @@ router.post('/add-staff',upload.fields([{ name: 'image', maxCount: 1 }, { name: 
       body['time'] = time;
 
  console.log(req.body)
-   pool.query(`insert into hospital_staff set ?`,body,(err,result)=>{
-    if(err) res.json(err);
-    else res.json({msg:'success'})
-   })
+ res.json(req.body)
+//    pool.query(`insert into hospital_staff set ?`,body,(err,result)=>{
+//     if(err) res.json(err);
+//     else res.json({msg:'success'})
+//    })
 })
 
 

@@ -2545,11 +2545,11 @@ router.post('/add-staff',upload.fields([{ name: 'image', maxCount: 1 }, { name: 
   
 
 
-  // body['image'] = req.files.image[0].filename;
-  // body['aadhar_card_front'] = req.files.aadhar_card_front[0].filename;
-  // body['aadhar_card_back'] = req.files.aadhar_card_back[0].filename;
-  // body['pan_card'] = req.files.pan_card[0].filename;
-  // body['higher_education_marksheet'] = req.files.higher_education_marksheet[0].filename;
+  body['image'] = req.files.image[0].filename;
+  body['aadhar_card_front'] = req.files.aadhar_card_front[0].filename;
+  body['aadhar_card_back'] = req.files.aadhar_card_back[0].filename;
+  body['pan_card'] = req.files.pan_card[0].filename;
+  body['higher_education_marksheet'] = req.files.higher_education_marksheet[0].filename;
 
 
 

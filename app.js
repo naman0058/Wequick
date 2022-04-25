@@ -108,7 +108,7 @@ app.use('/mlm',mlm);
 app.use('/shop_banner',shop_banner);
 app.use('/merchant-api',merchant_api);
 app.use('/channe-partner-api',channel_partner_api);
-app.use('/agent-api',agent_api)
+app.use('/agent-api',agent_api);
 app.use('/blogs',blogs);
 app.use('/news',news);
 app.use('/product_launch',product_launch);

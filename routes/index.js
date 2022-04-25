@@ -1572,5 +1572,16 @@ router.get('/faq',(req,res)=>{
 
 
 
+ router.get('/event',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+ var query = `select * from category;`
+    var query1 = `select * from event;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('event',{login,result})
+    })
+ })
+
+
 
 module.exports = router;

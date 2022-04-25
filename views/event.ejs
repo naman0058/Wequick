@@ -1,0 +1,402 @@
+<%- include ('./otherheader.ejs') %>
+
+    <title>features</title>
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
+
+
+
+
+    <style>
+        :root {
+  --strd-b-pdg: 15px 2rem;
+  --tag-pd: 12px 7px;
+  --strd-mobile-pdg: 1rem;
+  --strd-blk: #000000;
+  --strd-wht: #fff;
+  --tag-bc: #eaeaea;
+  --primary-bc: #f5f8fa;
+  --ft-hdr-hght: 400px;
+  --hdr-txt: 2.4rem;
+  --mrg-center: 0 auto;
+  --mrg--5: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: "Lexend", sans-serif;
+}
+
+.wNe {
+  position: relative;
+}
+.wNe-featured {
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  height: var(--ft-hdr-hght);
+  position: relative;
+  background: linear-gradient(to top, #000000d9, rgba(255, 255, 255, 0)), url(https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-position: center;
+  background-size: cover;
+}
+.wNe-featured-video {
+  width: 100%;
+  object-position: left;
+  height: 100%;
+  object-fit: cover;
+}
+.wNe-featured-txt {
+  z-index: 2;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  color: var(--strd-wht);
+  font-size: var(--hdr-txt);
+}
+.body-intro {
+  margin: 1rem 0;
+}
+.body-intro-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+.body-intro-tag {
+  padding: var(--tag-pd);
+  border-radius: 8px;
+  flex: auto 1;
+  margin: var(--mrg--5);
+  color: var(--strd-blk);
+  background-color: var(--primary-bc);
+  font-size: 0.9rem;
+  text-align: center;
+  cursor: pointer;
+}
+.body-intro-tag-active {
+  background-color: var(--strd-blk);
+  color: var(--strd-wht);
+}
+.body-statistics {
+  background-color: var(--primary-bc);
+}
+.body-statistics-container {
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.body-statistics-content {
+  height: 250px;
+  width: calc(33.3333% - 64px);
+}
+.body-statistics-content h4 {
+  font-size: 1.125rem;
+  letter-spacing: 0.010625rem;
+  margin: 0px;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #191919;
+  line-height: 1.75rem;
+}
+.body-img-full {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - var(--strd-b-pdg));
+  overflow: hidden;
+  align-items: center;
+  height: 590px;
+}
+.body-img-full img {
+  height: 30rem;
+}
+.body-content_tag {
+  display: none;
+}
+.body-content_tag-img {
+  background-position: center;
+  background-size: cover;
+}
+.body-content_tag-info {
+  padding: 0 10px;
+  flex: 1;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.body-content_tag-img {
+  height: 30rem;
+  width: 45%;
+}
+.body-content_tag-active {
+  display: flex;
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.sectionalHeader {
+  font-size: 2rem;
+}
+
+.sectionalHeaderS {
+  font-size: 1.4rem;
+  margin-top: 0;
+}
+
+.strd-p {
+  font-size: 1rem;
+  margin: 0px;
+  font-weight: 500;
+  color: #515254;
+  line-height: 1.5rem;
+}
+
+.body--padding {
+  padding: var(--strd-b-pdg);
+}
+
+.bc-1 {
+  background-image: url(https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+.bc-2 {
+  background-image: url(https://images.pexels.com/photos/3205568/pexels-photo-3205568.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+.bc-3 {
+  background-image: url(https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+.bc-4 {
+  background-image: url(https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+.bc-5 {
+  background-image: url(https://images.pexels.com/photos/2182863/pexels-photo-2182863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+.bc-6 {
+  background-image: url(https://images.pexels.com/photos/2280547/pexels-photo-2280547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+.bc-7 {
+  background-image: url(https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+}
+
+@media only screen and (max-width: 850px) {
+  .body-statistics-content {
+    height: 200px;
+    width: calc(50% - 1rem);
+  }
+  .body-intro-tags {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
+  .body-intro-tags::-webkit-scrollbar {
+    display: none;
+  }
+  .body-intro-tag {
+    white-space: nowrap;
+  }
+
+  .wNe-featured-txt h3 {
+    font-size: 2rem;
+  }
+  .wNe-featured-txt span {
+    font-size: 1.4rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .body-statistics-container {
+    margin-top: 2rem;
+  }
+  .body-statistics-content {
+    height: 155px;
+    width: 100%;
+  }
+
+  .sectionalHeader {
+    font-size: 1.6rem;
+  }
+
+  .body--padding {
+    padding: var(--strd-mobile-pdg);
+  }
+
+  .body-content_tag {
+    flex-direction: column;
+    height: auto;
+  }
+  .body-content_tag-img {
+    width: 100%;
+    height: 15rem;
+  }
+  .body-content_tag-info {
+    height: auto;
+    padding: 0 10px;
+    flex: 1;
+    margin-left: 0rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .body-intro {
+    margin: 0;
+  }
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+    </style>
+
+
+    <style>
+
+
+
+.zoom {
+ 
+  transition: transform .5s;
+  
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.01); /* IE 9 */
+  -webkit-transform: scale(1.01); /* Safari 3-8 */
+  transform: scale(1.01); 
+}
+
+
+
+
+
+
+/* fade in */
+
+.fade-in {
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
+}
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+ /* border style  */
+
+
+
+
+ 
+
+
+    </style>
+
+
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+<div class="wNe">
+	<section class="wNe-featured">
+		<video autoplay="" muted="" loop="" playsinline="" preload="auto" class="wNe-featured-video" src="https://f.shgcdn.com/e78a53e4-a56d-41f1-8c20-138c6d8b735c/" poster="/assets/homepage/header-poster-video-v2-M.png"></video>
+		<div class="wNe-featured-txt">
+		</div>
+	</section>
+
+</div>
+
+
+
+  <div class="container fade-in">
+    <div class="row mt-4">
+
+<% for(i=0;i<result[1].length;i++) { %>
+
+        <div class="col-sm-4 zoom mt-2 " style="  border-radius: 6px; ">
+          <div class="card" >
+            <img class="card-img-top" src="/images/<%=result[1][i].image>" alt="Card image" style="width:100%; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title" style="text-align: center; font-size:18px;">News Broadcasting</h5>
+              <p class="card-text" >The app broadcast feature will be available to all our 
+                subscribers where they can announce their offers, deals and any and all 
+                the news related to their business. NOTE:- This will be filtered and monitored;
+                 offensive posts shall have consequences.</p>
+              
+            </div>
+          </div>
+        </div>
+       
+<% } %>
+          
+      </div>
+    </div>
+   
+
+
+      <!-- dm area  -->
+
+            
+
+<!-- end  -->
+
+<%- include ('./footer.ejs') %>
+
+<script>
+    const tagContainer = document.querySelector(".body-intro-tags");
+const tag = document.querySelectorAll(".body-intro-tag");
+const tagContent = document.querySelectorAll(".body-content_tag");
+
+tagContainer.addEventListener("click", function (e) {
+	const click = e.target.closest(".body-intro-tag");
+	console.log(click);
+	if (!click) return;
+	tag.forEach((t) => t.classList.remove("body-intro-tag-active"));
+	click.classList.add("body-intro-tag-active");
+	tagContent.forEach((content) =>
+		content.classList.remove("body-content_tag-active")
+	);
+	document
+		.querySelector(`.tagLink-content-${click.dataset.taglink}`)
+		.classList.add("body-content_tag-active");
+});
+
+</script>

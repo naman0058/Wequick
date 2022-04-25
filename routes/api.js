@@ -488,16 +488,11 @@ console.log(req.query.id)
       var query1 = `select * from images where productid = '${req.query.id}';`
       var query2 = `select image , price , discount , net_amount , small_description , name , id  from products where categoryid = '${category}' and id!= '${req.query.id}';`
       var query3 = `select custom_refund , custom_terms from vendor where id = '${req.query.vendorid}';`
-
-
-      
+     
       pool.query(query+query1+query2+query3,(err,result)=>{
           if(err) throw err;
           else res.json(result)
       })
-
-
-
     }
   })
 
@@ -2040,15 +2035,16 @@ router.post('/get-deals',(req,res)=>{
 
 
 router.post('/vendor-dashboard',(req,res)=>{
-      var query =  `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}';`
+      var query =  `select count(id) as today_order from booking where vendorid = '${req.body.vendorid}' and date = 'CURDATE()';`
       var query1 = `select sum(price) as today_revenue from booking where vendorid = '${req.body.vendorid}';`
       var query2 = `select count(id) as total_order from booking where vendorid = '${req.body.vendorid}';`
       var query3 = `select sum(price) as total_revenue from booking where vendorid = '${req.body.vendorid}';`
       var query4 = `select count(id) as today_viewers from viewers where vendorid = '${req.body.vendorid}';`
       var query5 = `select viewers,id  from vendor where id = '${req.body.vendorid}';`
+      var query6 = `select count(id) as today_viewers from viewers where vendorid = '${req.body.vendorid}' and date = 'CURDATE()';`
 
     
-      pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
+      pool.query(query+query1+query2+query3+query4+query5+query6,(err,result)=>{
           if(err) throw err;
           else res.json(result);
       })
@@ -2531,6 +2527,12 @@ router.get('/search',(req,res)=>{
 
 
 
+router.get('/delete-protfolio',(req,res)=>{
+  pool.query(`delete from portfolio where id = '${req.query.id}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json({msg:'success'})
+  })
+})
 
 
 module.exports = router;

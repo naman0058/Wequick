@@ -94,7 +94,7 @@ router.get('/', function(req, res, next) {
     POW(69.1 * (v.latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (v.longitude - '${req.query.longitude}') * COS(v.latitude / 57.3), 2)) AS distance,
 (select c.seo_name from category c where c.id = v.categoryid) as categoryname
-    FROM vendor v where v.status = 'approved' and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance limit 8;`
+    FROM vendor v where v.status = 'approved' and v.image is not null and v.address is not null and v.address!= 'null,null,null,null,null-null' having distance <= 600000000000000 ORDER BY distance limit 8;`
 
  
    pool.query(query+query1+query5+query7+query8+query9+query10,(err,result)=>{
@@ -1106,7 +1106,7 @@ router.get('/shop-by-category',(req,res)=>{
     (select c.name from category c where c.id = '${req.query.categoryid}') as categoryname,
     (select c.icon from category c where c.id = '${req.query.categoryid}') as categorylogo,
     (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
-    FROM vendor v where v.status= 'approved' and v.categoryid = '${req.query.categoryid}' and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor v where v.status= 'approved' and v.categoryid = '${req.query.categoryid}' and v.image is not null and v.address is not null and v.address!= 'null,null,null,null,null-null' having distance <= 600000000000000 ORDER BY distance;`
   
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
@@ -1132,7 +1132,7 @@ router.get('/segment/:name',(req,res)=>{
     (select c.name from category c where c.seo_name = '${req.params.name}') as categoryname,
     (select c.icon from category c where c.seo_name = '${req.params.name}') as categorylogo,
     (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
-    FROM vendor v where v.status= 'approved' and v.categoryid = (select c.id from category c where c.seo_name = '${req.params.name}') and v.image is not null and v.address is not null having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor v where v.status= 'approved' and v.categoryid = (select c.id from category c where c.seo_name = '${req.params.name}') and v.image is not null and v.address is not null and v.address!= 'null,null,null,null,null-null' having distance <= 600000000000000 ORDER BY distance;`
   
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;

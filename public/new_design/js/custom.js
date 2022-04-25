@@ -1,5 +1,5 @@
 /*
-Template Name: Osahan Deel
+Template Name: DealsAaj
 Author: gurdeep
 Author URI: https://themeforest.net/user/askbootstrap
 Version: 1.0

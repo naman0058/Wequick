@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var pool =  require('../pool');
 var upload = require('../multer');
-const { rotate } = require('pdfkit');
 let table = 'hospital_management'
 
 
@@ -11,6 +10,7 @@ router.post('/add-staff',upload.fields([{ name: 'image', maxCount: 1 }, { name: 
     let body = req.body
  
     console.log(req.files)
+    
 
 
     body['image'] = req.files.image[0].filename;

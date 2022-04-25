@@ -365,7 +365,7 @@ router.get('/get-all-shops',(req,res)=>{
   var query = `SELECT *, SQRT(
       POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
       POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-  FROM vendor where status = 'approved' and image is not null and address is not null  having distance <= 60000000000 ORDER BY distance;`
+  FROM vendor where status = 'approved' and image is not null and address is not null and address!= 'null,null,null,null,null-null'  having distance <= 60000000000 ORDER BY distance;`
 
 
 pool.query(query,(err,result)=>{
@@ -380,7 +380,7 @@ router.get('/get-all-shops-by-category',(req,res)=>{
     var query = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor where categoryid = '${req.query.categoryid}' and image is not null and address is not null having distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor where categoryid = '${req.query.categoryid}' and image is not null and address is not null and address!= 'null,null,null,null,null-null' having distance <= 600000000000000 ORDER BY distance;`
     pool.query(query,(err,result)=>{
        if(err) throw err;
        else res.json(result)
@@ -2516,7 +2516,7 @@ router.get('/search',(req,res)=>{
   var query2 = `SELECT *, SQRT(
     POW(69.1 * (latitude - '${req.query.latitude}'), 2) +
     POW(69.1 * (longitude - '${req.query.longitude}') * COS(latitude / 57.3), 2)) AS distance
-    FROM vendor where business_name Like '%${req.query.search}%' and status= 'approved'  and image is not null and address is not null having  distance <= 600000000000000 ORDER BY distance;`
+    FROM vendor where business_name Like '%${req.query.search}%' and status= 'approved'  and image is not null and address is not null and address!= 'null,null,null,null,null-null' having  distance <= 600000000000000 ORDER BY distance;`
    pool.query(query2,(err,result)=>{
     if(err) throw err;
     else res.json(result)

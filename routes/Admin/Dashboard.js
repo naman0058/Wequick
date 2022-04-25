@@ -60,12 +60,25 @@ router.get('/listing-category',(req,res)=>{
 })
 
 
-router.post('/store-listing/:name/insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 }]),(req,res)=>{
+router.post('/store-listing/:name/insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 } ,  { name: 'single_event_image', maxCount: 8 } , { name: 'tree_image', maxCount: 8 } ]),(req,res)=>{
     let body = req.body
  
     console.log(req.files)
 
-if(req.files.icon){
+
+    if(req.files.single_event_image){
+        body['image'] = req.files.image[0].filename;
+        body['icon'] = req.files.icon[0].filename;
+        body['single_event_image'] = req.files.single_event_image[0].filename;
+        body['tree_image'] = req.files.tree_image[0].filename;
+
+     console.log(req.body)
+       pool.query(`insert into ${req.params.name} set ?`,body,(err,result)=>{
+           err ? console.log(err) : res.json({msg : 'success'})
+       })
+    }
+
+else if(req.files.icon){
     body['image'] = req.files.image[0].filename;
     body['icon'] = req.files.icon[0].filename;
  console.log(req.body)
@@ -217,7 +230,7 @@ router.post('/store-listing/:name/update', (req, res) => {
 
 
 
-router.post('/store-listing/:name/update-image',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 }]), (req, res) => {
+router.post('/store-listing/:name/update-image',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 } ,  { name: 'single_event_image', maxCount: 8 } , { name: 'tree_image', maxCount: 8 } ]), (req, res) => {
     let body = req.body;
 
 
@@ -234,6 +247,13 @@ router.post('/store-listing/:name/update-image',upload.fields([{ name: 'image', 
       if(req.files.icon){
         body['icon'] = req.files.icon[0].filename;
       
+      }
+
+
+      if(req.files.single_event_image){
+        body['single_event_image'] = req.files.single_event_image[0].filename;
+        body['tree_image'] = req.files.tree_image[0].filename;
+ 
       }
       
       

@@ -82,6 +82,8 @@ $('#result').on('click', '.edits', function() {
     $('#insertdiv').hide() 
     $('#pid').val(result.id)
      $('#pname').val(result.name)
+     $('#pdescription').val(result.description)
+
    
  })
 
@@ -100,6 +102,8 @@ $('#update').click(function(){  //data insert in database
     let updateobj = {
         id: $('#pid').val(),
         name: $('#pname').val(),
+        description: $('#pdescription').val(),
+
        
         }
 

@@ -2538,7 +2538,7 @@ router.get('/delete-protfolio',(req,res)=>{
 
 
 
-router.post('/add-staff',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'aadhar_card_front', maxCount: 8 } , { name: 'aadhar_card_back', maxCount: 8 } , { name: 'pan_card', maxCount: 8 } , , { name: 'higher_education_marksheet', maxCount: 8 }]),(req,res)=>{
+router.post('/add-staff',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'aadhar_card_front', maxCount: 8 } , { name: 'aadhar_card_back', maxCount: 8 } , { name: 'pan_card', maxCount: 8 } , { name: 'higher_education_marksheet', maxCount: 8 }]),(req,res)=>{
   let body = req.body
 
   // console.log(req.files)

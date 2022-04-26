@@ -290,7 +290,7 @@ router.get('/get-banner-image',(req,res)=>{
 
 
 router.get('/get-category',(req,res)=>{
-    pool.query(`select * from category order by id desc`,(err,result)=>{
+    pool.query(`select * from category order by name`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })
@@ -598,13 +598,17 @@ router.post('/save-user',(req,res)=>{
         else {
             pool.query(`insert into users set ?`,body,(err,result)=>{
                 if(err) throw err;
-                request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.body.number}&dltContentId=1307165008026255744&text=Congratulations! You have created an account with DealsAaj. Thank you for choosing us. Here is a complimentary reward from us 1564 -<DealsAaj>`} , function(err,data){
-                console.log('data',data)  
-                res.json({
+                else{
+                    res.json({
                         msg : 'success'
                     })
+
+//                 request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.body.number}&dltContentId=1307165008026255744&text=Congratulations! You have created an account with DealsAaj. Thank you for choosing us. Here is a complimentary reward from us 1564 -<DealsAaj>`} , function(err,data){
+
+                  
    
- })
+//  })                                                                          
+}
                
             })
         }

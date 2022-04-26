@@ -3,7 +3,6 @@ var router = express.Router();
 var pool =  require('./pool');
 var upload = require('./multer');
 const fetch = require("node-fetch");
-const request = require('request');
 
 
 

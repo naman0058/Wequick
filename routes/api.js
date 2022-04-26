@@ -3,6 +3,8 @@ var router = express.Router();
 var pool =  require('./pool');
 var upload = require('./multer');
 const fetch = require("node-fetch");
+const request = require('request');
+
 
 
 
@@ -597,9 +599,13 @@ router.post('/save-user',(req,res)=>{
         else {
             pool.query(`insert into users set ?`,body,(err,result)=>{
                 if(err) throw err;
-                else res.json({
-                    msg : 'success'
-                })
+                request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.body.number}&dltContentId=1307165008026255744&text=Congratulations! You have created an account with DealsAaj. Thank you for choosing us. Here is a complimentary reward from us {#var#} -<DealsAaj>`} , function(err,data){
+                  res.json({
+                        msg : 'success'
+                    })
+   
+ })
+               
             })
         }
     })

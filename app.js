@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var cookieSession = require('cookie-session')
 const pool = require('./routes/pool');
+var cors = require('cors')
 
 
 var express = require('express');
@@ -49,6 +50,11 @@ var hospital_management = require('./routes/HospitalManagement/api');
 
 
 var app = express();
+
+var corsOptions = {
+  origin: 'https://dealsaaj.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

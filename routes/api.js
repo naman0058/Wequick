@@ -2536,7 +2536,7 @@ router.get('/delete-protfolio',(req,res)=>{
 
 
 
-router.post('/add-staff',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'aadhar_card_front', maxCount: 1 }   ,  { name: 'aadhar_card_back', maxCount: 1 }   ]), (req, res) => {
+router.post('/add-staff123',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'aadhar_card_front', maxCount: 1 }   ,  { name: 'aadhar_card_back', maxCount: 1 }   ]), (req, res) => {
   let body = req.body;
 
   body['image'] = req.files.image[0].filename;

@@ -64,7 +64,7 @@ router.get('/single-staff-details',(req,res)=>{
 router.get('/delete-staff-details',(req,res)=>{
     pool.query(`delete from hotel_staff where id = '${req.query.id}'`,(err,result)=>{
         if(err) throw err;
-        else res.json(result);
+        else res.json({msg:'success'});
     })
 })
 
@@ -102,13 +102,10 @@ router.post('/room-category-add',(req,res)=>{
 router.get('/delete-room-category',(req,res)=>{
     pool.query(`delete from hotel_room_category where id = '${req.query.id}'`,(err,result)=>{
         if(err) throw err;
-        else res.json(result);
+        else res.json({msg:'success'});
+
     })
 })
-
-
-
-
 
 
 
@@ -144,7 +141,47 @@ router.post('/room-management-add',(req,res)=>{
 router.get('/delete-room-management',(req,res)=>{
     pool.query(`delete from hotel_room_management where id = '${req.query.id}'`,(err,result)=>{
         if(err) throw err;
-        else res.json(result);
+        else res.json({msg:'success'});
+
+    })
+})
+
+
+
+
+router.post('/staff-designation-add',(req,res)=>{
+    let body = req.body
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+      body['date'] = today;
+      body['time'] = time;
+     pool.query(`insert into hotel_staff_designation set ?`,body,(err,result)=>{
+      if(err) res.json(err);
+      else res.json({msg:'success'})
+     })
+  })
+
+
+
+  router.get('/get-staff-designation',(req,res)=>{
+    pool.query(`select * from hotel_staff_designation where vendorid = '${req.query.vendorid}'`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+})
+    
+
+
+router.get('/delete-staff-designation',(req,res)=>{
+    pool.query(`delete from hotel_staff_designation where id = '${req.query.id}'`,(err,result)=>{
+        if(err) throw err;
+        else res.json({msg:'success'});
+
     })
 })
 

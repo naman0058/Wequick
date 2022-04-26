@@ -2539,27 +2539,30 @@ router.get('/delete-protfolio',(req,res)=>{
 router.post('/add-staff123',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'aadhar_card_front', maxCount: 1 }   ,  { name: 'aadhar_card_back', maxCount: 1 }   ]), (req, res) => {
   let body = req.body;
 
-  body['image'] = req.files.image[0].filename;
-  body['aadhar_card_front'] = req.files.aadhar_card_front[0].filename;
-  body['aadhar_card_back'] = req.files.aadhar_card_back[0].filename;
-  // body['pan_card'] = req.files.pan_card[0].filename;
-  // body['higher_education_marksheet'] = req.files.higher_education_marksheet[0].filename;
 
-  var today = new Date();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
-  
-  today = yyyy + '-' + mm + '-' + dd;
-  
-  
-    body['date'] = today;
-    body['time'] = time;
+res.json({body:body,files:req.files})
 
-  console.log(req.body);
-  req.json(req.body)
+  // body['image'] = req.files.image[0].filename;
+  // body['aadhar_card_front'] = req.files.aadhar_card_front[0].filename;
+  // body['aadhar_card_back'] = req.files.aadhar_card_back[0].filename;
+  // // body['pan_card'] = req.files.pan_card[0].filename;
+  // // body['higher_education_marksheet'] = req.files.higher_education_marksheet[0].filename;
+
+  // var today = new Date();
+  // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  
+  // var dd = String(today.getDate()).padStart(2, '0');
+  // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  // var yyyy = today.getFullYear();
+  
+  // today = yyyy + '-' + mm + '-' + dd;
+  
+  
+  //   body['date'] = today;
+  //   body['time'] = time;
+
+  // console.log(req.body);
+  // req.json(req.body)
 
   // pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
   //     if(err) throw err;

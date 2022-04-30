@@ -2637,7 +2637,7 @@ router.get('/get-details',(req,res)=>{
         let agentnumber = result[0].agentnumber;
         let cp_number = result[0].cp_number;
         let business_name = result[0].business_name;
-          let message = `Dear ${business_name} has been successfully added on your behalf on ${agentname} . - <DealsAaj>`
+          let message = `Dear ${business_name} has been successfully added on your behalf on ${agentname}. - <DealsAaj>`
           let contentid = `1307165010197480063`
 
           let messagenew = `Namashkar ${agentname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
@@ -2646,7 +2646,7 @@ router.get('/get-details',(req,res)=>{
           let contentidnew = `1307165007996952994`
 
 
-         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${agentnumber}&dltContentId=${contentid}&text=${message}`} , function(err,data){
+         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${agentnumber}&dltContentId=1307165010197480063&text=Dear ${business_name} has been successfully added on your behalf on ${agentname}. - <DealsAaj>`} , function(err,data){
            if(err) throw err;
            else {
           pool.query(`insert into message_sent (number , message , date , time) values('${req.query.number}' , '${message}' , '${today}' , '${todaytime}')`,(err,result)=>{

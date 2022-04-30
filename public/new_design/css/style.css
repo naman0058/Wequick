@@ -613,7 +613,7 @@ label {
 }
 
 .login-main-wrapper {
-	background-image: linear-gradient(92deg, #2260f8, #9053fe);
+	/* background-image: linear-gradient(92deg, #2260f8, #9053fe); */
 	height: calc(100vh - 0rem);
 }
 

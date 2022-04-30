@@ -2697,4 +2697,62 @@ router.get('/get-details',(req,res)=>{
 
 
 
+
+router.post('/pan-card-update',upload.single('pan_card'), (req, res) => {
+  let body = req.body
+  body['pan_card'] = req.file.filename
+  pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+        console.log('err',err);
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+        console.log('result',result)
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+          
+      }
+  })
+})
+
+
+
+
+router.post('/aadhar-card-update',upload.fields([{ name: 'aadhar_front', maxCount: 1 }, { name: 'aadhar_back', maxCount: 1 }]), (req, res) => {
+  let body = req.body
+  body['aadhar_front'] = req.files.aadhar_front[0].filename;
+  body['aadhar_back'] = req.files.aadhar_back[0].filename;
+
+  pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+        console.log('err',err);
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+        console.log('result',result)
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+          
+      }
+  })
+})
+
+
+
 module.exports = router;

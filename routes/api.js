@@ -2660,7 +2660,7 @@ router.get('/get-details',(req,res)=>{
                pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${message1}' , '${today}' , '${todaytime}')`,(err,result)=>{
                  if(err) throw err;
                  else {
-                 console.log('success')  
+                 console.log('done')  
                  }
                })
                 }

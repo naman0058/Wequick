@@ -2637,13 +2637,13 @@ router.get('/get-details',(req,res)=>{
         let agentnumber = result[0].agentnumber;
         let cp_number = result[0].cp_number;
         let business_name = result[0].business_name;
-          let message = ` Hello Dear ${business_name} has been successfully added on your behalf on ${agentname} . - <DealsAaj>`
+          let message = `Dear ${business_name} has been successfully added on your behalf on ${agentname} . - <DealsAaj>`
           let contentid = `1307165010197480063`
 
-          let message1 = `Namashkar ${agentname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
-          let message2 = `Namashkar ${cpname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
+          let messagenew = `Namashkar ${agentname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
+          let messagenext = `Namashkar ${cpname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
         
-          let contentid1 = `1307165007996952994`
+          let contentidnew = `1307165007996952994`
 
 
          request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${cp_number}&dltContentId=${contentid}&text=${message}`} , function(err,data){
@@ -2654,13 +2654,13 @@ router.get('/get-details',(req,res)=>{
             else {
           
 
-              request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${cp_number}&dltContentId=${contentid}&text=${message}`} , function(err,data){
+              request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.query.number}&dltContentId=${contentidnew}&text=${messagenew}`} , function(err,data){
                 if(err) throw err;
                 else {
-               pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${message1}' , '${today}' , '${todaytime}')`,(err,result)=>{
+               pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${messagenew}' , '${today}' , '${todaytime}')`,(err,result)=>{
                  if(err) throw err;
                  else {
-                 console.log('don11e')  
+                 console.log('done')  
                  }
                })
                 }
@@ -2675,10 +2675,10 @@ router.get('/get-details',(req,res)=>{
        
 
 
-         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${cp_number}&dltContentId=${contentid1}&text=${message2}`} , function(err,data){
+         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${cp_number}&dltContentId=${contentidnew}&text=${messagenext}`} , function(err,data){
           if(err) throw err;
           else {
-         pool.query(`insert into message_sent (number , message , date , time) values('${cp_number}' , '${message2}' , '${today}' , '${todaytime}')`,(err,result)=>{
+         pool.query(`insert into message_sent (number , message , date , time) values('${cp_number}' , '${messagenext}' , '${today}' , '${todaytime}')`,(err,result)=>{
            if(err) throw err;
            else {
              res.json({

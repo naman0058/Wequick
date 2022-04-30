@@ -189,6 +189,36 @@ router.get('/delete-staff-designation',(req,res)=>{
 
 
 
+router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_card_front', maxCount: 8 } , { name: 'aadhar_card_back', maxCount: 8 }]),(req,res)=>{
+    let body = req.body
+  
+
+    body['aadhar_card_front'] = req.files.aadhar_card_front[0].filename;
+    body['aadhar_card_back'] = req.files.aadhar_card_back[0].filename;
+ 
+  
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    today = yyyy + '-' + mm + '-' + dd;
+    
+    
+      body['date'] = today;
+      body['time'] = time;
+  
+  console.log(req.body)
+     pool.query(`insert into hotel_user set ?`,body,(err,result)=>{
+      if(err) res.json(err);
+      else res.json({msg:'success'})
+     })
+  })
+    
+
+
 
 
 

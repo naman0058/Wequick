@@ -189,35 +189,35 @@ router.get('/delete-staff-designation',(req,res)=>{
 
 
 
-router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_front', maxCount: 8 } , { name: 'aadhar_back', maxCount: 8 }]),(req,res)=>{
+router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_front', maxCount: 1 } , { name: 'aadhar_back', maxCount: 1 }]),(req,res)=>{
     let body = req.body
   res.json(req.files)
 
 
-    body['aadhar_front'] = req.files.aadhar_front[0].filename;
-    body['aadhar_back'] = req.files.aadhar_back[0].filename;
+//     body['aadhar_front'] = req.files.aadhar_front[0].filename;
+//     body['aadhar_back'] = req.files.aadhar_back[0].filename;
  
   
-    var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+//     var today = new Date();
+//     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
+//     var dd = String(today.getDate()).padStart(2, '0');
+//     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+//     var yyyy = today.getFullYear();
     
-    today = yyyy + '-' + mm + '-' + dd;
+//     today = yyyy + '-' + mm + '-' + dd;
     
     
-      body['date'] = today;
-      body['time'] = time;
-  console.log(body)
+//       body['date'] = today;
+//       body['time'] = time;
+//   console.log(body)
 
   
-  console.log(req.body)
-     pool.query(`insert into hotel_user set ?`,body,(err,result)=>{
-      if(err) res.json(err);
-      else res.json({msg:'success'})
-     })
+//   console.log(req.body)
+//      pool.query(`insert into hotel_user set ?`,body,(err,result)=>{
+//       if(err) res.json(err);
+//       else res.json({msg:'success'})
+//      })
   })
     
 

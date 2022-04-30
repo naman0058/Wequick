@@ -2646,7 +2646,7 @@ router.get('/get-details',(req,res)=>{
           let contentid1 = `1307165007996952994`
 
 
-         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${agentnumber}&dltContentId=${contentid}&text=${message}`} , function(err,data){
+         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${cp_number}&dltContentId=${contentid}&text=${message}`} , function(err,data){
            if(err) throw err;
            else {
           pool.query(`insert into message_sent (number , message , date , time) values('${req.query.number}' , '${message}' , '${today}' , '${todaytime}')`,(err,result)=>{

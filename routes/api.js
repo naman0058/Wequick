@@ -2546,6 +2546,68 @@ router.get('/delete-protfolio',(req,res)=>{
 
 
 
+// concept change 
+
+router.post('/save-merchant1',upload.single('transaction_image'),(req,res)=>{
+  let body = req.body;
+
+
+ 
+  body['status'] = 'pending';
+  body['cp_payment_status'] = 'pending';
+
+
+if(req.file){
+  body['transaction_image'] = req.file.filename
+}
+else {
+  body['transaction_image'] = ''
+}
+
+
+
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+
+  body['date'] = today;
+  body['time'] = time;
+  body['viewers'] = 0;
+
+
+
+
+  console.log(req.body);
+ 
+  var otp = Math.floor(1000 + Math.random() * 9000);
+  body['userid'] = 'DLSJ' + otp;
+
+
+  pool.query(`select channel_partner_id from agent where userid = '${req.body.agentid}'`,(err,result)=>{
+    if(err) throw err;
+    else {
+      console.log(result[0])
+
+      body['channel_partner_id'] = result[0].channel_partner_id;
+      console.log(req.body)
+      pool.query(`insert into vendor set ?`,body,(err,result)=>{
+        if(err) throw err;
+        else res.json({msg:'success'})
+      })
+    }
+  })
+ 
+
+
+
+})
+
 
 
 module.exports = router;

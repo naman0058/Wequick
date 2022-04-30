@@ -2609,7 +2609,7 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 router.get('/get-details',(req,res)=>{
-  var query = `select v.*,
+  var query = `select v.number,
   (select a.name from agent a where a.userid = v.agentid) as agentname,
   (select a.name from channel_partner a  where a.userid = v.channel_partner_id) as cp_name
   from vendor v where v.number = '${req.query.number}';`

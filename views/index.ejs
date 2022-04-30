@@ -129,21 +129,21 @@
     <div class="row">
     <div class="col-lg-12">
     <div class="owl-carousel owl-theme owl-carousel-one homepage-great-deals-carousel">
-        <div class="item">
+        <!-- <div class="item">
             <div class="great-deals-sstore-banners">
-            <a href="/shop-by-category?categoryid=52"><img alt="placeholder image" src="/images/Comming_Soon.jpg" class="img-fluid rounded"></a>
+            <a href="#"><img alt="placeholder image" src="/images/Comming_Soon.jpg" class="img-fluid rounded"></a>
             </div>
-            </div>
+            </div> -->
         <div class="item">
     <div class="great-deals-sstore-banners">
-    <a href="/shop-by-category?categoryid=52"><img alt="placeholder image" src="/resize_banner/Restaurants.jpg" class="img-fluid rounded"></a>
+    <a href="/segment/restaurants"><img alt="placeholder image" src="/resize_banner/Restaurants.jpg" class="img-fluid rounded"></a>
     </div>
     </div>
-    <div class="item">
+    <!-- <div class="item">
     <div class="great-deals-sstore-banners">
     <a href="shop-by-category?categoryid=64"><img alt="placeholder image" src="/resize_banner/Water-Park.png" class="img-fluid rounded"></a>
     </div>
-    </div>
+    </div> -->
     </div>
     </div>
     </div>
@@ -252,7 +252,7 @@
 
     <% for(i=0;i<result[5].length;i++) { %>
     <div class="item">
-<div class="custom-card bg-white shadow-sm h-100 stor-card">
+<div class="custom-card bg-white shadow-sm h-100 stor-card" style="min-height: 250px;">
 <div class="custom-card-image">
 <a href="#">
 <img class="img-fluid item-img" src="/images/<%=result[5][i].image%>">

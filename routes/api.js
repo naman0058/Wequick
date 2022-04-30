@@ -2755,4 +2755,27 @@ router.post('/aadhar-card-update',upload.fields([{ name: 'aadhar_front', maxCoun
 
 
 
+router.get('/update-seo-name',(req,res)=>{
+  var dirt = false
+  pool.query(`select * from vendor where seo_name is null`,(err,result)=>{
+    if(err) throw err;
+    else {
+      for(i=0;i<result.length;i++){
+        let seo_name = (result[i].business_name.split(' ').join('-')).toLowerCase();
+        let id = result[i].id;
+        pool.query(`update vendor set seo_name = '${seo_name}' where id =' ${id}'`,(err,result)=>{
+          if(err) throw err;
+          else {
+
+          }
+        })
+
+        
+      }
+      res.json({msg:'success'})
+    }
+  })
+})
+
+
 module.exports = router;

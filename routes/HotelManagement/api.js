@@ -194,8 +194,8 @@ router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_front', maxCount: 8
   console.log(body)
 
 
-    body['aadhar_front'] = req.files.aadhar_card_front[0].filename;
-    body['aadhar_back'] = req.files.aadhar_card_back[0].filename;
+    body['aadhar_front'] = req.files.aadhar_front[0].filename;
+    body['aadhar_back'] = req.files.aadhar_back[0].filename;
  
   
     var today = new Date();

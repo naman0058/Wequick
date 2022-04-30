@@ -189,12 +189,12 @@ router.get('/delete-staff-designation',(req,res)=>{
 
 
 
-router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_card_front', maxCount: 8 } , { name: 'aadhar_card_back', maxCount: 8 }]),(req,res)=>{
+router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_front', maxCount: 8 } , { name: 'aadhar_back', maxCount: 8 }]),(req,res)=>{
     let body = req.body
   
 
-    body['aadhar_card_front'] = req.files.aadhar_card_front[0].filename;
-    body['aadhar_card_back'] = req.files.aadhar_card_back[0].filename;
+    body['aadhar_front'] = req.files.aadhar_card_front[0].filename;
+    body['aadhar_back'] = req.files.aadhar_card_back[0].filename;
  
   
     var today = new Date();

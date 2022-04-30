@@ -2631,8 +2631,9 @@ router.get('/get-details',(req,res)=>{
   pool.query(query,(err,result)=>{
       if(err) throw err;
       else {
+        console.log(result)
         let agentname = result[0].agentname;
-        let cpname = result[0].cpname;
+        let cpname = result[0].cp_name;
         let agentnumber = result[0].agentnumber;
         let cp_number = result[0].cp_number;
         let business_name = result[0].business_name;
@@ -2661,7 +2662,7 @@ router.get('/get-details',(req,res)=>{
          request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${agentnumber}&dltContentId=${contentid1}&text=${message1}`} , function(err,data){
            if(err) throw err;
            else {
-          pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${message}' , '${today}' , '${todaytime}')`,(err,result)=>{
+          pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${message1}' , '${today}' , '${todaytime}')`,(err,result)=>{
             if(err) throw err;
             else {
             console.log('success')  

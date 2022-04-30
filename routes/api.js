@@ -2612,7 +2612,7 @@ router.get('/get-details',(req,res)=>{
   var query = `select v.*,
   (select a.name from agent a where a.userid = v.agentid) as agentname,
   (select a.name from channel_partner a  where a.userid = v.channel_partner_id) as cp_name
-  from vendor v where v.id = '${req.params.id}';`
+  from vendor v where v.id = '${req.query.number}';`
  
   pool.query(query,(err,result)=>{
       if(err) throw err;

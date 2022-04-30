@@ -2609,14 +2609,82 @@ today = yyyy + '-' + mm + '-' + dd;
 
 
 router.get('/get-details',(req,res)=>{
-  var query = `select v.number,
+
+
+  var today = new Date();
+  var todaytime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  
+  today = yyyy + '-' + mm + '-' + dd;
+
+
+  var query = `select v.number,v.business_name,
   (select a.name from agent a where a.userid = v.agentid) as agentname,
-  (select a.name from channel_partner a  where a.userid = v.channel_partner_id) as cp_name
+  (select a.number from agent a where a.userid = v.agentid) as agentnumber,
+  (select a.name from channel_partner a  where a.userid = v.channel_partner_id) as cp_name,
+  (select a.number from channel_partner a  where a.userid = v.channel_partner_id) as cp_number
+
   from vendor v where v.number = '${req.query.number}';`
- 
   pool.query(query,(err,result)=>{
       if(err) throw err;
-      else res.json(result)
+      else {
+        let agentname = result[0].agentname;
+        let cpname = result[0].cpname;
+        let agentnumber = result[0].agentnumber;
+        let cp_number = result[0].cp_number;
+        let business_name = result[0].business_name;
+          let message = `Dear ${business_name} has been successfully added on your behalf on ${agentname} . - <DealsAaj>`
+          let contentid = `1307165010197480063`
+
+          let message1 = `Namashkar ${agentname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
+          let message2 = `Namashkar ${cpname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
+        
+          let contentid1 = `1307165007996952994`
+
+
+         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.query.number}&dltContentId=${contentid}&text=${message}`} , function(err,data){
+           if(err) throw err;
+           else {
+          pool.query(`insert into message_sent (number , message , date , time) values('${req.query.number}' , '${message}' , '${today}' , '${todaytime}')`,(err,result)=>{
+            if(err) throw err;
+            else {
+           console.log('success')
+            }
+          })
+           }
+         }) 
+
+
+         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${agentnumber}&dltContentId=${contentid1}&text=${message1}`} , function(err,data){
+           if(err) throw err;
+           else {
+          pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${message}' , '${today}' , '${todaytime}')`,(err,result)=>{
+            if(err) throw err;
+            else {
+            console.log('success')  
+            }
+          })
+           }
+         }) 
+
+
+         request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${cp_number}&dltContentId=${contentid1}&text=${message2}`} , function(err,data){
+          if(err) throw err;
+          else {
+         pool.query(`insert into message_sent (number , message , date , time) values('${cp_number}' , '${message2}' , '${today}' , '${todaytime}')`,(err,result)=>{
+           if(err) throw err;
+           else {
+             res.json({
+               msg :'success'
+             })
+           }
+         })
+          }
+        }) 
+      }
   })
 })
 

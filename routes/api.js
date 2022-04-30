@@ -2637,7 +2637,7 @@ router.get('/get-details',(req,res)=>{
         let agentnumber = result[0].agentnumber;
         let cp_number = result[0].cp_number;
         let business_name = result[0].business_name;
-          let message = `Dear ${business_name} has been successfully added on your behalf on ${agentname} . - <DealsAaj>`
+          let message = ` Hello Dear ${business_name} has been successfully added on your behalf on ${agentname} . - <DealsAaj>`
           let contentid = `1307165010197480063`
 
           let message1 = `Namashkar ${agentname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`
@@ -2660,7 +2660,7 @@ router.get('/get-details',(req,res)=>{
                pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${message1}' , '${today}' , '${todaytime}')`,(err,result)=>{
                  if(err) throw err;
                  else {
-                 console.log('done')  
+                 console.log('don11e')  
                  }
                })
                 }

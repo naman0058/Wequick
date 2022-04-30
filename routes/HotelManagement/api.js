@@ -191,7 +191,7 @@ router.get('/delete-staff-designation',(req,res)=>{
 
 router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_front', maxCount: 8 } , { name: 'aadhar_back', maxCount: 8 }]),(req,res)=>{
     let body = req.body
-  console.log(body)
+  console.log(req.files)
 
 
     body['aadhar_front'] = req.files.aadhar_front[0].filename;

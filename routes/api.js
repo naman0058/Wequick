@@ -2646,7 +2646,7 @@ router.get('/get-details',(req,res)=>{
           let contentidnew = `1307165007996952994`
 
 
-          
+
         //  request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=919582172786&dltContentId=1307165010197480063&text=Dear ${business_name} has been successfully added on your behalf on ${agentname}. - <DealsAaj>`} , function(err,data){
         //    if(err) throw err;
         //    else {
@@ -2655,7 +2655,7 @@ router.get('/get-details',(req,res)=>{
         //     else {
           
 
-              request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=918319339945&dltContentId=1307165007996952994&text=Namashkar ${agentname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`} , function(err,data){
+              request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=8319339945&dltContentId=1307165007996952994&text=Namashkar ${agentname}! Congratulations! ${business_name} has been added to your team. Teams DealsAaj. -<DealsAaj>`} , function(err,data){
                 if(err) throw err;
                 else {
                pool.query(`insert into message_sent (number , message , date , time) values('${agentnumber}' , '${messagenew}' , '${today}' , '${todaytime}')`,(err,result)=>{

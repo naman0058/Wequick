@@ -255,7 +255,7 @@ router.post('/add-hotel-user',upload.fields([{ name: 'aadhar_front', maxCount: 1
 
 
 
-router.get('/get-hotel-billing',(req,res)=>{
+router.get('/get-single-hotel-billing',(req,res)=>{
     pool.query(`select * from hotel_billing where vendorid = '${req.query.vendorid}' and id = '${req.query.id}'`,(err,result)=>{
         if(err) throw err;
         else res.json(result);

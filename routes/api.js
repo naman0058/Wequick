@@ -2553,8 +2553,8 @@ router.post('/save-merchant1',upload.single('transaction_image'),(req,res)=>{
   var dirt = false
   body['status'] = 'pending';
   body['cp_payment_status'] = 'pending';
-  // let seo_name = (result[i].business_name.split(' ').join('-')).toLowerCase();
-  // body['seo_name'] = seo_name;
+  let seo_name = (req.body.business_name.split(' ').join('-')).toLowerCase();
+  body['seo_name'] = seo_name;
 
 
 if(req.file){

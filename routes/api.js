@@ -2780,4 +2780,11 @@ router.get('/update-seo-name',(req,res)=>{
 })
 
 
+
+
+router.post('/data-return',(req,res)=>{
+  let body = req.body;
+  res.json(req.body)
+})
+
 module.exports = router;

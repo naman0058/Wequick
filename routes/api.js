@@ -2787,4 +2787,12 @@ router.post('/data-return',(req,res)=>{
   res.json(req.body)
 })
 
+
+router.get('/get-catalogue',(req,res)=>{
+  pool.query(`select * from catalogue where categoryid = '${req.query.categoryid}'`,(err,result)=>{
+    if(err) throw err;
+    else res.json(result);
+  })
+})
+
 module.exports = router;

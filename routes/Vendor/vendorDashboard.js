@@ -149,7 +149,8 @@ router.post('/insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'th
  
     // console.log(req.files)
     if(req.body.discount==0 || req.body.discount == null){
-        body['net_amount'] = 0
+        body['net_amount'] = req.body.price
+
     }
     else{
         let price = ((req.body.price)*(req.body.discount))/100
@@ -184,6 +185,11 @@ router.get('/show-product',(req,res)=>{
 })
 
 
+router.get('/delete',(req,res)=>{
+    pool.query(`delete from products where id = '${req.query.id}'`,(err,result)=>{
+        err ? console.log(err) : res.json(result)
+    })
+})
 
 
 
@@ -198,11 +204,6 @@ router.get('/show-images',(req,res)=>{
 
 
 
-router.get('/delete',(req,res)=>{
-    pool.query(`delete from products where id = '${req.query.id}'`,(err,result)=>{
-        err ? console.log(err) : res.json(result)
-    })
-})
 
 
 
@@ -552,7 +553,8 @@ router.post('/update/vendor/details', (req, res) => {
     router.post('/update', (req, res) => {
         let body = req.body
         if(req.body.discount==0 || req.body.discount == null){
-            body['net_amount'] = 0
+            body['net_amount'] = req.body.price
+
         }
         else{
             let price = ((req.body.price)*(req.body.discount))/100

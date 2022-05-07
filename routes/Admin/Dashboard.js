@@ -62,8 +62,8 @@ router.get('/listing-category',(req,res)=>{
 
 router.post('/store-listing/:name/insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'icon', maxCount: 8 } ,  { name: 'single_event_image', maxCount: 8 } , { name: 'tree_image', maxCount: 8 } ]),(req,res)=>{
     let body = req.body
- 
-    console.log(req.files)
+ console.log('s')
+    console.log(req.body)
 
 
     if(req.files.single_event_image){
@@ -747,6 +747,126 @@ router.post('/update/booking-status',(req,res)=>{
 // All Data Found
 
 
+
+
+
+
+
+
+
+router.post('/catalogue/insert',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'thumbnail', maxCount: 1 }]),(req,res)=>{
+    let body = req.body
+ 
+    // console.log(req.files)
+    if(req.body.discount==0 || req.body.discount == null){
+        body['net_amount'] = req.body.price
+    }
+    else{
+        let price = ((req.body.price)*(req.body.discount))/100
+        let net_price = (req.body.price)-price
+        body['net_amount'] = Math.round(net_price);
+        body['categoryid'] = req.session.categoryid;
+    }
+
+
+
+    body['image'] = req.files.image[0].filename;
+    body['thumbnail'] = req.files.thumbnail[0].filename;
+ console.log('mydata',req.body)
+   pool.query(`insert into catalogue set ?`,body,(err,result)=>{
+       err ? console.log(err) : res.json({msg : 'success'})
+   })
+
+   
+})
+
+
+router.get('/catalogue/show-product',(req,res)=>{
+    pool.query(`select p.* , 
+    (select s.name from category s where s.id = p.categoryid) as categoryname
+     from catalogue p order by id desc`,(err,result)=>{
+        err ? console.log(err) : res.json(result)
+    })
+})
+
+
+router.get('/catalogue/delete',(req,res)=>{
+    pool.query(`delete from catalogue where id = '${req.query.id}'`,(err,result)=>{
+        err ? console.log(err) : res.json(result)
+    })
+})
+
+
+
+
+router.post('/catalogue/update', (req, res) => {
+    let body = req.body
+    if(req.body.discount==0 || req.body.discount == null){
+        body['net_amount'] = req.body.price
+
+    }
+    else{
+        let price = ((req.body.price)*(req.body.discount))/100
+        let net_price = (req.body.price)-price
+        body['net_amount'] = Math.round(net_price);
+  
+    }
+    console.log(req.body)
+    pool.query(`update catalogue set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+        if(err) {
+            res.json({
+                status:500,
+                type : 'error',
+                description:err
+            })
+        }
+        else {
+            res.json({
+                status:200,
+                type : 'success',
+                description:'successfully update'
+            })
+
+            
+        }
+    })
+})
+
+
+
+router.post('/catalogue/update-image',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'thumbnail', maxCount: 8 }]), (req, res) => {
+let body = req.body;
+body['image'] = req.files.image[0].filename;
+body['thumbnail'] = req.files.thumbnail[0].filename;
+
+
+// pool.query(`select image from ${table} where id = '${req.body.id}'`,(err,result)=>{
+//     if(err) throw err;
+//     else {
+//         fs.unlinkSync(`public/images/${result[0].image}`); 
+
+
+pool.query(`update catalogue set ? where id = ?`, [req.body, req.body.id], (err, result) => {
+    if(err) {
+        res.json({
+            status:500,
+            type : 'error',
+            description:err
+        })
+    }
+    else {
+        // res.json({
+        //     status:200,
+        //     type : 'success',
+        //     description:'successfully update'
+        // })
+
+        res.redirect(`/admin/dashboard/store-listing/catalogue`)
+    }
+})
+
+
+})
 
 
 module.exports = router;

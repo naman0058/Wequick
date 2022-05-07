@@ -21,6 +21,27 @@ $.getJSON(`/vendor-dashboard/show-product`, data => {
 
 
 
+$.getJSON(`/api/get-category`, data => {
+    categories = data
+    fillDropDown('categoryid', data, 'Choose Category', 0)
+  
+})
+
+
+
+function fillDropDown(id, data, label, selectedid = 0) {
+    $(`#${id}`).empty()
+    $(`#${id}`).append($('<option>').val("null").text(label))
+
+    $.each(data, (i, item) => {
+        if (item.id == selectedid) {
+            $(`#${id}`).append($('<option selected>').val(item.id).text(item.name))
+        } else {
+            $(`#${id}`).append($('<option>').val(item.id).text(item.name))
+        }
+    })
+}
+
 
 
 function makeTable(categories){

@@ -47,7 +47,7 @@ var news = require('./routes/news');
 var product_launch = require('./routes/product_launch');
 var khatabook = require('./routes/Khatabook');
 var hotel_management = require('./routes/HotelManagement/api');
-var hospital_management = require('./routes/HospitalManagement');
+var hospital_management = require('./routes/HospitalManagement/api');
 
 
 var app = express();

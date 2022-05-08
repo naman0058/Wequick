@@ -46,7 +46,7 @@ today = yyyy + '-' + mm + '-' + dd;
   router.get('/delete-product_launch',(req,res)=>{
     pool.query(`delete from ${table} where id = '${req.query.id}'`,(err,result)=>{
       if(err) throw err;
-      else res.json(result);
+      else res.json({msg:'success'});
     })
   })
   

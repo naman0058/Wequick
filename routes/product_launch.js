@@ -32,7 +32,7 @@ today = yyyy + '-' + mm + '-' + dd;
 
    pool.query(`insert into ${table} set ?`,body,(err,result)=>{
      if(err) throw err;
-     else res.json(result);
+     else res.json({msg:'success'});
    })
   })
   

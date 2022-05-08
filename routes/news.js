@@ -31,7 +31,7 @@ today = yyyy + '-' + mm + '-' + dd;
   })
   
   router.get('/get-news',(req,res)=>{
-    pool.query(`select * from ${table} where vendorid = '${req.query.vendorid}' order by id desc`,(err,result)=>{
+    pool.query(`select * from ${table} where categoryid = '${req.query.categoryid}' order by id desc`,(err,result)=>{
       if(err) throw err;
       else res.json(result)
     })

@@ -23,6 +23,8 @@ today = yyyy + '-' + mm + '-' + dd;
 
   body['date'] = today;
   body['time'] = time;
+  body['status'] = 'pending'
+
    pool.query(`insert into ${table} set ?`,body,(err,result)=>{
      if(err) throw err;
      else res.json(result);

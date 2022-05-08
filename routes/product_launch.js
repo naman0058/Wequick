@@ -8,9 +8,14 @@ var table = 'product_launch'
 // new secion start
 
 
-router.post('/add-product_launch',upload.single('image'),(req,res)=>{
+router.post('/add-product_launch',upload.fields([{ name: 'image', maxCount: 1 }, { name: 'image1', maxCount: 1 } , { name: 'video', maxCount: 1 } , { name: 'video1', maxCount: 1 }]),(req,res)=>{
     let body = req.body;
-    body['image'] = req.file.filename
+  body['image'] = req.files.image[0].filename;
+  body['image1'] = req.files.image1[0].filename;
+  body['video'] = req.files.video[0].filename;
+  body['video1'] = req.files.video1[0].filename;
+
+
     
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

@@ -80,6 +80,14 @@ today = yyyy + '-' + mm + '-' + dd;
       else res.json(result)
     })
   })
+
+
+  router.get('/single-all-news',(req,res)=>{
+    pool.query(`select * from blogs where id = '${req.query.id}' order by id desc`,(err,result)=>{
+      if(err) throw err;
+      else res.json(result)
+    })
+  })
   
 
 

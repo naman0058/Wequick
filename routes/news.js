@@ -75,7 +75,7 @@ today = yyyy + '-' + mm + '-' + dd;
   
   
   router.get('/all-news',(req,res)=>{
-    pool.query(`select * from ${table} where status = 'approved' order by id desc`,(err,result)=>{
+    pool.query(`select * from blogs where type = 'news_portal' order by id desc`,(err,result)=>{
       if(err) throw err;
       else res.json(result)
     })

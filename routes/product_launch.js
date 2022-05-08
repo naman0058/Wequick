@@ -56,13 +56,30 @@ today = yyyy + '-' + mm + '-' + dd;
 
   
   router.get('/all-product_launch',(req,res)=>{
-    pool.query(`select * from ${table} order by id desc`,(err,result)=>{
+    pool.query(`select * from ${table} where status = 'approved' order by id desc`,(err,result)=>{
       if(err) throw err;
       else res.json(result)
     })
   })
   
   
+  
+  
+  router.get('/list/:type',(req,res)=>{
+    pool.query(`select v.* , (select c.name from category c where c.id = v.categoryid) as categoryname from news v where v.status = '${req.params.type}' order by id desc`,(err,result)=>{
+        err ? console.log(err) : res.render('Admin/New-Product-Launch',{result})
+    })
+})
+  
+  
+
+router.get('/update-status',(req,res)=>{
+  let body = req.body;
+ pool.query(`update ${table} set status = '${req.query.status}' where id = ${req.query.id}`,(err,result)=>{
+   if(err) throw err;
+   else res.redirect('/product-launch/list/pending')
+ })
+})
   
   
   // news section end

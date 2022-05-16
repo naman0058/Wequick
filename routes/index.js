@@ -1583,5 +1583,17 @@ router.get('/faq',(req,res)=>{
  })
 
 
+ 
+ router.get('/channel-partner',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+ var query = `select * from category;`
+    var query1 = `select * from event;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('channel_partner_landing',{login,result})
+    })
+ })
+
+
 
 module.exports = router;

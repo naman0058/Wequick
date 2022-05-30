@@ -1590,7 +1590,20 @@ router.get('/faq',(req,res)=>{
     var query1 = `select * from event;`
     pool.query(query+query1,(err,result)=>{
       if(err) throw err;
-      else res.render('channel_partner_landing',{login,result})
+      else res.render('channel_partner_landing',{login,result,msg:''})
+    })
+ })
+
+
+
+  
+ router.post('/channel-partner/save',(req,res)=>{
+   let body = req.body;
+  req.session.usernumber ? login =  true : login = false
+ 
+    pool.query(`insert into cp set ?`,body,(err,result)=>{
+      if(err) throw err;
+      else res.render('channel_partner_landing',{login,result,msg:'Submitted Successfully...'})
     })
  })
 

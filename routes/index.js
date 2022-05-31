@@ -1603,10 +1603,22 @@ router.get('/faq',(req,res)=>{
  
     pool.query(`insert into cp set ?`,body,(err,result)=>{
       if(err) throw err;
-      else res.render('channel_partner_landing',{login,result,msg:'Submitted Successfully...'})
+      else res.redirect('/thankyou')
     })
  })
 
+
+ 
+ router.get('/thankyou',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+ var query = `select * from category;`
+    var query1 = `select * from event;`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('cpthankyou',{login,result,msg:''})
+    })
+ })
+ 
 
 
 module.exports = router;

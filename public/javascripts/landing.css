@@ -1,0 +1,473 @@
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+}
+/*---------------- header ---------------*/
+
+.headbg {
+	background: #000000;
+	border-bottom: 1px solid rgb(69, 0, 9) !important;
+	border-radius: 0px;
+}
+.form1 {
+	background: #0e010b;
+	border: 1px solid rgba(204, 204, 204, 0.65);
+	border-radius: 5px;
+	height: 30px;
+}
+.btngreen {
+	padding: 5px 12px; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d2ff52+0,91e842+100;Neon */
+	background: #3c9903;
+	border-color: #46b104;
+	color: #fff;
+}
+.btngreen:active, .btngreen:hover, .btngreen:focus {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d2ff52+0,91e842+100;Neon */
+	padding: 5px 12px; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d2ff52+0,91e842+100;Neon */
+	background: #3c9903;
+	border-color: #46b104;
+	color: #fff;
+}
+/*.navbar-form {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}*/
+.navbar-brand {
+	padding: 4px 15px;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: rgba(231, 231, 231, 0);
+}
+.player ul li p {
+	color: #fff;
+}
+.player span {
+	color: #a2f127;
+}
+.navbar-text1 {
+	padding: 10px 10px 0px 70px;
+	color: #fff;
+}
+.navbar-toggle {
+	background-color: #3c9903;
+	border: 1px solid #46b104;
+	margin-top: 13px;
+}
+.navbar-default .navbar-toggle {
+	border-color: #fff;
+}
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+	padding: 5px 12px; /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d2ff52+0,91e842+100;Neon */
+	background: #3c9903 !important;
+	border-color: #46b104;
+	color: #fff;
+}
+.navbar-default {
+	border: none;
+}
+.navbar {
+	margin-bottom: 0px;
+}
+.sociallogin {
+	display: inline-table;
+}
+.sociallogin a.fb {
+	background: #005397;
+}
+.sociallogin a {
+	border-radius: 4px;
+	padding-top: 5px;
+	padding-bottom: 6px;
+	margin-right: 2px;
+}
+.sociallogin a i {
+	text-align: center;
+	width: 35px;
+	color: #fff;
+}
+.sociallogin a.gp {
+	background: #ca3737;
+}
+.navbar-collapse {
+	padding: 0px;
+}
+.forgot {
+	font-size: 10px;
+	color: #fff;
+	text-align: right;
+	text-transform: capitalize;
+	line-height: 6px;
+	padding-bottom: 10px;
+}
+/*---------------- header end ---------------*/
+
+.f-bg, .form-links, .login-form h2, .text-center {
+	text-align: center
+}
+.bg {
+	background: #f9f6f6;
+}
+.btn {
+	font-size: 12px
+}
+.bannerbg {
+	background: url(/images/BG.jpg);
+	border-bottom: 1px solid #fff;
+	background-size: cover
+}
+.login-form {
+	margin-top: 10%;
+	margin-bottom: 10%
+}
+.login-form h2 {
+	font-size: 22px;
+	color: #000;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	font-weight: 700
+}
+.login-form p {
+	margin: 0 0 5px;
+	color: #525151;
+}
+form[role=login] {
+	color: #000;
+	border: 3px solid #e0dede;
+	background: url(images/formbg.png);
+	padding: 6px 26px 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px
+}
+form[role=login] img {
+	display: block;
+	margin: 0 auto 35px
+}
+form[role=login] button, form[role=login] input {
+	font-size: 16px;
+	margin: 10px 0
+}
+form[role=login]>div {
+	text-align: center;
+	color: #525151;
+}
+.form-links {
+	margin-top: 1em;
+	margin-bottom: 50px
+}
+.btn-facebook, .btn-google-plus {
+	margin-bottom: 5px;
+	width: 49%;
+	border-color: rgba(0,0,0,.2);
+	color: #fff
+}
+.form-links a {
+	color: #fff
+}
+.redbtn, .redbtn:active, .redbtn:focus, .redbtn:hover {
+	background: #3c9903;
+    border-color: #46b104;
+    color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 19px!important;
+	color: #fff
+}
+.btn-facebook.active, .btn-facebook:active, .btn-google-plus.active, .btn-google-plus:active, .open .dropdown-toggle.btn-facebook, .open .dropdown-toggle.btn-google-plus {
+	background-image: none
+}
+.btn-facebook {
+	background-color: #3b5998
+}
+.btn-facebook.active, .btn-facebook:active, .btn-facebook:focus, .btn-facebook:hover, .open .dropdown-toggle.btn-facebook {
+	color: #fff;
+	background-color: #30487b;
+	border-color: rgba(0,0,0,.2)
+}
+.btn-facebook.disabled, .btn-facebook.disabled.active, .btn-facebook.disabled:active, .btn-facebook.disabled:focus, .btn-facebook.disabled:hover, .btn-facebook[disabled], .btn-facebook[disabled].active, .btn-facebook[disabled]:active, .btn-facebook[disabled]:focus, .btn-facebook[disabled]:hover, fieldset[disabled] .btn-facebook, fieldset[disabled] .btn-facebook.active, fieldset[disabled] .btn-facebook:active, fieldset[disabled] .btn-facebook:focus, fieldset[disabled] .btn-facebook:hover {
+	background-color: #3b5998;
+	border-color: rgba(0,0,0,.2)
+}
+.btn-google-plus {
+	background-color: #dd4b39
+}
+.content-1 h1, .content-1 h4 {
+	margin-bottom: 1px;
+}
+.btn-google-plus.active, .btn-google-plus:active, .btn-google-plus:focus, .btn-google-plus:hover, .open .dropdown-toggle.btn-google-plus {
+	color: #fff;
+	background-color: #ca3523;
+	border-color: rgba(0,0,0,.2)
+}
+.btn-google-plus.disabled, .btn-google-plus.disabled.active, .btn-google-plus.disabled:active, .btn-google-plus.disabled:focus, .btn-google-plus.disabled:hover, .btn-google-plus[disabled], .btn-google-plus[disabled].active, .btn-google-plus[disabled]:active, .btn-google-plus[disabled]:focus, .btn-google-plus[disabled]:hover, fieldset[disabled] .btn-google-plus, fieldset[disabled] .btn-google-plus.active, fieldset[disabled] .btn-google-plus:active, fieldset[disabled] .btn-google-plus:focus, fieldset[disabled] .btn-google-plus:hover {
+	background-color: #dd4b39
+}
+.omb_loginOr {
+	padding-bottom: 8px
+}
+.bonus-btn, .bonus-btn:active, .bonus-btn:focus, .bonus-btn:hover {
+	background: #0b8c11;
+	padding: 10px 25px;
+	font-size: 20px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 700;
+	text-shadow: 0 1px 1px #8d8d8d;
+}
+.content-1 {
+	padding: 10px 0px 0px 0px;
+}
+.content-1 h1 {
+	color: #000;margin-bottom: 20px;
+	font-size: 27px;
+}
+.content-1 h1 span {
+	color: #f2ca05
+}
+.content-1 h4 {
+	    color: #e0d803;
+	font-size: 18px
+}
+.content-1 p {
+	color: #525151;
+	line-height: 25px;
+	margin-top: 6px;
+	font-size: 16px;
+}
+.regter {
+	background: #fff;
+	padding: 30px 0 30px 0px;
+}
+.title {
+	color: #000;
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: 16px;
+	margin-top: 15px;
+	margin-bottom: 15px
+}
+.privacy {
+	color: #3c3c3c;
+	font-size: 16px;
+}
+.privacy p i {
+	color: #2db40e
+}
+.f-bg {
+	background: #000;
+	padding: 20px 0;
+	border-bottom: 1px solid #ccc
+}
+.f-bg p {
+	color: #fff
+}
+@media (min-width:768px) {
+.form1 {
+	width: 100%!important
+}
+.or-xs {
+	display: none!important
+}
+}
+@media (max-width:768px) {
+.navbar-brand {
+	height: 100%!important
+}
+.tl-circ {
+	display: none !important;
+}
+.timeline-panel {
+	width: 100% !important;
+}
+.timeline:before {
+	display: none !important;
+}
+.textcenter {
+	text-align: center;
+}
+.forgot {
+	text-align: left!important;
+}
+.navbar-collapse {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+.login-form {
+	margin-top: 10px!important;
+	margin-bottom: 20px!important
+}
+.testimonial-mob {text-align:center !important;}
+}
+@media (max-width:991px) {
+.navbar-text1 {
+	padding: 9px 0 0!important
+}
+}
+@media screen and (max-width:991px) and (min-width:768px) {
+.form1 {
+	width: 145px!important
+}
+.border-right, .border-right1 {
+	padding: 0 0 0 20px!important
+}
+.login-form {
+	margin-top: 10px!important;
+	margin-bottom: 10px!important
+}
+form[role=login] {
+	padding: 0 10px 10px!important
+}
+.login-form h2 {
+	font-size: 15px!important;
+	margin-top: 8px;
+	margin-bottom: 8px
+}
+.btn-group-lg>.btn, .btn-lg {
+	padding: 7px 16px
+}
+.redbtn, .redbtn:active, .redbtn:focus, .redbtn:hover {
+	font-size: 12px!important
+}
+.btn-facebook, .btn-google-plus {
+	padding: 1px 12px
+}
+.input-lg {
+	height: 32px!important
+}
+form[role=login] button, form[role=login] input {
+	font-size: 12px!important;
+	margin: 6px 0!important
+}
+.tc-apply {
+	font-size: 13px!important
+}
+}
+@media screen and (max-width:1150px) and (min-width:991px) {
+.login-form {
+	margin-top: 25px!important;
+	margin-bottom: 10px!important
+}
+form[role=login] {
+	padding: 0 10px 10px!important
+}
+.login-form h2 {
+	font-size: 20px!important
+}
+.input-lg {
+	height: 40px!important
+}
+form[role=login] button, form[role=login] input {
+	font-size: 12px!important;
+	margin: 7px 0!important
+}
+.tc-apply {
+	font-size: 13px!important
+}
+}
+.form-control {
+	background-color: #fff;
+	border: 1px solid #bbbdbd
+}
+@media screen and (max-width:500px) and (min-width:320px) {
+.btn-1, .btn-1:active, .btn-1:focus, .btn-1:hover {
+	display: inline-block
+}
+}
+@media screen and (max-width:767px) and (min-width:320px) {
+.bonus-btn, .bonus-btn:active, .bonus-btn:focus, .bonus-btn:hover {
+	font-size: 14px
+}
+.welcome h1 {
+	font-size: 23px
+}
+}
+
+ @media screen and (max-width:359px) {
+.redbtn, .redbtn:active, .redbtn:focus, .redbtn:hover {
+	font-size: 15px!important;
+}
+}
+/*popupheader*/
+.modal-header {
+	padding: 15px;
+	box-shadow: rgba(0,0,0,0.24) 0 3px 4px;
+	background: #8c0101;
+}
+.modal-title {
+	margin: 0;
+	line-height: 1.42857143;
+	color: #fff;
+}
+.close {
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+	filter: alpha(opacity=50);
+	opacity: .5;
+}
+.close:focus, .close:hover {
+	color: #fff!important;
+	opacity: .9;
+}
+.modal-body {
+	background: #fff;
+	background: -moz-linear-gradient(top, #fff 58%, #f4f4f4 100%);
+	background: -webkit-linear-gradient(top, #fff 58%, #f4f4f4 100%);
+	background: linear-gradient(to bottom, #fff 58%, #f4f4f4 100%);
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff ', endColorstr='#f4f4f4 ', GradientType=0 );
+}
+.forgot-sub, .forgot-sub:active, .forgot-sub:focus, .forgot-sub:hover {
+	background: #8c0101;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 700;
+	border-radius: 5px;
+	text-shadow: 0 1px 1px #8d8d8d;
+}
+
+
+.testmonial-bg {background: #f7f5f5;
+    padding: 0px 0px 30px 0px;}
+
+
+
+
+.how-to-li ul {
+    margin: 0px;
+    padding: 5px 0px 0px 22px;
+}.how-to-li ul li {
+    font-size: 16px;
+    line-height: 35px;
+    list-style: circle;
+}
+
+
+.col-centered {
+    display: inline-block;
+    float: none;
+    text-align: left;
+    margin-right: -4px;
+}
+
+.promos h4 {    margin-bottom: 10px;
+    color: #000;}
+
+
+.why h3 {margin-top: 40px;
+    margin-bottom: 0px;}
+.why-p p {
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;background: #fffbfb;
+}
+.why-p i {
+    color: #2cba01;
+}
+
+.loginerrorr{
+    color: white !important;
+    background: red;
+    border-radius: 5px;
+}

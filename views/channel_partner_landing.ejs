@@ -81,7 +81,7 @@
                   <p id="regusernameerr" class="loginerrorr"></p>
 				  <input type="email" name="email" id="email" class="form-control" placeholder="Email ID" required>
                   <p id="regpassworderr" class="loginerrorr"></p>
-                  <input type="text" pattern="[7-9]{1}[0-9]{9}" name="number" id="number" class="form-control" placeholder="Mobile Number" required >
+                  <input type="text" pattern="[7-9]{1}[0-9]{9}" onkeypress='validate(event)' maxlength="10" name="number" id="number" class="form-control" placeholder="Mobile Number" required >
                   <p id="regemailerr" class="loginerrorr"></p>
 				  <input type="text" name="address" id="address" class="form-control" placeholder="Address" required>
               <div class="pwstrength_viewport_progress"></div>
@@ -299,6 +299,27 @@ jQuery(document).ready(function() {
                 .slideToggle();            // Toggle visibility
             });
 });
+
+
+
+function validate(evt) {
+  var theEvent = evt || window.event;
+
+  // Handle paste
+  if (theEvent.type === 'paste') {
+      key = event.clipboardData.getData('text/plain');
+  } else {
+  // Handle key press
+      var key = theEvent.keyCode || theEvent.which;
+      key = String.fromCharCode(key);
+  }
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+
 </script>
 </body>
 </html>

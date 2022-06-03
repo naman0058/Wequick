@@ -1631,4 +1631,15 @@ pool.query(`insert into cp set ?`,body,(err,result)=>{
  
 
 
+ router.get('/digital-lead',(req,res)=>{
+   pool.query(`select cpa.*, 
+   (select s.name from state s where s.id = cpa.state) as statename , 
+   (Select c.name from city c where c.id = cpa.city) as cityname
+   from cp cpa order by id desc`,(err,result)=>{
+     if(err) throw err;
+     else res.render('digital_lead',{result})
+   })
+ })
+
+
 module.exports = router;

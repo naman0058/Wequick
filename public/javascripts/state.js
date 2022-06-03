@@ -11,7 +11,6 @@ $.getJSON('/api/get-state',data=>{
     categories = data
     makeTable(data)
 })
-
 })
 
 

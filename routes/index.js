@@ -1599,12 +1599,22 @@ router.get('/faq',(req,res)=>{
   
  router.post('/channel-partner/save',(req,res)=>{
    let body = req.body;
+   console.log(req.body)
   req.session.usernumber ? login =  true : login = false
  
-    pool.query(`insert into cp set ?`,body,(err,result)=>{
+  pool.query(`select * from cp where number = '${req.body.number}'`,(err,result)=>{
+    if(err) throw err;
+    else if(result[0]){
+      res.render('channel_partner_landing',{login,result,msg:'Number Already Exists.'})
+    }
+    else{
+pool.query(`insert into cp set ?`,body,(err,result)=>{
       if(err) throw err;
       else res.redirect('/thankyou')
     })
+    }
+  })
+    
  })
 
 

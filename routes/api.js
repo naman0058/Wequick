@@ -331,7 +331,7 @@ router.get('/get-merchant',(req,res)=>{
 
   router.get('/get-state',(req,res)=>{
 
-    pool.query(`select * from state where status = 'active' order by name desc`,(err,result)=>{
+    pool.query(`select * from state order by name desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })
@@ -342,6 +342,18 @@ router.get('/get-merchant',(req,res)=>{
 
    router.get('/get-city',(req,res)=>{
     pool.query(`select * from city where stateid = '${req.query.stateid}' order by name desc`,(err,result)=>{
+        if(err) throw err;
+        else res.json(result)
+    })
+   
+   })
+   
+
+
+
+   
+   router.get('/get-cities',(req,res)=>{
+    pool.query(`select * from city order by name desc`,(err,result)=>{
         if(err) throw err;
         else res.json(result)
     })

@@ -76,6 +76,7 @@
           <section class="login-form">
               <form role="login" id="register-form" action="/channel-partner/save" method="post">
               <h2>Join DealsAaj</h2>
+              <h4><%=msg%></h4>
                
 			  <input type="text" name="name" id="name" class="form-control" placeholder="Full Name" required>
                   <p id="regusernameerr" class="loginerrorr"></p>
@@ -83,7 +84,24 @@
                   <p id="regpassworderr" class="loginerrorr"></p>
                   <input type="text" pattern="[7-9]{1}[0-9]{9}" onkeypress='validate(event)' maxlength="10" name="number" id="number" class="form-control" placeholder="Mobile Number" required >
                   <p id="regemailerr" class="loginerrorr"></p>
+
+                  <select name="state" id="categoryid" class="form-control" required></select> 
+                  <select name="city" id="subcategoryid" class="form-control" style="margin-top: 10px;" required></select>
+
 				  <input type="text" name="address" id="address" class="form-control" placeholder="Address" required>
+          <input type="text" pattern="[7-9]{1}[0-9]{9}" onkeypress='validate(event)' maxlength="10" name="whatsapp_number" id="whatsapp_number" class="form-control" placeholder="whatsapp Number" required >
+				
+          <select name="investment" class="form-control" style="margin-top: 10px;">
+          <option>Investment 5 Lac - 8 Lac</option>
+          <option>Investment 8 Lac - 12 Lac</option>
+          <option>Investment 12 Lac - 15 Lac</option>
+          <option>Investment 15 Lac - 20 Lac</option>
+          <option>Investment 20 Lac - 25 Lac</option>
+
+          </select>
+
+
+
               <div class="pwstrength_viewport_progress"></div>
               <button type="submit" class="btn btn-lg btn-block redbtn" id="register-submit">Submit</button>
               <div class="tc-apply" style="color: white;"> By signing up you accept you are 18+ and agree to
@@ -189,6 +207,10 @@
       <div class="col-md-12">
         <div>
           <p>© All Rights Reserved, 2022 | AFORMIT INDUSTRIES PVT LTD.<p>
+       <p>Email : info@dealsaaj.com</p>
+       <p>Contact Number : 07969662400 , 07752448276 , 09753005007</p>
+
+
         </div>
       </div>
     </div>
@@ -319,6 +341,50 @@ function validate(evt) {
     if(theEvent.preventDefault) theEvent.preventDefault();
   }
 }
+
+
+let categories = []
+let subcategories= []
+
+
+$.getJSON(`/api/get-state`, data => {
+    categories = data
+    fillDropDown('categoryid', data, 'Choose State', 0)
+  
+})
+
+
+$.getJSON(`/api/get-cities  `, data => {
+    subcategories = data
+    fillDropDown('subcategoryid', [], 'Choose City', 0)
+})
+
+
+$('#categoryid').change(() => {
+    const filteredData = subcategories.filter(item => item.stateid == $('#categoryid').val())
+    console.log(filteredData)
+    fillDropDown('subcategoryid', filteredData, 'Choose City', 0)
+})
+
+
+function fillDropDown(id, data, label, selectedid = 0) {
+    $(`#${id}`).empty()
+    $(`#${id}`).append($('<option>').val("").text(label))
+
+    $.each(data, (i, item) => {
+        if (item.id == selectedid) {
+            $(`#${id}`).append($('<option selected>').val(item.id).text(item.name))
+        } else {
+            $(`#${id}`).append($('<option>').val(item.id).text(item.name))
+        }
+    })
+}
+
+
+
+
+
+
 
 </script>
 </body>

@@ -109,7 +109,7 @@ body {
 	font-size: 12px
 }
 .bannerbg {
-	background: url(/images/BG.jpg);
+	background: url(/images/landing.jpeg);
 	border-bottom: 1px solid #fff;
 	background-size: cover
 }

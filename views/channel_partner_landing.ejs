@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +102,6 @@ p.service_text{
   line-height:28px;
   text-align:center;  
 }
-
 .extra-text {
     font-size:34px;
     font-weight: 700;
@@ -275,7 +273,6 @@ p.service_text{
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-10903260341');
 </script>
 
@@ -397,7 +394,6 @@ p.service_text{
     <li>Understand and Study their market and make a strategy based on it.</li>
     <li>Lead DealsAaj franchise in their locations as the plan is finalised between CP and DealsAaj.</li>
     <li>The entire responsibility of that area lies within the Channel Partner.</li>
-
   </ul>
     -->
 
@@ -459,13 +455,11 @@ p.service_text{
  
  
 	 <!-- <div class="row">
-
                             <div class="col-md-6 promos">
                               <h4><b>Salary </b></h4>
 							  <img src="/images/3.jpeg" class="img-responsive img thumbnail" style="width: 100%;"/>
 							  <p>A team of up to 12 members, And we will pay their salaries.</p>
 							   </div>
-
 							    <div class="col-md-6 promos">
                               <h4><b>Office Rent</b></h4>
 							  <img src="/images/2.jpeg" class="img-responsive img thumbnail" style="width: 100%;"/>
@@ -473,14 +467,11 @@ p.service_text{
 							   </div>
 							   <div class="clearfix"></div>
 							   <hr>
-
-
 							    <div class="col-md-6 promos">
                               <h4><b>20 Percent Share</b></h4>
 							  <img src="/images/6.jpg" class="img-responsive img thumbnail" style="width: 100%;"/>
 							  <p>We will be paying a 20% share on each Paid Onboarding to our Channel Partners.</p>
 							   </div>
-
 							    <div class="col-md-6 promos">
                               <h4><b>Total Support</b></h4>
 							  <img src="/images/1.jpeg" class="img-responsive img thumbnail" style="width: 100%;"/>
@@ -524,7 +515,6 @@ function toggleIcon(e) {
 }
 $('.panel-group').on('hidden.bs.collapse', toggleIcon);
 $('.panel-group').on('shown.bs.collapse', toggleIcon);
-
 </script>
 <script>
     $(document).ready(function() {
@@ -603,8 +593,6 @@ $('.panel-group').on('shown.bs.collapse', toggleIcon);
                 '</div>')
         }
     })
-
-
 </script>
 <script>
 jQuery(document).ready(function() {
@@ -618,12 +606,8 @@ jQuery(document).ready(function() {
                 .slideToggle();            // Toggle visibility
             });
 });
-
-
-
 function validate(evt) {
   var theEvent = evt || window.event;
-
   // Handle paste
   if (theEvent.type === 'paste') {
       key = event.clipboardData.getData('text/plain');
@@ -638,36 +622,25 @@ function validate(evt) {
     if(theEvent.preventDefault) theEvent.preventDefault();
   }
 }
-
-
 let categories = []
 let subcategories= []
-
-
 $.getJSON(`/api/get-state`, data => {
     categories = data
     fillDropDown('categoryid', data, 'Choose State', 0)
   
 })
-
-
 $.getJSON(`/api/get-cities  `, data => {
     subcategories = data
     fillDropDown('subcategoryid', [], 'Choose City', 0)
 })
-
-
 $('#categoryid').change(() => {
     const filteredData = subcategories.filter(item => item.stateid == $('#categoryid').val())
     console.log(filteredData)
     fillDropDown('subcategoryid', filteredData, 'Choose City', 0)
 })
-
-
 function fillDropDown(id, data, label, selectedid = 0) {
     $(`#${id}`).empty()
     $(`#${id}`).append($('<option>').val("").text(label))
-
     $.each(data, (i, item) => {
         if (item.id == selectedid) {
             $(`#${id}`).append($('<option selected>').val(item.id).text(item.name))
@@ -676,13 +649,6 @@ function fillDropDown(id, data, label, selectedid = 0) {
         }
     })
 }
-
-
-
-
-
-
-
 </script>
 </body>
 </html>

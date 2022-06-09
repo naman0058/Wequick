@@ -1602,7 +1602,7 @@ router.get('/faq',(req,res)=>{
    console.log(req.body)
   req.session.usernumber ? login =  true : login = false
  
-  pool.query(`select * from cp where number = '${req.body.number}'`,(err,result)=>{
+  pool.query(`select * from cp where whatsapp_number = '${req.body.whatsapp_number}'`,(err,result)=>{
     if(err) throw err;
     else if(result[0]){
       res.render('channel_partner_landing',{login,result,msg:'Number Already Exists.'})

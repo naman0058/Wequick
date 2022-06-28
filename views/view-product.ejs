@@ -53,9 +53,9 @@
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
 
-          <div class="carousel-item active"> <img class="d-block w-100" src="/images/<%=result[1][0].thumbnail%>" alt="First slide"> </div>
+          <div class="carousel-item active"> <img class="d-block w-100" src="https://dealsaaj.com/images/<%=result[1][0].thumbnail%>" alt="First slide" style="height:500px;width:200px"> </div>
 
-          <div class="carousel-item"> <img class="d-block w-100" src="/images/<%=result[1][0].image%>" alt="First slide"> </div>
+          <div class="carousel-item"> <img class="d-block w-100" src="https://dealsaaj.com/images/<%=result[1][0].image%>" alt="First slide"> </div>
        
         
 
@@ -132,10 +132,10 @@
    
    
     <% for(i=0;i<result[3].length;i++) { %>
-    <div class="col-md-3" style="margin-bottom:20px">
+    <div class="col-md-3" style="margin-bottom:20px;">
       <a href="/product?id=<%=result[3][i].id%>">
    		<div class="card">
-   			<img class="card-img-top img-fluid" src="/images/<%=result[3][i].image%>">
+   			<img class="card-img-top img-fluid" src="images/<%=result[3][i].image%>" style="height:220px">
    			<div class="card-title">
    			 <a href="/product?id=<%=result[3][i].id%>" style="margin-left:5px;margin-right:5px;margin-top:5px;margin-bottom:5px;color:black"><%=result[3][i].name%></a>
    			</div> 

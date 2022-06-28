@@ -1966,6 +1966,7 @@ router.post('/redeem-this-code',(req,res)=>{
   var yyyy = today.getFullYear();
   today = mm + '/' + dd + '/' + yyyy;
   body['date'] = today
+  console.log(req.body)
  pool.query(`insert into redeem_code set ?`,body,(err,result)=>{
     if(err) throw err;
     else res.json({msg:'success'})

@@ -2065,8 +2065,7 @@ router.post('/update-address', (req, res) => {
 
 
 router.get('/get-single-deals',(req,res)=>{
-  pool.query(`select c.*
-  from deals c  where c.coupounid = '${req.query.id}' and c.usernumber = '${req.query.number}'`,(err,result)=>{
+  pool.query(`select * from redeem_code  where coupounid = '${req.query.id}' and usernumber = '${req.query.number}'`,(err,result)=>{
     if(err) throw err;
     else res.json(result);
   })

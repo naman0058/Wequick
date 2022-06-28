@@ -5,6 +5,63 @@ var upload = require('./multer');
 const fetch = require("node-fetch");
 
 
+const request = require('request');
+
+// pan card verification
+
+// var options = {
+//   'method': 'POST',
+//   'url': 'https://test.zoop.one/api/v1/in/identity/pan/demographic',
+//   'headers': {
+//     'api-key': 'W0DPMP6-SNQMDWA-K7BRWTW-8JJJXPM',
+//     'app-id': '62b4238cda7e35001d902afe',
+//    'content-Type': 'application/json'
+//   },
+  
+//   body: { 
+//     "data": {
+//       "customer_pan_number": "BHCPJ5864K",
+//       "customer_dob": "21-02-1998",
+//       "consent": "Y",
+//       "consent_text" : "Approve the values here"
+//   }
+// },
+// json: true
+
+// };
+// console.log(options.body)
+// request(options, function (error, response) {
+//   if (error) throw new Error(error);
+//   console.log(response.body);
+// });
+
+
+// pan card verification end
+
+
+
+
+
+ var raw = "{\n    \"data\": {\n        \"customer_pan_number\": \"BHCPJ5864k\",\n        \"customer_dob\": \"21-02-1998\",\n        \"consent\": \"Y\",\n        \"consent_text\" : \"Approve the values here\"\n    }\n}";
+
+var requestOptions = {
+  method: 'POST',
+    'headers': {
+    'api-key': 'W0DPMP6-SNQMDWA-K7BRWTW-8JJJXPM',
+    'app-id': '62b4238cda7e35001d902afe',
+   'content-Type': 'application/json'
+  },
+   body:raw,
+  json: true,
+  // redirect: 'follow'
+};
+
+fetch("https://test.zoop.one/api/v1/in/identity/pan/demographic", requestOptions)
+  .then(response => response.json())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
 
 
 
@@ -23,7 +80,10 @@ router.get('/update-city',(req,res)=>{
 
 
 
-const request = require('request');
+
+
+
+
 const auth = 'bearer 8170b1fc-302d-4f5d-b6a8-72fb6dbdb804'
 
 var mapsdk = require('mapmyindia-sdk-nodejs');
@@ -1337,7 +1397,7 @@ router.post('/all-orders',(req,res)=>{
 
 
 router.post('/ongoing-orders',(req,res)=>{
-  pool.query(`select b.* , (select p.name from products p where p.id = b.booking_id ) as bookingname from booking b where b.vendorid = '${req.body.vendorid}' and b.status != 'completed'`,(err,result)=>{
+  pool.query(`select b.* , (select p.name from products p where p.id = b.booking_id ) as bookingname from booking b where b.vendorid = '${req.body.vendorid}' and b.status != 'completed' order by id desc`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })
@@ -1345,7 +1405,7 @@ router.post('/ongoing-orders',(req,res)=>{
 
 
 router.post('/completed-orders',(req,res)=>{
-  pool.query(`select b.* , (select p.name from products p where p.id = b.booking_id ) as bookingname from booking b where b.vendorid = '${req.body.vendorid}' and b.status = 'completed'`,(err,result)=>{
+  pool.query(`select b.* , (select p.name from products p where p.id = b.booking_id ) as bookingname from booking b where b.vendorid = '${req.body.vendorid}' and b.status = 'completed' order by id desc`,(err,result)=>{
     if(err) throw err;
     else res.json(result)
   })

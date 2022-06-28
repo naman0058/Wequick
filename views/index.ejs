@@ -2,14 +2,12 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <style>
-
 #demo {
     background: linear-gradient(112deg, #ffffff 50%, #d9d7fa  50%);
     height: 402px;
     margin: auto;
     
 }
-
 .carousel-caption {
     position: initial;
     z-index: 10;
@@ -21,7 +19,6 @@
     font-weight: bold;
     line-height: 2rem
 }
-
 @media(max-width:767px) {
     .carousel-caption {
         position: initial;
@@ -35,13 +32,11 @@
         line-height: 1.5rem
     }
 }
-
 .carousel-caption img {
     width: 6rem;
     border-radius: 5rem;
     margin-top: 2rem
 }
-
 @media(max-width:767px) {
     .carousel-caption img {
         width: 4rem;
@@ -49,13 +44,11 @@
         margin-top: 1rem
     }
 }
-
 #image-caption {
     font-style: normal;
     font-size: 1rem;
     margin-top: 0.5rem
 }
-
 @media(max-width:767px) {
     #image-caption {
         font-style: normal;
@@ -63,32 +56,26 @@
         margin-top: 0.5rem
     }
 }
-
 .i1 {
     background-color: rgb(223, 56, 89);
     padding: 1.4rem
 }
-
 @media(max-width:767px) {
     .i1 {
         padding: 0.8rem
     }
 }
-
 .carousel-control-prev {
     justify-content: flex-start
 }
-
 .carousel-control-next {
     justify-content: flex-end
 }
-
 .carousel-control-prev,
 .carousel-control-next {
     transition: none;
     opacity: unset;
 }
-
 </style>
 
 <section class="pt-5 pb-5 homepage-search-block position-relative">
@@ -124,31 +111,7 @@
 
 
 
-<section class="section-padding homepage-great-deals bg-white">
-    <div class="container">
-    <div class="row">
-    <div class="col-lg-12">
-    <div class="owl-carousel owl-theme owl-carousel-one homepage-great-deals-carousel">
-        <!-- <div class="item">
-            <div class="great-deals-sstore-banners">
-            <a href="#"><img alt="placeholder image" src="/images/Comming_Soon.jpg" class="img-fluid rounded"></a>
-            </div>
-            </div> -->
-        <div class="item">
-    <div class="great-deals-sstore-banners">
-    <a href="/segment/restaurants"><img alt="placeholder image" src="/resize_banner/Restaurants.jpg" class="img-fluid rounded"></a>
-    </div>
-    </div>
-    <!-- <div class="item">
-    <div class="great-deals-sstore-banners">
-    <a href="shop-by-category?categoryid=64"><img alt="placeholder image" src="/resize_banner/Water-Park.png" class="img-fluid rounded"></a>
-    </div>
-    </div> -->
-    </div>
-    </div>
-    </div>
-    </div>
-    </section>
+
 
 
 
@@ -170,31 +133,22 @@
 <a href="#">
 <img class="img-fluid item-img" src="/images/<%=result[3][i].image%>">
 </a>
-
 </div>
 <div class="p-3 pt-4">
 <div class="custom-card-body">
 <h6 class="mb-3"><a class="text-black" href="#"><%=result[3][i].short_description%></a></h6>
 </div>
-
-
 <% if(result[3][i].isredeem == null || result[3][i].isredeem == '' || result[3][i].isredeem == 'null' || result[3][i].isredeem ==[]){ %>
 <div class="custom-card-footer mb-2">
-
     <a class="btn btn-orange float-right redeem_this_code" style="margin-bottom: 10px;" id="<%=result[3][i].id%>" code="<%=result[3][i].name%>" expiry="<%=result[3][i].expiry%>" vendorid = '<%=result[3][i].vendorid%>'>
         Redeem Deals</a>
         </div>
     <% } else { %>
-
         <div class="custom-card-footer mb-2">
-
             <a class="btn btn-orange float-right" style="margin-bottom: 10px;">
                 <%=result[3][i].name%></a>
                 </div>
-
         <% } %>
-
-
 </div>
 </div>
 </div>
@@ -222,7 +176,7 @@
         <div class="item">
     <div class="bg-white p-4 shadow-sm text-center h-100 border-radius">
     <div class="all-coupon">
-    <img class="mb-3 user-cou-img" src="/images/<%=result[4][i].image%>" alt="Generic placeholder image">
+    <img class="mb-3 user-cou-img" src="/images/<%=result[4][i].image%>" alt="Generic placeholder image" style="width:100%;height:100px">
     <h6 class="mb-4 mt-3 pb-2 text-secondary"><%=result[4][i].short_description%></h6>
     </div>
     <div class="mb-0">
@@ -252,7 +206,7 @@
 
     <% for(i=0;i<result[5].length;i++) { %>
     <div class="item">
-<div class="custom-card bg-white shadow-sm h-100 stor-card" style="min-height: 250px;">
+<div class="custom-card bg-white shadow-sm h-100 stor-card" style="min-height: 320px;">
 <div class="custom-card-image">
 <a href="#">
 <img class="img-fluid item-img" src="/images/<%=result[5][i].image%>">
@@ -293,7 +247,7 @@
 <h3 class="text-white">Mega Deals</h3>
 <p class="text-white pl-0 pr-0">Offers that you can't miss , Grab them now!
 </p>
-<a class="btn btn-light-white text-white btn-sm rounded-pill" href="/exclusive-deals-and-offers">View more</a>
+<a class="btn btn-light-white text-white btn-sm rounded-pill" href="/exclusive-deals-and-offers" >View more</a>
 </div>
 </div>
 </div>
@@ -374,23 +328,17 @@
           transform: translate(-50%, -50%);
         }
         </style>
-
-
 <% if(result[6][i].image) { %>
-
     
     <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>" style="object-fit:cover">
    
-
     <% } else { %>
-
         <div class="container" style="background-color: #8A8B8D;">
             <img class="item-img" src="/images/thubnail.jpg" style="width: 100%;">
         
             <div class="centered" style="color: black;"><%=result[6][i].business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()%></div>
           </div>
 <% } %>
-
    
     
 </a>
@@ -424,11 +372,7 @@
 <!-- <div class="container mt-3">
     <div id="demo" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-
-
-
             
-
             <div class="carousel-item active">
               
                 <div class="carousel-caption">
@@ -453,20 +397,10 @@
                     <div id="image-caption">Shanu Mishra</div>
                     
                 </div>
-
             </div>
-
             
         </div> <a class="carousel-control-prev" href="#demo" data-slide="prev"> <i class='fas fa-arrow-left i1'></i> </a> <a class="carousel-control-next" href="#demo" data-slide="next"> <i class='fas fa-arrow-right i1'></i> </a>
     </div>
-
-
-
-
-
-
-
-
 </div> -->
 
 <!-- {item.business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()} -->
@@ -480,7 +414,6 @@
         let code = $(this).attr('code')
         let expiry = $(this).attr('expiry')
         let vendorid = $(this).attr('vendorid')
-
         $.post('/redeem-this-code',{coupounid,code,expiry,vendorid},data=>{
             if(data.msg=='failed') window.location.href = '/login';
             else window.location.reload()

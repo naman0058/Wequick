@@ -53,11 +53,9 @@
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
 
-          <div class="carousel-item active"> <img class="d-block w-100" src="https://dealsaaj.com/images/<%=result[1][0].thumbnail%>" alt="First slide" style="height:500px;width:200px"> </div>
-
-          <div class="carousel-item"> <img class="d-block w-100" src="https://dealsaaj.com/images/<%=result[1][0].image%>" alt="First slide"> </div>
-       
-        
+         
+          <div class="carousel-item active"> <img class="d-block w-100" src="https://dealsaaj.com/images/<%=result[1][0].image%>" alt="Second slide"> </div>
+         
 
 
         <% for(i=0;i<result[4].length;i++){ %>
@@ -69,16 +67,16 @@
     
     <div class="col-md-6">
       <div class="row">
-        <h2><%=result[1][0].name%></h2>
+        <h4><%=result[1][0].name%></h4>
       </div>
       <div class="row">
 
         <% if(result[1][0].discount > 0) { %>
-          <h1><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h1>
+          <h4><i class="fa fa-inr" aria-hidden="true"></i><%=result[1][0].net_amount%></h4>
           &nbsp; &nbsp;
-          <h3><del> <%=result[1][0].price%></del></h3>
+          <p><h3><del> <%=result[1][0].price%></del></h3></p>
           &nbsp; &nbsp;
-          <h2 class="text-success"> <%=result[1][0].discount%>% off</h2>
+          <h4 class="text-success"> <%=result[1][0].discount%>% off</h4>
           <% } else { %>
             <h1><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h1>
            
@@ -90,7 +88,7 @@
     
       <div class="row">
         <p><%=result[1][0].small_description%></p>
-       
+        <p class="w-10" id="result"></p>
       </div>
     
       <div class = "purchase-info">
@@ -116,11 +114,7 @@
 
 
 
-<div class = "product-detail" style="margin-top: 45px; padding-left: 118px;">
-  <h2>More Details </h2>
-  <p class="w-10" id="result"></p>
- 
-</div>
+
 
 <div class="container">
    <div class="row mt-5">
@@ -132,10 +126,10 @@
    
    
     <% for(i=0;i<result[3].length;i++) { %>
-    <div class="col-md-3" style="margin-bottom:20px;">
+    <div class="col-md-4 col-lg-3 col-sm-6 col-6" style="margin-bottom:20px;">
       <a href="/product?id=<%=result[3][i].id%>">
    		<div class="card">
-   			<img class="card-img-top img-fluid" src="images/<%=result[3][i].image%>" style="height:220px">
+   			<img class="card-img-top img-fluid" src="https://dealsaaj.com/images/<%=result[3][i].image%>" style="height:150px;width: 255px;object-fit: cover;">
    			<div class="card-title">
    			 <a href="/product?id=<%=result[3][i].id%>" style="margin-left:5px;margin-right:5px;margin-top:5px;margin-bottom:5px;color:black"><%=result[3][i].name%></a>
    			</div> 

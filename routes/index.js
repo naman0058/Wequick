@@ -1233,7 +1233,7 @@ req.session.vendorid = req.params.vendorid;
     var query5 = `select * from products where vendorid = '${req.params.vendorid}';`
     var query1 = `select v.* ,
      (select c.name from category c where c.id = v.categoryid) as categoryname,
-     (select p.image from portfolio p where p.vendorid = v.id limit 1 ) as vendor_image
+     (select p.image from portfolio p where p.vendorid = v.id order by id desc limit 1 ) as vendor_image
      from vendor v where v.id = '${req.params.vendorid}';`
     var query2 = `select c.* , 
      (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,

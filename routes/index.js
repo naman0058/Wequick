@@ -343,6 +343,8 @@ router.get('/product',(req,res)=>{
 
 router.get('/mycart',(req,res)=>{
 
+  req.session.usernumber ? login =  true : login = false
+
   console.log(req.session.ipaddress)
  
    if(req.session.usernumber){
@@ -360,6 +362,10 @@ router.get('/mycart',(req,res)=>{
  
      pool.query(query+query1+query2,(err,result)=>{
        if(err) throw err;
+       else if(result[1][0]){
+        res.render('nodata',{login,result})
+
+       }
        else{
  
  if(result[2][0].totalprice > 500) {
@@ -391,6 +397,10 @@ router.get('/mycart',(req,res)=>{
  
      pool.query(query+query1+query2,(err,result)=>{
        if(err) throw err;
+       else if(result[1][0]){
+        res.render('nodata',{login,result})
+     
+       }
        else{
       
  

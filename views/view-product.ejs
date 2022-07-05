@@ -76,9 +76,10 @@
           &nbsp; &nbsp;
           <p><h4><del> <%=result[1][0].price%></del></h4></p>
           &nbsp; &nbsp;
+
           <h5 class="text-success"> <%=result[1][0].discount%>% off</h5>
           <% } else { %>
-            <h4><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h4>
+            <h5 class="text-center"><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h5>
            
 
             <% } %>

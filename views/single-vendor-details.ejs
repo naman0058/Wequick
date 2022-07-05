@@ -37,8 +37,8 @@
 <div class="restaurant-detailed-header-right text-right">
 <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> Open
 </button>
-<h6 class="mb-0 restaurant-detailed-ratings font-weight-normal"><span class="bg-gradient-primary rounded text-white"><i class="icofont-star"></i>
-3.1</span> 23 Ratings <i class="ml-3 icofont-speech-comments"></i> <%=result[1][0].viewers%> Views</h6>
+<!-- <h6 class="mb-0 restaurant-detailed-ratings font-weight-normal"><span class="bg-gradient-primary rounded text-white"><i class="icofont-star"></i>
+3.1</span> 23 Ratings <i class="ml-3 icofont-speech-comments"></i> <%=result[1][0].viewers%> Views</h6> -->
 </div>
 </div>
 </div>
@@ -58,6 +58,9 @@
 <li class="nav-item">
 <span class="nav-link active" id="pills-gallery-tab" data-toggle="pill" href="#pills-gallery" role="tab" aria-controls="pills-gallery" aria-selected="false">Deals & Coupons</span>
 </li>
+<li class="nav-item">
+    <span class="nav-link" id="pills-portfolio-info-tab" data-toggle="pill" href="#pills-portfolio-info" role="tab" aria-controls="pills-portfolio-info" aria-selected="false">Portfolio</span>
+    </li>
 <li class="nav-item">
 <span class="nav-link" id="pills-restaurant-info-tab" data-toggle="pill" href="#pills-restaurant-info" role="tab" aria-controls="pills-restaurant-info" aria-selected="false"><%=result[1][0].categoryname%> Info</span>
 </li>
@@ -901,6 +904,48 @@ Reviews</a>
 </form>
 </div>
 </div>
+<div class="tab-pane fade show " id="pills-portfolio-info" role="tabpanel" aria-labelledby="pills-portfolio-info-tab">
+
+
+    <div class="row">
+    <h5 class="mb-3 mt-3 col-md-12 text-gray-900">My Portfolio</h5>
+    
+    <% if(result[9][0]) { %>
+        <% for(i=0;i<result[9].length;i++) { %>
+    
+            <div class="col-xl-3 col-md-3 col-sm-6 col-6" style="margin-top: 20px;">
+            <div class="custom-card shadow-sm h-100">
+            <div class="custom-card-image">
+            
+            <img class="img-fluid item-img" src="https://dealsaaj.com/images/<%=result[9][i].image%>" style="object-fit:cover">
+            
+            
+            </div>
+           
+            </div>
+            </div>
+            
+            <% } %>
+    
+        <% } else { %>
+    
+            <div class="col-xl-6 col-sm-6" style="margin-top: 20px;">
+                <div class="custom-card shadow-sm h-100">
+               
+                <div class="p-3 pt-4">
+                <div class="custom-card-body">
+                <h6 class="mb-3"><a class="text-gray-900" href="#">Portfolio on the way</a></h6>
+                </div>
+                </div>
+                </div>
+                </div>
+    
+            <% } %>
+    
+    
+    </div>
+    
+    </div>
 </div>
 </div>
 </div>

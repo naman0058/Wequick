@@ -1256,7 +1256,7 @@ req.session.vendorid = req.params.vendorid;
     (select r.id from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as isredeem ,
     (select r.otp from redeem_code r where r.coupounid = c.id and r.usernumber = '${req.session.usernumber}' and r.vendorid = c.vendorid) as userotp 
     from deals c where c.deals_type = 'Mega Deals' and c.vendorid = '${req.params.vendorid}';`
-  
+    var query10 = `select * from portfolio where vendorid = '${req.params.vendorid}';`
 
     pool.query(`update vendor set viewers = viewers + 1 where id = '${req.params.vendorid}'`,(err,result)=>{
       if(err) throw err;
@@ -1264,7 +1264,7 @@ req.session.vendorid = req.params.vendorid;
         pool.query(`insert into viewers(vendorid,date,viewers) values('${req.params.vendorid}' , '${today}' , '1')`,(err,result)=>{
           if(err) throw err;
           else{
-            pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9,(err,result)=>{
+            pool.query(query+query1+query2+query3+query4+query5+query7+query8+query9+query10,(err,result)=>{
               if(err) throw err;
               else {
                 res.render('single-vendor-details',{login,result})

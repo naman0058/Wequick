@@ -87,7 +87,7 @@
 <% if(result[5][0]) { %>
     <% for(i=0;i<result[5].length;i++) { %>
 
-        <div class="col-xl-4 col-sm-6" style="margin-top: 20px;">
+        <div class="col-xl-3 col-md-3 col-sm-6 col-6" style="margin-top: 20px;">
         <div class="custom-card shadow-sm h-100">
         <div class="custom-card-image">
         <a href="/product?id=<%=result[5][i].id%>">
@@ -107,7 +107,7 @@
             &nbsp; &nbsp;
             <h6><del> <%=result[5][i].price%></del></h6>
             &nbsp; &nbsp;
-            <h5 class="text-success"> <%=result[5][i].discount%>% off</h5>
+            <h6 class="text-success"> <%=result[5][i].discount%>% off</h6>
 
             <% } else { %>
                 <span class="text-danger"> Rs.<%=result[5][i].net_amount%> </span>
@@ -906,57 +906,6 @@ Reviews</a>
 </div>
 
 
-<div class="col-lg-4">
-  
-
-
-    
-<% for(i=0;i<result[2].length;i++) { %>
-        
-    <div class="py-2">
-    <div class="custom-card shadow-sm h-100">
-    <div class="custom-card-image">
-    <a href="#">
-    <img class="img-fluid item-img" src="/images/<%=result[2][i].image%>">
-    </a>
-    
-    </div>
-    <div class="p-3 pt-4">
-    <div class="custom-card-body">
-    <h6 class="mb-3"><a class="text-gray-900" href="#"><%=result[2][i].short_description%>
-    </a></h6>
-    </div>
-    <div class="custom-card-footer d-flex align-items-center">
-    
-    <% if(result[2][i].type =='flat') { %>
-    
-        <span class="text-danger">Flat Rs. <%=result[2][i].discount%> OFF</span>
-    
-        <% } else { %>
-            <span class="text-danger"><i class="icofont-sale-discount"></i> <%=result[2][i].discount%> % OFF</span>
-    
-            <% } %>
-    
-    
-            <% if(result[2][i].isredeem == null || result[2][i].isredeem == '' || result[2][i].isredeem == 'null' || result[2][i].isredeem ==[]){ %>
-    
-    <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[2][i].id%>" code="<%=result[2][i].name%>" expiry="<%=result[2][i].expiry%>" vendorid = '<%=result[2][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
-    
-    <% } else { %>
-    
-    
-        <% } %>
-    
-    
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    <% } %>
-    
-    
-    </div>
 
 </div>
 

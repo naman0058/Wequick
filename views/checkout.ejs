@@ -137,20 +137,59 @@
     
     </div>
 
-<hr class="divider">
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" style="width: 100px;">
-<p>Scan this QR Code to make payment</p>
-
-<p style="color:red;"><b>Please Talk With Merchant Before Place Order </b> </p>
     
 
-<button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
+<hr class="divider">
+
+
+<p style="color:red;">Please Talk With Merchant Before Place Order  </p>
+<strong>Contact Number  </strong><br/>
+<a href="tel:<%=result[5][0].number%> "><%=result[5][0].number%>  </a><br/><br/>
+
+    
+
 
 <!-- <a href="/checkout" class="btn btn-block btn-dark btn-icon-right btn-rounded  btn-checkout">
     Place Order<i class="w-icon-long-arrow-right"></i></a> -->
 
 </div>
+
+
+<div class="rounded bg-white shadow-sm mb-4 p-4 upgrade-coin">
+
+
+    <h5 class="mb-4  text-gray-900">Payment Details <a class="light-gray" href="#"></a></h5>
+    
+    
+    <hr class="divider">
+   
+    
+        
+    
+    <hr class="divider">
+    
+    
+    
+    <strong>Bank Details  </strong><br/><br/>
+    <p>Bank Name : <%=result[5][0].bank_name%>  </p>
+    <p>IFSC Code : <%=result[5][0].ifsc_code%>  </p>
+    <p>Account Holder Name : <%=result[5][0].account_holder_name%>  </p>
+    <strong>UPI ID  </strong><br/><br/>
+    <p> <%=result[5][0].upi_id%>  </p>
+    
+    <strong>QR Code  </strong><br/><br/>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" style="width: 100px;">
+    
+        
+    
+    <button type="submit" class="btn btn-dark btn-block btn-rounded">Place Order</button>
+    
+    <!-- <a href="/checkout" class="btn btn-block btn-dark btn-icon-right btn-rounded  btn-checkout">
+        Place Order<i class="w-icon-long-arrow-right"></i></a> -->
+    
+    </div>
 
 </div>
 </div>

@@ -585,7 +585,7 @@ router.get('/delete',(req,res)=>{
 
 router.get('/checkout',(req,res)=>{
 
-console.log('hd',req.session.usernumber)
+console.log('hd',req.session.vendorid)
 
   if(req.session.usernumber){
 
@@ -601,10 +601,13 @@ console.log('hd',req.session.usernumber)
                      from cart c where c.usernumber = '${req.session.usernumber}';`
         var query2 = `select sum(price) as totalprice from cart where usernumber = '${req.session.usernumber}';`  
         var query3 = `select * from address where usernumber = '${req.session.usernumber}';` 
-        var query4 = `select name,email from users where number = '${req.session.usernumber}'`           
+        var query4 = `select name,email from users where number = '${req.session.usernumber}';`
+        var query5 = `select number,account_holder_name,ifsc_code,branch_name,bank_name,account_number,upi_id,qr_image from vendor where id = '${req.session.vendorid}';`    
+
+
         
      
-         pool.query(query+query1+query2+query3+query4,(err,result)=>{
+         pool.query(query+query1+query2+query3+query4+query5,(err,result)=>{
            if(err) throw err;
            else {
      
@@ -1224,7 +1227,7 @@ var yyyy = today.getFullYear();
 
 today = yyyy + '-' + mm + '-' + dd;
 
-
+req.session.vendorid = req.params.vendorid;
 
     var query = `select * from category;`
     var query5 = `select * from products where vendorid = '${req.params.vendorid}';`

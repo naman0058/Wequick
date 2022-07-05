@@ -67,18 +67,18 @@
     
     <div class="col-md-6">
       <div class="row">
-        <h4><%=result[1][0].name%></h4>
+        <h5 style="margin-top: 20px;margin-left:10px;margin-right:10px"><%=result[1][0].name%></h5>
       </div>
       <div class="row">
 
         <% if(result[1][0].discount > 0) { %>
-          <h4><i class="fa fa-inr" aria-hidden="true"></i><%=result[1][0].net_amount%></h4>
+          <h5 class="text-danger" style="margin-left:10px;margin-right:10px"><i class="fa fa-inr" aria-hidden="true"></i><%=result[1][0].net_amount%></h5>
           &nbsp; &nbsp;
-          <p><h3><del> <%=result[1][0].price%></del></h3></p>
+          <p><h4><del> <%=result[1][0].price%></del></h4></p>
           &nbsp; &nbsp;
-          <h4 class="text-success"> <%=result[1][0].discount%>% off</h4>
+          <h5 class="text-success"> <%=result[1][0].discount%>% off</h5>
           <% } else { %>
-            <h1><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h1>
+            <h4><i class="fa fa-inr" aria-hidden="true"></i> <%=result[1][0].net_amount%></h4>
            
 
             <% } %>
@@ -87,7 +87,7 @@
       </div>
     
       <div class="row">
-        <p><%=result[1][0].small_description%></p>
+        <p style='margin-left:10px;margin-right:10px'><%=result[1][0].small_description%></p>
         <p class="w-10" id="result"></p>
       </div>
     
@@ -118,7 +118,7 @@
 
 <div class="container">
    <div class="row mt-5">
-   	 <h2>Similar Products</h2>
+   	 <h5 style="margin-left: 10px;margin-right:10px">Similar Products</h5>
    </div>
    
    <div class="row mt-5">
@@ -130,12 +130,12 @@
       <a href="/product?id=<%=result[3][i].id%>">
    		<div class="card">
    			<img class="card-img-top img-fluid" src="https://dealsaaj.com/images/<%=result[3][i].image%>" style="height:150px;width: 255px;object-fit: cover;">
-   			<div class="card-title">
-   			 <a href="/product?id=<%=result[3][i].id%>" style="margin-left:5px;margin-right:5px;margin-top:5px;margin-bottom:5px;color:black"><%=result[3][i].name%></a>
+   			<div class="card-title" style="margin-top:10px;">
+   			 <a href="/product?id=<%=result[3][i].id%>" style="margin-left:5px;margin-right:5px;margin-top:10px;margin-bottom:5px;color:black"><%=result[3][i].name%></a>
    			</div> 
          <div class="row">
            <% if(result[3][i].discount > 0) { %>
-            <h5 style="margin-left:20px">Rs. <%=result[3][i].net_amount%></h5>
+            <h6 style="margin-left:20px" class="text-danger">Rs. <%=result[3][i].net_amount%></h6>
             &nbsp; &nbsp;
             <h6><del> <%=result[3][i].price%></del></h6>
             &nbsp; &nbsp;
@@ -247,7 +247,7 @@
           let id = $('#product-id').val()
   $.getJSON('/product-description',{id},data=>{
       console.log(data[0])
-      let table = `<p>${data[0].description}</p>`
+      let table = `<p style='margin-left:10px;margin-right:10px'>${data[0].description}</p>`
       $('#result').html(table)
   })
 });

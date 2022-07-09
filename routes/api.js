@@ -1284,7 +1284,9 @@ router.get('/view-all-product',(req,res)=>{
 
 router.post('/check1',(req,res)=>{
   console.log('number',req.body.number)
-  pool.query(`select v.* , (select c.category_type from category c where c.id = v.categoryid) as categorytype from vendor v where v.number = '${req.body.number}'`,(err,result)=>{
+  pool.query(`select v.* , (select c.category_type from category c where c.id = v.categoryid) as categorytype,
+  (select c.name from category c where c.id = v.categoryid) as segmentname
+   from vendor v where v.number = '${req.body.number}'`,(err,result)=>{
     if(err) throw err;
     else if(result[0]){
 

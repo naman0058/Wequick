@@ -1,418 +1,419 @@
-
 <%- include ('./header.ejs') %>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+<style>
+#demo {
+    background: linear-gradient(112deg, #ffffff 50%, #d9d7fa  50%);
+    height: 402px;
+    margin: auto;
+    
+}
+.carousel-caption {
+    position: initial;
+    z-index: 10;
+    padding: 5rem 8rem;
+    color: rgba(78, 77, 77, 0.856);
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 2rem
+}
+@media(max-width:767px) {
+    .carousel-caption {
+        position: initial;
+        z-index: 10;
+        padding: 3rem 2rem;
+        color: rgba(78, 77, 77, 0.856);
+        text-align: center;
+        font-size: 0.7rem;
+        font-style: italic;
+        font-weight: bold;
+        line-height: 1.5rem
+    }
+}
+.carousel-caption img {
+    width: 6rem;
+    border-radius: 5rem;
+    margin-top: 2rem
+}
+@media(max-width:767px) {
+    .carousel-caption img {
+        width: 4rem;
+        border-radius: 4rem;
+        margin-top: 1rem
+    }
+}
+#image-caption {
+    font-style: normal;
+    font-size: 1rem;
+    margin-top: 0.5rem
+}
+@media(max-width:767px) {
+    #image-caption {
+        font-style: normal;
+        font-size: 0.6rem;
+        margin-top: 0.5rem
+    }
+}
+.i1 {
+    background-color: rgb(223, 56, 89);
+    padding: 1.4rem
+}
+@media(max-width:767px) {
+    .i1 {
+        padding: 0.8rem
+    }
+}
+.carousel-control-prev {
+    justify-content: flex-start
+}
+.carousel-control-next {
+    justify-content: flex-end
+}
+.carousel-control-prev,
+.carousel-control-next {
+    transition: none;
+    opacity: unset;
+}
+</style>
+
+<section class="pt-5 pb-5 homepage-search-block position-relative">
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<div class="homepage-search-title">
+<h1 class="mb-3 text-white text-shadow font-weight-bold">Find best deals in your <span class="font-weight-light">City</span></h1>
+<h5 class="mb-5 text-white text-shadow font-weight-normal">Top offers at your City.</h5>
+</div>
+<div class="homepage-search-form">
+<form class="form-noborder" action="/search" method="get">
+<div class="form-row">
+
+<div class="col-lg-7 col-md-7 col-sm-12 form-group">
+<input type="text" name="search" onkeypress="return blockSpecialChar(event)" placeholder="Search for stores, coupons, & offers…" class="form-control form-control-lg">
+</div>
+<div class="col-lg-2 col-md-2 col-sm-12 form-group">
+<button type="submit" class="btn btn-primary btn-block btn-lg btn-gradient"><i class="icofont-search"></i></button>
+</div>
+</div>
+</form>
+</div>
+<h6 class="mb-0 mt-1 text-white text-shadow font-weight-normal">E.g. Coupons, Offers, Brands, Stores, Restaurants & more...</h6>
+</div>
+<div class="col-md-4">
+<img src="/images/WebMobile.png" class="img-fluid">
+</div>
+</div>
+</div>
+</section>
+</div>
 
 
-<main class="main">
-    <div class="intro-section">
-        <div class="owl-carousel owl-theme owl-nav-inner owl-dot-inner row gutter-no cols-1 animation-slider"
-            data-owl-options="{
-            'nav': false,
-            'dots': true,
-            'items': 1,
-            'autoplay': false,
-            'responsive': {
-                '1630': {
-                    'nav': true,
-                    'dots': false
-                }
-            }
-        }">
-           
-        
-        <% for(i=0;i<result[2].length;i++) { %>
-            <a href='#'>
-        <div class="banner banner-fixed intro-slide intro-slide1+<%=result[2][i].id%>"
-                style="background-image: url(/images/<%=result[2][i].image%>); background-color: whitesmoke;">
-                <div class="container">
-                    <figure class="slide-image floating-item slide-animate" data-animation-options="{
-                        'name': 'fadeInDownShorter', 'duration': '1s'
-                    }" data-options="{'relativeInput':true,'clipRelativeInput':true,'invertX':true,'invertY':true}"
-                        data-child-depth="0.2">
-                      
-                    </figure>
-                   
-                    <!-- End of .banner-content -->
-                </div>
-                <!-- End of .container -->
-            </div>
-            <!-- End of .intro-slide1 -->
+
+
+
+
+
+<section class="section-padding homepage-view-offers">
+<div class="container">
+<div class="row">
+<div class="col-md-5 mx-auto text-center">
+<h3 class=""><span style="color:#722A74;font-weight: bold;">Exclusive</span><span style="color: #C03168;font-weight: bold;"> Deals</span></h3>
+<span style="color: #461645;font-weight: bold;font-size: 18px;">Deals built for you</span><br/>
+<span class="text-dark-50" style="font-size: 17px;color: #461645;">We have a variety of deals that will fit your needs.</span>
+
+</div>
+</div>
+<div class="row" style="margin-top: 5%;">
+
+
+    <% for(i=0;i<result[3].length;i++) { %>
+<div class="col-xl-3 col-sm-6 mb-4">
+<div class="custom-card shadow-sm h-100">
+<div class="custom-card-image">
+<a href="#">
+<img class="img-fluid item-img" src="/images/<%=result[3][i].image%>">
 </a>
-            <% } %>
-
-           
-
-         
-            <!-- End of .intro-slide3 -->
+</div>
+<div class="p-3 pt-4">
+<div class="custom-card-body">
+<h6 class="mb-3"><a class="text-black" href="#"><%=result[3][i].short_description%></a></h6>
+</div>
+<% if(result[3][i].isredeem == null || result[3][i].isredeem == '' || result[3][i].isredeem == 'null' || result[3][i].isredeem ==[]){ %>
+<div class="custom-card-footer mb-2">
+    <a class="btn btn-orange float-right redeem_this_code" style="margin-bottom: 10px;" id="<%=result[3][i].id%>" code="<%=result[3][i].name%>" expiry="<%=result[3][i].expiry%>" vendorid = '<%=result[3][i].vendorid%>'>
+        Redeem Deals</a>
         </div>
-    </div>
-    <!-- End of .intro-section -->
+    <% } else { %>
+        <div class="custom-card-footer mb-2">
+            <a class="btn btn-orange float-right" style="margin-bottom: 10px;">
+                <%=result[3][i].name%></a>
+                </div>
+        <% } %>
+</div>
+</div>
+</div>
+<% } %>
 
+</div>
+</div>
+</section>
+<!-- homepage-coupon style use in this content -->
+<section class="section-padding" style="background-image:url('/images/bg7.jpeg');">
     <div class="container">
-        <div class="owl-carousel owl-theme row cols-md-4 cols-sm-3 cols-1 icon-box-wrapper appear-animate br-sm mt-6 mb-10 appear-animate"
-            data-owl-options="{
-            'nav': false,
-            'dots': false,
-            'loop': true,
-            'autoplay': true,
-            'autoplayTimeout': 4000,
-            'responsive': {
-                '0': {
-                    'items': 1
-                },
-                '576': {
-                    'items': 2
-                },
-                '768': {
-                    'items': 3
-                },
-                '992': {
-                    'items': 3
-                },
-                '1200': {
-                    'items': 4
-                }
-            }
-        }">
-            <div class="icon-box icon-box-side text-dark">
-                <span class="icon-box-icon icon-shipping">
-                    <i class="w-icon-truck"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Free Shipping & Returns</h4>
-                    <p class="text-default">For all orders over $99</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark">
-                <span class="icon-box-icon icon-payment">
-                    <i class="w-icon-bag"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Secure Payment</h4>
-                    <p class="text-default">We ensure secure payment</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark icon-box-money">
-                <span class="icon-box-icon icon-money">
-                    <i class="w-icon-money"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Money Back Guarantee</h4>
-                    <p class="text-default">Any back within 30 days</p>
-                </div>
-            </div>
-            <div class="icon-box icon-box-side text-dark icon-box-chat">
-                <span class="icon-box-icon icon-chat">
-                    <i class="w-icon-chat"></i>
-                </span>
-                <div class="icon-box-content">
-                    <h4 class="icon-box-title">Customer Support</h4>
-                    <p class="text-default">Call or email us 24/7</p>
-                </div>
-            </div>
-        </div>
-        <!-- End of Iocn Box Wrapper -->
-
-      
-        <!-- End of Product Deals Warpper -->
-
-        <h3>Exclusive Deals</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            
-            <% for(i=0;i<result[7].length;i++) { %>
-            <div class="col-md-4 mb-4">
-
-                <div class="banner banner-fixed br-sm">
-                    <figure>
-                        <img src="/images/<%=result[7][i].image%>" alt="Category Banner"
-                            width="640" height="200" style="background-color: #25282D;height: 220px;object-fit: contain;" />
-                    </figure>
-                   
-
-                    <div class="banner-content y-50" style="position: relative;bottom:40px">
-                        
-                        <% if(result[7][i].isredeem == null || result[7][i].isredeem == '' || result[7][i].isredeem == 'null' || result[7][i].isredeem ==[]){ %>
-                 
-                        <button
-                            class="btn btn-dark redeem_this_code  btn-underline btn-icon-right float-right"
-                            id="<%=result[7][i].id%>" code="<%=result[7][i].name%>" expiry="<%=result[7][i].expiry%>" vendorid = '<%=result[7][i].vendorid%>'
-                            style="background-image: linear-gradient(#722A74, #BC3069);">
-                            Redeem Deals<i class="w-icon-long-arrow-right"></i></button>
-
-                            <% } else { %>
-
-                                <button class="btn btn-primary"><%=result[7][i].userotp%></button>
-
-                                <% } %>
-                    </div>
-
-
-                </div>
-
-            </div>
-         
-<% } %>
-
-
-        </div>
-
-
-
-        <h3>Deals Of the Day</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-            <% for(i=0;i<result[8].length;i++) { %>
-                <div class="col-md-4 mb-4">
+        <h3 class="text-white text-center" style="font-size: 38px;font-weight: bold;">Deals Of The Day</h3>
+        <p class="text-white text-center">Grab lightning deals at lightning speed.</p>
+    <div class="row  align-items-center">
     
-                    <div class="banner banner-fixed br-sm">
-                        <figure>
-                            <img src="/images/<%=result[8][i].image%>" alt="Category Banner"
-                                width="640" height="200" style="background-color: #25282D;height: 220px;object-fit: contain;" />
-                        </figure>
-
-
-
-                        <div class="banner-content y-50" style="position: relative;bottom:40px">
-                        
-                            <% if(result[8][i].isredeem == null || result[8][i].isredeem == '' || result[8][i].isredeem == 'null' || result[8][i].isredeem ==[]){ %>
-                     
-                            <button
-                                class="btn btn-dark redeem_this_code  btn-underline btn-icon-right float-right"
-                                id="<%=result[8][i].id%>" code="<%=result[8][i].name%>" expiry="<%=result[8][i].expiry%>" vendorid = '<%=result[8][i].vendorid%>'
-                                style="background-image: linear-gradient(#722A74, #BC3069);">
-                                Redeem Deals<i class="w-icon-long-arrow-right"></i></button>
-
-                                <% } else { %>
-
-                                    <button class="btn btn-primary"><%=result[8][i].userotp%></button>
-
-                                    <% } %>
-                        </div>
-
-                       
-                    </div>
-    
-                </div>
-             
-    <% } %>
-    
-        </div>
-
-
-       
-
-
-
-
-
-
-        <h3>Mega Deals</h3>
-
-
-        <div class="row category-wrapper electronics-cosmetics appear-animate mb-7">
-          
-
-            <% for(i=0;i<result[9].length;i++) { %>
-                <div class="col-md-4 mb-4">
-                    <!-- <a href="/grab-this-deals?id=<%=result[9][i].id%>"> -->
-    
-                    <div class="banner banner-fixed br-sm">
-                        <figure>
-                            <img src="/images/<%=result[9][i].image%>" alt="Category Banner"
-                                width="640" height="200" style="background-color: #25282D;height: 220px;object-fit: contain;" />
-                        </figure>
-                        <div class="banner-content y-50" style="position: relative;bottom:40px">
-                        
-                            <% if(result[9][i].isredeem == null || result[9][i].isredeem == '' || result[9][i].isredeem == 'null' || result[9][i].isredeem ==[]){ %>
-                     
-                            <button
-                                class="btn btn-dark redeem_this_code  btn-underline btn-icon-right float-right"
-                                id="<%=result[9][i].id%>" code="<%=result[9][i].name%>" expiry="<%=result[9][i].expiry%>" vendorid = '<%=result[9][i].vendorid%>'
-                                style="background-image: linear-gradient(#722A74, #BC3069);">
-                                Redeem Deals<i class="w-icon-long-arrow-right"></i></button>
-
-                                <% } else { %>
-
-                                    <button class="btn btn-primary"><%=result[9][i].userotp%></button>
-
-                                    <% } %>
-                        </div>
-                    </div>
-            <!-- </a> -->
-    
-                </div>
-             
-    <% } %>
-    
-
-        </div>
-
-
-     
-
-
-        
-      
-        <h3>Near By Shop</h3>
-
-   
-
-
-        <div class="page-content mb-8" style="margin-top: 20px;">
-            <div class="container">
-                <!-- Start of Vendor Map -->
-              
-                <!-- End of Vendor Map -->
-
-                <!-- Start of Vendor Filter -->
-                
-                <!-- End of Vendor Filter -->
-
-                <!-- Start of Vendor Store -->
-                <div class="row cols-lg-3 cols-sm-2">
-                 
-                    <% for(i=0;i<result[10].length;i++){ %>
-                 
-                 
-                    <div class="store-wrap mb-4">
-                        <div class="store store-wcmp br-sm">
-                            <figure class="store-banner">
-                                <img src="/images/<%=result[10][i].image%>" alt="Vendor" 
-                                    width="400" height="318" style="background-color: #454b63;width:400px;height:318px" />
-                            </figure>
-                            <div class="store-content">
-                                <figure class="seller-brand">
-                                    <img src="/images/<%=result[10][i].image%>" style="width:80px;height:80px" alt="Brand" width="80" height="80" />
-                                </figure>
-                                <div class="seller-date">
-                                    <h4 class="store-title">
-                                        <a href="/single-vendor-details?vendorid=<%=result[10][i].id%>"><%=result[10][i].business_name%></a>
-                                    </h4>
-                                    <ul class="seller-info-list list-style-none">
-                                        <li class="store-address">
-                                            <i class="w-icon-map-marker"></i>
-                                            <p><%=result[10][i].address%></p>
-                                        </li>
-                                        <li class="store-rating">
-                                            <div class="ratings-container">
-                                                <div class="ratings-full">
-                                                    <span class="ratings" style="width: 100%;"></span>
-                                                    <span class="tooltiptext tooltip-top"></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Store -->
-                    </div>
-                 <% } %>
-                </div>
-                <!-- End of Vendor Store -->
-            </div>
-        </div>
-
-       
-        <!-- End of Banner Product Wrapper -->
-
-
-        <!-- End of Banner -->
-
-
-
-        
-
-
-
-
-        
-
-
-
-			 <% for(i=0;i<result[4].length;i++){%>
-
-
-        <div class="title-link-wrapper mb-2 appear-animate">
-        <h3><%=result[4][i].name%></h3>
-
-           
-            <!-- <a href="shop-boxed-banner.html" class="font-weight-bold ls-25">More Products<i
-                    class="w-icon-long-arrow-right"></i></a> -->
-        </div>
-
-    <% const filteredData = result[3].filter(item => item.textname == result[4][i].name) %>
-
-
-
-        <div class="owl-carousel owl-theme top-products row cols-lg-5 cols-md-4 cols-sm-3 cols-2 mb-6 appear-animate"
-            data-owl-options="{
-            'nav': false,
-            'dots': true,
-            'margin': 20,
-            'responsive': {
-                '0': {
-                    'items': 2
-                },
-                '576': {
-                    'items': 3
-                },
-                '768': {
-                    'items': 4
-                },
-                '992': {
-                    'items': 5
-                }
-            }
-        }">
-          
-        <% for(j=0;j<filteredData.length;j++){ %>
-        
-        <div class="product-wrap">
-                <div class="product text-center">
-                    <figure class="product-media">
-                        <a href="/product?id=<%=filteredData[j].productid%>">
-                            <img src="/images/<%=filteredData[j].productimage%>" alt="Product" width="300"
-                                height="338">
-                          
-                        </a>
-                       
-                       
-                       
-                    </figure>
-                    <div class="product-details">
-                        <h4 class="product-name"><a href="/product?id=<%=filteredData[j].productid%>"><%=filteredData[j].productname%></a></h4>
-                        <div class="ratings-container">
-                            
-                        </div>
-                        <div class="product-price">
-                            <ins class="new-price">Rs.<%=filteredData[j].productnetamount%></ins>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          <% } %>
-        </div>
-
-       
-
-<% } %>
-        
-        <!-- End of Owl Carousel -->
-
-       
-        <!-- End of Owl Carousel -->
-
-        
-        <!-- End of Brands Wrapper -->
-
-     
+ 
+    <div class="col-lg-12 col-md-12">
+    <div class="owl-carousel owl-theme owl-carousel-three homepage-coupon-carousel">
+  
+        <% for(i=0;i<result[4].length;i++) { %>
+        <div class="item">
+    <div class="bg-white p-1 shadow-sm text-center h-100 border-radius" style="height: 400px;">
+    <div class="all-coupon">
+    <img class="mb-3 user-cou-img" src="/images/<%=result[4][i].image%>" alt="Generic placeholder image" style="width:100%;height:150px;object-fit: cover;">
+    <!-- <h6 class="mb-4 mt-3 pb-2 text-secondary"><%=result[4][i].short_description%></h6> -->
     </div>
-    <!-- End of Container -->
-</main>
-<!-- End of Main -->
+    <div class="mb-0">
+    </div>
+    <% if(result[4][i].isredeem == null || result[4][i].isredeem == '' || result[4][i].isredeem == 'null' || result[4][i].isredeem ==[]){ %>
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[4][i].id%>" code="<%=result[4][i].name%>" expiry="<%=result[4][i].expiry%>" vendorid = '<%=result[4][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        
+        <% } else { %>
+            <!-- <a class="btn btn-sm btn-white ml-auto" style="cursor:pointer"><%=result[4][i].name%></a> -->
+        
+            <% } %>
+    </div>
+    </div>
+  <% } %>
+    </div>
+    </div>
+    </div>
+    
+    </div>
+    <a class="btn btn-light-white text-white btn-sm rounded-pill text-center" href="/exclusive-deals-and-offers">View more</a>
+
+    </section>
+    
+
+ <!-- <section class="section-padding homepage-store-block"> -->
+<div class="container" style="margin-top: 5%;">
+<div class="row  align-items-center">
+    <div class="col-lg-3 col-md-4">
+        <div class="homepage-left-block text-right">
+        <h3 class="text-white" style="text-align: left;"><span style="color:#722A74;font-weight: bold;">Mega</span><span style="color: #C03168;font-weight: bold;"> Deals</span></h3>
+        <p class="pl-0 pr-0" style="color: black;text-align: left;">Hurry and grab our latests offers and coupons before they disapper.
+        </p>
+        <a class="btn btn-light-white text-white btn-sm rounded-pill" style="font-weight: bold;background-color: #3a0c36;float: left;" href="/exclusive-deals-and-offers" >View more</a>
+        </div>
+        </div>
+
+
+<div class="col-lg-9 col-md-8">
+<div class="owl-carousel owl-theme owl-carousel-three homepage-coupon-carousel">
+
+
+    <% for(i=0;i<result[5].length;i++) { %>
+    <div class="item">
+<div class="custom-card bg-white shadow-sm h-100 stor-card" style="min-height: 320px;">
+<div class="custom-card-image">
+<a href="#">
+<img class="img-fluid item-img" src="/images/<%=result[5][i].image%>">
+</a>
+<div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+<svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2160 0C1440 240 720 240 720 240H0V480H2880V0H2160Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<div class="p-3">
+<div class="custom-card-body">
+<h6 class="mb-0"><a class="text-black" href="#"><%=result[5][i].short_description%></a></h6>
+</div>
+</div>
+<div class="p-3 border-top">
+<div class="custom-card-badge">
+    <% if(result[5][i].isredeem == null || result[5][i].isredeem == '' || result[5][i].isredeem == 'null' || result[5][i].isredeem ==[]){ %>
+        
+        <a class="btn btn-sm btn-white ml-auto redeem_this_code" id="<%=result[5][i].id%>" code="<%=result[5][i].name%>" expiry="<%=result[5][i].expiry%>" vendorid = '<%=result[5][i].vendorid%>' style="cursor:pointer">Redeem Deals</a>
+        
+        <% } else { %>
+            <a class="btn btn-sm btn-white ml-auto"  style="cursor:pointer"><%=result[5][i].name%></a>
+        
+        
+            <% } %>
+</div>
+</div>
+</div>
+</div>
+<% } %>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<section class="section-padding homepage-great-deals bg-white">
+<div class="container">
+<div class="row">
+
+    <div class="col-lg-6 col-md-6">
+<div class="great-deals-sstore-banners">
+<a href="/segment/school"><img alt="placeholder image" src="/resize_banner/Education1.jpg" class="img-fluid rounded"></a>
+</div>
+
+<div class="great-deals-sstore-banners">
+<a href="/segment/grocery"><img alt="placeholder image" src="/resize_banner/Grocery1.jpg" class="img-fluid rounded"></a>
+</div>
+</div>
+<div class="col-lg-6 col-md-6">
+    <div class="great-deals-sstore-banners">
+    <a href="/segment/cafe"><img alt="placeholder image" src="/resize_banner/Cafe.jpg" class="img-fluid rounded"></a>
+    </div>
+    
+    <div class="great-deals-sstore-banners">
+    <a href="/segment/bakery"><img alt="placeholder image" src="/resize_banner/Bakery1.jpg" class="img-fluid rounded"></a>
+    </div>
+    </div>
+</div>
+</div>
+</section>
+<section class="section-padding homepage-rest-block">
+<div class="container">
+<div class="row">
+<div class="col-md-5 mx-auto text-center">
+<h3 class="mb-3 text-white">Top Stores</h3>
+<p class="text-white-50 mb-5">Explore Best stores at your City on your Finger Tips. Order Now! & get Exclusive deals and offers.</p>
+</div>
+</div>
+<div class="row">
+
+
+    <% for(i=0;i<result[6].length;i++) { %>
+<div class="col-xl-3 col-sm-6 mb-4">
+<div class="custom-card shadow-sm bg-white h-100">
+<div class="custom-card-image">
+<a href="/segment/<%=result[6][i].categoryname%>/<%=result[6][i].seo_name%>/<%=result[6][i].id%>">
+    <style>
+       
+        
+        .bottom-left {
+          position: absolute;
+          bottom: 8px;
+          left: 16px;
+        }
+        
+        .top-left {
+          position: absolute;
+          top: 8px;
+          left: 16px;
+        }
+        
+        .top-right {
+          position: absolute;
+          top: 8px;
+          right: 16px;
+        }
+        
+        .bottom-right {
+          position: absolute;
+          bottom: 8px;
+          right: 16px;
+        }
+        
+        .centered {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        </style>
+<% if(result[6][i].image) { %>
+    
+    <img class="img-fluid item-img" src="/images/<%=result[6][i].image%>" style="object-fit:cover">
+   
+    <% } else { %>
+        <div class="container" style="background-color: #8A8B8D;">
+            <img class="item-img" src="/images/thubnail.jpg" style="width: 100%;">
+        
+            <div class="centered" style="color: black;"><%=result[6][i].business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()%></div>
+          </div>
+<% } %>
+   
+    
+</a>
+<div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+<svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M2160 0C1440 240 720 240 720 240H0V480H2880V0H2160Z" fill="currentColor"></path>
+</svg>
+</div>
+</div>
+<div class="p-3">
+<div class="custom-card-body">
+<h6 class="mb-1"><a class="text-black" href="/single-vendor-details?vendorid=<%=result[6][i].id%>"><%=result[6][i].business_name%></a></h6>
+</div>
+<div class="custom-card-badge mt-2" style="min-height: 20px;">
+   <p style="height: 20px;"> <%=result[6][i].address%></p>
+</div>
+</div>
+</div>
+</div>
+<% } %>
+</div>
+<div class="text-center mt-4">
+<a class="btn btn-light-white text-white btn-sm rounded-pill" href="/exclusive-deals-and-offers">View more</a>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+<!-- testimonial area -->
+
+<!-- <div class="container mt-3">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            
+            <div class="carousel-item active">
+              
+                <div class="carousel-caption">
+                    <h3 style="text-align: center;">"What Our Customer Says"</h3>
+                    <p>Good Experiance with customer support good product in best price nice  many choices in products and thanks for deliver in time good platform. </p> <img src="https://i.pinimg.com/originals/83/60/f6/8360f6e8e6167d545b0c34de7490cc1e.jpg" class="img-circle">
+                    <div id="image-caption">Suraj Kumar</div>
+                    
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption">
+                    <h3 style="text-align: center;">"What Our Customer Says"</h3>
+                    <p>This platform is yery use full thanks to dealsaaj giving me multipal choise of products the best part is direct connection to the merchant love it.</p> <img src="https://2.bp.blogspot.com/-zlpLRIvVqgM/WOS9ttVhAWI/AAAAAAAAARc/WcidjGJmK3ERqU5MkhWzSzZsTCm6NSkLgCLcB/s1600/17410431_713117542195184_638417076_n.jpg" class="img-fluid">
+                    <div id="image-caption">Rajesh Shukla</div>
+                    
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-caption">
+                      <h3 style="text-align: center;">"What Our Customer Says"</h3>
+                    <p>Good platform easily get the thing that you want i got my product in time nice customer support i can direct connect to the seller is very awesome.</p> <img src="https://1.bp.blogspot.com/-HUIIF0-iTG0/W-pEZM7jKQI/AAAAAAAABCc/Mp7fp5aMaHALm-qo5KMVn4ECyjFNaLEBQCLcBGAs/s1600/Marjook161.jpg" class="img-fluid">
+                    <div id="image-caption">Shanu Mishra</div>
+                    
+                </div>
+            </div>
+            
+        </div> <a class="carousel-control-prev" href="#demo" data-slide="prev"> <i class='fas fa-arrow-left i1'></i> </a> <a class="carousel-control-next" href="#demo" data-slide="next"> <i class='fas fa-arrow-right i1'></i> </a>
+    </div>
+</div> -->
+
+<!-- {item.business_name.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase()} -->
+<!-- end -->
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -421,7 +422,6 @@
         let code = $(this).attr('code')
         let expiry = $(this).attr('expiry')
         let vendorid = $(this).attr('vendorid')
-
         $.post('/redeem-this-code',{coupounid,code,expiry,vendorid},data=>{
             if(data.msg=='failed') window.location.href = '/login';
             else window.location.reload()
@@ -429,5 +429,14 @@
     })
 </script>
 
-<%- include ('./footer.ejs') %>
+<script type="text/javascript">
+    function blockSpecialChar(e) {
+        var k = e.keyCode;
+        return (k != 39);
+    }
+  </script>
 
+
+
+
+<%- include ('./footer.ejs') %>

@@ -672,7 +672,7 @@ router.post('/order-now',(req,res)=>{
     req.session.city = req.body.city;
     req.session.state = req.body.state;
     req.session.pincode = req.body.pincode;
-    // req.session.time = req.body.time;
+    req.session.time = req.body.time;
     req.session.payment_mode = req.body.payment_mode;
    
    
@@ -820,8 +820,20 @@ router.post('/order-now',(req,res)=>{
         pool.query(`select sum(dp_price) as totaldp from booking where orderid = '${orderid}'`,(err,result)=>{
           if(err) throw err;
           else {
-          
-         res.redirect('/my-account#account-orders')
+          res.redirect('/my-account#account-orders')
+         
+//           request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.session.usernumber}&dltContentId=1307165008026255744&text=Your Order is successfully placed with DealsAaj. Track your Order Here kli. Please find the invoice of your purchase at jea Keep Shopping with DealsAaj to Reach Redeem & Repeat!! -<DealsAaj>`} , function(err,data){
+// // console.log('err',otp);
+// console.log('data',data) 
+// // res.render('otp',{msg : otp , anothermsg:''})
+// res.json({msg:'success'})
+   
+//  })
+//         //  request.get({url:`https://pgapi.vispl.in/fe/api/v1/send?username=aformotpg.trans&password=z3xZ7&unicode=false&from=DLSAAJ&to=${req.session.usernumber}&dltContentId=${contentid}&text=${message}`} , function(err,data){
+//         //  console.log('data',data)
+//         //  res.redirect('/my-account#account-orders')
+
+//         //   })
         
           }
         })
@@ -840,6 +852,127 @@ router.post('/order-now',(req,res)=>{
  
 })
 
+
+
+
+
+
+
+// router.post('/order-now',(req,res)=>{
+//   let body = req.body;
+// console.log('body',req.body)
+//   let cartData = req.body
+//     req.session.payment_mode = req.body.payment_mode;
+   
+
+
+// //  console.log('CardData',cartData)
+
+//    body['status'] = 'pending'
+    
+
+//   var today = new Date();
+// var dd = today.getDate();
+
+// var mm = today.getMonth()+1; 
+// var yyyy = today.getFullYear();
+// if(dd<10) 
+// {
+//   dd='0'+dd;
+// } 
+
+// if(mm<10) 
+// {
+//   mm='0'+mm;
+// } 
+// today = yyyy+'-'+mm+'-'+dd;
+
+
+// body['date'] = today
+
+
+
+//   var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//   var result = '';
+//   for ( var i = 0; i < 12; i++ ) {
+//       result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+//   }
+//  orderid = result;
+
+
+ 
+
+
+//  pool.query(`select * from cart where number = '${req.body.usernumber}'`,(err,result)=>{
+//      if(err) throw err;
+//      else {
+
+//      let data = result
+
+//      for(i=0;i<result.length;i++){
+//       data[i].name = req.body.name
+//       data[i].date = today
+//       data[i].orderid = orderid
+//       data[i].status = 'pending'
+//       data[i].number = req.body.number
+//       data[i].usernumber = req.body.usernumber
+//       data[i].payment_mode = 'cash'
+//       data[i].address = req.body.address
+//       data[i].id = null
+
+
+//      }
+
+//         body['address'] = req.session.address1 + ',' + req.session.address2 + ',' + req.session.city + ',' + req.session.state + ',' + req.session.pincode;
+//         body['name'] = req.body.first_name ;
+
+
+// for(i=0;i<data.length;i++) {
+//  let j = i;
+//  pool.query(`insert into booking set ?`,data[i],(err,result)=>{
+//          if(err) throw err;
+//          else if(result){
+
+// // console.log('afyeri',j);
+
+
+// pool.query(`update products set quantity = quantity - ${data[j].quantity} where id = '${data[j].booking_id}'`,(err,result)=>{
+//  if(err) throw err;
+//  else {
+// console.log(data[j].quantity);
+//  }
+
+// })
+
+//          }
+//     })
+// }
+
+
+  
+
+
+// pool.query(`delete from cart where number = '${req.body.usernumber}'`,(err,result)=>{
+//   if(err) throw err;
+//   else {
+
+//   //   res.json({
+//   //     msg : 'success'
+//   // })
+//   // res.redirect('/my-account#account-orders')
+//   res.json({
+//     msg:'success'
+//   })
+
+//   }
+// })
+
+
+//      }
+//  })
+
+ 
+// })
 
 
 router.get('/my-account',(req,res)=>{
@@ -1654,5 +1787,16 @@ pool.query(`insert into cp set ?`,body,(err,result)=>{
    })
  })
 
+
+
+ router.get('/live-locations',(req,res)=>{
+  req.session.usernumber ? login =  true : login = false
+ var query = `select * from category;`
+    var query1 = `select * from channel_partner where status = 'active';`
+    pool.query(query+query1,(err,result)=>{
+      if(err) throw err;
+      else res.render('livelocations',{login,result})
+    })
+ })
 
 module.exports = router;

@@ -1,0 +1,292 @@
+<%- include ('./otherheader.ejs') %>
+
+<style>
+body{
+	margin:0;
+	background-color: #f3f2ef;
+   font-family: -apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Fira Sans,Ubuntu,Oxygen,Oxygen Sans,Cantarell,Droid Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Lucida Grande,Helvetica,Arial,sans-serif;	
+   /* display: flex; */
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+}
+h3{
+	font-weight: 500;
+font-size: x-large;
+}
+h4{
+	font-weight: 500;
+font-size: 14px;
+margin: 0;
+margin-bottom: 20px;
+}
+.main-box
+{
+	max-width: 900px;
+	width: 100%;
+	height: 450px;
+	background-color: white;
+	margin: 0;
+	border-radius: 20px;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.input-file{
+	display:none;  
+  }
+  .input-btn{
+	background-color: white;
+	color: #fff;
+	border: 1px solid #8c8c8c;
+	padding: 10px;
+	border-radius: 20px;
+	margin: 15px;
+  }
+  .input-btn:hover{
+	background-color:#c9cccb;
+  }
+  .pen-btn
+  {
+	background-color: white;
+	color: #fff;
+	border: none;
+	padding: 10px;
+	border-radius: 20px;
+	margin: 10px;
+	margin-top: -20px 
+  }
+.upload
+{
+	position: absolute;
+	right: 0px;
+}
+.pen-btn.upload{
+  right: 1%;
+  top: 52%;
+  font-size: 20px;
+}
+.cover
+{
+	width: 100%;
+	height: 200px;
+	border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+
+.main-content
+{
+	padding: 0px 25px;
+	color:rgba(0,0,0,0.9);
+	line-height: 10px;
+
+}
+.dp
+{
+	height: 132px;
+width: 132px;
+border-radius: 50%;
+left: 4px;
+position: relative;
+top: 5px;
+background-color: white;
+padding: 5px;
+margin-top: -100px;
+margin-left: 22px;
+margin-bottom: -4px;
+}
+.cam
+{
+	color:#0a66c2;
+  cursor:pointer;
+}
+.pen{
+   color:rgba(0,0,0,0.6);
+   font-size:x-large;
+  cursor:pointer;
+}
+.but
+{
+width: 107px;
+height: 32px;
+border-radius: 20px;
+outline: none;
+border: none;
+background: #0a66c2;
+color: white;
+font-size: large;
+text-align: center;
+margin-left: 20px;
+}
+.but:hover{
+	background-color: #203e5d;
+}
+.but1
+{
+
+	height: 35px;
+	border-radius: 20px;
+	outline: none;
+	border: 1px solid black;
+	background: transparent;
+	font-size: medium;
+	text-align: center;
+	color: rgba(0,0,0,0.6);
+	margin-left: 10px;
+	padding: 0px 20px;
+}
+.clr
+{
+	color:rgba(0,0,0,0.6);
+}
+.but1:hover{
+	border: 2px solid black;
+	background: #ddd;
+}
+.box{
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: -23px;
+}
+ul{
+	list-style: none;
+}
+li{
+color: #0a66c2;
+font-weight: 600;
+}
+.content
+{
+	display: flex;
+margin: 0;
+padding: 0;
+}
+.icon
+{
+	height: 50px;
+	width:50px
+}
+.align
+{
+	display: flex;
+}
+.cmpy{
+font-size: 16px;
+font-family: inherit;
+color:black;
+}
+span
+{
+	margin-right: 14px;
+margin-left: 10px;
+}
+.current
+{
+	width: 34%;
+margin-left: 70px
+}
+.clg
+{
+	position: relative;
+    top: 15px;
+}
+
+
+
+
+.abcd {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.top-left {
+  position: absolute;
+  top: 12px;
+  left: 26px;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+</style>
+
+<section class="section-padding">
+<div class="container pt-lg-4">
+
+<div class="row">
+
+<div class="col-xl-12 col-sm-12">
+<div class="row">
+
+
+    <% for(i=0;i<result[1].length;i++){ %>
+
+
+<div class="col-xl-4 col-sm-12 col-12 col-md-3 mb-4">
+
+    <div class="main-box">
+
+        <input type='file' class='input-file' id="imgInp">
+        <button class='input-btn upload' id='input_btn'><i class="fa fa-camera cam"></i></button>
+        <div class="abcd">
+       <img class="cover abcd" id="blah" src="/location/<%=result[1][i].map%>" style="object-fit:cover">
+       <div class="top-left"><%=result[1][i].categoryid%></div>
+    </div>
+       <div class="dp-container"><img class="dp" src="/cp/<%=result[1][i].image%>"></div>
+  
+       <div class="box" style="margin-top: 20px;">
+        <div class="main-content"> 
+           <h3><%=result[1][i].name%></h3>
+           <h4><%=result[1][i].categoryid%>,<%=result[1][i].subcategoryid%></h4>
+          
+           <div class="content">
+           <h4 style="font-size: 12px;"><%=result[1][i].address%></h4> 
+          
+      </div>
+        </div>
+       
+        </div>
+       
+     
+     </div>
+
+</div>
+
+<% } %>
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<script>
+function readURL(input) {
+   if (input.files && input.files[0]) {
+       var reader = new FileReader();
+
+       reader.onload = function (e) {
+           $('#blah').attr('src', e.target.result);
+       }
+
+       reader.readAsDataURL(input.files[0]);
+   }
+}
+
+$("#imgInp").change(function(){
+   readURL(this);
+   console.log("hiii")
+});
+
+document.getElementById("input_btn")
+.addEventListener('click',function(){
+  document.getElementById("imgInp").click();  
+},false);
+
+</script>
+
+
+<%- include ('./footer.ejs') %>

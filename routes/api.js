@@ -2600,7 +2600,7 @@ var yyyy = today.getFullYear();
 today = yyyy + '-' + mm + '-' + dd;
 
 
-  var query = `select v.description , v.business_name , v.image , v.number , v.address , v.shop_online , v.owner_name_hide , v.name , v.id , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
+  var query = `select v.vendor_logo , v.banner_image, v.description , v.business_name , v.image , v.number , v.address , v.shop_online , v.owner_name_hide , v.name , v.id , (select c.name from category c where c.id = v.categoryid) as categoryname from vendor v where v.id = '${req.query.vendorid}';`
   var query2 = `select avg(rating) as average_rating from rating where vendorid = '${req.query.vendorid}';`
   pool.query(`update vendor set viewers = viewers + 1 where id = '${req.query.vendorid}'`,(err,result)=>{
  if(err) throw err;

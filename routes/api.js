@@ -2248,9 +2248,37 @@ router.get('/get-my-portfolio',(req,res)=>{
 
 
 
-router.post('/update-profile-image',upload.single('image'), (req, res) => {
+router.post('/update-logo',upload.single('vendor_logo'), (req, res) => {
   let body = req.body;
-  body['image'] = req.file.filename
+  body['vendor_logo'] = req.file.filename
+console.log(req.body)
+
+pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+      }
+  })
+
+
+})
+
+
+
+router.post('/update-banner-image',upload.single('banner_image'), (req, res) => {
+  let body = req.body;
+  body['banner_image'] = req.file.filename
 console.log(req.body)
 
 pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
@@ -2580,7 +2608,7 @@ today = yyyy + '-' + mm + '-' + dd;
       pool.query(`insert into viewers(vendorid,date,viewers) values('${req.query.vendorid}' , '${today}' , '1')`,(err,result)=>{
         if(err) throw err;
         else{
-          pool.query(query+query1+query2,(err,result)=>{
+          pool.query(query+query2,(err,result)=>{
             if(err) throw err;
             else res.json(result);
           })

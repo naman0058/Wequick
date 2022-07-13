@@ -1787,6 +1787,8 @@ pool.query(`insert into cp set ?`,body,(err,result)=>{
    })
  })
 
+ 
+
 
 
  router.get('/live-locations',(req,res)=>{

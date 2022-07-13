@@ -1917,7 +1917,7 @@ router.get('/vendor-coupon',(req,res)=>{
 router.post('/get-products-api',(req,res)=>{
   
   pool.query(`select p.* , 
-    (select c.quantity from cart c where c.booking_id = p.id and c.usernumber = '${req.query.number}' ) as userquantity
+    (select c.quantity from cart c where c.booking_id = p.id and c.usernumber = '${req.body.number}' ) as userquantity
     from products p  where vendorid = '${req.body.vendorid}'`,(err,result)=>{
     if(err) throw err;
     else res.json(result)

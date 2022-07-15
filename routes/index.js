@@ -95,9 +95,9 @@ router.get('/', function(req, res, next) {
     POW(69.1 * (v.longitude - '${req.query.longitude}') * COS(v.latitude / 57.3), 2)) AS distance,
 (select c.seo_name from category c where c.id = v.categoryid) as categoryname
     FROM vendor v where v.status = 'approved' and v.image is not null and v.address is not null and v.address!= 'null,null,null,null,null-null' having distance <= 600000000000000 ORDER BY distance limit 8;`
-
+    var query11 = `select * from channel_partner where status = 'active';`
  
-   pool.query(query+query1+query5+query7+query8+query9+query10,(err,result)=>{
+   pool.query(query+query1+query5+query7+query8+query9+query10+query11,(err,result)=>{
      if(err) throw err;
      else res.render('index', { title: 'Express',result,login });
    })

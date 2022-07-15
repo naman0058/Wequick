@@ -2604,13 +2604,13 @@ button:focus {
 
 .homepage-rest-block {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3023ae+0,c86dd7+100 */
-	background: rgb(48, 35, 174);
+	background: rgb(103, 41, 116);
 	/* Old browsers */
-	background: -moz-linear-gradient(left, rgba(48, 35, 174, 1) 0%, rgba(200, 109, 215, 1) 100%);
+	background: -moz-linear-gradient(left, rgba(103, 41, 116, 1) 0%, rgba(193, 50, 104, 1) 100%);
 	/* FF3.6-15 */
-	background: -webkit-linear-gradient(left, rgba(48, 35, 174, 1) 0%, rgba(200, 109, 215, 1) 100%);
+	background: -webkit-linear-gradient(left, rgba(103, 41, 116, 1) 0%, rgba(193, 50, 104, 1) 100%);
 	/* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, rgba(48, 35, 174, 1) 0%, rgba(200, 109, 215, 1) 100%);
+	background: linear-gradient(to right, rgba(103, 41, 116, 1) 0%, rgba(193, 50, 104, 1) 100%);
 	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3023ae', endColorstr='#c86dd7', GradientType=1);
 	/* IE6-9 */

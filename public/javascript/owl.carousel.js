@@ -2700,12 +2700,10 @@
 	Navigation.Defaults = {
 		nav: false,
 		navRewind: true,
-		navText: [ 'prev', 'next' ],
 		navSpeed: false,
 		navElement: 'div',
 		navContainer: false,
 		navContainerClass: 'owl-nav',
-		navClass: [ 'owl-prev', 'owl-next' ],
 		slideBy: 1,
 		dotClass: 'owl-dot',
 		dotsClass: 'owl-dots',
@@ -2714,8 +2712,8 @@
 		dotData: false,
 		dotsSpeed: false,
 		dotsContainer: false,
-		controlsClass: 'owl-controls'
 	}
+	
 
 	/**
 	 * Initializes the layout of the plugin and extends the carousel.

@@ -135,7 +135,7 @@ input,
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6e00ff', endColorstr='#bb00ff', GradientType=1);
 
 
-	background-image:linear-gradient(to right, #672974,#c13268)
+	background-image:linear-gradient(to right, #c13268,#672974)
 	/* IE6-9 fallback on horizontal gradient */
 }
 

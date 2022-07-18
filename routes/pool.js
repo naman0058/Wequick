@@ -9,6 +9,7 @@ const pool = mysql.createPool({
     database: 'wequick',
     port:'25060',
     multipleStatements: true
+  
   })
 
 

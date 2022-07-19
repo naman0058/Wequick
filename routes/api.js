@@ -2339,6 +2339,38 @@ pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], 
 
 
 
+router.post('/update-profile-image',upload.single('image'), (req, res) => {
+  let body = req.body;
+  console.log('data recieved before',req.body)
+  console.log('file recieved',req.file)
+
+
+  body['image'] = req.file.filename
+  console.log('data recieved after',req.body)
+
+pool.query(`update vendor set ? where number = ?`, [req.body, req.body.number], (err, result) => {
+      if(err) {
+          res.json({
+              status:500,
+              type : 'error',
+              description:err
+          })
+      }
+      else {
+          res.json({
+              status:200,
+              type : 'success',
+              description:'successfully update'
+          })
+
+      }
+  })
+
+
+})
+
+
+
 router.post('/agent-dashboard',(req,res)=>{
   console.log('body',req.body)
   var query = `select count(id) as today_vendor from vendor where agentid = '${req.body.agentid}' and date = CURDATE();`
